@@ -108,3 +108,13 @@ flutter:
     - assets/images/
     - assets/color/
     - assets/logo/
+    - assets/fonts/
+
+  fonts:
+    - family: SF Pro Rounded
+      fonts:
+        - asset: assets/fonts/SF-Pro-Rounded-Regular.ttf
+        - asset: assets/fonts/SF-Pro-Rounded-Medium.ttf
+        - asset: assets/fonts/SF-Pro-Rounded-Light.ttf
+        - asset: assets/fonts/SF-Pro-Rounded-Heavy.ttf
+        - asset: assets/fonts/SF-Pro-Rounded-Bold.ttf

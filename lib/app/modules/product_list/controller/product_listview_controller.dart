@@ -79,8 +79,10 @@ class ProductListController extends GetxController {
   Future<void> _getProductList(int pageKey, String collectionId) async {
     try {
       final client = RestClient();
+      // TODO SENDING THE COLLECTION ID HARD CODED '445427745079'
+
       var newItems =
-          await client.getProductList(pageKey, _pageSize, collectionId, "");
+          await client.getProductList('published',pageKey, _pageSize, '445427745079', "");
       final isLastPage = newItems.products!.length < _pageSize;
       if (isLastPage) {
         pagingController.appendLastPage(newItems.products!);

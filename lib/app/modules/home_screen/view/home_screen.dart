@@ -27,6 +27,7 @@ class HomeScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
     return Scaffold(
+      backgroundColor: ColorName.white,
       key: controller.scaffoldKey,
       drawer: SideMenu(),
       appBar: PreferredSize(
@@ -56,7 +57,7 @@ class HomeScreen extends StatelessWidget {
                       const SizedBox(
                         height: 16,
                       ),
-                      CommonPageView(),
+
                       const SizedBox(
                         height: 16,
                       ),
@@ -69,19 +70,20 @@ class HomeScreen extends StatelessWidget {
                               )
                             : Container(
                                 width: size.width,
-                                decoration: BoxDecoration(
-                                    color: ColorName.panache,
-                                    border: Border.all(color: ColorName.silver)),
+                                decoration: const BoxDecoration(
+                                    //color: ColorName.panache,
+                                   // border: Border.all(color: ColorName.silver)
+                                ),
                                 child: Column(
                                   children: [
-                                    Padding(
-                                      padding: const EdgeInsets.only(top: 10),
-                                      child: Text(
-                                        AppLocalizations.of(context).shopByCategoryTxt,
-                                        style: AppThemeData.font16Weight600PlayfairCardinal
-                                            .copyWith(fontSize: 18.0),
-                                      ),
-                                    ),
+                                    // Padding(
+                                    //   padding: const EdgeInsets.only(top: 10),
+                                    //   child: Text(
+                                    //     AppLocalizations.of(context).shopByCategoryTxt,
+                                    //     style: AppThemeData.font16Weight600PlayfairCardinal
+                                    //         .copyWith(fontSize: 18.0),
+                                    //   ),
+                                    // ),
                                     Padding(
                                       padding: const EdgeInsets.only(bottom: 8),
                                       child: HomeShopByCategoryWidget(
@@ -92,6 +94,10 @@ class HomeScreen extends StatelessWidget {
                                 ),
                               ),
                       ),
+                      const SizedBox(
+                        height: 16,
+                      ),
+                      CommonPageView(),
                     ],
                   ),
                 ],

@@ -17,7 +17,7 @@ class CommonPageView extends StatelessWidget {
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
     return Obx(() => SizedBox(
-          height: 85,
+          height: size.height * 0.3,
           width: size.width,
           child: Stack(children: [
             SizedBox(
@@ -27,9 +27,9 @@ class CommonPageView extends StatelessWidget {
                 itemCount: homepageContents.length,
                 onPageChanged: pageViewController.cIndex,
                 itemBuilder: (_, i) {
-                  return Image.asset(
+                  return Image.network(
                     homepageContents[i].pgImage.toString(),
-                    fit: BoxFit.cover,
+                    fit: BoxFit.fill,
                   );
                 },
               ),

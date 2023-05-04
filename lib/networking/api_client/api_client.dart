@@ -35,10 +35,12 @@ abstract class RestClient {
 
   @GET("/products.json")
   Future<ProductResponse> getProductList(
+      @Query('published_status') String published,
       @Query("since_id") int pageKey,
       @Query("limit") int pageSize,
       @Query("collection_id") String collectionId,
-      @Query("ids") String? ids);
+      @Query("ids") String? ids
+      );
 
   @GET("/products/{product_id}.json")
   Future<ProductDetailResponse> getProductDetail(@Path("product_id") String product_id);

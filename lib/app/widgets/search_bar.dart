@@ -17,7 +17,7 @@ class SearchBar extends StatelessWidget {
       margin: const EdgeInsets.only(top: 5, left: 16, right: 16),
       height: 40,
       decoration: BoxDecoration(
-          color: ColorName.white,
+          color: ColorName.silver.withOpacity(0.3),
           border: Border.all(color: ColorName.mercury),
           borderRadius: BorderRadius.circular(5)),
       child: Row(
@@ -39,7 +39,7 @@ class SearchBar extends StatelessWidget {
             child: Container(
               decoration: BoxDecoration(
                   border: Border.all(color: ColorName.mercury),
-                  color: ColorName.mercury,
+                  color: ColorName.cello,
                   borderRadius: const BorderRadius.only(
                       topRight: Radius.circular(4), bottomRight: Radius.circular(4))),
               height: 40,
@@ -49,7 +49,7 @@ class SearchBar extends StatelessWidget {
                 Assets.images.searchImage.path,
                 height: 16,
                 width: 16,
-                    color: ColorName.black,
+                    color: ColorName.white,
               )),
             ),
           ),

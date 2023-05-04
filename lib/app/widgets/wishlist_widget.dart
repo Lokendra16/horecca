@@ -38,7 +38,7 @@ class _WishlistWidgetState extends State<WishlistWidget> {
                 isWishlist = !isWishlist;
               });
             },
-            child: const Icon(Icons.favorite_border, color: ColorName.black, size: 26));
+            child: const Icon(Icons.favorite_border_rounded, color: ColorName.silver, size: 26));
   }
 
   Future<void> checkWishlist(String id) async {

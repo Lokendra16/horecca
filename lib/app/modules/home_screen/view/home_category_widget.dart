@@ -1,6 +1,7 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:the_horeca_store/app/modules/home_screen/controller/home_screen_controller.dart';
 import 'package:the_horeca_store/app/modules/product_list/controller/product_listview_controller.dart';
 import 'package:the_horeca_store/app/modules/product_list/view/product_list_screen.dart';
 import 'package:the_horeca_store/commons/utils/app_theme_data.dart';
@@ -38,13 +39,13 @@ class HomeShopByCategoryWidget extends StatelessWidget {
                         borderRadius: BorderRadius.circular(30),
                         child: value.image != null && value.image!.isNotEmpty
                             ? Container(
-                                width: 50,
-                                height: 50,
-                                color: Colors.white,
+                                width: 80,
+                                height: 80,
                               child: CachedNetworkImage(
-                                  width: 50,
-                                  height: 50,
+                                  width: 60,
+                                  height: 60,
                                   imageUrl: value.image ?? '',
+                                  fit: BoxFit.cover,
                                   placeholder: (context, url){
                                     return const CirclePlaceholderImg();
                                   },
@@ -56,15 +57,19 @@ class HomeShopByCategoryWidget extends StatelessWidget {
                             : const CirclePlaceholderImg(),
                       ),
                     ),
-                    Padding(
-                      padding: const EdgeInsets.only(left: 0, top: 8.0),
-                      child: Text(
-                        value.title ?? '',
-                        style: AppThemeData.shopCategoryTitleStl.copyWith(fontSize: 12.0),
-                        textAlign: TextAlign.center,
-                        softWrap: false,
-                        maxLines: 2,
-                        overflow: TextOverflow.ellipsis,
+
+                    Align(
+                      alignment: Alignment.bottomCenter,
+                      child: Padding(
+                        padding: const EdgeInsets.only(left: 0, top: 8.0),
+                        child: Text(
+                          value.title ?? '',
+                          style: AppThemeData.shopCategoryTitleStl.copyWith(fontSize: 12.0),
+                          textAlign: TextAlign.center,
+                          softWrap: false,
+                          maxLines: 2,
+                          overflow: TextOverflow.ellipsis,
+                        ),
                       ),
                     ),
                   ],
@@ -80,7 +85,7 @@ class HomeShopByCategoryWidget extends StatelessWidget {
 class CirclePlaceholderImg extends StatelessWidget {
   const CirclePlaceholderImg({
     super.key,
-    this.size = 50,
+    this.size = 80,
     this.color = Colors.white,
   });
 

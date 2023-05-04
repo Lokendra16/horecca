@@ -15,6 +15,20 @@ class HomeScreenController extends GetxController {
   var isLoadingCategories = true.obs;
   var isLoadingProducts = true.obs;
 
+  List<String> homeCategoryList = [
+    'https://thehorecastore.myshopify.com/cdn/shop/collections/dinnerware-header-813543.webp?v=1681553175',
+    'https://thehorecastore.myshopify.com/cdn/shop/collections/3-877359.jpg?v=1681553178',
+    'https://thehorecastore.myshopify.com/cdn/shop/collections/cutlery-thehorecastore-270504.jpg?v=1681557329',
+    'https://thehorecastore.myshopify.com/cdn/shop/collections/table-accessories-thehorecastore-579008.jpg?v=1681557352',
+    'https://thehorecastore.myshopify.com/cdn/shop/collections/kitchen-equipment-thehorecastore-653876.jpg?v=1681557376',
+    'https://thehorecastore.myshopify.com/cdn/shop/collections/menu-and-signage-thehorecastore-699865.jpg?v=1681553185',
+    'https://thehorecastore.myshopify.com/cdn/shop/collections/Chafing_Dishes-499241.jpg?v=1681553593',
+    'https://thehorecastore.myshopify.com/cdn/shop/collections/banquet-and-conference-thehorecastore.jpg?v=1681553532',
+    'https://thehorecastore.myshopify.com/cdn/shop/collections/guestroom-thehorecastore-731248.jpg?v=1681553179',
+    'https://thehorecastore.myshopify.com/cdn/shop/collections/round-640740.jpg?v=1681553173',
+    'https://thehorecastore.myshopify.com/cdn/shop/collections/housekeeping-and-front-office-thehorecastore-599296.jpg?v=1681553180',
+  ];
+
   @override
   void onInit() {
     super.onInit();
@@ -147,4 +161,5 @@ class HomeScreenController extends GetxController {
       },
     );
   }
+
 }

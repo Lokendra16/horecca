@@ -20,8 +20,8 @@ class AppBarHome extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         elevation: 0,
-        centerTitle: true,
-        backgroundColor: ColorName.alabaster,
+        //centerTitle: true,
+        backgroundColor: ColorName.white,
         leading: InkWell(
           onTap: onMenuClick,
           child: Padding(
@@ -34,7 +34,8 @@ class AppBarHome extends StatelessWidget {
         ),
         title: Image.asset(
           Assets.images.icAppicon.path,
-          height: 32,
+          height: 52,
+
         ),
         actions: [
           InkWell(

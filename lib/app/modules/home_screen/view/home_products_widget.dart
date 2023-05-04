@@ -14,17 +14,21 @@ class HomeProductsWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
     return SliverList(
+
       delegate: SliverChildBuilderDelegate(
+
         childCount: list.length,
         (context, index){
           var item = list[index];
           return Column(
             children: [
+              const SizedBox(height: 10,),
+
               Padding(
                 padding: const EdgeInsets.only(top: 10.0),
                 child: Text(
                   item.title ?? '',
-                  style: AppThemeData.font16Weight600PlayfairCardinal.copyWith(fontSize: 18.0),
+                  style: AppThemeData.font16Weight600PlayfairCardinal.copyWith(fontSize: 24.0,fontFamily: 'SF Pro Rounded',color: ColorName.gray,fontWeight: FontWeight.w500),
                 ),
               ),
               const SizedBox(
@@ -44,8 +48,9 @@ class HomeProductsWidget extends StatelessWidget {
                           width: size.width * 0.40,
                           height: size.width * 0.50,
                           margin: const EdgeInsets.only(left: 16),
-                          decoration: BoxDecoration(
-                              color: ColorName.white, border: Border.all(color: ColorName.silver)),
+                          decoration: const BoxDecoration(
+                              color: ColorName.white, //border: Border.all(color: ColorName.silver)
+                          ),
                           child: Column(
                             children: [
                               Expanded(
@@ -67,27 +72,24 @@ class HomeProductsWidget extends StatelessWidget {
                                   ],
                                 ),
                               ),
-                              Container(
-                                height: 1.0,
-                                width: double.infinity,
-                                color: ColorName.silver,
-                              ),
+
                               Padding(
                                 padding: const EdgeInsets.only(top: 4, left: 5, right: 5),
                                 child: Text(
                                   item.products?[i].title ?? '',
                                   maxLines: 1,
                                   textAlign: TextAlign.center,
-                                  style: AppThemeData.font12Weight700,
+                                  style: AppThemeData.font12Weight700.copyWith(fontWeight: FontWeight.w400,fontFamily: 'SF Pro Rounded'),
                                 ),
                               ),
                               Padding(
                                 padding: const EdgeInsets.only(top: 5, bottom: 8),
                                 child: Text(
                                   'AED 134.75', //TODO Make this dynamic
-                                  style: AppThemeData.homeActualPrice,
+                                  style: AppThemeData.homeActualPrice.copyWith(fontWeight: FontWeight.w500,fontFamily: 'SF Pro Rounded'),
                                 ),
                               ),
+                              const SizedBox(height: 20,),
                             ],
                           ),
                         ),

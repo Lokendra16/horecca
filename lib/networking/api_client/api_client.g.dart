@@ -22,8 +22,8 @@ class _RestClient implements RestClient {
 
   @override
   Future<CategoryResponse> getCategoryList(
-    pageKey,
-    pageSize,
+    int pageKey,
+    int pageSize,
   ) async {
     const _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{
@@ -51,13 +51,15 @@ class _RestClient implements RestClient {
 
   @override
   Future<ProductResponse> getProductList(
-    pageKey,
-    pageSize,
-    collectionId,
-    ids,
+    String published,
+    int pageKey,
+    int pageSize,
+    String collectionId,
+    String? ids,
   ) async {
     const _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{
+      r'published_status': published,
       r'since_id': pageKey,
       r'limit': pageSize,
       r'collection_id': collectionId,
@@ -84,7 +86,7 @@ class _RestClient implements RestClient {
   }
 
   @override
-  Future<ProductDetailResponse> getProductDetail(product_id) async {
+  Future<ProductDetailResponse> getProductDetail(String product_id) async {
     const _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
     final _headers = <String, dynamic>{};
@@ -107,7 +109,7 @@ class _RestClient implements RestClient {
   }
 
   @override
-  Future<AddressListModel> getAddressList(customerId) async {
+  Future<AddressListModel> getAddressList(String customerId) async {
     const _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
     final _headers = <String, dynamic>{};
@@ -131,8 +133,8 @@ class _RestClient implements RestClient {
 
   @override
   Future<BaseResponse> deleteAddress(
-    customerId,
-    addressId,
+    String customerId,
+    String addressId,
   ) async {
     const _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
@@ -180,8 +182,8 @@ class _RestClient implements RestClient {
 
   @override
   Future<CountryListResponse> addCountryApi(
-    customerId,
-    body,
+    String customerId,
+    Map<String, dynamic> body,
   ) async {
     const _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};

@@ -41,7 +41,8 @@ class WishlistController extends GetxController {
 
   Future<void> _getProductList(int pageKey, String? productIds) async {
     final client = RestClient();
-    var newItems = await client.getProductList(pageKey, _pageSize, "", productIds);
+    // TODO SENDING THE COLLECTION ID HARD CODED
+    var newItems = await client.getProductList("published",pageKey, _pageSize,'445427745079', "");
     isLoading.value = false;
     productList.value = newItems.products!;
   }
