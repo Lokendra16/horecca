@@ -23,10 +23,11 @@ class DashboardScreen extends StatelessWidget {
         bottomNavigationBar: Container(
           margin: const EdgeInsets.all(8),
           height: 56,
-          decoration: BoxDecoration(
-              color: ColorName.panache,
-              borderRadius: BorderRadius.circular(16),
-              border: Border.all(color: ColorName.silver)),
+          decoration: const BoxDecoration(
+              color: ColorName.bonJour,
+              //borderRadius: BorderRadius.circular(16),
+              //border: Border.all(color: ColorName.silver)
+          ),
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceAround,
             children: [
@@ -34,27 +35,37 @@ class DashboardScreen extends StatelessWidget {
                   dashboardController: dashboardController,
                   title: AppLocalizations.of(context).home,
                   tabIndex: 0,
-                  icon: Assets.icons.icHome),
+                  icon: Icons.home_filled//Assets.icons.icHome
+                , inactiveIcon: Icons.home_outlined,
+              ),
               BottomNavItem(
                   dashboardController: dashboardController,
                   title: AppLocalizations.of(context).category,
                   tabIndex: 1,
-                  icon: Assets.icons.icCategory),
+                  icon: Icons.category//Assets.icons.icCategory,
+                ,inactiveIcon: Icons.category_outlined,
+              ),
               BottomNavItem(
                   dashboardController: dashboardController,
                   title: AppLocalizations.of(context).sale,
                   tabIndex: 2,
-                  icon: Assets.icons.icSale),
+                  icon: Icons.discount//Assets.icons.icSale
+                ,inactiveIcon: Icons.discount_outlined,
+              ),
               BottomNavItem(
                   dashboardController: dashboardController,
                   title:  AppLocalizations.of(context).wishList,
                   tabIndex: 3,
-                  icon: Assets.icons.icWishlist),
+                  icon: Icons.favorite//Assets.icons.icWishlist
+                ,inactiveIcon: Icons.favorite_border_rounded,
+              ),
               BottomNavItem(
                   dashboardController: dashboardController,
                   title:  AppLocalizations.of(context).myAccount,
                   tabIndex: 4,
-                  icon: Assets.icons.icProfile),
+                  icon: Icons.person//Assets.icons.icProfile
+                ,inactiveIcon: Icons.person_outline_outlined,
+              ),
             ],
           ),
         ),
@@ -79,11 +90,15 @@ class BottomNavItem extends StatelessWidget {
     required this.icon,
     required this.title,
     required this.tabIndex,
+    this.inactiveIcon,
   });
 
   final int tabIndex;
   final String title;
-  final SvgGenImage icon;
+  final IconData icon;
+  final IconData? inactiveIcon;
+
+ // final SvgGenImage icon;
 
   final DashboardScreenController dashboardController;
 
@@ -101,18 +116,21 @@ class BottomNavItem extends StatelessWidget {
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  icon.svgIcon(
-                    size: 24,
-                    color: dashboardController.tabIndex == tabIndex
-                        ? ColorName.cardinal
-                        : ColorName.black,
-                  ),
+                  Icon( dashboardController.tabIndex.value == tabIndex ? icon : inactiveIcon ,color: dashboardController.tabIndex.value == tabIndex ? ColorName.cardinal : ColorName.gray,),
+
+                  // icon.svgIcon(
+                  //   size: 24,
+                  //   color: dashboardController.tabIndex == tabIndex
+                  //       ? ColorName.cardinal
+                  //       : ColorName.gray,
+                  //
+                  // ),
                   FittedBox(
                     child: Text(
                       title,
                       style: dashboardController.tabIndex == tabIndex
                           ? AppThemeData.font12Weight400Cardinal
-                          : AppThemeData.font12Weight400Black,
+                          : AppThemeData.font12Gray400,
                     ),
                   ),
                   dashboardController.tabIndex == tabIndex

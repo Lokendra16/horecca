@@ -50,6 +50,29 @@ class _RestClient implements RestClient {
   }
 
   @override
+  Future<CategoryResponse> getHomeCategoryList(String ids) async {
+    const _extra = <String, dynamic>{};
+    final queryParameters = <String, dynamic>{r'ids': ids};
+    final _headers = <String, dynamic>{};
+    final Map<String, dynamic>? _data = null;
+    final _result = await _dio
+        .fetch<Map<String, dynamic>>(_setStreamType<CategoryResponse>(Options(
+      method: 'GET',
+      headers: _headers,
+      extra: _extra,
+    )
+            .compose(
+              _dio.options,
+              '/custom_collections.json',
+              queryParameters: queryParameters,
+              data: _data,
+            )
+            .copyWith(baseUrl: baseUrl ?? _dio.options.baseUrl)));
+    final value = CategoryResponse.fromJson(_result.data!);
+    return value;
+  }
+
+  @override
   Future<ProductResponse> getProductList(
     String published,
     int pageKey,

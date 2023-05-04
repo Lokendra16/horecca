@@ -3,12 +3,18 @@ import 'package:get/get.dart';
 import 'package:the_horeca_store/app/routes/app_routes.dart';
 import 'package:the_horeca_store/commons/utils/app_preference.dart';
 import 'package:the_horeca_store/commons/utils/my_snackbar.dart';
+import 'package:the_horeca_store/networking/api_client/api_client.dart';
 import 'package:the_horeca_store/networking/graphql/graphql_repo.dart';
+import 'package:the_horeca_store/networking/models/category_data/category_data.dart';
+import 'package:the_horeca_store/networking/models/category_data/category_model.dart';
 import 'package:the_horeca_store/networking/models/home/home_collections.dart';
 
 class HomeScreenController extends GetxController {
   RxList<HomeCollections> productsByCollectionList = <HomeCollections>[].obs;
   RxList<HomeCollections> shopByCategoryList = <HomeCollections>[].obs;
+  // FOR SHOWING HOME CATEGORY
+  //RxList<CategoryData> homeList = <CategoryData>[].obs;
+  Rx<CategoryResponse> homeList = CategoryResponse().obs;
   var scaffoldKey = GlobalKey<ScaffoldState>();
   var userName = ''.obs;
   var isUserLoggedIn = true.obs;
@@ -35,6 +41,7 @@ class HomeScreenController extends GetxController {
     categoryListAPI();
     productListAPI();
     checkAuthState();
+    getHomeCategoryList();
   }
 
   @override
@@ -49,6 +56,7 @@ class HomeScreenController extends GetxController {
 
   void categoryListAPI() async {
     GraphQLRepo().categoryListAPI().then((value) {
+      debugPrint('value : $value');
       filterCategoryData(value);
       isLoadingCategories.value = false;
     }).onError((error, stackTrace) {
@@ -69,13 +77,16 @@ class HomeScreenController extends GetxController {
 
   void filterCategoryData(response){
     List<HomeCollections> col = [];
+
     response["nodes"].forEach((parent){
       var img = "";
       if (parent["image"] != null) {
         img = parent["image"]?["url"] ?? '';
       }
       var collection =
-          HomeCollections(id: parent["id"], title: parent["title"], products: [], image: img);
+          HomeCollections(id: parent["id"],
+              title: parent["title"], products: [], image: img);
+      debugPrint('collection : ${collection.id}');
       col.add(collection);
     });
 
@@ -160,6 +171,25 @@ class HomeScreenController extends GetxController {
         );
       },
     );
+  }
+
+
+  // API FOR HOME CATEGORY LIST
+  Future<void> getHomeCategoryList() async {
+    List collectionIds = ['435395363127', '435395395895','435395494199','433094590775','433094787383','440481677623','442082001207','433094918455','435397919031','435398508855','433095180599'];
+    String id = collectionIds.join(',');
+    try {
+      final client = RestClient();
+      var newItems = await client.getHomeCategoryList(id);
+      homeList.value = newItems;
+      debugPrint('Home category list : ${newItems}');
+      // final newItems = await RemoteApi.getCharacterList(pageKey, _pageSize);
+        final nextPageKey = newItems.custom_collections!.last.id;
+    } catch (error) {
+      debugPrint('Error : $error');
+    }
+update();
+
   }
 
 }

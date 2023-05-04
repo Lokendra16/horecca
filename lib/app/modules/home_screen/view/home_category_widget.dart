@@ -5,12 +5,14 @@ import 'package:the_horeca_store/app/modules/home_screen/controller/home_screen_
 import 'package:the_horeca_store/app/modules/product_list/controller/product_listview_controller.dart';
 import 'package:the_horeca_store/app/modules/product_list/view/product_list_screen.dart';
 import 'package:the_horeca_store/commons/utils/app_theme_data.dart';
+import 'package:the_horeca_store/networking/models/category_data/category_data.dart';
+import 'package:the_horeca_store/networking/models/category_data/category_model.dart';
 import 'package:the_horeca_store/networking/models/home/home_collections.dart';
 import 'package:the_horeca_store/src/gen/assets.gen.dart';
 
 class HomeShopByCategoryWidget extends StatelessWidget {
-  final List<HomeCollections> list;
-
+  //final List<HomeCollections> list;
+  final Rx<CategoryResponse> list;
   const HomeShopByCategoryWidget({Key? key, required this.list}) : super(key: key);
   @override
   Widget build(BuildContext context) {
@@ -19,41 +21,46 @@ class HomeShopByCategoryWidget extends StatelessWidget {
       padding: const EdgeInsets.only(top: 10),
       child: SingleChildScrollView(
         scrollDirection: Axis.horizontal,
-        child: Row(
+        child:Obx(() =>   list.value.custom_collections != null ?
+        Row(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            for (var value in list)
+
+            for (var value in list.value.custom_collections!)
               SizedBox(
-                width: size.width * 0.22,
+                width: size.width * 0.28,
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.start,
                   children: [
                     InkWell(
                       onTap: () {
+                        debugPrint("id line 37: ${value.id}");
                         Get.delete<ProductListController>();
                         Get.to(() => ProductListScreen(),
-                            arguments: [ProductListController.TYPE_CATEGORY_PRODUCTS, Uri.parse(value.id ?? '').pathSegments.last,value.title],
+                            arguments: [ProductListController.TYPE_CATEGORY_PRODUCTS, Uri.parse(value.id.toString() ?? '').pathSegments.last,
+                              value.title
+                            ],
                             binding: BindingsBuilder.put(() => ProductListController()));
                       },
                       child: ClipRRect(
                         borderRadius: BorderRadius.circular(30),
-                        child: value.image != null && value.image!.isNotEmpty
+                        child: value.image != null
                             ? Container(
-                                width: 80,
-                                height: 80,
-                              child: CachedNetworkImage(
-                                  width: 60,
-                                  height: 60,
-                                  imageUrl: value.image ?? '',
-                                  fit: BoxFit.cover,
-                                  placeholder: (context, url){
-                                    return const CirclePlaceholderImg();
-                                  },
-                                  errorWidget: (context, url, error){
-                                    return const CirclePlaceholderImg();
-                                  },
-                                ),
-                            )
+                          width: 80,
+                          height: 80,
+                          child: CachedNetworkImage(
+                            width: 60,
+                            height: 60,
+                            imageUrl: value.image?.src ??  '',
+                            fit: BoxFit.cover,
+                            placeholder: (context, url){
+                              return const CirclePlaceholderImg();
+                            },
+                            errorWidget: (context, url, error){
+                              return const CirclePlaceholderImg();
+                            },
+                          ),
+                        )
                             : const CirclePlaceholderImg(),
                       ),
                     ),
@@ -64,7 +71,7 @@ class HomeShopByCategoryWidget extends StatelessWidget {
                         padding: const EdgeInsets.only(left: 0, top: 8.0),
                         child: Text(
                           value.title ?? '',
-                          style: AppThemeData.shopCategoryTitleStl.copyWith(fontSize: 12.0),
+                          style: AppThemeData.sf400Font12,
                           textAlign: TextAlign.center,
                           softWrap: false,
                           maxLines: 2,
@@ -75,8 +82,10 @@ class HomeShopByCategoryWidget extends StatelessWidget {
                   ],
                 ),
               )
+
+
           ],
-        ),
+        ) : const CircularProgressIndicator(),)
       ),
     );
   }

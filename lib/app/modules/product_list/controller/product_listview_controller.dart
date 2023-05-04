@@ -59,18 +59,22 @@ class ProductListController extends GetxController {
 
     if (Get.arguments == null) {
       pagingController.addPageRequestListener((pageKey) {
-        _getProductList(pageKey, "");
+        // TODO SENDING THE COLLECTION ID HARD CODED '445427745079' FOR PRODUCT LIST SCREEN
+        _getProductList(pageKey, "445427745079");
       });
     } else if (Get.arguments[0] == TYPE_CATEGORY_PRODUCTS) {
       screenType.value = 1;
       pagingController.addPageRequestListener((pageKey) {
-        _getProductList(pageKey, Get.arguments[1].toString());
+        debugPrint("get args category product : ${Get.arguments[1]}");
+        _getProductList(pageKey,  Get.arguments[1].toString()
+        );
       });
       title.value = Get.arguments[2].toString();
     } else if (Get.arguments[0] == TYPE_SEARCH) {
       screenType.value = 1;
       pagingController.addPageRequestListener((pageKey) {
-        _getProductList(pageKey, Get.arguments[1].toString());
+        _getProductList(pageKey, Get.arguments[1].toString()
+        );
       });
       title.value = Get.arguments[2].toString();
     } else {}
@@ -82,7 +86,7 @@ class ProductListController extends GetxController {
       // TODO SENDING THE COLLECTION ID HARD CODED '445427745079'
 
       var newItems =
-          await client.getProductList('published',pageKey, _pageSize, '445427745079', "");
+          await client.getProductList('published',pageKey, _pageSize, collectionId, "");
       final isLastPage = newItems.products!.length < _pageSize;
       if (isLastPage) {
         pagingController.appendLastPage(newItems.products!);

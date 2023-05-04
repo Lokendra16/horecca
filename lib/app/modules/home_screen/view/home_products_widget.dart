@@ -4,6 +4,7 @@ import 'package:the_horeca_store/app/routes/app_routes.dart';
 import 'package:the_horeca_store/app/widgets/wishlist_widget.dart';
 import 'package:the_horeca_store/commons/utils/app_theme_data.dart';
 import 'package:the_horeca_store/networking/models/home/home_collections.dart';
+import 'package:the_horeca_store/src/gen/assets.gen.dart';
 import 'package:the_horeca_store/src/gen/colors.gen.dart';
 
 class HomeProductsWidget extends StatelessWidget {
@@ -23,7 +24,6 @@ class HomeProductsWidget extends StatelessWidget {
           return Column(
             children: [
               const SizedBox(height: 10,),
-
               Padding(
                 padding: const EdgeInsets.only(top: 10.0),
                 child: Text(
@@ -60,6 +60,7 @@ class HomeProductsWidget extends StatelessWidget {
                                       child: Image.network(
                                         item.products?[i].image ?? '',
                                         fit: BoxFit.cover,
+                                        errorBuilder: (context, url, error) => Image.asset('assets/images/ic_appicon.png'),
                                       ),
                                     ),
                                     Align(
@@ -72,21 +73,21 @@ class HomeProductsWidget extends StatelessWidget {
                                   ],
                                 ),
                               ),
-
                               Padding(
                                 padding: const EdgeInsets.only(top: 4, left: 5, right: 5),
                                 child: Text(
                                   item.products?[i].title ?? '',
                                   maxLines: 1,
                                   textAlign: TextAlign.center,
-                                  style: AppThemeData.font12Weight700.copyWith(fontWeight: FontWeight.w400,fontFamily: 'SF Pro Rounded'),
+                                  style: AppThemeData.sf400Font12Black,
                                 ),
                               ),
-                              Padding(
-                                padding: const EdgeInsets.only(top: 5, bottom: 8),
+
+                              const Padding(
+                                padding: EdgeInsets.only(top: 5, bottom: 8),
                                 child: Text(
                                   'AED 134.75', //TODO Make this dynamic
-                                  style: AppThemeData.homeActualPrice.copyWith(fontWeight: FontWeight.w500,fontFamily: 'SF Pro Rounded'),
+                                  style: AppThemeData.sf500Font12,
                                 ),
                               ),
                               const SizedBox(height: 20,),

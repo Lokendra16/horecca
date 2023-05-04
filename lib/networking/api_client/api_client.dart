@@ -33,6 +33,10 @@ abstract class RestClient {
   Future<CategoryResponse> getCategoryList(
       @Query("since_id") int pageKey, @Query("limit") int pageSize);
 
+  @GET("/custom_collections.json")
+  Future<CategoryResponse> getHomeCategoryList(
+      @Query("ids") String ids);
+
   @GET("/products.json")
   Future<ProductResponse> getProductList(
       @Query('published_status') String published,

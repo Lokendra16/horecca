@@ -21,6 +21,34 @@ class $AssetsColorGen {
   List<String> get values => [colors];
 }
 
+class $AssetsFontsGen {
+  const $AssetsFontsGen();
+
+  /// File path: assets/fonts/SF-Pro-Rounded-Bold.ttf
+  String get sFProRoundedBold => 'assets/fonts/SF-Pro-Rounded-Bold.ttf';
+
+  /// File path: assets/fonts/SF-Pro-Rounded-Heavy.ttf
+  String get sFProRoundedHeavy => 'assets/fonts/SF-Pro-Rounded-Heavy.ttf';
+
+  /// File path: assets/fonts/SF-Pro-Rounded-Light.ttf
+  String get sFProRoundedLight => 'assets/fonts/SF-Pro-Rounded-Light.ttf';
+
+  /// File path: assets/fonts/SF-Pro-Rounded-Medium.ttf
+  String get sFProRoundedMedium => 'assets/fonts/SF-Pro-Rounded-Medium.ttf';
+
+  /// File path: assets/fonts/SF-Pro-Rounded-Regular.ttf
+  String get sFProRoundedRegular => 'assets/fonts/SF-Pro-Rounded-Regular.ttf';
+
+  /// List of all assets
+  List<String> get values => [
+        sFProRoundedBold,
+        sFProRoundedHeavy,
+        sFProRoundedLight,
+        sFProRoundedMedium,
+        sFProRoundedRegular
+      ];
+}
+
 class $AssetsIconsGen {
   const $AssetsIconsGen();
 
@@ -328,6 +356,7 @@ class Assets {
   Assets._();
 
   static const $AssetsColorGen color = $AssetsColorGen();
+  static const $AssetsFontsGen fonts = $AssetsFontsGen();
   static const $AssetsIconsGen icons = $AssetsIconsGen();
   static const $AssetsImagesGen images = $AssetsImagesGen();
   static const $AssetsLogoGen logo = $AssetsLogoGen();
