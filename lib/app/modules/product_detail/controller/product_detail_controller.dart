@@ -7,6 +7,8 @@ import 'package:the_horeca_store/networking/api_client/api_client.dart';
 import 'package:the_horeca_store/networking/graphql/graphql_repo.dart';
 import 'package:the_horeca_store/networking/models/home/home_collections.dart';
 import 'package:the_horeca_store/networking/models/product_data/product_data.dart';
+import 'package:html/parser.dart';
+
 
 class ProductDetailController extends GetxController {
 
@@ -128,5 +130,13 @@ class ProductDetailController extends GetxController {
     productRecommendationList.value = HomeCollections(id: '', title: "You may also like", products: products, image: "");
     isLoadingRecommendation.value = false;
     update();
+  }
+
+  //here goes the function
+  String parseHtmlString(String htmlString) {
+    final document = parse(htmlString);
+    final String parsedString = parse(document.body!.text).documentElement!.text;
+
+    return parsedString;
   }
 }

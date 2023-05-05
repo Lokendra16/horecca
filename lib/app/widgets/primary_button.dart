@@ -8,16 +8,13 @@ class PrimaryButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      margin: EdgeInsets.only(left: 54,right: 54),
+      //margin: const EdgeInsets.only(left: 54,right: 54),
       height: 40,
-
-      decoration:  BoxDecoration(
-
+      decoration:  const BoxDecoration(
         color: ColorName.cardinal,
-          borderRadius: BorderRadius.circular(5)
-
+          //borderRadius: BorderRadius.circular(5)
       ),
-      child:  Center(child: Text(primaryBtnText,style: AppThemeData.font20Weight700White,),),
+      child:  Center(child: Text(primaryBtnText,style: AppThemeData.sf500Font16White.copyWith(fontSize: 18),),),
     );
   }
 }

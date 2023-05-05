@@ -32,45 +32,54 @@ class ProductDetailsWidget extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.spaceAround,
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Text(
-                    product.title ?? 'N/A',
-                    style: AppThemeData.productTitleTextStyle,
-                  ),
                   Padding(
-                    padding: const EdgeInsets.only(top: 8.0),
+                    padding: const EdgeInsets.only(bottom: 8.0),
                     child: Text(
-                      "AED 17.60",
-                      style: AppThemeData.productPriceStyle,
+                      product.title ?? 'N/A',
+                      textAlign: TextAlign.start,
+                      style: AppThemeData.sf500Font16.copyWith(color: ColorName.black.withOpacity(0.8)),
                     ),
+                  ),
+                  Row(
+                    children: [
+                      const Padding(
+                        padding: EdgeInsets.only(top: 8.0),
+                        child: Text(
+                          "AED 17.60",
+                          style: AppThemeData.sf500Font16,
+                        ),
+                      ),
+                      const Spacer(),
+                      Container(
+                          padding: const EdgeInsets.symmetric(horizontal: 20,vertical: 2),
+                          decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(6),
+                              border: Border.all(color: ColorName.silver)),
+                          child: WishlistWidget(
+                            id: product.id.toString(),
+                          )),
+                      const SizedBox(
+                        width: 8,
+                      ),
+                      InkWell(
+                        onTap: () async {
+                          await Share.share(product.id.toString());
+                        },
+                        child: Container(
+                          padding: const EdgeInsets.symmetric(horizontal: 20,vertical: 2),
+                          decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(6),
+                              border: Border.all(color: ColorName.silver)),
+                          child: const Icon(Icons.share_outlined,color: ColorName.silver,),
+                        ),
+                      ),
+                    ],
                   ),
                 ],
               ),
             ),
-            Container(
-                height: 40,
-                width: 40,
-                decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(6),
-                    border: Border.all(color: ColorName.jewel)),
-                child: WishlistWidget(
-                  id: product.id.toString(),
-                )),
-            const SizedBox(
-              width: 8,
-            ),
-            InkWell(
-              onTap: () async {
-                await Share.share(product.id.toString());
-              },
-              child: Container(
-                height: 40,
-                width: 40,
-                decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(6),
-                    border: Border.all(color: ColorName.jewel)),
-                child: const Icon(Icons.share_outlined),
-              ),
-            ),
+
+
           ],
         ),
       ),

@@ -18,29 +18,30 @@ class ProductDescWidget extends StatelessWidget {
     Size size = MediaQuery.of(context).size;
 
     return Obx(
-      () => Padding(
-        padding: const EdgeInsets.only(top:12),
-        child: Container(
-          width: size.width,
-          color: ColorName.white,
-          child: Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 12),
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.start,
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Text(
-                  AppLocalizations.of(context).productDescription,
-                  style: AppThemeData.selectSizeStyle,
-                ),
-                Padding(
-                  padding: const EdgeInsets.only(top:8.0),
-                  child: Html(
-                    data: controller.productDetail.value.body_html ?? "<p>N/A</p>",
-                  ),
-                ),
-              ],
-            ),
+      () => Container(
+        width: size.width,
+        color: ColorName.white,
+        child: Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 12),
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.start,
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Text(
+                AppLocalizations.of(context).productDescription,
+                style: AppThemeData.sf500Font16Black,
+              ),
+              Padding(
+                padding: const EdgeInsets.only(left: 8.0,top: 8),
+                child: Text(controller.parseHtmlString(controller.productDetail.value.body_html!),style: AppThemeData.sf400Font12,textScaleFactor: 1.2),
+              ),
+              // Padding(
+              //   padding: const EdgeInsets.only(top:8.0),
+              //   child: Html(
+              //     data: controller.productDetail.value.body_html ?? "<p>N/A</p>",
+              //   ),
+              // ),
+            ],
           ),
         ),
       ),

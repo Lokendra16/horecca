@@ -17,97 +17,104 @@ class CartItem extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
-
     return Container(
-      height: size.width * 0.40,
-      color: ColorName.white,
-      margin: const EdgeInsets.only(top: 8),
+      padding: const EdgeInsets.all(8),
+      decoration: const BoxDecoration(
+          color: ColorName.white,
+        boxShadow: [
+           BoxShadow(
+               color: ColorName.gray,blurRadius: 2)
+        ]
+      ),
+      margin: const EdgeInsets.only(top: 16),
       child: Row(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           CachedNetworkImage(
             imageUrl: item.image?.src ?? '',
-            width: size.width * 0.36,
+            //width: size.width * 0.36,
             errorWidget: (context, url, error) => Image.asset("assets/images/ic_appicon.png"),
             placeholder: (context, url) => Image.asset("assets/images/ic_appicon.png"),
             fadeOutDuration: const Duration(milliseconds: 100),
-            height: size.width / 2,
-            fit: BoxFit.cover,
+            height: size.width / 3.5,
+            fit: BoxFit.contain,
           ),
           Expanded(
             child: Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 8.0),
+              padding: const EdgeInsets.symmetric(horizontal: 0.0),
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 crossAxisAlignment: CrossAxisAlignment.stretch,
                 children: [
                   Row(
+                    mainAxisAlignment: MainAxisAlignment.start,
+                    crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Expanded(
                         child: Text(
                           item.title ?? '',
-                          style: AppThemeData.productTitleTextStyle,
+                          overflow: TextOverflow.ellipsis,
+                          maxLines: 2,
+                          style: AppThemeData.sf400Font12,
                         ),
                       ),
-                      GestureDetector(
-                          onTap: onRemove,
-                          child: const Icon(Icons.close, color: ColorName.black, size: 26))
+                      Padding(
+                        padding: const EdgeInsets.symmetric(horizontal: 8.0),
+                        child: GestureDetector(
+                            onTap: onRemove,
+                            child: const Icon(Icons.close, color: ColorName.black, size: 24)),
+                      )
                     ],
                   ),
-                  Text(
-                    'Material : Steel',
-                    style: AppThemeData.font14Weight400Gray,
+                  Padding(
+                    padding: const EdgeInsets.symmetric(vertical: 4.0),
+                    child: Text(
+                      'Material : Steel',
+                      style: AppThemeData.sf500Font12Black.copyWith(fontSize: 13),
+                    ),
                   ),
                   Text(
                     'Category : Appetizers & Sides',
-                    style: AppThemeData.font14Weight400Gray,
+                    style: AppThemeData.sf500Font12Black.copyWith(fontSize: 13),
                   ),
+                  const SizedBox(height: 10,),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
                       Container(
+                        padding: const EdgeInsets.only(left: 6,right: 6),
                         decoration: BoxDecoration(
                           color: ColorName.white,
-                          borderRadius: BorderRadius.circular(10),
+                          borderRadius: BorderRadius.circular(6),
                           border: Border.all(
-                            color: ColorName.silver,
+                            color: ColorName.mercury,
                           ),
                         ),
                         child: Row(
                           children: [
-                            const Padding(
-                              padding: EdgeInsets.only(left: 8.0),
-                              child: Icon(Icons.remove, color: ColorName.black, size: 26),
-                            ),
-                            Padding(
-                              padding: const EdgeInsets.only(
-                                  left: 8.0, right: 8.0, top: 5.0, bottom: 5.0),
-                              child: Container(
-                                width: 30,
-                                height: 30,
-                                decoration: BoxDecoration(
-                                    color: ColorName.jewel, borderRadius: BorderRadius.circular(5)),
-                                child: Center(
-                                  child: Text(
-                                    item.quantity.toString(),
-                                    style: GoogleFonts.roboto(
-                                        color: ColorName.white,
-                                        fontSize: 16,
-                                        fontWeight: FontWeight.w600),
-                                  ),
+                            const Icon(Icons.remove, color: ColorName.gray, size: 16),
+                            Container(
+                              margin: const EdgeInsets.only(left: 14,right: 14),
+                            padding: const EdgeInsets.all(4),
+                              decoration: BoxDecoration(
+                                  color: ColorName.jewel, borderRadius: BorderRadius.circular(5)),
+                              child: Center(
+                                child: Text(
+                                  item.quantity.toString(),
+                                  style: GoogleFonts.roboto(
+                                      color: ColorName.white,
+                                      fontSize: 14,
+                                      fontWeight: FontWeight.w500),
                                 ),
                               ),
                             ),
-                            const Padding(
-                              padding: EdgeInsets.only(right: 8.0),
-                              child: Icon(Icons.add, color: ColorName.black, size: 26),
-                            ),
+                            const Icon(Icons.add, color: ColorName.black, size: 16),
                           ],
                         ),
                       ),
-                      Text(
+                      const Text(
                         "AED 17.60" ?? '',
-                        style: AppThemeData.productPriceStyle,
+                        style: AppThemeData.sf500Font16,
                       ),
                     ],
                   )

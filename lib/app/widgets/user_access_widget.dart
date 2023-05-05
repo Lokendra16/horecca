@@ -19,7 +19,7 @@ class UserAccessWidget extends StatelessWidget {
         margin: EdgeInsets.only(left: 54,right: 54),
         height: 40,
         decoration: BoxDecoration(
-          color: ColorName.mercury,
+          //color: ColorName.mercury,
             borderRadius: BorderRadius.circular(5)),
         child: Row(
           mainAxisAlignment: MainAxisAlignment.center,

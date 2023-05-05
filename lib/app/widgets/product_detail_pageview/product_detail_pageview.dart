@@ -22,7 +22,7 @@ class ProductDetailPageView extends StatelessWidget {
               margin: const EdgeInsets.only(left: 1, right: 1),
               decoration: BoxDecoration(
                   color: ColorName.white, border: Border.all(color: ColorName.silver)),
-              height: size.width * 0.8,
+              height: size.width * 0.6,
               width: size.width,
               child: Stack(
                 children: [

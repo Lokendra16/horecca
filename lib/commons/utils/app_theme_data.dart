@@ -50,7 +50,82 @@ class AppThemeData {
   static const sf400Font12 = TextStyle(
       fontWeight: FontWeight.w400,
       fontFamily: 'SF Pro Rounded',
+      fontSize: 13,
       color: ColorName.black);
+
+  // SF PRO 500 FONT 12
+  static const sf500Font12 = TextStyle(
+      fontWeight: FontWeight.w500,
+      fontFamily: 'SF Pro Rounded',
+      fontSize: 13,
+      color: ColorName.black);
+
+
+
+  // SF PRO 400 FONT 12 white
+  static const sf400Font12White = TextStyle(
+      fontWeight: FontWeight.w400,
+      fontSize: 12,
+      fontFamily: 'SF Pro Rounded',
+      color: ColorName.white);
+
+  static const sf400Font15White = TextStyle(
+      fontWeight: FontWeight.w400,
+      fontSize: 15,
+      fontFamily: 'SF Pro Rounded',
+      color: ColorName.white);
+
+  static const sf500Font16White = TextStyle(
+      fontWeight: FontWeight.w500,
+      fontSize: 16,
+      fontFamily: 'SF Pro Rounded',
+      color: ColorName.white);
+
+  // SF PRO 400 FONT 12
+  static const sf500Font12Red = TextStyle(
+      fontWeight: FontWeight.w500,
+      fontFamily: 'SF Pro Rounded',
+      fontSize: 12,
+      color: ColorName.cardinal);
+
+  // SF PRO 500 FONT 16
+  static const sf500Font16 = TextStyle(
+      fontWeight: FontWeight.w500,
+      fontFamily: 'SF Pro Rounded',
+      fontSize: 16,
+      color: ColorName.cardinal);
+
+
+  // SF PRO 500 FONT 16
+  static const sf500Font16Gray = TextStyle(
+      fontWeight: FontWeight.w500,
+      fontFamily: 'SF Pro Rounded',
+      fontSize: 16,
+      color: ColorName.gray);
+
+  // SF PRO 500 FONT 16
+  static const sf600Font16Gray = TextStyle(
+      fontWeight: FontWeight.w600,
+      fontFamily: 'SF Pro Rounded',
+      fontSize: 16,
+      color: ColorName.gray);
+
+  static const sf400Font15Gray = TextStyle(
+      fontWeight: FontWeight.w400,
+      fontFamily: 'SF Pro Rounded',
+      fontSize: 15,
+      color: ColorName.gray);
+
+
+
+  // SF PRO 500 FONT 16 BLACK
+  static const sf500Font16Black = TextStyle(
+      fontWeight: FontWeight.w500,
+      fontFamily: 'SF Pro Rounded',
+      fontSize: 16,
+      color: ColorName.black);
+
+
 
   static final discountTextStyle = GoogleFonts.roboto(
       color: ColorName.white, fontWeight: FontWeight.w600, fontSize: 10);
@@ -108,15 +183,26 @@ class AppThemeData {
       fontSize: 12,
       fontWeight: FontWeight.w400,
       fontFamily: 'SF Pro Rounded');
+
+
+  // SF 500 FONT 18
+  static const sf500Font18Black = TextStyle(
+      color: ColorName.black,
+      fontSize: 18,
+      fontWeight: FontWeight.w500,
+      fontFamily: 'SF Pro Rounded');
+
   static final homeActualPrice = GoogleFonts.roboto(
       color: ColorName.cardinal, fontWeight: FontWeight.w700, fontSize: 12);
 
   // SF 500 FONT 12
-  static const sf500Font12 = TextStyle(
+  static const sf500Font12Black = TextStyle(
       fontWeight: FontWeight.w500,
       fontFamily: 'SF Pro Rounded',
       fontSize: 12,
       color: ColorName.gray);
+
+
 
   static final homeDescPrice = GoogleFonts.roboto(
       decoration: TextDecoration.lineThrough,

@@ -19,6 +19,7 @@ class CartScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: ColorName.mercury,
       appBar: PreferredSize(
         preferredSize: const Size.fromHeight(60),
         child: AppBarCart(
@@ -48,148 +49,140 @@ class CartScreen extends StatelessWidget {
                       },
                     ),
                   ),
-                  Padding(
-                    padding: const EdgeInsets.all(10.0),
-                    child: Container(
-                      decoration: BoxDecoration(
-                          color: ColorName.white, border: Border.all(color: ColorName.silver)),
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Padding(
-                            padding: const EdgeInsets.only(top: 10.0, bottom: 10.0, left: 10.0),
-                            child: Text(
-                              AppLocalizations.of(context).priceDetails,
-                              textAlign: TextAlign.start,
-                              style: const TextStyle(color: ColorName.black, fontSize: 18.0),
-                            ),
+                  Container(
+                    padding: const EdgeInsets.all(8),
+                    decoration: const BoxDecoration(
+                      boxShadow: [BoxShadow( color: ColorName.silver,blurRadius: 2)],
+                        color: ColorName.white),
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Padding(
+                          padding: const EdgeInsets.only(top: 10.0, bottom: 10.0, left: 10.0),
+                          child: Text(
+                            AppLocalizations.of(context).priceDetails,
+                            textAlign: TextAlign.start,
+                            style: AppThemeData.sf500Font16Black,
                           ),
-                          Container(
-                            width: double.infinity,
-                            height: 0.5,
-                            color: ColorName.silver,
+                        ),
+                        Container(
+                          width: double.infinity,
+                          height: 0.5,
+                          color: ColorName.silver,
+                        ),
+                        Padding(
+                          padding: const EdgeInsets.all(8.0),
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: [
+                              Text(
+                                AppLocalizations.of(context).totalItem,
+                                style: AppThemeData.sf400Font15Gray,
+                              ),
+                              const Text(
+                                "04",
+                                style: AppThemeData.sf400Font15Gray,
+                              ),
+                            ],
                           ),
-                          Padding(
-                            padding: const EdgeInsets.all(8.0),
-                            child: Row(
-                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                              children: [
-                                Text(
-                                  AppLocalizations.of(context).totalItem,
-                                  style: GoogleFonts.roboto(fontSize: 16.0, color: ColorName.gray),
+                        ),
+                        Padding(
+                          padding: const EdgeInsets.all(8.0),
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: [
+                              Text(
+                                AppLocalizations.of(context).totalAed,
+                                style: AppThemeData.sf400Font15Gray,
+                              ),
+                              const Text(
+                                "62.04",
+                                style: AppThemeData.sf400Font15Gray,
+                              ),
+                            ],
+                          ),
+                        ),
+                        Padding(
+                          padding: const EdgeInsets.all(8.0),
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: [
+                              Text(
+                                AppLocalizations.of(context).discountOnAed,
+                                style: AppThemeData.sf400Font15Gray,
+                              ),
+                              const Text(
+                                "11.02",
+                                style: AppThemeData.sf400Font15Gray,
+                              ),
+                            ],
+                          ),
+                        ),
+                        Padding(
+                          padding: const EdgeInsets.all(8.0),
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: [
+                              Text(
+                                AppLocalizations.of(context).couponDiscount,
+                                style: AppThemeData.sf400Font15Gray,
+                              ),
+                              const Text(
+                                "Apply Coupon",
+                                style:
+                                AppThemeData.sf500Font16,
+                              ),
+                            ],
+                          ),
+                        ),
+                        Padding(
+                          padding: const EdgeInsets.all(8.0),
+                          child: Row(
+                            children: [
+                              Text(
+                                AppLocalizations.of(context).other,
+                                style: AppThemeData.sf400Font15Gray,
+                              ),
+                              Padding(
+                                padding: const EdgeInsets.symmetric(horizontal: 8.0),
+                                child: Text(
+                                  AppLocalizations.of(context).knowMore,
+                                  style: AppThemeData.sf500Font16,
                                 ),
-                                Text(
+                              ),
+                              const Expanded(
+                                child: Text(
                                   "04",
-                                  style: GoogleFonts.roboto(fontSize: 16.0, color: ColorName.gray),
-                                ),
-                              ],
-                            ),
-                          ),
-                          Padding(
-                            padding: const EdgeInsets.all(8.0),
-                            child: Row(
-                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                              children: [
-                                Text(
-                                  AppLocalizations.of(context).totalAed,
-                                  style: GoogleFonts.roboto(fontSize: 16.0, color: ColorName.gray),
-                                ),
-                                Text(
-                                  "62.04",
-                                  style: GoogleFonts.roboto(fontSize: 16.0, color: ColorName.gray),
-                                ),
-                              ],
-                            ),
-                          ),
-                          Padding(
-                            padding: const EdgeInsets.all(8.0),
-                            child: Row(
-                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                              children: [
-                                Text(
-                                  AppLocalizations.of(context).discountOnAed,
-                                  style: GoogleFonts.roboto(fontSize: 16.0, color: ColorName.gray),
-                                ),
-                                Text(
-                                  "11.02",
-                                  style: GoogleFonts.roboto(fontSize: 16.0, color: ColorName.jewel),
-                                ),
-                              ],
-                            ),
-                          ),
-                          Padding(
-                            padding: const EdgeInsets.all(8.0),
-                            child: Row(
-                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                              children: [
-                                Text(
-                                  AppLocalizations.of(context).couponDiscount,
-                                  style: GoogleFonts.roboto(fontSize: 16.0, color: ColorName.gray),
-                                ),
-                                Text(
-                                  "Apply Coupon",
+                                  textAlign: TextAlign.end,
                                   style:
-                                      GoogleFonts.roboto(fontSize: 16.0, color: ColorName.cardinal),
+                                  AppThemeData.sf400Font15Gray,
                                 ),
-                              ],
-                            ),
+                              ),
+                            ],
                           ),
-                          Padding(
-                            padding: const EdgeInsets.all(8.0),
-                            child: Row(
-                              children: [
-                                Text(
-                                  AppLocalizations.of(context).other,
-                                  style: GoogleFonts.roboto(fontSize: 16.0, color: ColorName.gray),
-                                ),
-                                Padding(
-                                  padding: const EdgeInsets.symmetric(horizontal: 8.0),
-                                  child: Text(
-                                    AppLocalizations.of(context).knowMore,
-                                    style: GoogleFonts.roboto(
-                                        fontSize: 16.0, color: ColorName.cardinal),
-                                  ),
-                                ),
-                                Expanded(
-                                  child: Text(
-                                    "04",
-                                    textAlign: TextAlign.end,
-                                    style:
-                                        GoogleFonts.roboto(fontSize: 16.0, color: ColorName.jewel),
-                                  ),
-                                ),
-                              ],
-                            ),
+                        ),
+                        Container(
+                          width: double.infinity,
+                          height: 0.5,
+                          color: ColorName.silver,
+                        ),
+                        Padding(
+                          padding: const EdgeInsets.all(8.0),
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: [
+                              Text(
+                                "Total ${controller.cartData.value.totalCC}",
+                                style: AppThemeData.sf500Font16,
+                              ),
+                              Text(
+                                controller.cartData.value.totalAmount,
+                                style: AppThemeData.sf500Font16,
+                              ),
+                            ],
                           ),
-                          Container(
-                            width: double.infinity,
-                            height: 0.5,
-                            color: ColorName.silver,
-                          ),
-                          Padding(
-                            padding: const EdgeInsets.all(8.0),
-                            child: Row(
-                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                              children: [
-                                Text(
-                                  "Total ${controller.cartData.value.totalCC}",
-                                  style: GoogleFonts.roboto(
-                                      fontSize: 17.0,
-                                      fontWeight: FontWeight.w800,
-                                      color: ColorName.cardinal),
-                                ),
-                                Text(
-                                  controller.cartData.value.totalAmount,
-                                  style: GoogleFonts.roboto(
-                                      fontSize: 17.0,
-                                      fontWeight: FontWeight.w800,
-                                      color: ColorName.cardinal),
-                                ),
-                              ],
-                            ),
-                          ),
-                        ],
-                      ),
+                        ),
+                      ],
                     ),
                   ),
                   Padding(
@@ -207,12 +200,12 @@ class CartScreen extends StatelessWidget {
                         children: [
                           Padding(
                             padding: const EdgeInsets.all(6.0),
-                            child: Assets.icons.icCheckout.svgIcon(size: 24),
+                            child: Assets.icons.icCheckout.svgIcon(size: 20),
                           ),
                           Padding(
                             padding: const EdgeInsets.all(6.0),
                             child: Text(AppLocalizations.of(context).proceedToCheckOut,
-                                style: AppThemeData.font14Weight700.copyWith(fontSize: 16.0)),
+                                style: AppThemeData.sf400Font15White),
                           ),
                         ],
                       ),

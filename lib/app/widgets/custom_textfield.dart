@@ -36,12 +36,7 @@ class CustomTextField extends StatelessWidget {
       width: size.width,
       decoration: BoxDecoration(
           color: ColorName.white,
-          boxShadow: const [
-            BoxShadow(
-                color: ColorName.silver, //New
-                blurRadius: 1.0,
-                offset: Offset(-1, 1))
-          ],
+
           borderRadius: BorderRadius.circular(5)),
       child: Center(
         child: TextFormField(
@@ -52,13 +47,19 @@ class CustomTextField extends StatelessWidget {
           obscureText: obscureText,
           keyboardType: keyboardType,
           decoration: InputDecoration(
+            enabledBorder: const UnderlineInputBorder(
+              borderSide: BorderSide(color: ColorName.mercury)
+            ),
+            focusedBorder: const UnderlineInputBorder(
+              borderSide: BorderSide(color: ColorName.mercury)
+            ),
             //contentPadding: const EdgeInsets.all(6),
             contentPadding: padding,
             suffixIcon: suffixImage,
             prefixIcon: prefixImage,
             border: InputBorder.none,
             hintText: hintText,
-            hintStyle: AppThemeData.font14Weight400Gray,
+            hintStyle: AppThemeData.font14Weight400Gray.copyWith(color: ColorName.gray.withOpacity(0.7)),
           ),
         ),
       ),

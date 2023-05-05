@@ -25,8 +25,15 @@ class AddressListController extends GetxController {
   void _getAddressList() async {
     isLoading.value = true;
     var customerId = await AppPreference().get(AppPreference.KEY_CUSTOMER_ID);
+    if(customerId != null && customerId.isNotEmpty){
     var api = await RestClient().getAddressList(Uri.parse(customerId!).pathSegments.last);
     addressList.value = api.addresses!;
+    }
+    else{
+      Get.toNamed(AppRoutes.loginScreen);
+    }
+
+
     isLoading.value = false;
   }
 

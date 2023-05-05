@@ -31,7 +31,7 @@ class ProductReviewWidget extends StatelessWidget {
               children: [
                 Text(
                   AppLocalizations.of(context).customerReview,
-                  style: AppThemeData.selectSizeStyle,
+                  style: AppThemeData.sf500Font16Black,
                 ),
                 Padding(
                   padding: const EdgeInsets.only(top: 12.0),
@@ -42,7 +42,6 @@ class ProductReviewWidget extends StatelessWidget {
                     direction: Axis.horizontal,
                     allowHalfRating: true,
                     itemCount: 5,
-                    itemPadding: const EdgeInsets.symmetric(horizontal: 4.0),
                     itemBuilder: (context, _) => const Icon(
                       Icons.star,
                       color: ColorName.jewel,

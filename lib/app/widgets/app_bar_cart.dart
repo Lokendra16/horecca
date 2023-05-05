@@ -27,7 +27,7 @@ class AppBarCart extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: ColorName.alabaster,
-        centerTitle: true,
+        //centerTitle: true,
         elevation: 0,
         leading: Visibility(
           visible: !hideBackButton,
@@ -37,13 +37,13 @@ class AppBarCart extends StatelessWidget {
             },
             child: Center(
               child: Assets.icons.icBack.svgIcon(
-                size: 26,
+                size: 20,
                 color: ColorName.black,
               ),
             ),
           ),
         ),
-        title: Text(title, style: AppThemeData.appBarTextStyle),
+        title: Text(title, style: AppThemeData.sf500Font18Black),
         actions: [
           Visibility(
             visible: !hideSearchButton,

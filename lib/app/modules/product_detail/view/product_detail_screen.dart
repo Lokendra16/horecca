@@ -23,9 +23,9 @@ class ProductDetailScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
     return Scaffold(
-      backgroundColor: ColorName.alabaster,
+      backgroundColor: ColorName.white,
       appBar:  AppBar(
-        backgroundColor: ColorName.alabaster,
+        backgroundColor: ColorName.white,
         centerTitle: true,
         elevation: 0,
         leading: GestureDetector(
@@ -34,12 +34,12 @@ class ProductDetailScreen extends StatelessWidget {
           },
           child: Center(
             child: Assets.icons.icBack.svgIcon(
-              size: 26,
+              size: 20,
               color: ColorName.black,
             ),
           ),
         ),
-        title: Obx(() => Text(productDetailController.title.value ?? '', style: AppThemeData.appBarTextStyle),),
+        title: Obx(() => Text(productDetailController.title.value ?? '', style: AppThemeData.sf500Font18Black),),
         actions: [
           GestureDetector(
             onTap: (){
@@ -48,7 +48,7 @@ class ProductDetailScreen extends StatelessWidget {
             child: Padding(
               padding: const EdgeInsets.only(right: 10.0, left: 10.0),
               child: Assets.icons.icSearch.svgIcon(
-                size: 24,
+                size: 20,
                 color: ColorName.black,
               ),
             ),
@@ -60,7 +60,7 @@ class ProductDetailScreen extends StatelessWidget {
             child: Padding(
                 padding: const EdgeInsets.only(right: 10.0, left: 10.0),
                 child: Assets.icons.icCart.svgIcon(
-                  size: 24,
+                  size: 20,
                   color: ColorName.black,
                 ),
             ),
@@ -98,8 +98,11 @@ class ProductDetailScreen extends StatelessWidget {
                           ),
                         ),
                         ProductVariantsWidget(),
+                        Container(height: 1,width: size.width,color: ColorName.silver,),
                         ProductDescWidget(),
+                        Container(height: 1,width: size.width,color: ColorName.silver,),
                         ProductReviewWidget(),
+                        Container(height: 1,width: size.width,color: ColorName.silver,),
                         userReviewWidget(size: size),
                         productDetailController.isLoadingRecommendation.value
                             ? const SizedBox()
@@ -239,9 +242,9 @@ class userReviewWidget extends StatelessWidget {
                  child: Row(
                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
                    children: [
-                     Text(
+                     const Text(
                        "Marvin McKinney",
-                       style: AppThemeData.selectSizeStyle,
+                       style: AppThemeData.sf500Font16Black,
                      ),
                      Row(
                        children: [
@@ -273,12 +276,13 @@ class userReviewWidget extends StatelessWidget {
                const SizedBox(
                  height: 8,
                ),
-               Padding(
-                 padding: const EdgeInsets.symmetric(horizontal: 16),
+               const Padding(
+                 padding: EdgeInsets.symmetric(horizontal: 16),
                  child: Text(
                    "Amet minim mollit non deserunt ullamco est sit aliqua dolor do amet sint.",
-                   style: AppThemeData.font14Weight400,
+                   style: AppThemeData.sf400Font12,
                    softWrap: false,
+                   textScaleFactor: 1.2,
                    maxLines: 2,
                    overflow: TextOverflow.ellipsis,
                  ),
