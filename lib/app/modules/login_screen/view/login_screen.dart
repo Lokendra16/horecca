@@ -29,6 +29,7 @@ class LoginScreen extends StatelessWidget {
         },
         child: Scaffold(
           backgroundColor: ColorName.white,
+          resizeToAvoidBottomInset: false,
           body: SafeArea(
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.center,
