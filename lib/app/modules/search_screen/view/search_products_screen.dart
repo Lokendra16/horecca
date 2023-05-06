@@ -21,12 +21,12 @@ class SearchProductsScreen extends StatelessWidget {
     Size size = MediaQuery.of(context).size;
     return Scaffold(
       appBar: AppBar(
-        centerTitle: true,
+        //centerTitle: true,
         elevation: 0,
-        backgroundColor: ColorName.alabaster,
+        backgroundColor: ColorName.white,
         title: Text(
           AppLocalizations.of(context).search,
-          style: AppThemeData.appBarTextStyle,
+          style: AppThemeData.sf500Font18Black,
         ),
         leading: InkWell(
           onTap: () {
@@ -34,7 +34,7 @@ class SearchProductsScreen extends StatelessWidget {
           },
           child: Center(
             child: Assets.icons.icBack.svgIcon(
-              size: 28,
+              size: 20,
               color: ColorName.black,
             ),
           ),
@@ -43,11 +43,14 @@ class SearchProductsScreen extends StatelessWidget {
       body: Stack(
         children: [
           SearchBar(
-            onSearchTap: (searchKey) {},
+            onSearchTap: (searchKey) {
+
+            },
           ),
           Padding(
             padding: const EdgeInsets.only(top: 50.0, bottom: 4.0),
-            child: PagedListView<int, ProductData>(
+            child: PagedGridView<int, ProductData>(
+              gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount: 2,childAspectRatio: 2/2.3,mainAxisSpacing: 10,crossAxisSpacing: 10),
               pagingController: controller.pagingController,
               builderDelegate: PagedChildBuilderDelegate<ProductData>(
                 firstPageProgressIndicatorBuilder: (context) => const Center(

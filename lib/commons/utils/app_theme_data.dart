@@ -5,6 +5,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class AppThemeData {
   static const String apiKey = "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";
+  static const String doFinderKey = "c5456aca633a8844ba2b7d5b94533def56b503b8";
 
   static const appNameTextStyle = TextStyle(
       color: ColorName.cardinal, //Color(0xFFFFFFFF),
