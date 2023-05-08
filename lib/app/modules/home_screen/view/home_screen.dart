@@ -20,7 +20,6 @@ class HomeScreen extends StatelessWidget {
   HomeScreen({Key? key}) : super(key: key);
 
   final pageViewController = Get.put(CommonPageViewController());
-
   final HomeScreenController controller = Get.put(HomeScreenController());
 
   @override
@@ -29,7 +28,6 @@ class HomeScreen extends StatelessWidget {
     return Scaffold(
       backgroundColor: ColorName.white,
       key: controller.scaffoldKey,
-      drawer: SideMenu(),
       appBar: PreferredSize(
         preferredSize: const Size.fromHeight(50),
         child: AppBarHome(
@@ -41,6 +39,7 @@ class HomeScreen extends StatelessWidget {
           },
         ),
       ),
+      drawer: SideMenu(homeList:controller.homeList),
       body: SafeArea(
         child: CustomScrollView(
           slivers: [
@@ -49,15 +48,56 @@ class HomeScreen extends StatelessWidget {
                 [
                   Column(
                     children: [
-                      SearchBar(
-                        onSearchTap: (searchKey) {
-                          Get.toNamed(AppRoutes.searchScreen,arguments: [ProductListController.TYPE_SEARCH],);
-                        },
+                      // SEARCH BAR WITH ICON
+                      Container(
+                        margin:
+                            const EdgeInsets.only(top: 5, left: 16, right: 16),
+                        height: 40,
+                        decoration: BoxDecoration(
+                            color: ColorName.silver.withOpacity(0.3),
+                            border: Border.all(color: ColorName.mercury),
+                            borderRadius: BorderRadius.circular(5)),
+                        child: InkWell(
+                          onTap: () {
+                            Get.toNamed(
+                              AppRoutes.searchScreen,
+                              //arguments: [ProductListController.TYPE_SEARCH],
+                            );
+                          },
+                          child: Row(
+                            children: [
+                              Padding(
+                                padding: const EdgeInsets.only(left: 12.0),
+
+                                child: Text(AppLocalizations.of(context).searchBarText,style: AppThemeData.font14Weight400Gray,),
+                              ),
+                              const Spacer(),
+                              Container(
+                                decoration: BoxDecoration(
+                                    border:
+                                        Border.all(color: ColorName.mercury),
+                                    color: ColorName.cello,
+                                    borderRadius: const BorderRadius.only(
+                                        topRight: Radius.circular(4),
+                                        bottomRight: Radius.circular(4))),
+                                height: 40,
+                                width: 40,
+                                child: Center(
+                                    child: Image.asset(
+                                  Assets.images.searchImage.path,
+                                  height: 16,
+                                  width: 16,
+                                  color: ColorName.white,
+                                )),
+                              ),
+                            ],
+                          ),
+                        ),
                       ),
+
                       const SizedBox(
                         height: 16,
                       ),
-
                       const SizedBox(
                         height: 16,
                       ),
@@ -72,8 +112,8 @@ class HomeScreen extends StatelessWidget {
                                 width: size.width,
                                 decoration: const BoxDecoration(
                                     //color: ColorName.panache,
-                                   // border: Border.all(color: ColorName.silver)
-                                ),
+                                    // border: Border.all(color: ColorName.silver)
+                                    ),
                                 child: Column(
                                   children: [
                                     // Padding(
@@ -89,7 +129,6 @@ class HomeScreen extends StatelessWidget {
                                       child: HomeShopByCategoryWidget(
                                           list: controller.homeList),
                                     ),
-
                                   ],
                                 ),
                               ),
@@ -104,9 +143,10 @@ class HomeScreen extends StatelessWidget {
               ),
             ),
             GetBuilder<HomeScreenController>(
-              builder: (controller) => HomeProductsWidget(list: controller.productsByCollectionList),
+              builder: (controller) =>
+                  HomeProductsWidget(list: controller.productsByCollectionList),
             ),
-            SliverList  (
+            SliverList(
               delegate: SliverChildListDelegate(
                 [
                   Column(
@@ -115,8 +155,8 @@ class HomeScreen extends StatelessWidget {
                         padding: const EdgeInsets.only(top: 16),
                         child: Text(
                           AppLocalizations.of(context).testimonials,
-                          style:
-                              AppThemeData.font16Weight600PlayfairCardinal.copyWith(fontSize: 18.0),
+                          style: AppThemeData.font16Weight600PlayfairCardinal
+                              .copyWith(fontSize: 18.0),
                         ),
                       ),
                       SingleChildScrollView(
@@ -125,14 +165,16 @@ class HomeScreen extends StatelessWidget {
                           children: [
                             for (int i = 0; i < 3; i++)
                               Container(
-                                margin: const EdgeInsets.only(left: 16, right: 8, top: 12),
+                                margin: const EdgeInsets.only(
+                                    left: 16, right: 8, top: 12),
                                 decoration: BoxDecoration(
                                     color: ColorName.mercury,
                                     borderRadius: BorderRadius.circular(4)),
                                 child: Column(
                                   children: [
                                     Padding(
-                                      padding: const EdgeInsets.only(top: 8, left: 8, right: 8),
+                                      padding: const EdgeInsets.only(
+                                          top: 8, left: 8, right: 8),
                                       child: Text(
                                         '“professional service.\nGoods delivered even before expected time.\nFair prices and very good customer support.” ',
                                         style: AppThemeData.font14Weight400,
@@ -140,11 +182,11 @@ class HomeScreen extends StatelessWidget {
                                       ),
                                     ),
                                     Padding(
-                                      padding: const EdgeInsets.only(top: 25, bottom: 8),
-                                      child: Text(
-                                        'Ayyman',
-                                        style: AppThemeData.font14Weight600Black
-                                      ),
+                                      padding: const EdgeInsets.only(
+                                          top: 25, bottom: 8),
+                                      child: Text('Ayyman',
+                                          style: AppThemeData
+                                              .font14Weight600Black),
                                     )
                                   ],
                                 ),
@@ -156,8 +198,8 @@ class HomeScreen extends StatelessWidget {
                         padding: const EdgeInsets.only(top: 16),
                         child: Text(
                           AppLocalizations.of(context).needHelp,
-                          style:
-                              AppThemeData.font16Weight600PlayfairCardinal.copyWith(fontSize: 18.0),
+                          style: AppThemeData.font16Weight600PlayfairCardinal
+                              .copyWith(fontSize: 18.0),
                         ),
                       ),
                       Padding(
@@ -204,8 +246,8 @@ class HomeScreen extends StatelessWidget {
                         padding: const EdgeInsets.only(top: 25),
                         child: Text(
                           AppLocalizations.of(context).getSocialWithUs,
-                          style:
-                              AppThemeData.font16Weight600PlayfairCardinal.copyWith(fontSize: 18.0),
+                          style: AppThemeData.font16Weight600PlayfairCardinal
+                              .copyWith(fontSize: 18.0),
                         ),
                       ),
                       Padding(

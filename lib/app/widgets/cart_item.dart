@@ -32,7 +32,7 @@ class CartItem extends StatelessWidget {
         children: [
           CachedNetworkImage(
             imageUrl: item.image?.src ?? '',
-            //width: size.width * 0.36,
+            width: size.width * 0.36,
             errorWidget: (context, url, error) => Image.asset("assets/images/ic_appicon.png"),
             placeholder: (context, url) => Image.asset("assets/images/ic_appicon.png"),
             fadeOutDuration: const Duration(milliseconds: 100),

@@ -11,6 +11,7 @@ import 'package:the_horeca_store/networking/do_finder/do_finder_client.dart';
 import 'package:the_horeca_store/networking/models/product_data/product_data.dart';
 import 'package:the_horeca_store/networking/models/search/results.dart';
 import 'package:the_horeca_store/networking/models/search/search_response.dart';
+import 'package:the_horeca_store/src/gen/colors.gen.dart';
 
 class ProductListController extends GetxController {
   RxList productList = [].obs;
@@ -18,6 +19,9 @@ class ProductListController extends GetxController {
   static const _pageSize = 50;
   final PagingController<int, ProductData> pagingController = PagingController(firstPageKey: 0);
   final PagingController<int, Results> searchPagingController = PagingController(firstPageKey: 0);
+  TextEditingController searchController = TextEditingController();
+  var isLoading = false.obs;
+
 
   static int TYPE_CATEGORY_PRODUCTS = 1;
   static int TYPE_SEARCH = 2;
@@ -60,7 +64,7 @@ class ProductListController extends GetxController {
   @override
   void onInit() {
     super.onInit();
-    searchProductApi();
+    //searchProductApi();
 
     if (Get.arguments == null) {
       pagingController.addPageRequestListener((pageKey) {
@@ -81,7 +85,9 @@ class ProductListController extends GetxController {
         _getProductList(pageKey, Get.arguments[1].toString()
         );
       });
+      if(Get.arguments != null){
       title.value = Get.arguments[2].toString();
+      }
     } else {}
   }
 
@@ -122,34 +128,29 @@ class ProductListController extends GetxController {
         });
   }
 
-  Future<void> searchProductApi() async {
-
+  Future<void> searchProductApi(String searchText) async {
+    searchPagingController.itemList?.clear();
+    isLoading.value = true;
       final client = DoFinderClient();
-      // TODO SEND TEXT EDIT CONTROLLER IN PLACE OF LEONARDO
-
-      var searchItems = await client.searchProductApi('2057fd5d4e22e21386b3c2944f156472','leonardo','20','1');
-
+      var searchItems = await client.searchProductApi('2057fd5d4e22e21386b3c2944f156472',searchText,'50','1');
       final isLastPage = searchItems.results!.length < _pageSize;
-
       try{
-        if (isLastPage) {
-          debugPrint('in if');
-          debugPrint('is last page search Product api : ${searchItems}');
-
+        if (isLastPage){
+          isLoading.value = false;
           searchPagingController.appendLastPage(searchItems.results!);
         } else {
-          debugPrint('else');
-          debugPrint('in else search Product api : ${searchItems}');
-
+          isLoading.value = false;
           final nextPageKey = searchItems.results!.last.id;
           searchPagingController.appendPage(searchItems.results!, int.parse(nextPageKey!));
         }
       }
-
-
-     catch (error) {
+      catch (error) {
+        isLoading.value = false;
         debugPrint('on error : $error');
       pagingController.error = error;
+      Get.snackbar('Error',error.toString(),backgroundColor: ColorName.cardinal,snackPosition: SnackPosition.TOP);
 
   }
+    isLoading.value = false;
+
 }}

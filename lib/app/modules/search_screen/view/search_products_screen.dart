@@ -3,11 +3,13 @@ import 'package:get/get.dart';
 import 'package:infinite_scroll_pagination/infinite_scroll_pagination.dart';
 import 'package:the_horeca_store/app/modules/product_list/controller/product_listview_controller.dart';
 import 'package:the_horeca_store/app/widgets/product_item.dart';
+import 'package:the_horeca_store/app/widgets/search_product_item.dart';
 import 'package:the_horeca_store/commons/utils/app_theme_data.dart';
 import 'package:the_horeca_store/app/widgets/search_bar.dart';
 import 'package:the_horeca_store/extensions/assets_ext.dart';
 import 'package:the_horeca_store/l10n/localization.dart';
 import 'package:the_horeca_store/networking/models/product_data/product_data.dart';
+import 'package:the_horeca_store/networking/models/search/results.dart';
 import 'package:the_horeca_store/src/gen/assets.gen.dart';
 import 'package:the_horeca_store/src/gen/colors.gen.dart';
 
@@ -43,35 +45,54 @@ class SearchProductsScreen extends StatelessWidget {
       body: Stack(
         children: [
           SearchBar(
+            onSubmit: (txt) {
+              debugPrint('txt : $txt');
+              controller.searchProductApi(txt);
+            },
+            onChange: (value) {},
+            searchController: controller.searchController,
             onSearchTap: (searchKey) {
-
+              debugPrint('search key : $searchKey');
+              controller.searchProductApi(searchKey);
             },
           ),
-          Padding(
-            padding: const EdgeInsets.only(top: 50.0, bottom: 4.0),
-            child: PagedGridView<int, ProductData>(
-              gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount: 2,childAspectRatio: 2/2.3,mainAxisSpacing: 10,crossAxisSpacing: 10),
-              pagingController: controller.pagingController,
-              builderDelegate: PagedChildBuilderDelegate<ProductData>(
-                firstPageProgressIndicatorBuilder: (context) => const Center(
-                  child: CircularProgressIndicator(
-                    color: ColorName.jewel,
+          Obx(() => controller.isLoading.value == false
+              ? Padding(
+                  padding: const EdgeInsets.only(top: 50.0, bottom: 4.0),
+                  child: PagedGridView<int, Results>(
+                    gridDelegate:
+                        const SliverGridDelegateWithFixedCrossAxisCount(
+                            crossAxisCount: 2,
+                            childAspectRatio: 2 / 2.3,
+                            mainAxisSpacing: 10,
+                            crossAxisSpacing: 10),
+                    pagingController: controller.searchPagingController,
+                    builderDelegate: PagedChildBuilderDelegate<Results>(
+                      firstPageProgressIndicatorBuilder: (context) =>
+                          const Center(
+                        child: Text("No Data Found"),
+                        // child: CircularProgressIndicator(
+                        //   color: ColorName.jewel,
+                        // ),
+                      ),
+                      newPageProgressIndicatorBuilder: (context) =>
+                          const Center(
+                        child: CircularProgressIndicator(
+                          color: ColorName.jewel,
+                        ),
+                      ),
+                      itemBuilder: (context, item, index) {
+                        return SearchProductItem(
+                          item: item,
+                          isFromWishList: false,
+                        );
+                      },
+                    ),
                   ),
-                ),
-                newPageProgressIndicatorBuilder: (context) => const Center(
-                  child: CircularProgressIndicator(
-                    color: ColorName.jewel,
-                  ),
-                ),
-                itemBuilder: (context, item, index) {
-                  return ProductItem(
-                    item: item,
-                    isFromWishList: false,
-                  );
-                },
-              ),
-            ),
-          ),
+                )
+              : const Center(child: CircularProgressIndicator(
+            color: ColorName.jewel,
+          ))),
         ],
       ),
     );

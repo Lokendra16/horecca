@@ -5,20 +5,20 @@ part 'results.g.dart';
 @JsonSerializable()
 class Results {
   String? availability;
-  int? bestPrice;
+  double? best_price;
   String? brand;
   String? capacity;
   List<String>? categories;
   String? color;
   String? description;
-  String? dfGroupingId;
+  String? df_grouping_id;
   String? dfid;
   double? dfscore;
-  String? groupId;
+  String? group_id;
   String? gtin;
   String? handle;
   String? id;
-  String? imageLink;
+  String? image_link;
   String? link;
   String? mpn;
   double? price;
@@ -31,19 +31,19 @@ class Results {
 
   Results(
       {required this.availability,
-        required this.bestPrice,
+        required this.best_price,
         required this.brand,
         required this.capacity,
         required this.categories,
         required this.color,
         required this.description,
-        required this.dfGroupingId,
+        required this.df_grouping_id,
         required this.dfid,
-        required this.dfscore,required this.groupId,
+        required this.dfscore,required this.group_id,
         required this.gtin,
         required this.handle,
         required this.id,
-        required this.imageLink,
+        required this.image_link,
         required this.link,
         required this.mpn,
         required this.price,

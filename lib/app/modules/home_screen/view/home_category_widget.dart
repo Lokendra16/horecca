@@ -21,8 +21,7 @@ class HomeShopByCategoryWidget extends StatelessWidget {
       padding: const EdgeInsets.only(top: 10),
       child: SingleChildScrollView(
         scrollDirection: Axis.horizontal,
-        child:Obx(() =>   list.value.custom_collections != null ?
-        Row(
+        child:Obx(() =>   list.value.custom_collections != null ? Row(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
 

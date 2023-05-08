@@ -6,8 +6,17 @@ import 'package:the_horeca_store/src/gen/colors.gen.dart';
 
 class SearchBar extends StatelessWidget {
   final Function(String searchKey) onSearchTap;
+  final TextEditingController? searchController;
+  final Function(String) onChange;
+  final Function(String) onSubmit;
 
-  SearchBar({Key? key, required this.onSearchTap}) : super(key: key);
+  SearchBar(
+      {Key? key,
+      required this.onSearchTap,
+      this.searchController,
+      required this.onChange,
+      required this.onSubmit})
+      : super(key: key);
 
   TextEditingController editingController = TextEditingController();
 
@@ -21,14 +30,22 @@ class SearchBar extends StatelessWidget {
           border: Border.all(color: ColorName.mercury),
           borderRadius: BorderRadius.circular(5)),
       child: InkWell(
-        onTap: (){
+        onTap: () {
           onSearchTap(editingController.text);
         },
         child: Row(
           children: [
             Expanded(
                 child: TextFormField(
-              controller: editingController,
+              enableSuggestions: true,
+              controller: searchController,
+              onChanged: (value) {
+                onChange(value);
+              },
+              onFieldSubmitted: (txt) {
+                onSubmit(txt);
+                debugPrint('txt : $txt');
+              },
               decoration: InputDecoration(
                 contentPadding: const EdgeInsets.only(left: 16, bottom: 10),
                 border: InputBorder.none,
@@ -38,23 +55,23 @@ class SearchBar extends StatelessWidget {
             )),
             InkWell(
               onTap: () {
-                onSearchTap(editingController.text);
+                onSearchTap(searchController!.text);
               },
               child: Container(
                 decoration: BoxDecoration(
                     border: Border.all(color: ColorName.mercury),
                     color: ColorName.cello,
                     borderRadius: const BorderRadius.only(
-                        topRight: Radius.circular(4), bottomRight: Radius.circular(4))),
+                        topRight: Radius.circular(4),
+                        bottomRight: Radius.circular(4))),
                 height: 40,
                 width: 40,
                 child: Center(
                     child: Image.asset(
                   Assets.images.searchImage.path,
-
                   height: 16,
                   width: 16,
-                      color: ColorName.white,
+                  color: ColorName.white,
                 )),
               ),
             ),
