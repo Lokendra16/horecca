@@ -75,27 +75,38 @@ class AddAddressController extends GetxController {
     }
 
     var customerId = await AppPreference().get(AppPreference.KEY_CUSTOMER_ID);
+    debugPrint('customer id : $customerId');
+    var body = {
+    "address": {
+    "address1": addressController.text,
+    "address2": apartmentController.text,
+    "city": cityController.text,
+    "company": "choco",
+    "first_name": firstNameController.text,
+    "last_name": lastNameController.text,
+    "phone": phoneNumberController.text,
+    "province": selectedCountry.value?.name,
+    "country": selectedCountry.value?.name,
+    "zip": zipcodeController.text,
+    "name": "${firstNameController.text} ${lastNameController.text}",
+    "province_code": selectedProvince.value?.code,
+    "country_code": selectedCountry.value?.code,
+    "country_name": selectedCountry.value?.name,
+    }};
+    debugPrint('body : $body');
+
     final client = RestClient();
-    var api = await client.addCountryApi(customerId!, {
-      "address": {
-        "address1": addressController.text,
-        "address2": apartmentController.text,
-        "city": cityController.text,
-        "company": "",
-        "first_name": firstNameController.text,
-        "last_name": lastNameController.text,
-        "phone": phoneNumberController.text,
-        "province": selectedCountry.value?.name,
-        "country": selectedCountry.value?.name,
-        "zip": zipcodeController.value,
-        "name": "${firstNameController.text} ${lastNameController.text}",
-        "province_code": selectedProvince.value?.code,
-        "country_code": selectedCountry.value?.code,
-        "country_name": selectedCountry.value?.name,
+    var api = await client.addCountryApi('6934461776183', body
+    );
+
+    try{
+      if (api.countries != null && api.countries!.isNotEmpty) {
+        countriesList.value = api.countries!;
       }
-    });
-    if (api.countries != null && api.countries!.isNotEmpty) {
-      countriesList.value = api.countries!;
+    }catch(e){
+      debugPrint('on error : $e');
     }
+
+
   }
 }
