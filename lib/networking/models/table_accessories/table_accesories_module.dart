@@ -24,7 +24,7 @@ class TabAccess {
 
 class MenuSignage {
   final String title;
-  final String collectionId;
+  final int collectionId;
   final String handler;
 
   MenuSignage( {
@@ -36,7 +36,7 @@ class MenuSignage {
 
 class BarSolution {
   final String title;
-  final String collectionId;
+  final int collectionId;
   final String handler;
   
   BarSolution({
@@ -49,7 +49,7 @@ class BarSolution {
 
 class CounterSolution {
   final String title;
-  final String collectionId;
+  final int collectionId;
   final String handler;
 
   CounterSolution( {
@@ -61,7 +61,7 @@ class CounterSolution {
 
 class TablePresentation {
   final String title;
-  final String collectionId;
+  final int collectionId;
   final String handler;
   
   TablePresentation({
@@ -73,7 +73,7 @@ class TablePresentation {
 
 class TableTopSolution {
   final String title;
-  final String collectionId;
+  final int collectionId;
   final String handler;
 
   TableTopSolution({
@@ -85,7 +85,7 @@ class TableTopSolution {
 
 class ServingSolution {
   final String title;
-  final String collectionId;
+  final int collectionId;
   final String handler;
 
   ServingSolution({
@@ -96,110 +96,110 @@ class ServingSolution {
 }
 List<ServingSolution>servingsolution =[ServingSolution
   ( title: "Appetizers & Side Servers",
-collectionId:"435623657783",
+collectionId:435623657783,
 handler:"appetizers-side-servers"),
 
   ServingSolution(
       title: "Snack Server",
-      collectionId:"435623821623",
+      collectionId:435623821623,
       handler:"snack-server"),
 
   ServingSolution(
       title: "Cast Iron & Boards",
-      collectionId:"435624116535",
+      collectionId:435624116535,
       handler:"cast-iron-boards"),
 
   ServingSolution(
       title: "Wooden Boards",
-      collectionId:"435624313143",
+      collectionId:435624313143,
       handler:"wooden-boards"),
 
   ServingSolution(
       title: "Bread Baskets",
-      collectionId:" 435624542519",
+      collectionId:435624542519,
       handler:"bread-baskets"),
 
 ServingSolution(
     title: "Mini Pans",
-    collectionId:"435624706359",
+    collectionId:435624706359,
     handler:"mini-pans"),
 
   ServingSolution(
       title: "Ramekins",
-      collectionId:" 435624804663",
+      collectionId:435624804663,
       handler:"ramekins"),
 ];
 
 List<TableTopSolution> tableTopSolution =[
   TableTopSolution(
 title: "Condiment and Napkin Holder",
-collectionId:" 435625099575",
+collectionId: 435625099575,
 handler:"condiment-and-napkin-holder"),
 
   TableTopSolution(  title: "Salt and Pepper",
-      collectionId:"435625623863",
+      collectionId:435625623863,
       handler:"salt-and-pepper"),
   
   TableTopSolution(title: "Oil and Vinegar",
-      collectionId:" 435625787703",
+      collectionId: 435625787703,
       handler:"oil-and-vinegar"),
   
   TableTopSolution( title: "Butter and Cheese ",
-      collectionId:" 435626017079",
+      collectionId:435626017079,
       handler:"butter-and-cheese"),
 
 ];
 
 List<TablePresentation>tablePresntation =[
   TablePresentation(title: "Placemats",
-      collectionId:" 435626475831",
+      collectionId:435626475831,
       handler:"bed-bath-linen"),
 
   TablePresentation(  title: "Vases",
-collectionId:"435626672439",
+collectionId:435626672439,
 handler:"vases"),
 
   TablePresentation(
       title: "Table Lamp",
-      collectionId:"435626836279",
+      collectionId:435626836279,
       handler:"table-lamp"),
 
 ];
 
 List<CounterSolution>counterSolution=[CounterSolution(
 title: "Bottle and Jars",
-collectionId:" 435627426103",
+collectionId: 435627426103,
 handler:"bottle-and-jars"),
 
   CounterSolution(
       title: "Double Wall Bowls",
-      collectionId:"435627589943",
+      collectionId:435627589943,
       handler:"double-wall-bowls"),
    ] ;
 
 List<BarSolution>barSolution =[BarSolution(
 title: "Ice Bucket & Coolers",
-collectionId:"435627983159",
+collectionId:435627983159,
 handler:"ice-bucket-coolers"),
 
   BarSolution(
       title: "Ashtray",
-      collectionId:"435628146999",
+      collectionId:435628146999,
       handler:"ashtray"),
 
     ];
 
 List<MenuSignage>menuSignage=[
 MenuSignage(title: "Menu", 
-    collectionId:" 440481284407",
+    collectionId:440481284407,
     handler:"menu"),
 
   MenuSignage(title:"Table Chalkboards", 
-      collectionId:"440481349943",
+      collectionId:440481349943,
       handler:"table chalkboards"),
 
   MenuSignage(title:"Marker",
-      collectionId:"440481382711",
+      collectionId:440481382711,
       handler:"marker")
   
 

@@ -6,6 +6,8 @@ import 'package:the_horeca_store/extensions/assets_ext.dart';
 import '../../../networking/models/guestRoom_model/guestRoom.dart';
 import '../../../src/gen/assets.gen.dart';
 import '../../../src/gen/colors.gen.dart';
+import '../product_list/controller/product_listview_controller.dart';
+import '../product_list/view/product_list_screen.dart';
 
 class GuestroomScreen extends StatelessWidget {
   const GuestroomScreen({Key? key}) : super(key: key);
@@ -37,21 +39,20 @@ class GuestroomScreen extends StatelessWidget {
           SizedBox(
 
 
-              child: Icon(
-                Icons.search,
-                color: Color(0xff000000).withOpacity(0.6),
-              )),
+            child:Assets.icons.icSearch.svgIcon(
+              size: 24,
+              color: ColorName.black,
+            ),),
           const SizedBox(
-
 
             width: 16,
           ),
           Padding(
-            padding: const EdgeInsets.only(right: 14),
-            child: Icon(
-              Icons.shopping_bag_outlined,
-              color: Color(0xff000000).withOpacity(0.6),
-            ),
+              padding: const EdgeInsets.only(right: 14),
+              child: Assets.icons.icCart.svgIcon(
+                size: 24,
+                color: ColorName.black,
+              )
           )
         ],
       ),
@@ -71,14 +72,31 @@ class GuestroomScreen extends StatelessWidget {
                       for (var i = 0 ; i< guestRoomSupplies.length ; i++)
                         Padding(
                           padding: const EdgeInsets.only(left: 70,right: 10),
-                          child: Container(
-                            height: 40,
-                            child: Row(mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                              children: [
-                                Text(guestRoomSupplies![i].title),
-                                Assets.icons.icArrowForward.svgIcon(
-                                    color: ColorName.black,size: 14),
-                              ],
+                          child: InkWell(
+                            onTap: (){
+                              debugPrint("id line 204: ${guestRoomSupplies[i].collectionId}");
+                              Get.delete<ProductListController>();
+                              Get.to(() => ProductListScreen(),
+                                  arguments: [
+                                    ProductListController
+                                        .TYPE_CATEGORY_PRODUCTS,
+                                    Uri.parse(guestRoomSupplies[i].collectionId.toString() ?? '')
+                                        .pathSegments
+                                        .last,
+                                    guestRoomSupplies[i].title
+                                  ],
+                                  binding: BindingsBuilder.put(
+                                          () => ProductListController()));
+                            },
+                            child: Container(
+                              height: 40,
+                              child: Row(mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                children: [
+                                  Text(guestRoomSupplies![i].title),
+                                  Assets.icons.icArrowForward.svgIcon(
+                                      color: ColorName.black,size: 14),
+                                ],
+                              ),
                             ),
                           ),
                         ),
@@ -87,14 +105,31 @@ class GuestroomScreen extends StatelessWidget {
                       for (var i = 0 ; i<electronics.length ; i++)
                         Padding(
                           padding: const EdgeInsets.only(left: 70,right: 10),
-                          child: Container(
-                            height: 40,
-                            child: Row(mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                              children: [
-                                Text(electronics![i].title),
-                                Assets.icons.icArrowForward.svgIcon(
-                                    color: ColorName.black,size: 14),
-                              ],
+                          child: InkWell(
+                            onTap: (){
+                              debugPrint("id line 204: ${electronics[i].collectionId}");
+                              Get.delete<ProductListController>();
+                              Get.to(() => ProductListScreen(),
+                                  arguments: [
+                                    ProductListController
+                                        .TYPE_CATEGORY_PRODUCTS,
+                                    Uri.parse(electronics[i].collectionId.toString() ?? '')
+                                        .pathSegments
+                                        .last,
+                                    electronics[i].title
+                                  ],
+                                  binding: BindingsBuilder.put(
+                                          () => ProductListController()));
+                            },
+                            child: Container(
+                              height: 40,
+                              child: Row(mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                children: [
+                                  Text(electronics![i].title),
+                                  Assets.icons.icArrowForward.svgIcon(
+                                      color: ColorName.black,size: 14),
+                                ],
+                              ),
                             ),
                           ),
                         ),
@@ -118,14 +153,31 @@ class GuestroomScreen extends StatelessWidget {
                       for (var i = 0 ; i<childFriendly.length ; i++)
                         Padding(
                           padding: const EdgeInsets.only(left: 70,right: 10),
-                          child: Container(
-                            height: 40,
-                            child: Row(mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                              children: [
-                                Text(childFriendly![i].title),
-                                Assets.icons.icArrowForward.svgIcon(
-                                    color: ColorName.black,size: 14),
-                              ],
+                          child: InkWell(
+                            onTap: (){
+                              debugPrint("id line 204: ${childFriendly[i].collectionId}");
+                              Get.delete<ProductListController>();
+                              Get.to(() => ProductListScreen(),
+                                  arguments: [
+                                    ProductListController
+                                        .TYPE_CATEGORY_PRODUCTS,
+                                    Uri.parse(childFriendly[i].collectionId.toString() ?? '')
+                                        .pathSegments
+                                        .last,
+                                    childFriendly[i].title
+                                  ],
+                                  binding: BindingsBuilder.put(
+                                          () => ProductListController()));
+                            },
+                            child: Container(
+                              height: 40,
+                              child: Row(mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                children: [
+                                  Text(childFriendly![i].title),
+                                  Assets.icons.icArrowForward.svgIcon(
+                                      color: ColorName.black,size: 14),
+                                ],
+                              ),
                             ),
                           ),
                         ),

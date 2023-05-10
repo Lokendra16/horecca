@@ -11,6 +11,7 @@ import '../../banquetConfrence/banqut&confrence_screen.dart';
 import '../../bed&bath_screen/bed&bath_screen.dart';
 import '../../buffetware/buffetware.dart';
 import '../../guestroom_screen/guestroom_screen.dart';
+import '../../home_screen/controller/home_screen_controller.dart';
 import '../../kitchenEquipments_screen/kitchenEquipments_screen.dart';
 import '../../kitchenPastry_screen/kitchen_pastry_screen.dart';
 import '../../liveCooking/liveCooking_screen.dart';
@@ -21,19 +22,45 @@ class CategoryListScreen extends StatelessWidget {
   CategoryListScreen({Key? key}) : super(key: key);
 
   final CategoryListScreenController controller = Get.put(CategoryListScreenController());
-
+  final HomeScreenController homeScreenController = Get.put(HomeScreenController());
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
+
     return Scaffold(
         backgroundColor: ColorName.alabaster,
-        appBar: PreferredSize(
-          preferredSize: const Size.fromHeight(60),
-          child: AppBarCart(
-            hideBackButton: true,
-            title: 'Categories',
-            onBackPressed: () => Get.back(),
+        appBar:AppBar(
+          elevation: 0,
+          backgroundColor: Color(0xffEFEFF0),
+          title: Padding(
+            padding: const EdgeInsets.all(10.0),
+            child: Text(
+              "Categories",
+              style: TextStyle(
+                  fontSize: 17, fontWeight: FontWeight.w500,
+                  color: Colors.black),
+            ),
           ),
+          actions: [
+            SizedBox(
+
+
+                child:Assets.icons.icSearch.svgIcon(
+                  size: 24,
+                  color: ColorName.black,
+                ),),
+            const SizedBox(
+
+              width: 16,
+            ),
+            Padding(
+              padding: const EdgeInsets.only(right: 14),
+              child: Assets.icons.icCart.svgIcon(
+                size: 24,
+                color: ColorName.black,
+              )
+            )
+          ],
         ),
         body:ListView(
             children:[
@@ -43,7 +70,7 @@ class CategoryListScreen extends StatelessWidget {
                     padding: const EdgeInsets.only(left: 8,right: 8),
                     child: InkWell(
                       onTap: (){
-                        Get.to( TableTopScreen());
+                        Get.to( TableTopScreen(homeList:homeScreenController.homeList));
                       },
                       child: Card(
                         elevation: 3,
@@ -95,7 +122,7 @@ class CategoryListScreen extends StatelessWidget {
                     padding: const EdgeInsets.symmetric(horizontal: 8,vertical: 2),
                     child: InkWell(
                       onTap: (){
-                        Get.to(TabAccessories());
+                        Get.to(TabAccessories(homeList:homeScreenController.homeList));
                       },
                       child: Card(
                         elevation: 3,
