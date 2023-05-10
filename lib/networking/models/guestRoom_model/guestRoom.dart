@@ -22,7 +22,7 @@ class Guestroomdata {
 
 class ChildFriendly {
   final String title;
-  final String collectionId;
+  final int collectionId;
   final String handler;
   
   ChildFriendly({
@@ -34,7 +34,7 @@ class ChildFriendly {
 
 class Bathroom {
   final String title;
-  final String collectionId;
+  final int collectionId;
   final String handler;
   Bathroom({
     required this.title,
@@ -45,7 +45,7 @@ class Bathroom {
 
 class Electronics {
   final String title;
-  final String collectionId;
+  final int collectionId;
   final String handler;
   Electronics({
     required this.title,
@@ -56,7 +56,7 @@ class Electronics {
 
 class GuestRoomSupplies {
   final String title;
-  final String collectionId;
+  final int collectionId;
   final String handler;
   GuestRoomSupplies({
     required this.title,
@@ -66,101 +66,101 @@ class GuestRoomSupplies {
 }
 List<GuestRoomSupplies> guestRoomSupplies=[
   GuestRoomSupplies( title: "SafeBox",
-      collectionId:" 435629621559",
+      collectionId: 435629621559,
       handler:"safebox"),
 
   GuestRoomSupplies( title: "Welcome Tray",
-      collectionId:"435629916471",
+      collectionId:435629916471,
       handler:"welcome-tray"),
 
   GuestRoomSupplies(
       title: "Ironing Station",
-      collectionId:"435630047543",
+      collectionId:435630047543,
       handler:"ironing-station"),
 
   GuestRoomSupplies(
       title: "Mirrors",
-      collectionId:"435631227191",
+      collectionId:435631227191,
       handler:"mirrors"),
 
   GuestRoomSupplies(
       title: "Luggage Rack",
-      collectionId:"435631259959",
+      collectionId:435631259959,
       handler:"luggage-rack"),
 
 ];
 List<Electronics> electronics=[
   Electronics(   title: "MiniBar",
-      collectionId:"435631325495",
+      collectionId:435631325495,
       handler:"minibar"),
 
 Electronics(
     title: "Kettle",
-    collectionId:"435631358263",
+    collectionId:435631358263,
     handler:"kettle"),
 
  Electronics(
      title: "Coffee Machine",
-     collectionId:" 435631391031",
+     collectionId:435631391031,
      handler:"coffee-machine"),
 
   Electronics(
       title: "Hair Dryer",
-      collectionId:" 435631423799",
+      collectionId: 435631423799,
       handler:"hair-dryer"),
 
   Electronics(
       title: "Irons",
-      collectionId:" 435631489335",
+      collectionId: 435631489335,
       handler:"irons"),
 
 ];
 List<Bathroom> bathroom=[
   Bathroom( title: "Bathroom Bins",
-    collectionId:"435631620407",
+    collectionId:435631620407,
     handler:"bathroom-bins"),
 
   Bathroom(
       title: "Tissue Box Holder",
-      collectionId:" 435631751479",
+      collectionId:435631751479,
       handler:"tissue-box-holder"),
 
  Bathroom(title: "Cloth Line",
-    collectionId:"435631817015",
+    collectionId:435631817015,
     handler:"cloth-line"),
 
   Bathroom(
       title: "Sanitary Bag Dispenser",
-      collectionId:" 435631882551",
+      collectionId:435631882551,
       handler:"sanitary-bag-dispenser"),
 
   Bathroom(
       title: "Bathroom Scale",
-      collectionId:"435631096119",
+      collectionId:435631096119,
       handler:"bathroom-scale"),
 
 ];
 List<ChildFriendly> childFriendly=[
   ChildFriendly( title: "Cribs",
-      collectionId:"435631915319",
+      collectionId:435631915319,
       handler:"cribs"),
 ChildFriendly(
     title: "Bedding",
-    collectionId:"435632013623",
+    collectionId:435632013623,
     handler:"bedding"),
 
   ChildFriendly(
       title: "Crib Mattress",
-      collectionId:" 435632144695",
+      collectionId:435632144695,
       handler:"crib-mattress"),
 
   ChildFriendly( title: "High Chair",
-      collectionId:"435632177463",
+      collectionId:435632177463,
       handler:"high-chair"),
 
   ChildFriendly(
       title: "Baby Changing Station",
-      collectionId:"435632374071",
+      collectionId:435632374071,
       handler:"baby-changing-station"),
 
 ];

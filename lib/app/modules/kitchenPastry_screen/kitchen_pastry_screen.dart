@@ -6,6 +6,8 @@ import 'package:the_horeca_store/extensions/assets_ext.dart';
 import '../../../networking/models/kitchen&pastry/Kitchen&Pastry_model.dart';
 import '../../../src/gen/assets.gen.dart';
 import '../../../src/gen/colors.gen.dart';
+import '../product_list/controller/product_listview_controller.dart';
+import '../product_list/view/product_list_screen.dart';
 class KitchenPastryScreen extends StatelessWidget {
   const KitchenPastryScreen({Key? key}) : super(key: key);
 
@@ -35,21 +37,20 @@ class KitchenPastryScreen extends StatelessWidget {
           SizedBox(
 
 
-              child: Icon(
-                Icons.search,
-                color: Color(0xff000000).withOpacity(0.6),
-              )),
+            child:Assets.icons.icSearch.svgIcon(
+              size: 24,
+              color: ColorName.black,
+            ),),
           const SizedBox(
-
 
             width: 16,
           ),
           Padding(
-            padding: const EdgeInsets.only(right: 14),
-            child: Icon(
-              Icons.shopping_bag_outlined,
-              color: Color(0xff000000).withOpacity(0.6),
-            ),
+              padding: const EdgeInsets.only(right: 14),
+              child: Assets.icons.icCart.svgIcon(
+                size: 24,
+                color: ColorName.black,
+              )
           )
         ],
       ),
@@ -69,14 +70,31 @@ class KitchenPastryScreen extends StatelessWidget {
                       for (var i = 0 ; i< gastronorm.length ; i++)
                         Padding(
                           padding: const EdgeInsets.only(left: 70,right: 10),
-                          child: Container(
-                            height: 40,
-                            child: Row(mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                              children: [
-                                Text(gastronorm![i].title),
-                                Assets.icons.icArrowForward.svgIcon(
-                                    color: ColorName.black,size: 14),
-                              ],
+                          child: InkWell(
+                            onTap: (){
+                              debugPrint("id line 76: ${gastronorm[i].collectionId}");
+                              Get.delete<ProductListController>();
+                              Get.to(() => ProductListScreen(),
+                                  arguments: [
+                                    ProductListController
+                                        .TYPE_CATEGORY_PRODUCTS,
+                                    Uri.parse(gastronorm[i].collectionId.toString() ?? '')
+                                        .pathSegments
+                                        .last,
+                                    gastronorm[i].title
+                                  ],
+                                  binding: BindingsBuilder.put(
+                                          () => ProductListController()));
+                            },
+                            child: Container(
+                              height: 40,
+                              child: Row(mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                children: [
+                                  Text(gastronorm![i].title),
+                                  Assets.icons.icArrowForward.svgIcon(
+                                      color: ColorName.black,size: 14),
+                                ],
+                              ),
                             ),
                           ),
                         ),
@@ -85,14 +103,31 @@ class KitchenPastryScreen extends StatelessWidget {
                       for (var i = 0 ; i<knives.length ; i++)
                         Padding(
                           padding: const EdgeInsets.only(left: 70,right: 10),
-                          child: Container(
-                            height: 40,
-                            child: Row(mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                              children: [
-                                Text(knives![i].title),
-                                Assets.icons.icArrowForward.svgIcon(
-                                    color: ColorName.black,size: 14),
-                              ],
+                          child: InkWell(
+                            onTap: (){
+                              debugPrint("id line 108: ${knives[i].collectionId}");
+                              Get.delete<ProductListController>();
+                              Get.to(() => ProductListScreen(),
+                                  arguments: [
+                                    ProductListController
+                                        .TYPE_CATEGORY_PRODUCTS,
+                                    Uri.parse(knives[i].collectionId.toString() ?? '')
+                                        .pathSegments
+                                        .last,
+                                    knives[i].title
+                                  ],
+                                  binding: BindingsBuilder.put(
+                                          () => ProductListController()));
+                            },
+                            child: Container(
+                              height: 40,
+                              child: Row(mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                children: [
+                                  Text(knives![i].title),
+                                  Assets.icons.icArrowForward.svgIcon(
+                                      color: ColorName.black,size: 14),
+                                ],
+                              ),
                             ),
                           ),
                         ),
@@ -100,14 +135,31 @@ class KitchenPastryScreen extends StatelessWidget {
                       for (var i = 0 ; i<breadpizza.length ; i++)
                         Padding(
                           padding: const EdgeInsets.only(left: 70,right: 10),
-                          child: Container(
-                            height: 40,
-                            child: Row(mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                              children: [
-                                Text(breadpizza![i].title),
-                                Assets.icons.icArrowForward.svgIcon(
-                                    color: ColorName.black,size: 14),
-                              ],
+                          child: InkWell(
+                            onTap: (){
+                              debugPrint("id line 141: ${breadpizza[i].collectionId}");
+                              Get.delete<ProductListController>();
+                              Get.to(() => ProductListScreen(),
+                                  arguments: [
+                                    ProductListController
+                                        .TYPE_CATEGORY_PRODUCTS,
+                                    Uri.parse(breadpizza[i].collectionId.toString() ?? '')
+                                        .pathSegments
+                                        .last,
+                                    breadpizza[i].title
+                                  ],
+                                  binding: BindingsBuilder.put(
+                                          () => ProductListController()));
+                            },
+                            child: Container(
+                              height: 40,
+                              child: Row(mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                children: [
+                                  Text(breadpizza![i].title),
+                                  Assets.icons.icArrowForward.svgIcon(
+                                      color: ColorName.black,size: 14),
+                                ],
+                              ),
                             ),
                           ),
                         ),
@@ -115,14 +167,31 @@ class KitchenPastryScreen extends StatelessWidget {
                       for (var i = 0 ; i<strorageTranspor.length ; i++)
                         Padding(
                           padding: const EdgeInsets.only(left: 70,right: 10),
-                          child: Container(
-                            height: 40,
-                            child: Row(mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                              children: [
-                                Text(strorageTranspor![i].title),
-                                Assets.icons.icArrowForward.svgIcon(
-                                    color: ColorName.black,size: 14),
-                              ],
+                          child: InkWell(
+                            onTap: (){
+                              debugPrint("id line 172: ${strorageTranspor[i].collectionId}");
+                              Get.delete<ProductListController>();
+                              Get.to(() => ProductListScreen(),
+                                  arguments: [
+                                    ProductListController
+                                        .TYPE_CATEGORY_PRODUCTS,
+                                    Uri.parse(strorageTranspor[i].collectionId.toString() ?? '')
+                                        .pathSegments
+                                        .last,
+                                    strorageTranspor[i].title
+                                  ],
+                                  binding: BindingsBuilder.put(
+                                          () => ProductListController()));
+                            },
+                            child: Container(
+                              height: 40,
+                              child: Row(mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                children: [
+                                  Text(strorageTranspor![i].title),
+                                  Assets.icons.icArrowForward.svgIcon(
+                                      color: ColorName.black,size: 14),
+                                ],
+                              ),
                             ),
                           ),
                         ),
@@ -130,14 +199,31 @@ class KitchenPastryScreen extends StatelessWidget {
                       for (var i = 0 ; i<hygien.length ; i++)
                         Padding(
                           padding: const EdgeInsets.only(left: 70,right: 10),
-                          child: Container(
-                            height: 40,
-                            child: Row(mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                              children: [
-                                Text(hygien![i].title),
-                                Assets.icons.icArrowForward.svgIcon(
-                                    color: ColorName.black,size: 14),
-                              ],
+                          child: InkWell(
+                            onTap: (){
+                              debugPrint("id line 204: ${hygien[i].collectionId}");
+                              Get.delete<ProductListController>();
+                              Get.to(() => ProductListScreen(),
+                                  arguments: [
+                                    ProductListController
+                                        .TYPE_CATEGORY_PRODUCTS,
+                                    Uri.parse(hygien[i].collectionId.toString() ?? '')
+                                        .pathSegments
+                                        .last,
+                                    hygien[i].title
+                                  ],
+                                  binding: BindingsBuilder.put(
+                                          () => ProductListController()));
+                            },
+                            child: Container(
+                              height: 40,
+                              child: Row(mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                children: [
+                                  Text(hygien![i].title),
+                                  Assets.icons.icArrowForward.svgIcon(
+                                      color: ColorName.black,size: 14),
+                                ],
+                              ),
                             ),
                           ),
                         ),

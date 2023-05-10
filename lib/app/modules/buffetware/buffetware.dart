@@ -5,14 +5,14 @@ import 'package:the_horeca_store/app/modules/home_screen/controller/home_screen_
 import 'package:the_horeca_store/extensions/assets_ext.dart';
 
 import '../../../networking/models/buffetware/buffetware_model.dart';
+import '../../../networking/models/category_data/category_model.dart';
 import '../../../src/gen/assets.gen.dart';
 import '../../../src/gen/colors.gen.dart';
-import '../home_screen/view/home_category_widget.dart';
-import '../home_screen/view/home_products_widget.dart';
+import '../product_list/controller/product_listview_controller.dart';
 import '../product_list/view/product_list_screen.dart';
 
 class Buffet extends StatelessWidget {
-   Buffet({Key? key}) : super(key: key);
+   Buffet({Key? key,}) : super(key: key);
 
    final HomeScreenController controller = Get.put(HomeScreenController());
 
@@ -34,7 +34,7 @@ class Buffet extends StatelessWidget {
           ),
         ),
         title: Text(
-          "GuestRoom",
+          "Buffetware",
           style: TextStyle(
               fontSize: 17, fontWeight: FontWeight.w500,
               color: Colors.black),
@@ -43,21 +43,20 @@ class Buffet extends StatelessWidget {
           SizedBox(
 
 
-              child: Icon(
-                Icons.search,
-                color: Color(0xff000000).withOpacity(0.6),
-              )),
+            child:Assets.icons.icSearch.svgIcon(
+              size: 24,
+              color: ColorName.black,
+            ),),
           const SizedBox(
-
 
             width: 16,
           ),
           Padding(
-            padding: const EdgeInsets.only(right: 14),
-            child: Icon(
-              Icons.shopping_bag_outlined,
-              color: Color(0xff000000).withOpacity(0.6),
-            ),
+              padding: const EdgeInsets.only(right: 14),
+              child: Assets.icons.icCart.svgIcon(
+                size: 24,
+                color: ColorName.black,
+              )
           )
         ],
       ),
@@ -77,28 +76,38 @@ class Buffet extends StatelessWidget {
                       for (var i = 0 ; i< buffetwareStand!.length ; i++)
                         Padding(
                           padding: const EdgeInsets.only(left: 70,right: 10),
-                          child: Container(
-                            height: 40,
-                            child: Row(mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                              children: [
-                                InkWell(
-                                  onTap: (){
-
-                                  },
-                                    child: Text(buffetwareStand![i].title)),
-                                Assets.icons.icArrowForward.svgIcon(
-                                    color: ColorName.black,size: 14),
-                              ],
+                          child: InkWell(
+                            onTap: (){
+                              debugPrint("id line 116: ${buffetwareStand![i].collectionId}");
+                              Get.delete<ProductListController>();
+                              Get.to(() => ProductListScreen(),
+                                  arguments: [
+                                    ProductListController
+                                        .TYPE_CATEGORY_PRODUCTS,
+                                    Uri.parse(buffetwareStand![i].collectionId.toString() ?? '')
+                                        .pathSegments
+                                        .last,
+                                    buffetwareStand![i].title
+                                  ],
+                                  binding: BindingsBuilder.put(
+                                          () => ProductListController()));
+                            },
+                            child: Container(
+                              height: 40,
+                              child: Row(mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                children: [
+                                  Text(buffetwareStand![i].title),
+                                  Assets.icons.icArrowForward.svgIcon(
+                                      color: ColorName.black,size: 14),
+                                ],
+                              ),
                             ),
-                          ),
+                          )
                         ),
+
                              ]
 
                            )
-                          // ListTile(
-                          //   tileColor: Colors.white54,
-                          //   leading:  Text(buffetwareStand![i].title),
-                          // ),
 
 
 
