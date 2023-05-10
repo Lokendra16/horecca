@@ -93,9 +93,12 @@ class AddAddressController extends GetxController {
         "country_code": selectedCountry.value?.code,
         "country_name": selectedCountry.value?.name,
       }
+
     });
+
     if (api.countries != null && api.countries!.isNotEmpty) {
       countriesList.value = api.countries!;
+
     }
   }
 }

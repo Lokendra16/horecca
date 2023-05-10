@@ -6,6 +6,8 @@ import 'package:the_horeca_store/extensions/assets_ext.dart';
 import '../../../networking/models/banqut&Confrence/banquet&Confrnece.dart';
 import '../../../src/gen/assets.gen.dart';
 import '../../../src/gen/colors.gen.dart';
+import '../product_list/controller/product_listview_controller.dart';
+import '../product_list/view/product_list_screen.dart';
 
 class BanquetConfrenceScreen extends StatelessWidget {
   const BanquetConfrenceScreen({Key? key}) : super(key: key);
@@ -37,21 +39,20 @@ class BanquetConfrenceScreen extends StatelessWidget {
           SizedBox(
 
 
-              child: Icon(
-                Icons.search,
-                color: Color(0xff000000).withOpacity(0.6),
-              )),
+            child:Assets.icons.icSearch.svgIcon(
+              size: 24,
+              color: ColorName.black,
+            ),),
           const SizedBox(
-
 
             width: 16,
           ),
           Padding(
-            padding: const EdgeInsets.only(right: 14),
-            child: Icon(
-              Icons.shopping_bag_outlined,
-              color: Color(0xff000000).withOpacity(0.6),
-            ),
+              padding: const EdgeInsets.only(right: 14),
+              child: Assets.icons.icCart.svgIcon(
+                size: 24,
+                color: ColorName.black,
+              )
           )
         ],
       ),
@@ -71,14 +72,31 @@ class BanquetConfrenceScreen extends StatelessWidget {
                       for (var i = 0 ; i< banquetChair.length ; i++)
                         Padding(
                           padding: const EdgeInsets.only(left: 70,right: 10),
-                          child: Container(
-                            height: 40,
-                            child: Row(mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                              children: [
-                                Text(banquetChair![i].title),
-                                Assets.icons.icArrowForward.svgIcon(
-                                    color: ColorName.black,size: 14),
-                              ],
+                          child: InkWell(
+                            onTap: (){
+                              debugPrint("id line 75: ${banquetChair[i].collectionId}");
+                              Get.delete<ProductListController>();
+                              Get.to(() => ProductListScreen(),
+                                  arguments: [
+                                    ProductListController
+                                        .TYPE_CATEGORY_PRODUCTS,
+                                    Uri.parse(banquetChair[i].collectionId.toString() ?? '')
+                                        .pathSegments
+                                        .last,
+                                    banquetChair[i].title
+                                  ],
+                                  binding: BindingsBuilder.put(
+                                          () => ProductListController()));
+                            },
+                            child: Container(
+                              height: 40,
+                              child: Row(mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                children: [
+                                  Text(banquetChair![i].title),
+                                  Assets.icons.icArrowForward.svgIcon(
+                                      color: ColorName.black,size: 14),
+                                ],
+                              ),
                             ),
                           ),
                         ),
@@ -87,14 +105,31 @@ class BanquetConfrenceScreen extends StatelessWidget {
                       for (var i = 0 ; i<confrneceTable.length ; i++)
                         Padding(
                           padding: const EdgeInsets.only(left: 70,right: 10),
-                          child: Container(
-                            height: 40,
-                            child: Row(mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                              children: [
-                                Text(confrneceTable![i].title),
-                                Assets.icons.icArrowForward.svgIcon(
-                                    color: ColorName.black,size: 14),
-                              ],
+                          child: InkWell(
+                            onTap: (){
+                              debugPrint("id line 110: ${confrneceTable[i].collectionId}");
+                              Get.delete<ProductListController>();
+                              Get.to(() => ProductListScreen(),
+                                  arguments: [
+                                    ProductListController
+                                        .TYPE_CATEGORY_PRODUCTS,
+                                    Uri.parse(confrneceTable[i].collectionId.toString() ?? '')
+                                        .pathSegments
+                                        .last,
+                                    confrneceTable[i].title
+                                  ],
+                                  binding: BindingsBuilder.put(
+                                          () => ProductListController()));
+                            },
+                            child: Container(
+                              height: 40,
+                              child: Row(mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                children: [
+                                  Text(confrneceTable![i].title),
+                                  Assets.icons.icArrowForward.svgIcon(
+                                      color: ColorName.black,size: 14),
+                                ],
+                              ),
                             ),
                           ),
                         ),
@@ -103,14 +138,31 @@ class BanquetConfrenceScreen extends StatelessWidget {
                       for (var i = 0 ; i<banquetstable.length ; i++)
                         Padding(
                           padding: const EdgeInsets.only(left: 70,right: 10),
-                          child: Container(
-                            height: 40,
-                            child: Row(mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                              children: [
-                                Text(banquetstable![i].title),
-                                Assets.icons.icArrowForward.svgIcon(
-                                    color: ColorName.black,size: 14),
-                              ],
+                          child: InkWell(
+                            onTap: (){
+                              debugPrint("id line 144: ${banquetstable[i].collectionId}");
+                              Get.delete<ProductListController>();
+                              Get.to(() => ProductListScreen(),
+                                  arguments: [
+                                    ProductListController
+                                        .TYPE_CATEGORY_PRODUCTS,
+                                    Uri.parse(banquetstable[i].collectionId.toString() ?? '')
+                                        .pathSegments
+                                        .last,
+                                    banquetstable[i].title
+                                  ],
+                                  binding: BindingsBuilder.put(
+                                          () => ProductListController()));
+                            },
+                            child: Container(
+                              height: 40,
+                              child: Row(mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                children: [
+                                  Text(banquetstable![i].title),
+                                  Assets.icons.icArrowForward.svgIcon(
+                                      color: ColorName.black,size: 14),
+                                ],
+                              ),
                             ),
                           ),
                         ),
@@ -118,14 +170,31 @@ class BanquetConfrenceScreen extends StatelessWidget {
                       for (var i = 0 ; i<cockTailTable.length ; i++)
                         Padding(
                           padding: const EdgeInsets.only(left: 70,right: 10),
-                          child: Container(
-                            height: 40,
-                            child: Row(mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                              children: [
-                                Text(cockTailTable![i].title),
-                                Assets.icons.icArrowForward.svgIcon(
-                                    color: ColorName.black,size: 14),
-                              ],
+                          child: InkWell(
+                            onTap: (){
+                              debugPrint("id line 176: ${cockTailTable[i].collectionId}");
+                              Get.delete<ProductListController>();
+                              Get.to(() => ProductListScreen(),
+                                  arguments: [
+                                    ProductListController
+                                        .TYPE_CATEGORY_PRODUCTS,
+                                    Uri.parse(cockTailTable[i].collectionId.toString() ?? '')
+                                        .pathSegments
+                                        .last,
+                                    cockTailTable[i].title
+                                  ],
+                                  binding: BindingsBuilder.put(
+                                          () => ProductListController()));
+                            },
+                            child: Container(
+                              height: 40,
+                              child: Row(mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                children: [
+                                  Text(cockTailTable![i].title),
+                                  Assets.icons.icArrowForward.svgIcon(
+                                      color: ColorName.black,size: 14),
+                                ],
+                              ),
                             ),
                           ),
                         ),
@@ -133,14 +202,31 @@ class BanquetConfrenceScreen extends StatelessWidget {
                       for (var i = 0 ; i<tableTrolly.length ; i++)
                         Padding(
                           padding: const EdgeInsets.only(left: 70,right: 10),
-                          child: Container(
-                            height: 40,
-                            child: Row(mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                              children: [
-                                Text(tableTrolly![i].title),
-                                Assets.icons.icArrowForward.svgIcon(
-                                    color: ColorName.black,size: 14),
-                              ],
+                          child: InkWell(
+                            onTap: (){
+                              debugPrint("id line 208: ${tableTrolly[i].collectionId}");
+                              Get.delete<ProductListController>();
+                              Get.to(() => ProductListScreen(),
+                                  arguments: [
+                                    ProductListController
+                                        .TYPE_CATEGORY_PRODUCTS,
+                                    Uri.parse(tableTrolly[i].collectionId.toString() ?? '')
+                                        .pathSegments
+                                        .last,
+                                    tableTrolly[i].title
+                                  ],
+                                  binding: BindingsBuilder.put(
+                                          () => ProductListController()));
+                            },
+                            child: Container(
+                              height: 40,
+                              child: Row(mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                children: [
+                                  Text(tableTrolly![i].title),
+                                  Assets.icons.icArrowForward.svgIcon(
+                                      color: ColorName.black,size: 14),
+                                ],
+                              ),
                             ),
                           ),
                         ),
@@ -148,14 +234,31 @@ class BanquetConfrenceScreen extends StatelessWidget {
                       for (var i = 0 ; i<stageLecterns.length ; i++)
                         Padding(
                           padding: const EdgeInsets.only(left: 70,right: 10),
-                          child: Container(
-                            height: 40,
-                            child: Row(mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                              children: [
-                                Text(stageLecterns![i].title),
-                                Assets.icons.icArrowForward.svgIcon(
-                                    color: ColorName.black,size: 14),
-                              ],
+                          child: InkWell(
+                            onTap: (){
+                              debugPrint("id line 240: ${stageLecterns[i].collectionId}");
+                              Get.delete<ProductListController>();
+                              Get.to(() => ProductListScreen(),
+                                  arguments: [
+                                    ProductListController
+                                        .TYPE_CATEGORY_PRODUCTS,
+                                    Uri.parse(stageLecterns[i].collectionId.toString() ?? '')
+                                        .pathSegments
+                                        .last,
+                                    stageLecterns[i].title
+                                  ],
+                                  binding: BindingsBuilder.put(
+                                          () => ProductListController()));
+                            },
+                            child: Container(
+                              height: 40,
+                              child: Row(mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                children: [
+                                  Text(stageLecterns![i].title),
+                                  Assets.icons.icArrowForward.svgIcon(
+                                      color: ColorName.black,size: 14),
+                                ],
+                              ),
                             ),
                           ),
                         ),
@@ -163,14 +266,31 @@ class BanquetConfrenceScreen extends StatelessWidget {
                       for (var i = 0 ; i<danceFloorSeprator.length ; i++)
                         Padding(
                           padding: const EdgeInsets.only(left: 70,right: 10),
-                          child: Container(
-                            height: 40,
-                            child: Row(mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                              children: [
-                                Text(danceFloorSeprator![i].title),
-                                Assets.icons.icArrowForward.svgIcon(
-                                    color: ColorName.black,size: 14),
-                              ],
+                          child: InkWell(
+                            onTap: (){
+                              debugPrint("id line 272: ${danceFloorSeprator[i].collectionId}");
+                              Get.delete<ProductListController>();
+                              Get.to(() => ProductListScreen(),
+                                  arguments: [
+                                    ProductListController
+                                        .TYPE_CATEGORY_PRODUCTS,
+                                    Uri.parse(danceFloorSeprator[i].collectionId.toString() ?? '')
+                                        .pathSegments
+                                        .last,
+                                    danceFloorSeprator[i].title
+                                  ],
+                                  binding: BindingsBuilder.put(
+                                          () => ProductListController()));
+                            },
+                            child: Container(
+                              height: 40,
+                              child: Row(mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                children: [
+                                  Text(danceFloorSeprator![i].title),
+                                  Assets.icons.icArrowForward.svgIcon(
+                                      color: ColorName.black,size: 14),
+                                ],
+                              ),
                             ),
                           ),
                         ),
