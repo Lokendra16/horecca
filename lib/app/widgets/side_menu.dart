@@ -87,6 +87,11 @@ class SideMenu extends StatelessWidget {
                 Get.toNamed(AppRoutes.myOrderScreen);
               },
             ),
+          Container(
+            height: 1,
+            width: double.infinity,
+            color: ColorName.mercury,
+          ),
           if (controller.isUserLoggedIn.value)
             ListTile(
               leading: const Icon(Icons.person_outlined),
@@ -95,6 +100,11 @@ class SideMenu extends StatelessWidget {
                 Get.toNamed(AppRoutes.savedAddressScreen);
               },
             ),
+          Container(
+            height: 1,
+            width: double.infinity,
+            color: ColorName.mercury,
+          ),
           ListTile(
             leading: const Icon(Icons.favorite_outline),
             title: Text(AppLocalizations.of(context).wishList),

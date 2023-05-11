@@ -32,7 +32,7 @@ class OrderListScreen extends StatelessWidget {
             : Padding(
                 padding: const EdgeInsets.only(top: 8.0),
                 child: ListView.builder(
-                  itemCount: 1,
+                  itemCount: controller.orderList.value.length,
                   itemBuilder: (context, index) {
                     return OrderItem(
                       item: controller.orderList.value[index],

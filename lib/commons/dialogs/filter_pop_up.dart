@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:the_horeca_store/app/modules/home_screen/controller/home_screen_controller.dart';
 import 'package:the_horeca_store/app/modules/product_list/controller/product_listview_controller.dart';
 import 'package:the_horeca_store/commons/utils/app_theme_data.dart';
 import 'package:the_horeca_store/l10n/localization.dart';
@@ -108,7 +109,9 @@ class SortPopup extends StatelessWidget {
                                     ColorName.jewel,
                                   ),
                                 ),
-                                onPressed: () {},
+                                onPressed: () {
+                                  Get.back();
+                                },
                                 child: Text(
                                   AppLocalizations.of(context).reset,
                                   style: AppThemeData.loginButton,
@@ -127,7 +130,10 @@ class SortPopup extends StatelessWidget {
                                     ColorName.jewel,
                                   ),
                                 ),
-                                onPressed: () {},
+                                onPressed: () {
+                                  Get.back();
+
+                                },
                                 child: Text(
                                   AppLocalizations.of(context).done,
                                   style: AppThemeData.loginButton,

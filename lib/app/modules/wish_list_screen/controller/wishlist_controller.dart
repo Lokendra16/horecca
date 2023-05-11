@@ -31,7 +31,7 @@ class WishlistController extends GetxController {
     AppPreference().getWishlistIds().then((value) {
       print("Wishlist Ids: $value");
       if (value != null && value.isNotEmpty) {
-        _getProductList(0, value
+        getProductList(0, value
         );
       } else {
         isEmpty.value = true;
@@ -40,7 +40,7 @@ class WishlistController extends GetxController {
     });
   }
 
-  Future<void> _getProductList(int pageKey, String? productIds) async {
+  Future<void> getProductList(int pageKey, String? productIds) async {
     final client = RestClient();
     // TODO SENDING THE COLLECTION ID HARD CODED
     var newItems = await client.getProductList("published",pageKey, _pageSize,productIds!, "");
