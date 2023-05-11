@@ -5,16 +5,16 @@ import 'package:the_horeca_store/src/gen/colors.gen.dart';
 class PrimaryCheckOutBtn extends StatelessWidget {
   final IconData? buttonIcon;
   final String btnText;
-  final Function()? onTap;
+  final Function()  onClick;
 
-  const PrimaryCheckOutBtn({Key? key, this.buttonIcon, required this.btnText, this.onTap})
+  const PrimaryCheckOutBtn({Key? key, this.buttonIcon, required this.btnText, required this.onClick})
       : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () {
-        onTap!();
+        onClick();
       },
       child: Container(
         margin: const EdgeInsets.only(left: 16, right: 16, bottom: 5),

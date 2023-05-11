@@ -30,8 +30,12 @@ class AddressListScreen extends StatelessWidget {
       floatingActionButton: Padding(
         padding: const EdgeInsets.only(bottom: 60.0),
         child: FloatingActionButton(
-          onPressed: () {
-            Get.toNamed(AppRoutes.addAddressScreen);
+          onPressed: () async{
+            var result = await Get.toNamed(AppRoutes.addAddressScreen);
+            debugPrint('result : $result');
+            if(result != null){
+              controller.getAddressList();
+            }
           },
           backgroundColor: ColorName.cardinal,
           child: const Icon(
@@ -211,9 +215,12 @@ class AddressListScreen extends StatelessWidget {
                   controller.showCheckout.value
                       ? InkWell(
                           onTap: () {
-                            controller.proceedToCheckout();
+
                           },
-                          child: const PrimaryCheckOutBtn(
+                          child:  PrimaryCheckOutBtn(
+                            onClick: (){
+                              controller.proceedToCheckout();
+                            },
                             btnText: "Continue to Checkout",
                           ),
                         )

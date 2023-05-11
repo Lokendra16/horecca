@@ -187,7 +187,8 @@ class AddAddressScreen extends StatelessWidget {
             const Spacer(),
             PrimaryCheckOutBtn(
               btnText: AppLocalizations.of(context).submit,
-              onTap: () {
+              onClick: () {
+
                 controller.addCountryAPI();
               },
             )

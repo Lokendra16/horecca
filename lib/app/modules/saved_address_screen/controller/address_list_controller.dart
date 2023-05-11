@@ -17,12 +17,12 @@ class AddressListController extends GetxController {
   @override
   void onInit() {
     super.onInit();
-    _getAddressList();
+    getAddressList();
     showCheckout.value = Get.arguments?["showCheckout"] ?? false;
 
   }
 
-  void _getAddressList() async {
+  void getAddressList() async {
     isLoading.value = true;
     var customerId = await AppPreference().get(AppPreference.KEY_CUSTOMER_ID);
     if(customerId != null && customerId.isNotEmpty){
@@ -43,7 +43,7 @@ class AddressListController extends GetxController {
     var api = await RestClient()
         .deleteAddress(customerId.getLastSegment(), addressId.toString())
         .then((value) {
-      _getAddressList();
+      getAddressList();
     }).onError((error, stackTrace) {
       print("Error: $error");
       MySnackBar().errorSnackBar(error.toString());
@@ -59,9 +59,13 @@ class AddressListController extends GetxController {
     var accessToken = await AppPreference().get(AppPreference.KEY_ACCESS_TOKEN) ?? '';
     var email = await AppPreference().get(AppPreference.KEY_EMAIL) ?? '';
     var addressData = addressList.value[isDefaultAddressIndex.value];
+    debugPrint('cart id : $cartId');
+    debugPrint('access token : $accessToken');
+    debugPrint('email : $email');
+    debugPrint('address data : $addressData');
     GraphQLRepo()
         .updateCartAddress(
-            cartId,
+       cartId,
             addressData.countryCode,
             accessToken,
             addressData.address1,

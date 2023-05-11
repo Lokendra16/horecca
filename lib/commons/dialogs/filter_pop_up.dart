@@ -61,6 +61,7 @@ class SortPopup extends StatelessWidget {
                             padding: const EdgeInsets.only(bottom: 10),
                             child: InkWell(
                               onTap: () {
+                                debugPrint('on tap : ${controller.filterItem[index].sortItem}');
                                 controller.changeIndex(index);
                               },
                               child: Row(

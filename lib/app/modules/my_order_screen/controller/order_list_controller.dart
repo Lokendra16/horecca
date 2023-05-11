@@ -1,3 +1,4 @@
+import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:the_horeca_store/app/modules/my_order_screen/model/order_model.dart';
 import 'package:the_horeca_store/commons/utils/app_preference.dart';
@@ -19,8 +20,12 @@ class OrderListController extends GetxController {
   void getOrderList() async {
     isInitialLoading.value = true;
     var cartId = await AppPreference().get(AppPreference.KEY_ACCESS_TOKEN) ?? '';
+    debugPrint('card id : $cartId');
     GraphQLRepo().orderListAPI(cartId).then(
       (value) {
+        //orderList.value = value;
+        debugPrint('value : $value');
+        debugPrint('order list value : ${orderList}');
         filterCartData(value);
       },
     ).onError(

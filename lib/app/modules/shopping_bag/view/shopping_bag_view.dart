@@ -29,6 +29,7 @@ class ShoppingBagView extends StatelessWidget {
           priceDetailWidget(size: size),
           Spacer(),
           PrimaryCheckOutBtn(
+            onClick: (){},
             buttonIcon: Icons.shopping_bag_outlined,
             btnText: AppLocalizations.of(context).proceedToCheckOut,
           )

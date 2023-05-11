@@ -68,6 +68,7 @@ class HomeScreenController extends GetxController {
 
   void productListAPI() async {
     GraphQLRepo().productListApi().then((value) {
+      debugPrint('product list : $value');
       filterProductData(value);
       isLoadingProducts.value = false;
     }).onError((error, stackTrace) {
@@ -77,8 +78,8 @@ class HomeScreenController extends GetxController {
   }
 
   void filterCategoryData(response){
+    debugPrint('response : $response');
     List<HomeCollections> col = [];
-
     response["nodes"].forEach((parent){
       var img = "";
       if (parent["image"] != null) {
@@ -97,7 +98,6 @@ class HomeScreenController extends GetxController {
 
   void filterProductData(response) {
     List<HomeCollections> col = [];
-
     response["nodes"].forEach((parent){
       List<HomeProducts> product = [];
       parent["products"]["nodes"].forEach((child1) {
@@ -107,10 +107,9 @@ class HomeScreenController extends GetxController {
         });
         product.add(p);
       });
-
       var collection = HomeCollections(id: parent["id"], title: parent["title"], products: product);
-
       col.add(collection);
+
     });
 
     productsByCollectionList.value = col;

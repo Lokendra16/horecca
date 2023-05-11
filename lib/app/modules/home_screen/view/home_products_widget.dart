@@ -13,24 +13,25 @@ class HomeProductsWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+
     Size size = MediaQuery.of(context).size;
     return SliverList(
-
       delegate: SliverChildBuilderDelegate(
-
         childCount: list.length,
         (context, index){
           var item = list[index];
+          print('item : ${item.products}');
           return Column(
             children: [
               const SizedBox(height: 10,),
+              item.products!.isNotEmpty ?
               Padding(
                 padding: const EdgeInsets.only(top: 10.0),
                 child: Text(
                   item.title ?? '',
                   style: AppThemeData.font16Weight600PlayfairCardinal.copyWith(fontSize: 24.0,fontFamily: 'SF Pro Rounded',color: ColorName.gray,fontWeight: FontWeight.w500),
                 ),
-              ),
+              ) : const SizedBox.shrink(),
               const SizedBox(
                 height: 12,
               ),
@@ -38,7 +39,9 @@ class HomeProductsWidget extends StatelessWidget {
                 scrollDirection: Axis.horizontal,
                 child: Row(
                   children: [
+
                     for (int i = 0; i < item.products!.length; i++)
+
                       GestureDetector(
                         onTap: () {
                           Get.toNamed(AppRoutes.productDetail,

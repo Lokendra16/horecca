@@ -59,7 +59,7 @@ abstract class RestClient {
   @GET("/countries.json")
   Future<CountryListResponse> getCountriesList();
 
-  @GET("customers/{customer_id}/addresses.json")
+  @POST("customers/{customer_id}/addresses.json")
   Future<CountryListResponse> addCountryApi(
       @Path("customer_id") String customerId, @Body() Map<String, dynamic> body);
 }

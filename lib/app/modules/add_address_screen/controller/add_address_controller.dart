@@ -75,7 +75,8 @@ class AddAddressController extends GetxController {
     }
 
     var customerId = await AppPreference().get(AppPreference.KEY_CUSTOMER_ID);
-    debugPrint('customer id : $customerId');
+    var customId = customerId?.substring(23);
+    debugPrint('customer id : $customId');
     var body = {
     "address": {
     "address1": addressController.text,
@@ -92,18 +93,23 @@ class AddAddressController extends GetxController {
     "province_code": selectedProvince.value?.code,
     "country_code": selectedCountry.value?.code,
     "country_name": selectedCountry.value?.name,
-    }};
-    debugPrint('body : $body');
+    }
+    };
 
     final client = RestClient();
-    var api = await client.addCountryApi('6934461776183', body
-    );
+    var api = await client.addCountryApi(customId!, body);
 
     try{
       if (api.countries != null && api.countries!.isNotEmpty) {
+        debugPrint('in if');
         countriesList.value = api.countries!;
+        Get.back(result: 1);
+      }
+      else{
+        Get.back(result: 1);
       }
     }catch(e){
+      debugPrint('in catch');
       debugPrint('on error : $e');
     }
 
