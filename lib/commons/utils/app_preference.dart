@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 
 class AppPreference {
@@ -38,21 +39,23 @@ class AppPreference {
 
   Future<void> addRemoveFromWishlist(String id) async {
     var ids = await storage.read(key: AppPreference.KEY_WISHLIST);
-
+   debugPrint("line 42: ${KEY_WISHLIST}");
     if (ids == null || ids.isEmpty) {
       List<String> list = [id];
       var newIds = list.join(",");
       return await storage.write(key: AppPreference.KEY_WISHLIST, value: newIds);
     }
     List<String> list = ids.split(",");
-
+    debugPrint("line 49: ${ids}");
     if (list.contains(id)) {
+      debugPrint("line 51: ${list.contains(id)}");
       list.remove(id);
-    }else{
+    }else{debugPrint("line 53: ${list.remove(id)}");
+
       list.add(id);
     }
     var newIds = list.join(",");
-
+    debugPrint("line 58: ${list.join}");
     return await storage.write(key: AppPreference.KEY_WISHLIST, value: newIds);
   }
 

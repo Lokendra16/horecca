@@ -12,6 +12,7 @@ class WishListScreen extends StatelessWidget {
 
   final WishlistController controller = Get.put(WishlistController());
   final DashboardScreenController dashboardScreenController = Get.put(DashboardScreenController());
+
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
@@ -26,12 +27,12 @@ class WishListScreen extends StatelessWidget {
       ),
       body: Padding(
         padding: const EdgeInsets.only(bottom: 4.0),
-        child: Obx(() => controller.isLoading.value
+        child: Obx(() =>controller.isLoading.value
             ? const Center(child: CircularProgressIndicator())
             : controller.isEmpty.value ? const Center(child: Text("No Products Found in Wishlist")) : ListView.builder(
                 itemBuilder: (context, index) {
                   return ProductItem(
-                    isFromWishList: true,
+                   isFromWishList: true,
                     item: controller.productList[index],
                     onWishListItemRemove: () {
                       controller.removeItem(index);
