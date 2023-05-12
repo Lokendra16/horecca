@@ -21,4 +21,5 @@ class AppRoutes {
   static const orderDetail = '/order_detail';
   static const checkoutScreen = '/checkout_screen';
   static const reviewScreen = '/review_screen';
+  static const thankyou = '/thankyou_scren';
 }

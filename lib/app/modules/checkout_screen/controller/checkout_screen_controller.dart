@@ -25,7 +25,7 @@ class CheckoutScreenController extends GetxController {
           onNavigationRequest: (request) {
             print("Request URL : ${request.url}");
             if(Uri.parse(request.url).pathSegments.last == "thank_you"){
-              Get.offAllNamed(AppRoutes.myOrderScreen);
+              Get.offAllNamed(AppRoutes.thankyou);
             }
             return NavigationDecision.navigate;
           },
@@ -35,4 +35,5 @@ class CheckoutScreenController extends GetxController {
         ));
     }
   }
+
 }
