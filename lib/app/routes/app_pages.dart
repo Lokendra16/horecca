@@ -42,6 +42,7 @@ import 'package:the_horeca_store/app/modules/wish_list_screen/view/wish_list_scr
 import 'package:the_horeca_store/app/routes/app_routes.dart';
 import '../modules/bottom_navigation/view/bottom_navigation_view.dart';
 import '../modules/product_list/view/product_list_screen.dart';
+import '../modules/thankyou_screen/thankyou_screen.dart';
 
 class AppPages {
   // For Initial route
@@ -119,5 +120,7 @@ class AppPages {
         name: AppRoutes.reviewScreen,
         page: () => ReviewScreen(),
         binding: ReviewScreenBinding()),
+    GetPage(name: AppRoutes.thankyou,
+        page: ()=>ThankYouScreen()),
   ];
 }

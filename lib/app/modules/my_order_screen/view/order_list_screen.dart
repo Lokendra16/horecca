@@ -46,14 +46,14 @@ class OrderListScreen extends StatelessWidget {
                       ),
                     ),
                 )),
-             Padding(
-              padding: EdgeInsets.symmetric(vertical: 20.0,horizontal: 20),
-              child: InkWell(
-                  onTap: (){
-                    Get.offAllNamed(AppRoutes.dashboard);
-                  },
-                  child: const PrimaryButton(primaryBtnText: 'Back to Home')),
-            )
+            //  Padding(
+            //   padding: EdgeInsets.symmetric(vertical: 20.0,horizontal: 20),
+            //   child: InkWell(
+            //       onTap: (){
+            //         Get.offAllNamed(AppRoutes.dashboard);
+            //       },
+            //       child: const PrimaryButton(primaryBtnText: 'Back to Home')),
+            // )
           ],
         ),
       ),

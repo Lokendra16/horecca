@@ -17,6 +17,7 @@ import '../../kitchenPastry_screen/kitchen_pastry_screen.dart';
 import '../../liveCooking/liveCooking_screen.dart';
 import '../../tableTop_screen/tableTop_Screen.dart';
 import '../../table_accessories_screen/table_accessories_screen.dart';
+import '../../thankyou_screen/thankyou_screen.dart';
 
 class CategoryListScreen extends StatelessWidget {
   CategoryListScreen({Key? key}) : super(key: key);

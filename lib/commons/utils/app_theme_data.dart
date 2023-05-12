@@ -250,6 +250,8 @@ class AppThemeData {
       fontSize: 14);
   static final font12Weight400Black = GoogleFonts.roboto(
       color: ColorName.black, fontWeight: FontWeight.w400, fontSize: 12);
+  static final font12Weight400green = GoogleFonts.roboto(
+      color:Color(0XFF2D8424), fontWeight: FontWeight.w400, fontSize: 12);
 
   // FONT 12 GRAY 400
   static const font12Gray400 = TextStyle(
