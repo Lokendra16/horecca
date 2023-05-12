@@ -118,6 +118,13 @@ class AppThemeData {
       color: ColorName.gray);
 
 
+  static const sf400Font14Gray = TextStyle(
+      fontWeight: FontWeight.w400,
+      fontFamily: 'SF Pro Rounded',
+      fontSize: 14,
+      color: ColorName.gray);
+
+
 
   // SF PRO 500 FONT 16 BLACK
   static const sf500Font16Black = TextStyle(
@@ -182,6 +189,14 @@ class AppThemeData {
   static const sf400Font12Black = TextStyle(
       color: ColorName.black,
       fontSize: 12,
+      fontWeight: FontWeight.w400,
+      fontFamily: 'SF Pro Rounded');
+
+
+  // SF 400 FONT 12
+  static final sf400Font16Black = TextStyle(
+      color: ColorName.black.withOpacity(0.6),
+      fontSize: 15,
       fontWeight: FontWeight.w400,
       fontFamily: 'SF Pro Rounded');
 
@@ -280,4 +295,12 @@ class AppThemeData {
   );
   static final font16Weight600 = GoogleFonts.roboto(
       color: ColorName.black, fontWeight: FontWeight.w600, fontSize: 16);
+
+
+  static const font20Weight500Gray = TextStyle(
+      fontSize: 20.0,
+      fontFamily: 'SF Pro Rounded',
+      color: ColorName.gray,
+      fontWeight: FontWeight.w500
+  );
 }

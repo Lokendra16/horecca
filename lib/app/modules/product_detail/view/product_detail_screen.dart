@@ -83,53 +83,94 @@ class ProductDetailScreen extends StatelessWidget {
               child: CircularProgressIndicator(color: ColorName.jewel),
             );
           } else {
-            return SingleChildScrollView(
-              child: Column(
-                children: [
-                  ProductDetailPageView(),
-                  Padding(
-                    padding: const EdgeInsets.only(top: 12.0),
-                    child: Column(
-                      children: [
-                        Obx(
+            return Stack(
+              children: [
+                ListView(
+                  children: [
+                    ProductDetailPageView(),
+                    Obx(
                           () => ProductDetailsWidget(
-                            product:
-                                productDetailController.productDetail.value,
-                          ),
-                        ),
-                        ProductVariantsWidget(),
-                        Container(height: 1,width: size.width,color: ColorName.silver,),
-                        ProductDescWidget(),
-                        Container(height: 1,width: size.width,color: ColorName.silver,),
-                        ProductReviewWidget(),
-                        Container(height: 1,width: size.width,color: ColorName.silver,),
-                        userReviewWidget(size: size),
-                        productDetailController.isLoadingRecommendation.value
-                            ? const SizedBox()
-                            : ProductsRecommendationWidget(
-                                data: productDetailController
-                                    .productRecommendationList.value,
-                              ),
-                        ProductItemAddWidget(),
-                        /*      selectSizeWidget(size: size),
-                    selectCapecityWidget(size: size),
-                    selectColorWidget(size: size),
-
-                    additionalInfoWidget(productDetailController: productDetailController),
-
+                        product:
+                        productDetailController.productDetail.value,
+                      ),
+                    ),
+                    ProductVariantsWidget(),
+                    Container(height: 1,width: size.width,color: ColorName.silver,),
+                    ProductDescWidget(),
+                    Container(height: 1,width: size.width,color: ColorName.silver,),
+                    ProductReviewWidget(),
+                    Container(height: 1,width: size.width,color: ColorName.silver,),
                     userReviewWidget(size: size),
-                    Text(
-                      AppLocalizations.of(context).youMayAlsoLike,
-                      style: AppThemeData.font16Weight600Playfair,
+                    productDetailController.isLoadingRecommendation.value
+                        ? const SizedBox()
+                        : ProductsRecommendationWidget(
+                      data: productDetailController
+                          .productRecommendationList.value,
                     ),
-                    SizedBox(height: size.height * 0.3, child: const HomeCategoryGridView()),
-                    */
-                      ],
-                    ),
-                  ),
-                ],
-              ),
-            );
+                    const SizedBox(height: 60,),
+                  ],
+                ),
+                Positioned(
+                    bottom: 0,
+                    child: ProductItemAddWidget()),
+              ],
+            )
+            // return ListView(
+            //   children: [
+            //     Column(
+            //       children: [
+            //         ProductDetailPageView(),
+            //         Padding(
+            //           padding: const EdgeInsets.only(top: 12.0),
+            //           child: Column(
+            //             children: [
+            //               Obx(
+            //                 () => ProductDetailsWidget(
+            //                   product:
+            //                       productDetailController.productDetail.value,
+            //                 ),
+            //               ),
+            //               ProductVariantsWidget(),
+            //               Container(height: 1,width: size.width,color: ColorName.silver,),
+            //               ProductDescWidget(),
+            //               Container(height: 1,width: size.width,color: ColorName.silver,),
+            //               ProductReviewWidget(),
+            //               Container(height: 1,width: size.width,color: ColorName.silver,),
+            //               userReviewWidget(size: size),
+            //               productDetailController.isLoadingRecommendation.value
+            //                   ? const SizedBox()
+            //                   : ProductsRecommendationWidget(
+            //                       data: productDetailController
+            //                           .productRecommendationList.value,
+            //                     ),
+            //               ProductItemAddWidget(),
+            //
+            //
+            //               /*      selectSizeWidget(size: size),
+            //           selectCapecityWidget(size: size),
+            //           selectColorWidget(size: size),
+            //
+            //           additionalInfoWidget(productDetailController: productDetailController),
+            //
+            //           userReviewWidget(size: size),
+            //           Text(
+            //             AppLocalizations.of(context).youMayAlsoLike,
+            //             style: AppThemeData.font16Weight600Playfair,
+            //           ),
+            //           SizedBox(height: size.height * 0.3, child: const HomeCategoryGridView()),
+            //           */
+            //             ],
+            //           ),
+            //         ),
+            //
+            //       ],
+            //     ),
+            //
+            //
+            //   ],
+            // )
+
+            ;
           }
         },
       ),
@@ -148,56 +189,54 @@ class ProductItemAddWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
     return Container(
-      margin: const EdgeInsets.only(top: 20, bottom: 15),
-      height: 38,
+      margin: const EdgeInsets.only(top: 20, bottom: 0),
+      padding: const EdgeInsets.only(bottom: 40,top: 10),
+      //height: 38,
       width: size.width,
       color: ColorName.white,
       child: Padding(
         padding: const EdgeInsets.only(left: 16, right: 16),
         child: Row(
           children: [
-            Container(
-              height: 40,
-              width: 112,
-              decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(6),
-                  border: Border.all(color: ColorName.silver)),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                children: [
-                  InkWell(
-                    onTap: () => controller.decrementQuantity(),
-                    child: const Icon(
-                      Icons.remove,
-                    ),
-                  ),
-                  Container(
-                    height: 30,
-                    width: 32,
-                    decoration: BoxDecoration(
-                        color: ColorName.jewel,
-                        borderRadius: BorderRadius.circular(6)),
-                    child: Center(
-                      child: Obx(
-                        () => Text(
-                          "${controller.quantity.value}",
-                          style: AppThemeData.font14Weight700,
-                        ),
-                      ),
-                    ),
-                  ),
-                  InkWell(
-                    onTap: () => controller.incrementQuantity(),
-                    child: const Icon(
-                      Icons.add,
-                    ),
-                  )
-                ],
-              ),
-            ),
-            const SizedBox(
-              width: 16,
-            ),
+            // Container(
+            //   height: 40,
+            //   width: 112,
+            //   decoration: BoxDecoration(
+            //       borderRadius: BorderRadius.circular(6),
+            //       border: Border.all(color: ColorName.silver)),
+            //   child: Row(
+            //     mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+            //     children: [
+            //       InkWell(
+            //         onTap: () => controller.decrementQuantity(),
+            //         child: const Icon(
+            //           Icons.remove,
+            //         ),
+            //       ),
+            //       Container(
+            //         height: 30,
+            //         width: 32,
+            //         decoration: BoxDecoration(
+            //             color: ColorName.jewel,
+            //             borderRadius: BorderRadius.circular(6)),
+            //         child: Center(
+            //           child: Obx(
+            //             () => Text(
+            //               "${controller.quantity.value}",
+            //               style: AppThemeData.font14Weight700,
+            //             ),
+            //           ),
+            //         ),
+            //       ),
+            //       InkWell(
+            //         onTap: () => controller.incrementQuantity(),
+            //         child: const Icon(
+            //           Icons.add,
+            //         ),
+            //       )
+            //     ],
+            //   ),
+            // ),
             Expanded(
               child: TextButton(
                 onPressed: () {
@@ -206,7 +245,7 @@ class ProductItemAddWidget extends StatelessWidget {
                 style:
                     TextButton.styleFrom(backgroundColor: ColorName.cardinal),
                 child: Text(AppLocalizations.of(context).addToCart,
-                    style: AppThemeData.font14Weight700),
+                    style: AppThemeData.sf500Font16White),
               ),
             )
           ],

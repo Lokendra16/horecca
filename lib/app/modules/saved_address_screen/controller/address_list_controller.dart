@@ -45,7 +45,7 @@ class AddressListController extends GetxController {
         .then((value) {
       getAddressList();
     }).onError((error, stackTrace) {
-      print("Error: $error");
+      print("Error: ${error}");
       MySnackBar().errorSnackBar(error.toString());
     });
   }
@@ -123,7 +123,8 @@ class AddressListController extends GetxController {
                 style: TextStyle(color: Colors.black),
               ),
               onPressed: () {
-                deleteDialog(context,index);
+                Get.back();
+                deleteAddress(index);
               },
             ),
           ],

@@ -119,42 +119,7 @@ class SideMenu extends StatelessWidget {
             width: double.infinity,
             color: ColorName.mercury,
           ),
-          ListTile(
-            leading: const Icon(Icons.star_border_outlined),
-            title: Text(AppLocalizations.of(context).rateUs),
-            onTap: () {
-              if (Platform.isIOS) {
-                Utility.launchURL(Utility.rateUsURLIOS);
-              } else {
-                Utility.launchURL(Utility.rateUsURLAndroid);
-              }
-            },
-          ),
-          Container(
-            height: 1,
-            width: double.infinity,
-            color: ColorName.mercury,
-          ),
-          ListTile(
-            leading: const Icon(Icons.email_outlined),
-            title: Text(AppLocalizations.of(context).contactUs),
-            onTap: () {
-              Utility.launchMail('mailto:example@gmail.com');
-            },
-          ),
-          Container(
-            height: 1,
-            width: double.infinity,
-            color: ColorName.mercury,
-          ),
-          ListTile(
-            leading: const Icon(Icons.privacy_tip_outlined),
-            title: Text(AppLocalizations.of(context).privacyPolicy),
-            onTap: () {
-              Get.toNamed(AppRoutes.webview,
-                  arguments: Utility.privacyPolicyURL);
-            },
-          ),
+
           Container(
             height: 1,
             width: double.infinity,
@@ -253,6 +218,47 @@ class SideMenu extends StatelessWidget {
                     )
                   : const CircularProgressIndicator(),
             ),
+          ListTile(
+            leading: const Icon(Icons.star_border_outlined),
+            title: Text(AppLocalizations.of(context).rateUs),
+            onTap: () {
+              if (Platform.isIOS) {
+                Utility.launchURL(Utility.rateUsURLIOS);
+              } else {
+                Utility.launchURL(Utility.rateUsURLAndroid);
+              }
+            },
+          ),
+          Container(
+            height: 1,
+            width: double.infinity,
+            color: ColorName.silver,
+          ),
+          ListTile(
+            leading: const Icon(Icons.email_outlined),
+            title: Text(AppLocalizations.of(context).contactUs),
+            onTap: () {
+              Utility.launchMail('mailto:example@gmail.com');
+            },
+          ),
+          Container(
+            height: 1,
+            width: double.infinity,
+            color: ColorName.silver,
+          ),
+          ListTile(
+            leading: const Icon(Icons.privacy_tip_outlined),
+            title: Text(AppLocalizations.of(context).privacyPolicy),
+            onTap: () {
+              Get.toNamed(AppRoutes.webview,
+                  arguments: Utility.privacyPolicyURL);
+            },
+          ),
+          Container(
+            height: 1,
+            width: double.infinity,
+            color: ColorName.silver,
+          ),
           if (controller.isUserLoggedIn.value)
             ListTile(
               leading: const Icon(

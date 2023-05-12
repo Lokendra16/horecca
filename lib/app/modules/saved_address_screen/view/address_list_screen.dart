@@ -55,7 +55,7 @@ class AddressListScreen extends StatelessWidget {
                 children: [
                   Expanded(
                     child: Obx(
-                      () => Padding(
+                      () => controller.addressList.isNotEmpty ? Padding(
                         padding: const EdgeInsets.only(bottom: 10.0),
                         child: ListView.builder(
                             itemCount: controller.addressList.length,
@@ -72,10 +72,11 @@ class AddressListScreen extends StatelessWidget {
                                           "Address ${index + 1}",
                                           style: AppThemeData.font14Weight600Black,
                                         ),
-                                        Text(
-                                          'Edit',
-                                          style: AppThemeData.font14Weight600GrayUnderline,
-                                        )
+                                        // TODO COMMENTED IT AS OF NOW ITS NOT WORKING
+                                        // Text(
+                                        //   'Edit',
+                                        //   style: AppThemeData.font14Weight600GrayUnderline,
+                                        // )
                                       ],
                                     ),
                                   ),
@@ -115,7 +116,8 @@ class AddressListScreen extends StatelessWidget {
                                                 const Spacer(),
                                                 GestureDetector(
                                                     onTap: () {
-                                                      controller.deleteAddress(index);
+                                                      controller.deleteDialog(context, index);
+                                                      //controller.deleteAddress(index);
                                                     },
                                                     child: Assets.icons.icDelete.svgIcon(size: 24)),
                                               ]),
@@ -209,7 +211,7 @@ class AddressListScreen extends StatelessWidget {
                                 ],
                               );
                             }),
-                      ),
+                      ) : const Center(child: Text('No Address found')),
                     ),
                   ),
                   controller.showCheckout.value

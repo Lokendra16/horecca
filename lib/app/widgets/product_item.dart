@@ -47,7 +47,7 @@ class ProductItem extends StatelessWidget {
                 placeholder: (context, url) =>
                     Image.asset("assets/images/ic_appicon.png"),
                 fadeOutDuration: const Duration(milliseconds: 100),
-                height: size.width / 3,
+                height: size.width / 3.5,
                 fit: BoxFit.cover,
               ),
             ),

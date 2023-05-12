@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:the_horeca_store/app/modules/cart_screen/controller/cart_controller.dart';
+import 'package:the_horeca_store/app/modules/product_detail/controller/product_detail_controller.dart';
 import 'package:the_horeca_store/app/routes/app_routes.dart';
 import 'package:the_horeca_store/app/widgets/app_bar_cart.dart';
 import 'package:the_horeca_store/app/widgets/cart_item.dart';
@@ -18,6 +19,7 @@ class CartScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    debugPrint('cart screen : ${controller.cartData.value.productList?[0].quantity}');
     return Scaffold(
       backgroundColor: ColorName.mercury,
       appBar: PreferredSize(
@@ -39,14 +41,27 @@ class CartScreen extends StatelessWidget {
             : Column(
                 crossAxisAlignment: CrossAxisAlignment.stretch,
                 children: [
-                  Expanded(
-                    child: ListView.builder(
-                      itemCount: controller.cartData.value.productList?.length ?? 0,
-                      itemBuilder: (context, index) {
-                        return CartItem(item: controller.cartData.value.productList![index],onRemove: () {
-                          controller.removeProductFromCart(index);
-                        },);
-                      },
+                  Obx(() =>
+                    Expanded(
+                      child: ListView.builder(
+                        itemCount: controller.cartData.value.productList?.length ?? 0,
+                        itemBuilder: (context, index) {
+                          print('list view :${controller.cartData.value.productList![index].quantity}');
+                          var quantity = controller.cartData.value.productList![index].quantity;
+                          return CartItem(
+                            item: controller.cartData.value.productList![index],
+                            onRemove: () {
+                            controller.removeProductFromCart(index);
+                          },
+                            decrease: (){
+                              controller.decrementQuantity(quantity,index);
+                            },
+                            increase: (){
+                              controller.incrementQuantity(quantity,index);
+                            },
+                          );
+                        },
+                      ),
                     ),
                   ),
                   Container(
@@ -79,8 +94,8 @@ class CartScreen extends StatelessWidget {
                                 AppLocalizations.of(context).totalItem,
                                 style: AppThemeData.sf400Font15Gray,
                               ),
-                              const Text(
-                                "04",
+                               Text(
+                                controller.cartData.value.productList![0].quantity.toString(),
                                 style: AppThemeData.sf400Font15Gray,
                               ),
                             ],

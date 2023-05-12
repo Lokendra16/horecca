@@ -105,6 +105,13 @@ class HomeScreenController extends GetxController {
         child1["images"]["nodes"].forEach((child2) {
           p.image = child2["url"];
         });
+
+        p.price =  child1["priceRange"]["maxVariantPrice"]['amount'];
+          debugPrint('amount : ${p.price}');
+
+
+        // p.price?.amount = child1['priceRange'];
+        // debugPrint('price : ${p.price?.amount}');
         product.add(p);
       });
       var collection = HomeCollections(id: parent["id"], title: parent["title"], products: product);
@@ -183,7 +190,6 @@ class HomeScreenController extends GetxController {
       final client = RestClient();
       var newItems = await client.getHomeCategoryList(id);
       homeList.value = newItems;
-      debugPrint('Home category list : ${newItems}');
       // final newItems = await RemoteApi.getCharacterList(pageKey, _pageSize);
         final nextPageKey = newItems.custom_collections!.last.id;
     } catch (error) {

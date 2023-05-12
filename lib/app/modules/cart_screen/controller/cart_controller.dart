@@ -10,6 +10,7 @@ class CartScreenController extends GetxController {
   var isInitialLoading = true.obs;
   var cartData = CartModel().obs;
 
+
   @override
   void onInit() {
     super.onInit();
@@ -92,4 +93,23 @@ class CartScreenController extends GetxController {
       cartData.value = cartModel;
     }
   }
+
+  void incrementQuantity(quantity,index) {
+    if (quantity < 10) {
+      quantity++;
+      cartData.value.productList![index].quantity = quantity;
+    }
+    print('increment : ${quantity}');
+    update();
+  }
+
+  void decrementQuantity(quantity,index) {
+    if (quantity >= 1) {
+      quantity--;
+    }
+
+    print('decrement : ${quantity}');
+
+  }
+
 }

@@ -1,6 +1,8 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:the_horeca_store/app/modules/product_detail/controller/product_detail_controller.dart';
 import 'package:the_horeca_store/commons/utils/app_theme_data.dart';
 import 'package:the_horeca_store/networking/models/product_data/product_data.dart';
 import 'package:the_horeca_store/src/gen/colors.gen.dart';
@@ -8,11 +10,16 @@ import 'package:the_horeca_store/src/gen/colors.gen.dart';
 class CartItem extends StatelessWidget {
   CartItem({
     required this.item,
-    super.key, this.onRemove,
+    super.key,
+    this.onRemove,
+    this.decrease,
+    this.increase,
   });
 
   final ProductData item;
   final VoidCallback? onRemove;
+  final VoidCallback? decrease;
+  final VoidCallback? increase;
 
   @override
   Widget build(BuildContext context) {
@@ -21,11 +28,7 @@ class CartItem extends StatelessWidget {
       padding: const EdgeInsets.all(8),
       decoration: const BoxDecoration(
           color: ColorName.white,
-        boxShadow: [
-           BoxShadow(
-               color: ColorName.gray,blurRadius: 2)
-        ]
-      ),
+          boxShadow: [BoxShadow(color: ColorName.gray, blurRadius: 2)]),
       margin: const EdgeInsets.only(top: 16),
       child: Row(
         crossAxisAlignment: CrossAxisAlignment.start,
@@ -33,8 +36,10 @@ class CartItem extends StatelessWidget {
           CachedNetworkImage(
             imageUrl: item.image?.src ?? '',
             width: size.width * 0.36,
-            errorWidget: (context, url, error) => Image.asset("assets/images/ic_appicon.png"),
-            placeholder: (context, url) => Image.asset("assets/images/ic_appicon.png"),
+            errorWidget: (context, url, error) =>
+                Image.asset("assets/images/ic_appicon.png"),
+            placeholder: (context, url) =>
+                Image.asset("assets/images/ic_appicon.png"),
             fadeOutDuration: const Duration(milliseconds: 100),
             height: size.width / 3.5,
             fit: BoxFit.contain,
@@ -62,7 +67,8 @@ class CartItem extends StatelessWidget {
                         padding: const EdgeInsets.symmetric(horizontal: 8.0),
                         child: GestureDetector(
                             onTap: onRemove,
-                            child: const Icon(Icons.close, color: ColorName.black, size: 24)),
+                            child: const Icon(Icons.close,
+                                color: ColorName.black, size: 24)),
                       )
                     ],
                   ),
@@ -70,19 +76,22 @@ class CartItem extends StatelessWidget {
                     padding: const EdgeInsets.symmetric(vertical: 4.0),
                     child: Text(
                       'Material : Steel',
-                      style: AppThemeData.sf500Font12Black.copyWith(fontSize: 13),
+                      style:
+                          AppThemeData.sf500Font12Black.copyWith(fontSize: 13),
                     ),
                   ),
                   Text(
                     'Category : Appetizers & Sides',
                     style: AppThemeData.sf500Font12Black.copyWith(fontSize: 13),
                   ),
-                  const SizedBox(height: 10,),
+                  const SizedBox(
+                    height: 10,
+                  ),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
                       Container(
-                        padding: const EdgeInsets.only(left: 6,right: 6),
+                        padding: const EdgeInsets.only(left: 16, right: 16),
                         decoration: BoxDecoration(
                           color: ColorName.white,
                           borderRadius: BorderRadius.circular(6),
@@ -92,23 +101,30 @@ class CartItem extends StatelessWidget {
                         ),
                         child: Row(
                           children: [
-                            const Icon(Icons.remove, color: ColorName.gray, size: 16),
-                            Container(
-                              margin: const EdgeInsets.only(left: 14,right: 14),
-                            padding: const EdgeInsets.all(4),
-                              decoration: BoxDecoration(
-                                  color: ColorName.jewel, borderRadius: BorderRadius.circular(5)),
+                            InkWell(
+                                onTap: () {
+                                  decrease!();
+                                },
+                                child: const Icon(Icons.remove,
+                                    color: ColorName.gray, size: 16)),
+                            Padding(
+                              padding: const EdgeInsets.all(8.0),
                               child: Center(
                                 child: Text(
                                   item.quantity.toString(),
                                   style: GoogleFonts.roboto(
-                                      color: ColorName.white,
+                                      color: ColorName.black,
                                       fontSize: 14,
                                       fontWeight: FontWeight.w500),
                                 ),
                               ),
                             ),
-                            const Icon(Icons.add, color: ColorName.black, size: 16),
+                            InkWell(
+                                onTap: () {
+                                  increase!();
+                                },
+                                child: const Icon(Icons.add,
+                                    color: ColorName.black, size: 16)),
                           ],
                         ),
                       ),

@@ -9,29 +9,38 @@ import 'package:the_horeca_store/src/gen/colors.gen.dart';
 
 class HomeProductsWidget extends StatelessWidget {
   final List<HomeCollections> list;
+
   const HomeProductsWidget({Key? key, required this.list}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-
     Size size = MediaQuery.of(context).size;
     return SliverList(
       delegate: SliverChildBuilderDelegate(
         childCount: list.length,
-        (context, index){
+
+        (context, index) {
           var item = list[index];
-          print('item : ${item.products}');
           return Column(
             children: [
-              const SizedBox(height: 10,),
-              item.products!.isNotEmpty ?
-              Padding(
-                padding: const EdgeInsets.only(top: 10.0),
-                child: Text(
-                  item.title ?? '',
-                  style: AppThemeData.font16Weight600PlayfairCardinal.copyWith(fontSize: 24.0,fontFamily: 'SF Pro Rounded',color: ColorName.gray,fontWeight: FontWeight.w500),
+              if (item.products!.isNotEmpty)
+                const SizedBox(
+                  height: 10,
                 ),
-              ) : const SizedBox.shrink(),
+              item.products!.isNotEmpty
+                  ? Padding(
+                      padding:  EdgeInsets.only(top: index == 0 ? 0 : 10.0),
+                      child: Text(
+                        item.title ?? '',
+                        style: AppThemeData.font16Weight600PlayfairCardinal
+                            .copyWith(
+                                fontSize: 24.0,
+                                fontFamily: 'SF Pro Rounded',
+                                color: ColorName.gray,
+                                fontWeight: FontWeight.w500),
+                      ),
+                    )
+                  : const SizedBox.shrink(),
               const SizedBox(
                 height: 12,
               ),
@@ -39,20 +48,21 @@ class HomeProductsWidget extends StatelessWidget {
                 scrollDirection: Axis.horizontal,
                 child: Row(
                   children: [
-
                     for (int i = 0; i < item.products!.length; i++)
-
                       GestureDetector(
                         onTap: () {
                           Get.toNamed(AppRoutes.productDetail,
-                                arguments: Uri.parse(item.products?[i].id ?? '').pathSegments.last);
+                              arguments: Uri.parse(item.products?[i].id ?? '')
+                                  .pathSegments
+                                  .last);
                         },
                         child: Container(
                           width: size.width * 0.40,
                           height: size.width * 0.50,
                           margin: const EdgeInsets.only(left: 16),
                           decoration: const BoxDecoration(
-                              color: ColorName.white, //border: Border.all(color: ColorName.silver)
+                            color: ColorName
+                                .white, //border: Border.all(color: ColorName.silver)
                           ),
                           child: Column(
                             children: [
@@ -63,37 +73,45 @@ class HomeProductsWidget extends StatelessWidget {
                                       child: Image.network(
                                         item.products?[i].image ?? '',
                                         fit: BoxFit.cover,
-                                        errorBuilder: (context, url, error) => Image.asset('assets/images/ic_appicon.png'),
+                                        errorBuilder: (context, url, error) =>
+                                            Image.asset(
+                                                'assets/images/ic_appicon.png'),
                                       ),
                                     ),
                                     Align(
                                       alignment: Alignment.topRight,
                                       child: Padding(
                                         padding: const EdgeInsets.all(4.0),
-                                        child: WishlistWidget(id: Uri.parse(item.products![i].id.toString()).pathSegments.last ),
+                                        child: WishlistWidget(
+                                            id: Uri.parse(item.products![i].id
+                                                    .toString())
+                                                .pathSegments
+                                                .last),
                                       ),
                                     ),
                                   ],
                                 ),
                               ),
                               Padding(
-                                padding: const EdgeInsets.only(top: 4, left: 5, right: 5),
+                                padding: const EdgeInsets.only(
+                                    top: 4, left: 5, right: 5),
                                 child: Text(
                                   item.products?[i].title ?? '',
-                                  maxLines: 1,
+                                  maxLines: 2,
                                   textAlign: TextAlign.center,
-                                  style: AppThemeData.sf400Font12Black,
+                                  style: AppThemeData.sf400Font16Black,
                                 ),
                               ),
-
-                              const Padding(
+                              Padding(
                                 padding: EdgeInsets.only(top: 5, bottom: 8),
                                 child: Text(
-                                  'AED 134.75', //TODO Make this dynamic
+                                  "AED ${item.products?[i].price}" ?? '', //TODO Make this dynamic
                                   style: AppThemeData.sf500Font12,
                                 ),
                               ),
-                              const SizedBox(height: 20,),
+                              const SizedBox(
+                                height: 20,
+                              ),
                             ],
                           ),
                         ),
