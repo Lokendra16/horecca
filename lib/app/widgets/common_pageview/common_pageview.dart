@@ -1,4 +1,6 @@
 import 'dart:core';
+
+import 'package:fancy_shimmer_image/fancy_shimmer_image.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:the_horeca_store/app/widgets/common_pageview/common_pageview_controller.dart';
@@ -27,7 +29,11 @@ class CommonPageView extends StatelessWidget {
                 itemCount: homepageContents.length,
                 onPageChanged: pageViewController.cIndex,
                 itemBuilder: (_, i) {
-                  return Image.network(
+                  return FancyShimmerImage(
+                    imageUrl: homepageContents[i].pgImage.toString(),
+                    boxFit: BoxFit.fill,
+                    errorWidget: Image.asset('assets/images/ic_appicon.png'),
+                  ) /*Image.network(
                     homepageContents[i].pgImage.toString(),
                     fit: BoxFit.fill,
                     loadingBuilder: (BuildContext context, Widget child,
@@ -42,7 +48,8 @@ class CommonPageView extends StatelessWidget {
                         ),
                       );
                     },
-                  );
+                  )*/
+                      ;
                 },
               ),
             ),
@@ -69,7 +76,9 @@ class CommonPageView extends StatelessWidget {
       margin: const EdgeInsets.only(right: 5),
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(20),
-        color: pageViewController.cIndex.value == index ? ColorName.gray410 : ColorName.white,
+        color: pageViewController.cIndex.value == index
+            ? ColorName.gray410
+            : ColorName.white,
       ),
     );
   }

@@ -1,10 +1,11 @@
-import 'package:cached_network_image/cached_network_image.dart';
+import 'package:fancy_shimmer_image/fancy_shimmer_image.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:the_horeca_store/app/routes/app_routes.dart';
 import 'package:the_horeca_store/commons/utils/app_theme_data.dart';
 import 'package:the_horeca_store/networking/models/product_data/product_data.dart';
 import 'package:the_horeca_store/src/gen/colors.gen.dart';
+
 import 'wishlist_widget.dart';
 
 class ProductItem extends StatelessWidget {
@@ -39,7 +40,13 @@ class ProductItem extends StatelessWidget {
             // PRODUCT IMAGE
             Padding(
               padding: const EdgeInsets.all(8.0),
-              child: CachedNetworkImage(
+              child: FancyShimmerImage(
+                imageUrl: item.image?.src ?? '',
+                boxFit: BoxFit.cover,
+                width: size.width * 0.36,
+                height: size.width / 3.5,
+                errorWidget: Image.asset('assets/images/ic_appicon.png'),
+              ) /*CachedNetworkImage(
                 imageUrl: item.image?.src ?? '',
                 width: size.width * 0.36,
                 errorWidget: (context, url, error) =>
@@ -49,7 +56,8 @@ class ProductItem extends StatelessWidget {
                 fadeOutDuration: const Duration(milliseconds: 100),
                 height: size.width / 3.5,
                 fit: BoxFit.cover,
-              ),
+              )*/
+              ,
             ),
             // WISH LIST ICON
             isFromWishList
@@ -84,7 +92,8 @@ class ProductItem extends StatelessWidget {
                         maxLines: 2,
                         textAlign: TextAlign.center,
                         overflow: TextOverflow.ellipsis,
-                        style: AppThemeData.sf500Font12Black.copyWith(color: ColorName.black.withOpacity(0.7)),
+                        style: AppThemeData.sf500Font12Black
+                            .copyWith(color: ColorName.black.withOpacity(0.7)),
                       ),
                     ),
                   ),
@@ -106,7 +115,6 @@ class ProductItem extends StatelessWidget {
                 ],
               ),
             ),
-
           ],
         ),
         // child: Row(

@@ -1,12 +1,11 @@
-import 'package:cached_network_image/cached_network_image.dart';
+import 'package:fancy_shimmer_image/fancy_shimmer_image.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:the_horeca_store/app/routes/app_routes.dart';
 import 'package:the_horeca_store/commons/utils/app_theme_data.dart';
-import 'package:the_horeca_store/networking/models/product_data/product_data.dart';
 import 'package:the_horeca_store/networking/models/search/results.dart';
-import 'package:the_horeca_store/networking/models/search/search_response.dart';
 import 'package:the_horeca_store/src/gen/colors.gen.dart';
+
 import 'wishlist_widget.dart';
 
 class SearchProductItem extends StatelessWidget {
@@ -41,7 +40,13 @@ class SearchProductItem extends StatelessWidget {
             // PRODUCT IMAGE
             Padding(
               padding: const EdgeInsets.all(8.0),
-              child: CachedNetworkImage(
+              child: FancyShimmerImage(
+                imageUrl: item.image_link ?? '',
+                boxFit: BoxFit.cover,
+                width: size.width * 0.36,
+                height: size.width / 3,
+                errorWidget: Image.asset('assets/images/ic_appicon.png'),
+              ) /*CachedNetworkImage(
                 imageUrl: item.image_link ?? '',
                 width: size.width * 0.36,
                 errorWidget: (context, url, error) =>
@@ -51,7 +56,8 @@ class SearchProductItem extends StatelessWidget {
                 fadeOutDuration: const Duration(milliseconds: 100),
                 height: size.width / 3,
                 fit: BoxFit.cover,
-              ),
+              )*/
+              ,
             ),
             // WISH LIST ICON
             isFromWishList
@@ -86,7 +92,8 @@ class SearchProductItem extends StatelessWidget {
                         maxLines: 2,
                         textAlign: TextAlign.center,
                         overflow: TextOverflow.ellipsis,
-                        style: AppThemeData.sf500Font12Black.copyWith(color: ColorName.black.withOpacity(0.7)),
+                        style: AppThemeData.sf500Font12Black
+                            .copyWith(color: ColorName.black.withOpacity(0.7)),
                       ),
                     ),
                   ),
@@ -108,7 +115,6 @@ class SearchProductItem extends StatelessWidget {
                 ],
               ),
             ),
-
           ],
         ),
         // child: Row(

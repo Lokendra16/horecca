@@ -10,7 +10,6 @@ class CartScreenController extends GetxController {
   var isInitialLoading = true.obs;
   var cartData = CartModel().obs;
 
-
   @override
   void onInit() {
     super.onInit();
@@ -25,6 +24,7 @@ class CartScreenController extends GetxController {
   void getCartAPI() async {
     isInitialLoading.value = true;
     var cartId = await AppPreference().get(AppPreference.KEY_CART_ID) ?? '';
+
     GraphQLRepo().cartListAPI(cartId).then(
       (value) {
         isInitialLoading.value = false;
@@ -56,15 +56,23 @@ class CartScreenController extends GetxController {
 
   void filterCartData(response) {
     String? checkoutUrl = response["checkoutUrl"];
-    String totalAmount = response["estimatedCost"]?["totalAmount"]?["amount"] ?? '0.0';
-    String subtotalAmount = response["estimatedCost"]?["subtotalAmount"]?["amount"] ?? '0.0';
-    String totalDutyAmount = response["estimatedCost"]?["totalDutyAmount"]?["amount"] ?? '0.0';
-    String totalTaxAmount = response["estimatedCost"]?["totalTaxAmount"]?["amount"] ?? '0.0';
+    String totalAmount =
+        response["estimatedCost"]?["totalAmount"]?["amount"] ?? '0.0';
+    String subtotalAmount =
+        response["estimatedCost"]?["subtotalAmount"]?["amount"] ?? '0.0';
+    String totalDutyAmount =
+        response["estimatedCost"]?["totalDutyAmount"]?["amount"] ?? '0.0';
+    String totalTaxAmount =
+        response["estimatedCost"]?["totalTaxAmount"]?["amount"] ?? '0.0';
 
-    String subtotalCC = response["estimatedCost"]?["subtotalAmount"]?["currencyCode"] ?? '';
-    String totalDutyCC = response["estimatedCost"]?["totalDutyAmount"]?["currencyCode"] ?? '';
-    String totalTaxCC = response["estimatedCost"]?["totalTaxAmount"]?["currencyCode"] ?? '';
-    String totalCC = response["estimatedCost"]?["totalAmount"]?["currencyCode"] ?? '';
+    String subtotalCC =
+        response["estimatedCost"]?["subtotalAmount"]?["currencyCode"] ?? '';
+    String totalDutyCC =
+        response["estimatedCost"]?["totalDutyAmount"]?["currencyCode"] ?? '';
+    String totalTaxCC =
+        response["estimatedCost"]?["totalTaxAmount"]?["currencyCode"] ?? '';
+    String totalCC =
+        response["estimatedCost"]?["totalAmount"]?["currencyCode"] ?? '';
 
     List<ProductData> productList = [];
 
@@ -73,7 +81,8 @@ class CartScreenController extends GetxController {
           lineId: element["id"],
           quantity: element["quantity"],
           title: element["merchandise"]["product"]["title"],
-          image: ProductImages(src: element["merchandise"]?["image"]?["url"] ?? ''));
+          image: ProductImages(
+              src: element["merchandise"]?["image"]?["url"] ?? ''));
       productList.add(product);
     });
 
@@ -94,7 +103,7 @@ class CartScreenController extends GetxController {
     }
   }
 
-  void incrementQuantity(quantity,index) {
+  void incrementQuantity(quantity, index) {
     if (quantity < 10) {
       quantity++;
       cartData.value.productList![index].quantity = quantity;
@@ -103,13 +112,11 @@ class CartScreenController extends GetxController {
     update();
   }
 
-  void decrementQuantity(quantity,index) {
+  void decrementQuantity(quantity, index) {
     if (quantity >= 1) {
       quantity--;
     }
 
     print('decrement : ${quantity}');
-
   }
-
 }

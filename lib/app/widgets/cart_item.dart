@@ -1,8 +1,6 @@
-import 'package:cached_network_image/cached_network_image.dart';
+import 'package:fancy_shimmer_image/fancy_shimmer_image.dart';
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:the_horeca_store/app/modules/product_detail/controller/product_detail_controller.dart';
 import 'package:the_horeca_store/commons/utils/app_theme_data.dart';
 import 'package:the_horeca_store/networking/models/product_data/product_data.dart';
 import 'package:the_horeca_store/src/gen/colors.gen.dart';
@@ -33,7 +31,14 @@ class CartItem extends StatelessWidget {
       child: Row(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          CachedNetworkImage(
+          FancyShimmerImage(
+            imageUrl: item.image?.src ?? '',
+            boxFit: BoxFit.contain,
+            width: size.width * 0.36,
+            height: size.width / 3,
+            errorWidget: Image.asset('assets/images/ic_appicon.png'),
+          )
+          /*CachedNetworkImage(
             imageUrl: item.image?.src ?? '',
             width: size.width * 0.36,
             errorWidget: (context, url, error) =>
@@ -43,7 +48,8 @@ class CartItem extends StatelessWidget {
             fadeOutDuration: const Duration(milliseconds: 100),
             height: size.width / 3.5,
             fit: BoxFit.contain,
-          ),
+          )*/
+          ,
           Expanded(
             child: Padding(
               padding: const EdgeInsets.symmetric(horizontal: 0.0),

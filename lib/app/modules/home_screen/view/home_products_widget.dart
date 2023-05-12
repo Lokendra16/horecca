@@ -1,10 +1,10 @@
+import 'package:fancy_shimmer_image/fancy_shimmer_image.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:the_horeca_store/app/routes/app_routes.dart';
 import 'package:the_horeca_store/app/widgets/wishlist_widget.dart';
 import 'package:the_horeca_store/commons/utils/app_theme_data.dart';
 import 'package:the_horeca_store/networking/models/home/home_collections.dart';
-import 'package:the_horeca_store/src/gen/assets.gen.dart';
 import 'package:the_horeca_store/src/gen/colors.gen.dart';
 
 class HomeProductsWidget extends StatelessWidget {
@@ -18,7 +18,6 @@ class HomeProductsWidget extends StatelessWidget {
     return SliverList(
       delegate: SliverChildBuilderDelegate(
         childCount: list.length,
-
         (context, index) {
           var item = list[index];
           return Column(
@@ -29,7 +28,7 @@ class HomeProductsWidget extends StatelessWidget {
                 ),
               item.products!.isNotEmpty
                   ? Padding(
-                      padding:  EdgeInsets.only(top: index == 0 ? 0 : 10.0),
+                      padding: EdgeInsets.only(top: index == 0 ? 0 : 10.0),
                       child: Text(
                         item.title ?? '',
                         style: AppThemeData.font16Weight600PlayfairCardinal
@@ -70,13 +69,19 @@ class HomeProductsWidget extends StatelessWidget {
                                 child: Stack(
                                   children: [
                                     Center(
-                                      child: Image.network(
+                                      child: FancyShimmerImage(
+                                        imageUrl: item.products?[i].image ?? '',
+                                        boxFit: BoxFit.cover,
+                                        errorWidget: Image.asset(
+                                            'assets/images/ic_appicon.png'),
+                                      ) /*Image.network(
                                         item.products?[i].image ?? '',
                                         fit: BoxFit.cover,
                                         errorBuilder: (context, url, error) =>
                                             Image.asset(
                                                 'assets/images/ic_appicon.png'),
-                                      ),
+                                      )*/
+                                      ,
                                     ),
                                     Align(
                                       alignment: Alignment.topRight,
@@ -105,7 +110,8 @@ class HomeProductsWidget extends StatelessWidget {
                               Padding(
                                 padding: EdgeInsets.only(top: 5, bottom: 8),
                                 child: Text(
-                                  "AED ${item.products?[i].price}" ?? '', //TODO Make this dynamic
+                                  "AED ${item.products?[i].price}" ??
+                                      '', //TODO Make this dynamic
                                   style: AppThemeData.sf500Font12,
                                 ),
                               ),
