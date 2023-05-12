@@ -15,6 +15,7 @@ class WishListScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    controller.getWishListId();
     Size size = MediaQuery.of(context).size;
     return Scaffold(
       appBar: PreferredSize(

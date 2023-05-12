@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:get/get_core/src/get_main.dart';
 import 'package:the_horeca_store/commons/utils/app_preference.dart';
+import 'package:the_horeca_store/networking/models/product_data/product_model.dart';
 import 'package:the_horeca_store/src/gen/colors.gen.dart';
 
 import '../modules/wish_list_screen/controller/wishlist_controller.dart';
@@ -18,6 +19,7 @@ class WishlistWidget extends StatefulWidget {
 class _WishlistWidgetState extends State<WishlistWidget> {
   var isWishlist = false;
 
+
   @override
   void initState() {
     super.initState();
@@ -26,6 +28,7 @@ class _WishlistWidgetState extends State<WishlistWidget> {
 
   @override
   Widget build(BuildContext context) {
+    debugPrint('product id : ${widget.id}');
     return isWishlist
         ? GestureDetector(
             onTap: () {
@@ -35,6 +38,7 @@ class _WishlistWidgetState extends State<WishlistWidget> {
                 isWishlist = !isWishlist;
 
               });
+
             },
             child: const Icon(Icons.favorite, color: ColorName.cardinal, size: 26))
         : GestureDetector(

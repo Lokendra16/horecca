@@ -8,7 +8,6 @@ import 'package:the_horeca_store/networking/api_client/api_client.dart';
 import 'package:the_horeca_store/networking/models/product_data/product_data.dart';
 
 class WishlistController extends GetxController {
-
   RxList productList = [].obs;
   static const _pageSize = 250;
 
@@ -28,11 +27,15 @@ class WishlistController extends GetxController {
   @override
   onReady() {
     super.onReady();
-    AppPreference().getWishlistIds().then((value) {
-      print("Wishlist Ids: $value");
-      if (value != null && value.isNotEmpty) {
-        getProductList(0, value
-        );
+    getWishListId();
+  }
+
+
+
+  getWishListId() async {
+    await AppPreference().getWishlistIds().then((value) {
+      if (value != null) {
+        getProductList(0, value);
       } else {
         isEmpty.value = true;
         isLoading.value = false;
@@ -42,16 +45,19 @@ class WishlistController extends GetxController {
 
   Future<void> getProductList(int pageKey, String? productIds) async {
     final client = RestClient();
-    // TODO SENDING THE COLLECTION ID HARD CODED
-    var newItems = await client.getProductList("published",pageKey, _pageSize,productIds!, "");
+    var newItems = await client.getProductList(
+        "", pageKey, _pageSize,"", productIds);
     isLoading.value = false;
     productList.value = newItems.products!;
   }
 
   void removeItem(int index) {
-    AppPreference().addRemoveFromWishlist(Uri.parse(productList[index].id.toString()).pathSegments.last).then((value){
+    AppPreference()
+        .addRemoveFromWishlist(
+            Uri.parse(productList[index].id.toString()).pathSegments.last)
+        .then((value) {
       productList.removeAt(index);
-      AppPreference().getWishlistIds().then((value){
+      AppPreference().getWishlistIds().then((value) {
         if (value != null && value.isNotEmpty) {
         } else {
           isEmpty.value = true;

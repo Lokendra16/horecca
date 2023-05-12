@@ -21,6 +21,7 @@ class ProductItem extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    print('is from wish list : $isFromWishList');
     Size size = MediaQuery.of(context).size;
 
     return GestureDetector(
