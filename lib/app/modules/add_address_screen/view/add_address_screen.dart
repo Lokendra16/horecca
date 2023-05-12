@@ -7,6 +7,8 @@ import 'package:the_horeca_store/commons/utils/app_theme_data.dart';
 import 'package:the_horeca_store/l10n/localization.dart';
 import 'package:the_horeca_store/src/gen/colors.gen.dart';
 
+import '../../thankyou_screen/thankyou_screen.dart';
+
 class AddAddressScreen extends StatelessWidget {
   AddAddressScreen({Key? key}) : super(key: key);
 
