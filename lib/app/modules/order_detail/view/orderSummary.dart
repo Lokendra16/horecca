@@ -203,87 +203,87 @@ class OrderSummary extends StatelessWidget {
 
             ],
           ),
-             SizedBox(height: 20,),
-           Container(
-             decoration: BoxDecoration( border: Border.all(color: Colors.black.withOpacity(0.4),),
-                 borderRadius: BorderRadius.circular(8)),
-             child:  Padding(
-               padding: const EdgeInsets.all(8.0),
-               child: Column(crossAxisAlignment: CrossAxisAlignment.start,
-                 children: [
-
-                   Text("Billing Address",style: AppThemeData.font16Weight600Playfair,),
-                   SizedBox(height: 5,),
-                   Row(
-                     children: [
-                       Text("Name :"),
-                       Text(""),
-                     ],
-                   ),
-                   SizedBox(height: 5,),
-                   Row(
-                     children: [
-                       Text("Address :"),
-
-                     ],
-                   ),
-                   SizedBox(height: 5,),
-                   Row(
-                     children: [
-                       Text("Pin Code :"),
-                     ],
-                   ),
-                   SizedBox(height: 5,),
-                   Row(
-                     children: [
-                       Text("Phone :"),
-                     ],
-                   ),
-
-
-                 ],
-               ),
-             ),
-           ),
-
-          SizedBox(height: 20,),
-          Container(
-            decoration: BoxDecoration( border: Border.all(color: Colors.black.withOpacity(0.4),),
-                borderRadius: BorderRadius.circular(8)),
-            child:  Padding(
-              padding: const EdgeInsets.all(8.0),
-              child: Column(crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Text("Shipping Address",style: AppThemeData.font16Weight600Playfair,),
-                  SizedBox(height: 5,),
-                  Row(
-                    children: [
-                      Text("Name :"),
-                    ],
-                  ),
-                  SizedBox(height: 5,),
-                  Row(
-                    children: [
-                      Text("Address :"),
-                    ],
-                  ),
-                  SizedBox(height: 5,),
-                  Row(
-                    children: [
-                      Text("Pin Code :"),
-                    ],
-                  ),
-                  SizedBox(height: 5,),
-                  Row(
-                    children: [
-                      Text("Phone :"),
-                    ],
-                  ),
-
-                ],
-              ),
-            ),
-          ),
+          //    SizedBox(height: 20,),
+          //  Container(
+          //    decoration: BoxDecoration( border: Border.all(color: Colors.black.withOpacity(0.4),),
+          //        borderRadius: BorderRadius.circular(8)),
+          //    child:  Padding(
+          //      padding: const EdgeInsets.all(8.0),
+          //      child: Column(crossAxisAlignment: CrossAxisAlignment.start,
+          //        children: [
+          //
+          //          Text("Billing Address",style: AppThemeData.font16Weight600Playfair,),
+          //          SizedBox(height: 5,),
+          //          Row(
+          //            children: [
+          //              Text("Name :"),
+          //              Text(""),
+          //            ],
+          //          ),
+          //          SizedBox(height: 5,),
+          //          Row(
+          //            children: [
+          //              Text("Address :"),
+          //
+          //            ],
+          //          ),
+          //          SizedBox(height: 5,),
+          //          Row(
+          //            children: [
+          //              Text("Pin Code :"),
+          //            ],
+          //          ),
+          //          SizedBox(height: 5,),
+          //          Row(
+          //            children: [
+          //              Text("Phone :"),
+          //            ],
+          //          ),
+          //
+          //
+          //        ],
+          //      ),
+          //    ),
+          //  ),
+          //
+          // SizedBox(height: 20,),
+          // Container(
+          //   decoration: BoxDecoration( border: Border.all(color: Colors.black.withOpacity(0.4),),
+          //       borderRadius: BorderRadius.circular(8)),
+          //   child:  Padding(
+          //     padding: const EdgeInsets.all(8.0),
+          //     child: Column(crossAxisAlignment: CrossAxisAlignment.start,
+          //       children: [
+          //         Text("Shipping Address",style: AppThemeData.font16Weight600Playfair,),
+          //         SizedBox(height: 5,),
+          //         Row(
+          //           children: [
+          //             Text("Name :"),
+          //           ],
+          //         ),
+          //         SizedBox(height: 5,),
+          //         Row(
+          //           children: [
+          //             Text("Address :"),
+          //           ],
+          //         ),
+          //         SizedBox(height: 5,),
+          //         Row(
+          //           children: [
+          //             Text("Pin Code :"),
+          //           ],
+          //         ),
+          //         SizedBox(height: 5,),
+          //         Row(
+          //           children: [
+          //             Text("Phone :"),
+          //           ],
+          //         ),
+          //
+          //       ],
+          //     ),
+          //   ),
+          // ),
         ]
         ),
       ),
