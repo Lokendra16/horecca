@@ -37,7 +37,7 @@ class HomeScreen extends StatelessWidget {
           },
         ),
       ),
-      drawer: SideMenu(homeList:controller.homeList),
+      drawer: SideMenu(homeList: controller.homeList),
       body: SafeArea(
         child: CustomScrollView(
           slivers: [
@@ -50,7 +50,7 @@ class HomeScreen extends StatelessWidget {
                       Container(
                         margin:
                             const EdgeInsets.only(top: 5, left: 16, right: 16),
-                        height: 40,
+                        height: 50,
                         decoration: BoxDecoration(
                             color: ColorName.silver.withOpacity(0.3),
                             border: Border.all(color: ColorName.mercury),
@@ -66,15 +66,17 @@ class HomeScreen extends StatelessWidget {
                             children: [
                               Padding(
                                 padding: const EdgeInsets.only(left: 12.0),
-
-                                child: Text(AppLocalizations.of(context).searchBarText,style: AppThemeData.font14Weight400Gray,),
+                                child: Text(
+                                  AppLocalizations.of(context).searchBarText,
+                                  style: AppThemeData.font14Weight400Gray,
+                                ),
                               ),
                               const Spacer(),
                               Container(
                                 decoration: BoxDecoration(
                                     border:
                                         Border.all(color: ColorName.mercury),
-                                    color: ColorName.cello,
+                                    color: ColorName.goblingreen,
                                     borderRadius: const BorderRadius.only(
                                         topRight: Radius.circular(4),
                                         bottomRight: Radius.circular(4))),
@@ -99,6 +101,7 @@ class HomeScreen extends StatelessWidget {
                       const SizedBox(
                         height: 16,
                       ),
+                      CommonPageView(),
                       Obx(
                         () => controller.isLoadingCategories.value
                             ? const Center(
@@ -107,6 +110,7 @@ class HomeScreen extends StatelessWidget {
                                 ),
                               )
                             : Container(
+                                margin: EdgeInsets.only(top: 15),
                                 width: size.width,
                                 decoration: const BoxDecoration(
                                     //color: ColorName.panache,
@@ -114,14 +118,6 @@ class HomeScreen extends StatelessWidget {
                                     ),
                                 child: Column(
                                   children: [
-                                    // Padding(
-                                    //   padding: const EdgeInsets.only(top: 10),
-                                    //   child: Text(
-                                    //     AppLocalizations.of(context).shopByCategoryTxt,
-                                    //     style: AppThemeData.font16Weight600PlayfairCardinal
-                                    //         .copyWith(fontSize: 18.0),
-                                    //   ),
-                                    // ),
                                     Padding(
                                       padding: const EdgeInsets.only(bottom: 8),
                                       child: HomeShopByCategoryWidget(
@@ -134,7 +130,6 @@ class HomeScreen extends StatelessWidget {
                       const SizedBox(
                         height: 16,
                       ),
-                      CommonPageView(),
                     ],
                   ),
                 ],

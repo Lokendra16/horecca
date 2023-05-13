@@ -1,12 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:the_horeca_store/app/modules/home_screen/controller/home_screen_controller.dart';
 import 'package:the_horeca_store/app/modules/product_list/controller/product_listview_controller.dart';
 import 'package:the_horeca_store/commons/utils/app_theme_data.dart';
 import 'package:the_horeca_store/l10n/localization.dart';
 import 'package:the_horeca_store/src/gen/colors.gen.dart';
-
-import '../../networking/models/banqut&Confrence/banquet&Confrnece.dart';
 
 class SortPopup extends StatelessWidget {
   SortPopup({
@@ -64,7 +61,8 @@ class SortPopup extends StatelessWidget {
                             padding: const EdgeInsets.only(bottom: 10),
                             child: InkWell(
                               onTap: () {
-                                debugPrint('on tap : ${controller.filterItem[index].sortItem}');
+                                debugPrint(
+                                    'on tap : ${controller.filterItem[index].sortItem}');
                                 controller.changeIndex(index);
                               },
                               child: Row(
@@ -86,7 +84,10 @@ class SortPopup extends StatelessWidget {
                                     ),
                                   ),
                                   Text(controller.filterItem[index].sortItem,
-                                      style: AppThemeData.font14Weight600Black),
+                                      style: AppThemeData.font14Weight600Black
+                                          .copyWith(
+                                              fontSize: 16,
+                                              fontWeight: FontWeight.normal)),
                                   const Spacer(),
                                   controller.currentIndex == index
                                       ? const Icon(
@@ -117,7 +118,8 @@ class SortPopup extends StatelessWidget {
                                 },
                                 child: Text(
                                   AppLocalizations.of(context).reset,
-                                  style: AppThemeData.loginButton,
+                                  style: AppThemeData.loginButton
+                                      .copyWith(fontSize: 16),
                                 ),
                               ),
                             ),
@@ -133,14 +135,13 @@ class SortPopup extends StatelessWidget {
                                     ColorName.jewel,
                                   ),
                                 ),
-
                                 onPressed: () {
                                   Get.back();
-
                                 },
                                 child: Text(
                                   AppLocalizations.of(context).done,
-                                  style: AppThemeData.loginButton,
+                                  style: AppThemeData.loginButton
+                                      .copyWith(fontSize: 16),
                                 ),
                               ),
                             ),

@@ -1,7 +1,5 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:graphql/client.dart';
 import 'package:infinite_scroll_pagination/infinite_scroll_pagination.dart';
 import 'package:the_horeca_store/app/modules/product_list/model/sort_product_model.dart';
 import 'package:the_horeca_store/app/widgets/product_gridview/product_gridview_model.dart';
@@ -10,19 +8,19 @@ import 'package:the_horeca_store/networking/api_client/api_client.dart';
 import 'package:the_horeca_store/networking/do_finder/do_finder_client.dart';
 import 'package:the_horeca_store/networking/models/product_data/product_data.dart';
 import 'package:the_horeca_store/networking/models/search/results.dart';
-import 'package:the_horeca_store/networking/models/search/search_response.dart';
 import 'package:the_horeca_store/src/gen/colors.gen.dart';
 
 class ProductListController extends GetxController {
   RxList productList = [].obs;
   var title = "Sale".obs;
   static const _pageSize = 50;
-  final PagingController<int, ProductData> pagingController = PagingController(firstPageKey: 0);
-  final PagingController<int, Results> searchPagingController = PagingController(firstPageKey: 0);
+  final PagingController<int, ProductData> pagingController =
+      PagingController(firstPageKey: 0);
+  final PagingController<int, Results> searchPagingController =
+      PagingController(firstPageKey: 0);
   TextEditingController searchController = TextEditingController();
   var isLoading = false.obs;
   var showSearchIcon = false.obs;
-
 
   static int TYPE_CATEGORY_PRODUCTS = 1;
   static int TYPE_SEARCH = 2;
@@ -62,8 +60,7 @@ class ProductListController extends GetxController {
     update();
   }
 
-  void showSearch(){
-
+  void showSearch() {
     showSearchIcon.value = !showSearchIcon.value;
   }
 
@@ -81,18 +78,16 @@ class ProductListController extends GetxController {
       screenType.value = 1;
       pagingController.addPageRequestListener((pageKey) {
         debugPrint("get args category product : ${Get.arguments[1]}");
-        _getProductList(pageKey,  Get.arguments[1].toString()
-        );
+        _getProductList(pageKey, Get.arguments[1].toString());
       });
       title.value = Get.arguments[2].toString();
     } else if (Get.arguments[0] == TYPE_SEARCH) {
       screenType.value = 1;
       pagingController.addPageRequestListener((pageKey) {
-        _getProductList(pageKey, Get.arguments[1].toString()
-        );
+        _getProductList(pageKey, Get.arguments[1].toString());
       });
-      if(Get.arguments != null){
-      title.value = Get.arguments[2].toString();
+      if (Get.arguments != null) {
+        title.value = Get.arguments[2].toString();
       }
     } else {}
   }
@@ -102,8 +97,8 @@ class ProductListController extends GetxController {
       final client = RestClient();
       // TODO SENDING THE COLLECTION ID HARD CODED '445427745079'
 
-      var newItems =
-          await client.getProductList('published',pageKey, _pageSize, collectionId, "");
+      var newItems = await client.getProductList(
+          'published', pageKey, _pageSize, collectionId, "");
       final isLastPage = newItems.products!.length < _pageSize;
       if (isLastPage) {
         pagingController.appendLastPage(newItems.products!);
@@ -120,7 +115,7 @@ class ProductListController extends GetxController {
     showGeneralDialog(
         barrierDismissible: true,
         barrierLabel: 'ShowGeneralDialog',
-        transitionDuration: const Duration(milliseconds: 400),
+        transitionDuration: const Duration(milliseconds: 200),
         context: context,
         pageBuilder: (context, _, __) {
           return SortPopup();
@@ -137,26 +132,28 @@ class ProductListController extends GetxController {
   Future<void> searchProductApi(String searchText) async {
     searchPagingController.itemList?.clear();
     isLoading.value = true;
-      final client = DoFinderClient();
-      var searchItems = await client.searchProductApi('2057fd5d4e22e21386b3c2944f156472',searchText,'50','1');
-      final isLastPage = searchItems.results!.length < _pageSize;
-      try{
-        if (isLastPage){
-          isLoading.value = false;
-          searchPagingController.appendLastPage(searchItems.results!);
-        } else {
-          isLoading.value = false;
-          final nextPageKey = searchItems.results!.last.id;
-          searchPagingController.appendPage(searchItems.results!, int.parse(nextPageKey!));
-        }
-      }
-      catch (error) {
+    final client = DoFinderClient();
+    var searchItems = await client.searchProductApi(
+        '2057fd5d4e22e21386b3c2944f156472', searchText, '50', '1');
+    final isLastPage = searchItems.results!.length < _pageSize;
+    try {
+      if (isLastPage) {
         isLoading.value = false;
-        debugPrint('on error : $error');
+        searchPagingController.appendLastPage(searchItems.results!);
+      } else {
+        isLoading.value = false;
+        final nextPageKey = searchItems.results!.last.id;
+        searchPagingController.appendPage(
+            searchItems.results!, int.parse(nextPageKey!));
+      }
+    } catch (error) {
+      isLoading.value = false;
+      debugPrint('on error : $error');
       pagingController.error = error;
-      Get.snackbar('Error',error.toString(),backgroundColor: ColorName.cardinal,snackPosition: SnackPosition.TOP);
-
-  }
+      Get.snackbar('Error', error.toString(),
+          backgroundColor: ColorName.cardinal,
+          snackPosition: SnackPosition.TOP);
+    }
     isLoading.value = false;
-
-}}
+  }
+}

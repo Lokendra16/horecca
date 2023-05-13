@@ -31,11 +31,11 @@ class HomeProductsWidget extends StatelessWidget {
                       padding: EdgeInsets.only(top: index == 0 ? 0 : 10.0),
                       child: Text(
                         item.title ?? '',
-                        style: AppThemeData.font16Weight600PlayfairCardinal
+                        style: AppThemeData.font16Weight600PlayfairBlack
                             .copyWith(
                                 fontSize: 24.0,
                                 fontFamily: 'SF Pro Rounded',
-                                color: ColorName.gray,
+                                color: ColorName.black,
                                 fontWeight: FontWeight.w500),
                       ),
                     )

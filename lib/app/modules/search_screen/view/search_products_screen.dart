@@ -2,18 +2,14 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:infinite_scroll_pagination/infinite_scroll_pagination.dart';
 import 'package:the_horeca_store/app/modules/product_list/controller/product_listview_controller.dart';
-import 'package:the_horeca_store/app/widgets/product_item.dart';
+import 'package:the_horeca_store/app/widgets/search_bar.dart';
 import 'package:the_horeca_store/app/widgets/search_product_item.dart';
 import 'package:the_horeca_store/commons/utils/app_theme_data.dart';
-import 'package:the_horeca_store/app/widgets/search_bar.dart';
 import 'package:the_horeca_store/extensions/assets_ext.dart';
 import 'package:the_horeca_store/l10n/localization.dart';
-import 'package:the_horeca_store/networking/models/product_data/product_data.dart';
 import 'package:the_horeca_store/networking/models/search/results.dart';
 import 'package:the_horeca_store/src/gen/assets.gen.dart';
 import 'package:the_horeca_store/src/gen/colors.gen.dart';
-
-import '../../../widgets/search_product_item.dart';
 
 class SearchProductsScreen extends StatelessWidget {
   SearchProductsScreen({Key? key}) : super(key: key);
@@ -48,16 +44,16 @@ class SearchProductsScreen extends StatelessWidget {
         children: [
           Obx(
             () => SearchBar(
-              suffixIcon:
-             controller.showSearchIcon.value ==false
+              suffixIcon: controller.showSearchIcon.value == false
                   ? InkWell(
                       onTap: () {
-                        controller.searchProductApi(controller.searchController!.text);
+                        controller.searchProductApi(
+                            controller.searchController!.text);
                       },
                       child: Container(
                         decoration: BoxDecoration(
                             border: Border.all(color: ColorName.mercury),
-                            color: ColorName.cello,
+                            color: ColorName.goblingreen,
                             borderRadius: const BorderRadius.only(
                                 topRight: Radius.circular(4),
                                 bottomRight: Radius.circular(4))),
@@ -73,19 +69,18 @@ class SearchProductsScreen extends StatelessWidget {
                       ),
                     )
                   : InkWell(
-                  onTap: (){
-                    controller.searchController.clear();
-                    //controller.showSearchIcon.value == false;
-                  controller.searchPagingController.itemList?.clear();
-                 
-                  },
-                  child: Icon(Icons.cancel)),
+                      onTap: () {
+                        controller.searchController.clear();
+                        //controller.showSearchIcon.value == false;
+                        controller.searchPagingController.itemList?.clear();
+                        controller.showSearchIcon.value = false;
+                      },
+                      child: Icon(Icons.cancel)),
               onSubmit: (txt) {
                 debugPrint('txt : $txt');
                 controller.searchProductApi(txt);
               },
               onChange: (value) {
-
                 if (value.isNotEmpty) {
                   controller.showSearchIcon.value = true;
                 } else {

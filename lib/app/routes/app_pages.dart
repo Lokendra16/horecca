@@ -15,8 +15,8 @@ import 'package:the_horeca_store/app/modules/home_screen/view/home_screen.dart';
 import 'package:the_horeca_store/app/modules/login_screen/binding/login_screen_binding.dart';
 import 'package:the_horeca_store/app/modules/login_screen/view/login_screen.dart';
 import 'package:the_horeca_store/app/modules/my_account/binding/my_account_binding.dart';
-import 'package:the_horeca_store/app/modules/my_order_screen/binding/order_list_binding.dart';
 import 'package:the_horeca_store/app/modules/my_account/view/my_account_screen.dart';
+import 'package:the_horeca_store/app/modules/my_order_screen/binding/order_list_binding.dart';
 import 'package:the_horeca_store/app/modules/my_order_screen/view/order_list_screen.dart';
 import 'package:the_horeca_store/app/modules/order_detail/binding/order_detail_binding.dart';
 import 'package:the_horeca_store/app/modules/order_detail/view/order_detail.dart';
@@ -40,6 +40,7 @@ import 'package:the_horeca_store/app/modules/web/binding/web_view_screen_binding
 import 'package:the_horeca_store/app/modules/web/view/webview_screen.dart';
 import 'package:the_horeca_store/app/modules/wish_list_screen/view/wish_list_screen.dart';
 import 'package:the_horeca_store/app/routes/app_routes.dart';
+
 import '../modules/bottom_navigation/view/bottom_navigation_view.dart';
 import '../modules/product_list/view/product_list_screen.dart';
 import '../modules/thankyou_screen/thankyou_screen.dart';
@@ -52,23 +53,39 @@ class AppPages {
         name: AppRoutes.dashboard,
         page: () => DashboardScreen(),
         binding: DashboardScreenBinding()),
-    GetPage(name: AppRoutes.loginScreen, page: () => LoginScreen(), binding: LoginScreenBinding()),
     GetPage(
-        name: AppRoutes.signupScreen, page: () => SignupScreen(), binding: SignupScreenBinding()),
+        name: AppRoutes.loginScreen,
+        page: () => LoginScreen(),
+        binding: LoginScreenBinding()),
+    GetPage(
+        name: AppRoutes.signupScreen,
+        page: () => SignupScreen(),
+        binding: SignupScreenBinding()),
     GetPage(
         name: AppRoutes.productListview,
         page: () => ProductListScreen(),
         binding: ProductListBinding()),
-    GetPage(name: AppRoutes.myAccount, page: () => MyAccountScreen(), binding: MyAccountBinding()),
-    GetPage(name: AppRoutes.homeScreen, page: () => HomeScreen(), binding: HomeScreenBinding()),
+    GetPage(
+        name: AppRoutes.myAccount,
+        page: () => MyAccountScreen(),
+        binding: MyAccountBinding()),
+    GetPage(
+        name: AppRoutes.homeScreen,
+        page: () => HomeScreen(),
+        binding: HomeScreenBinding()),
     GetPage(
       name: AppRoutes.categoryScreen,
       page: () => CategoryListScreen(),
       binding: CategoryScreenBinding(),
     ),
-    GetPage(name: AppRoutes.subCategory, page: () => SubCategory(), binding: SubCategoryBinding()),
     GetPage(
-        name: AppRoutes.cartScreen, page: () => CartScreen(), binding: CartScreenBinding()),
+        name: AppRoutes.subCategory,
+        page: () => SubCategory(),
+        binding: SubCategoryBinding()),
+    GetPage(
+        name: AppRoutes.cartScreen,
+        page: () => CartScreen(),
+        binding: CartScreenBinding()),
     GetPage(
         name: AppRoutes.productDetail,
         page: () => ProductDetailScreen(),
@@ -93,8 +110,7 @@ class AppPages {
         name: AppRoutes.savedAddressScreen,
         page: () => AddressListScreen(),
         binding: AddressListBinding()),
-    GetPage(
-        name: AppRoutes.wishListScreen, page: () => WishListScreen()),
+    GetPage(name: AppRoutes.wishListScreen, page: () => WishListScreen()),
     GetPage(
         name: AppRoutes.addAddressScreen,
         page: () => AddAddressScreen(),
@@ -107,7 +123,6 @@ class AppPages {
         name: AppRoutes.forgotPassword,
         page: () => ForgotPasswordScreen(),
         binding: ForgotPasswordBinding()),
-
     GetPage(
         name: AppRoutes.orderDetail,
         page: () => OrderDetail(),
@@ -120,7 +135,6 @@ class AppPages {
         name: AppRoutes.reviewScreen,
         page: () => ReviewScreen(),
         binding: ReviewScreenBinding()),
-    GetPage(name: AppRoutes.thankyou,
-        page: ()=>ThankYouScreen()),
+    GetPage(name: AppRoutes.thankyou, page: () => ThankYouScreen()),
   ];
 }

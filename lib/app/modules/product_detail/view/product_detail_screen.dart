@@ -128,63 +128,7 @@ class ProductDetailScreen extends StatelessWidget {
                 ),
                 Positioned(bottom: 0, child: ProductItemAddWidget()),
               ],
-            )
-                // return ListView(
-                //   children: [
-                //     Column(
-                //       children: [
-                //         ProductDetailPageView(),
-                //         Padding(
-                //           padding: const EdgeInsets.only(top: 12.0),
-                //           child: Column(
-                //             children: [
-                //               Obx(
-                //                 () => ProductDetailsWidget(
-                //                   product:
-                //                       productDetailController.productDetail.value,
-                //                 ),
-                //               ),
-                //               ProductVariantsWidget(),
-                //               Container(height: 1,width: size.width,color: ColorName.silver,),
-                //               ProductDescWidget(),
-                //               Container(height: 1,width: size.width,color: ColorName.silver,),
-                //               ProductReviewWidget(),
-                //               Container(height: 1,width: size.width,color: ColorName.silver,),
-                //               userReviewWidget(size: size),
-                //               productDetailController.isLoadingRecommendation.value
-                //                   ? const SizedBox()
-                //                   : ProductsRecommendationWidget(
-                //                       data: productDetailController
-                //                           .productRecommendationList.value,
-                //                     ),
-                //               ProductItemAddWidget(),
-                //
-                //
-                //               /*      selectSizeWidget(size: size),
-                //           selectCapecityWidget(size: size),
-                //           selectColorWidget(size: size),
-                //
-                //           additionalInfoWidget(productDetailController: productDetailController),
-                //
-                //           userReviewWidget(size: size),
-                //           Text(
-                //             AppLocalizations.of(context).youMayAlsoLike,
-                //             style: AppThemeData.font16Weight600Playfair,
-                //           ),
-                //           SizedBox(height: size.height * 0.3, child: const HomeCategoryGridView()),
-                //           */
-                //             ],
-                //           ),
-                //         ),
-                //
-                //       ],
-                //     ),
-                //
-                //
-                //   ],
-                // )
-
-                ;
+            );
           }
         },
       ),

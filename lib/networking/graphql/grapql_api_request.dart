@@ -73,7 +73,7 @@ const String categoryListQuery = r'''
 
 const String productListQuery = r'''
 query {
-    collections(first : 20){
+    collections(first : 25){
         nodes{
             id
             title

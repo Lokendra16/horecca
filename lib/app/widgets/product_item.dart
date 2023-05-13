@@ -102,7 +102,7 @@ class ProductItem extends StatelessWidget {
                     padding: const EdgeInsets.only(top: 8.0),
                     child: Text(
                       "AED ${item.variants?[0].price}" ?? '',
-                      style: AppThemeData.sf500Font12Red,
+                      style: AppThemeData.sf500Font12,
                     ),
                   ),
                   // TextButton(

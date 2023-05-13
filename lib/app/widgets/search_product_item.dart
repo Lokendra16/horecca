@@ -102,7 +102,7 @@ class SearchProductItem extends StatelessWidget {
                     padding: const EdgeInsets.only(top: 8.0),
                     child: Text(
                       "AED ${item.price}" ?? '',
-                      style: AppThemeData.sf500Font12Red,
+                      style: AppThemeData.sf500Font12,
                     ),
                   ),
                   // TextButton(

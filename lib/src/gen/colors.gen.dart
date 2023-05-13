@@ -3,12 +3,12 @@
 ///  FlutterGen
 /// *****************************************************
 
+import 'package:flutter/material.dart';
 // coverage:ignore-file
 // ignore_for_file: type=lint
 // ignore_for_file: directives_ordering,unnecessary_import,implicit_dynamic_list_literal,deprecated_member_use
 
 import 'package:flutter/painting.dart';
-import 'package:flutter/material.dart';
 
 class ColorName {
   ColorName._();
@@ -21,6 +21,7 @@ class ColorName {
 
   /// Color: #1F1F1F
   static const Color black = Color(0xFF1F1F1F);
+  static const Color redcolor = Color(0xFFA11014);
 
   /// Color: #FECE9EC
   static const Color bonJour = Color(0xFECE9EC);
@@ -72,6 +73,7 @@ class ColorName {
 
   /// Color: #428445
   static const Color goblin = Color(0xFF428445);
+  static const Color goblingreen = Color(0xFF0F6333);
 
   /// Color: #828282
   static const Color gray = Color(0xFF828282);

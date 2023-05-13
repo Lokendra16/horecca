@@ -33,36 +33,19 @@ class ProductListScreen extends StatelessWidget {
         children: [
           Column(
             children: [
-              Container(height: 1,width: size.width,color: ColorName.silver,),
+              Container(
+                height: 1,
+                width: size.width,
+                color: ColorName.silver,
+              ),
               Padding(
                 padding: const EdgeInsets.symmetric(vertical: 8.0),
                 child: Row(
                   children: [
                     Expanded(
                         flex: 1,
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            const Padding(
-                              padding: EdgeInsets.all(2.0),
-                              child: Icon(
-                                Icons.filter_alt_outlined,
-                                color: ColorName.black,
-                              ),
-                            ),
-                            Padding(
-                              padding: const EdgeInsets.all(2.0),
-                              child: Text(
-                                AppLocalizations.of(context).filter,
-                                style: GoogleFonts.roboto(color: ColorName.black, fontSize: 18.0),
-                              ),
-                            )
-                          ],
-                        )),
-                    Expanded(
-                        flex: 1,
                         child: GestureDetector(
-                          onTap: (){
+                          onTap: () {
                             controller.showSortPopUp(context);
                           },
                           child: Row(
@@ -79,7 +62,8 @@ class ProductListScreen extends StatelessWidget {
                                 padding: const EdgeInsets.all(2.0),
                                 child: Text(
                                   AppLocalizations.of(context).sort,
-                                  style: GoogleFonts.roboto(color: ColorName.black, fontSize: 18.0),
+                                  style: GoogleFonts.roboto(
+                                      color: ColorName.black, fontSize: 18.0),
                                 ),
                               )
                             ],
@@ -101,7 +85,8 @@ class ProductListScreen extends StatelessWidget {
                               padding: const EdgeInsets.all(2.0),
                               child: Text(
                                 AppLocalizations.of(context).view,
-                                style: GoogleFonts.roboto(color: ColorName.black, fontSize: 18.0),
+                                style: GoogleFonts.roboto(
+                                    color: ColorName.black, fontSize: 18.0),
                               ),
                             )
                           ],
@@ -109,13 +94,21 @@ class ProductListScreen extends StatelessWidget {
                   ],
                 ),
               ),
-              Container(height: 1,width: size.width,color: ColorName.silver,),
+              Container(
+                height: 1,
+                width: size.width,
+                color: ColorName.silver,
+              ),
             ],
           ),
           Padding(
             padding: const EdgeInsets.only(top: 60.0, bottom: 4.0),
             child: PagedGridView<int, ProductData>(
-              gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount: 2,childAspectRatio: 2/2.3,mainAxisSpacing: 10,crossAxisSpacing: 10),
+              gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+                  crossAxisCount: 2,
+                  childAspectRatio: 2 / 2.3,
+                  mainAxisSpacing: 10,
+                  crossAxisSpacing: 10),
               pagingController: controller.pagingController,
               builderDelegate: PagedChildBuilderDelegate<ProductData>(
                 firstPageProgressIndicatorBuilder: (context) => const Center(
@@ -129,7 +122,10 @@ class ProductListScreen extends StatelessWidget {
                   ),
                 ),
                 itemBuilder: (context, item, index) {
-                  return ProductItem(item: item,isFromWishList: false,);
+                  return ProductItem(
+                    item: item,
+                    isFromWishList: false,
+                  );
                 },
               ),
             ),

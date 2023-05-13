@@ -48,7 +48,7 @@ class ProductDetailsWidget extends StatelessWidget {
                         padding: EdgeInsets.only(top: 8.0),
                         child: Text(
                           "AED ${product.variants?[0].price.toString()}" ?? '',
-                          style: AppThemeData.sf500Font16,
+                          style: AppThemeData.sf500Font12,
                         ),
                       ),
                       const Spacer(),

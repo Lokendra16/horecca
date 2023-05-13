@@ -1,6 +1,7 @@
 import 'package:fancy_shimmer_image/fancy_shimmer_image.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:the_horeca_store/app/modules/product_detail/controller/product_detail_controller.dart';
 import 'package:the_horeca_store/app/routes/app_routes.dart';
 import 'package:the_horeca_store/app/widgets/wishlist_widget.dart';
 import 'package:the_horeca_store/commons/utils/app_theme_data.dart';
@@ -39,10 +40,17 @@ class ProductsRecommendationWidget extends StatelessWidget {
                 for (int i = 0; i < data.products!.length; i++)
                   GestureDetector(
                     onTap: () {
+                      var id = Uri.parse(data.products?[i].id ?? '')
+                          .pathSegments
+                          .last;
+                      print("Recomm Id : $id + ${data.products![i].title}");
+                      Get.delete<ProductDetailController>();
+
                       Get.toNamed(AppRoutes.productDetail,
                           arguments: Uri.parse(data.products?[i].id ?? '')
                               .pathSegments
-                              .last);
+                              .last,
+                          preventDuplicates: false);
                     },
                     child: Container(
                       width: size.width * 0.40,
@@ -90,7 +98,7 @@ class ProductsRecommendationWidget extends StatelessWidget {
                             child: Text(
                               "AED ${data.products?[i].price.toString()}" ??
                                   '', //TODO Make this dynamic
-                              style: AppThemeData.sf500Font16
+                              style: AppThemeData.sf500Font12
                                   .copyWith(fontSize: 12),
                             ),
                           ),

@@ -93,6 +93,47 @@ class ProductDetailController extends GetxController {
     }
   }
 
+  void selectVariant(String lable, var items) {
+    print("shubham--" + lable);
+    if (productDetail.value.options != null) {
+      for (var element in productDetail.value.options!) {
+        int i = 0;
+        for (var element2 in element.values!) {
+          if (lable == element2) {
+            element.selectedOptionIndex = i;
+            update();
+            print("shubham--" + i.toString());
+            break;
+          }
+          i = i + 1;
+        }
+      }
+    }
+  }
+
+  String getVariantIdNew() {
+    if (productDetail.value.variants == null ||
+        productDetail.value.variants!.isEmpty) return "";
+    for (var element in productDetail.value.variants!) {
+      if (productDetail.value.options != null) {
+        int i = 0;
+        for (var element2 in productDetail.value.options!) {
+          for (var element3 in element2.values!) {
+            if (element == element2) {
+              //element.selectedOptionIndex = i;
+              update();
+              print("shubham--" + i.toString());
+              break;
+            }
+          }
+          i = i + 1;
+        }
+      }
+      return "";
+    }
+    return "";
+  }
+
   String getVariantId() {
     if (productDetail.value.variants == null ||
         productDetail.value.variants!.isEmpty) return "";

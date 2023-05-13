@@ -9,9 +9,9 @@ import 'package:the_horeca_store/l10n/localization.dart';
 class WishListScreen extends StatelessWidget {
   WishListScreen({Key? key}) : super(key: key);
 
-
   final WishlistController controller = Get.put(WishlistController());
-  final DashboardScreenController dashboardScreenController = Get.put(DashboardScreenController());
+  final DashboardScreenController dashboardScreenController =
+      Get.put(DashboardScreenController());
 
   @override
   Widget build(BuildContext context) {
@@ -21,29 +21,31 @@ class WishListScreen extends StatelessWidget {
       appBar: PreferredSize(
         preferredSize: const Size.fromHeight(60),
         child: AppBarCart(
-          hideBackButton: dashboardScreenController.tabIndex == 3? true:false,
+          hideBackButton: true,
           title: AppLocalizations.of(context).wishList,
           onBackPressed: () => Get.back(),
         ),
       ),
       body: Padding(
         padding: const EdgeInsets.only(bottom: 4.0),
-        child: Obx(() =>controller.isLoading.value
+        child: Obx(() => controller.isLoading.value
             ? const Center(child: CircularProgressIndicator())
-            : controller.isEmpty.value ? const Center(child: Text("No Products Found in Wishlist"))
-            : GridView.builder(
-          gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount: 2),
-
-                itemBuilder: (context, index) {
-                  return ProductItem(
-                   isFromWishList: true,
-                    item: controller.productList[index],
-                    onWishListItemRemove: () {
-                      controller.removeItem(index);
+            : controller.isEmpty.value
+                ? const Center(child: Text("No Products Found in Wishlist"))
+                : GridView.builder(
+                    gridDelegate:
+                        const SliverGridDelegateWithFixedCrossAxisCount(
+                            crossAxisCount: 2),
+                    itemBuilder: (context, index) {
+                      return ProductItem(
+                        isFromWishList: true,
+                        item: controller.productList[index],
+                        onWishListItemRemove: () {
+                          controller.removeItem(index);
+                        },
+                      );
                     },
-                  );
-                },
-                itemCount: controller.productList.length)),
+                    itemCount: controller.productList.length)),
       ),
     );
   }

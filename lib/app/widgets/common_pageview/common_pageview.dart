@@ -19,7 +19,7 @@ class CommonPageView extends StatelessWidget {
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
     return Obx(() => SizedBox(
-          height: size.height * 0.3,
+          height: size.height * 0.24,
           width: size.width,
           child: Stack(children: [
             SizedBox(

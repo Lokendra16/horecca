@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:lottie/lottie.dart';
 import 'package:the_horeca_store/app/modules/cart_screen/controller/cart_controller.dart';
 import 'package:the_horeca_store/app/routes/app_routes.dart';
 import 'package:the_horeca_store/app/widgets/app_bar_cart.dart';
@@ -9,8 +8,10 @@ import 'package:the_horeca_store/commons/utils/app_theme_data.dart';
 import 'package:the_horeca_store/extensions/assets_ext.dart';
 import 'package:the_horeca_store/l10n/localization.dart';
 import 'package:the_horeca_store/src/gen/assets.gen.dart';
-import 'package:the_horeca_store/src/gen/colors.g({Key? key}) : super(key: key);
+import 'package:the_horeca_store/src/gen/colors.gen.dart';
 
+class CartScreen extends StatelessWidget {
+  CartScreen({Key? key}) : super(key: key);
   final CartScreenController controller = Get.put(CartScreenController());
 
   @override
@@ -96,7 +97,8 @@ import 'package:the_horeca_store/src/gen/colors.g({Key? key}) : super(key: key);
                                 child: Text(
                                   AppLocalizations.of(context).priceDetails,
                                   textAlign: TextAlign.start,
-                                  style: AppThemeData.sf500Font16Black,
+                                  style: AppThemeData.sf500Font16Black
+                                      .copyWith(fontSize: 16),
                                 ),
                               ),
                               Container(

@@ -55,10 +55,10 @@ class AppThemeData {
 
   // SF PRO 500 FONT 12
   static const sf500Font12 = TextStyle(
-      fontWeight: FontWeight.w500,
+      fontWeight: FontWeight.w800,
       fontFamily: 'SF Pro Rounded',
-      fontSize: 13,
-      color: ColorName.black);
+      fontSize: 15,
+      color: ColorName.redcolor);
 
   // SF PRO 400 FONT 12 white
   static const sf400Font12White = TextStyle(
@@ -105,7 +105,7 @@ class AppThemeData {
       fontWeight: FontWeight.w600,
       fontFamily: 'SF Pro Rounded',
       fontSize: 16,
-      color: ColorName.gray);
+      color: ColorName.black);
 
   static const sf400Font15Gray = TextStyle(
       fontWeight: FontWeight.w400,
@@ -191,8 +191,8 @@ class AppThemeData {
 
   // SF 400 FONT 12
   static final sf400Font16Black = TextStyle(
-      color: ColorName.black.withOpacity(0.6),
-      fontSize: 15,
+      color: ColorName.black,
+      fontSize: 16,
       fontWeight: FontWeight.w400,
       fontFamily: 'SF Pro Rounded');
 
@@ -210,40 +210,40 @@ class AppThemeData {
   static const sf500Font12Black = TextStyle(
       fontWeight: FontWeight.w500,
       fontFamily: 'SF Pro Rounded',
-      fontSize: 12,
+      fontSize: 14,
       color: ColorName.gray);
 
-  static final homeDescPrice = GoogleFonts.roboto(
+  static final homeDescPrice = GoogleFonts.jost(
       decoration: TextDecoration.lineThrough,
       color: ColorName.gray,
       fontWeight: FontWeight.w700,
       fontSize: 12);
 
-  static final loginButton = GoogleFonts.roboto(
+  static final loginButton = GoogleFonts.jost(
       color: ColorName.white, fontWeight: FontWeight.w600, fontSize: 14);
 
-  static final font14Weight400Gray = GoogleFonts.roboto(
+  static final font14Weight400Gray = GoogleFonts.jost(
       color: ColorName.gray, fontWeight: FontWeight.w400, fontSize: 14);
 
-  static final font12Weight400Gray = GoogleFonts.roboto(
+  static final font12Weight400Gray = GoogleFonts.jost(
       color: ColorName.gray, fontWeight: FontWeight.w400, fontSize: 12);
-  static final font12Weight400Jewel = GoogleFonts.roboto(
+  static final font12Weight400Jewel = GoogleFonts.jost(
       color: ColorName.jewel, fontWeight: FontWeight.w400, fontSize: 12);
-  static final font12Weight400Cardinal = GoogleFonts.roboto(
+  static final font12Weight400Cardinal = GoogleFonts.jost(
       color: ColorName.cardinal, fontWeight: FontWeight.w400, fontSize: 12);
 
-  static final font14Weight600Cardinal = GoogleFonts.roboto(
+  static final font14Weight600Cardinal = GoogleFonts.jost(
       color: ColorName.cardinal, fontWeight: FontWeight.w600, fontSize: 14);
-  static final font14Weight600Black = GoogleFonts.roboto(
+  static final font14Weight600Black = GoogleFonts.jost(
       color: ColorName.black, fontWeight: FontWeight.w600, fontSize: 14);
-  static final font14Weight600GrayUnderline = GoogleFonts.roboto(
+  static final font14Weight600GrayUnderline = GoogleFonts.jost(
       decoration: TextDecoration.underline,
       color: ColorName.gray,
       fontWeight: FontWeight.w600,
       fontSize: 14);
-  static final font12Weight400Black = GoogleFonts.roboto(
+  static final font12Weight400Black = GoogleFonts.jost(
       color: ColorName.black, fontWeight: FontWeight.w400, fontSize: 12);
-  static final font12Weight400green = GoogleFonts.roboto(
+  static final font12Weight400green = GoogleFonts.jost(
       color: Color(0XFF2D8424), fontWeight: FontWeight.w400, fontSize: 12);
 
   // FONT 12 GRAY 400
@@ -253,42 +253,42 @@ class AppThemeData {
       fontWeight: FontWeight.w400,
       fontFamily: "SF Pro Rounded");
 
-  static final font14Weight600Gray = GoogleFonts.roboto(
+  static final font14Weight600Gray = GoogleFonts.jost(
       color: ColorName.gray, fontWeight: FontWeight.w600, fontSize: 14);
 
-  static final font14Weight600Jewel = GoogleFonts.roboto(
+  static final font14Weight600Jewel = GoogleFonts.jost(
       color: ColorName.jewel, fontWeight: FontWeight.w600, fontSize: 14);
 
-  static final font16Weight400PlayfairDisplay = GoogleFonts.playfairDisplay(
+  static final font16Weight400PlayfairDisplay = GoogleFonts.jost(
       color: ColorName.black, fontWeight: FontWeight.w400, fontSize: 16);
 
-  static final homeProductPrice = GoogleFonts.roboto(
+  static final homeProductPrice = GoogleFonts.jost(
       color: ColorName.gray, fontWeight: FontWeight.w700, fontSize: 12);
 
-  static final font16Weight600PlayfairCardinal = GoogleFonts.playfairDisplay(
+  static final font16Weight600PlayfairCardinal = GoogleFonts.jost(
       color: ColorName.cardinal, fontWeight: FontWeight.w600, fontSize: 16);
 
-  static final font24Weight600PlayfairCardinal = GoogleFonts.playfairDisplay(
+  static final font24Weight600PlayfairCardinal = GoogleFonts.jost(
       color: ColorName.cardinal, fontWeight: FontWeight.w600, fontSize: 24);
 
-  static final font20Weight700White = GoogleFonts.roboto(
+  static final font20Weight700White = GoogleFonts.jost(
       color: ColorName.white, fontWeight: FontWeight.w700, fontSize: 20);
 
-  static final font16Weight600PlayfairBlack = GoogleFonts.playfairDisplay(
+  static final font16Weight600PlayfairBlack = GoogleFonts.jost(
       color: ColorName.black, fontWeight: FontWeight.w600, fontSize: 16);
 
-  static final font10Weight400Black = GoogleFonts.roboto(
+  static final font10Weight400Black = GoogleFonts.jost(
       color: ColorName.black, fontWeight: FontWeight.w400, fontSize: 10);
-  static final font10Weight600Black = GoogleFonts.roboto(
+  static final font10Weight600Black = GoogleFonts.jost(
       color: ColorName.black, fontWeight: FontWeight.w600, fontSize: 10);
-  static final font14Weight300Black = GoogleFonts.roboto(
+  static final font14Weight300Black = GoogleFonts.jost(
       color: ColorName.black, fontWeight: FontWeight.w300, fontSize: 14);
-  static final font16Weight700 = GoogleFonts.roboto(
+  static final font16Weight700 = GoogleFonts.jost(
     color: ColorName.black,
     fontWeight: FontWeight.w700,
     fontSize: 16,
   );
-  static final font16Weight600 = GoogleFonts.roboto(
+  static final font16Weight600 = GoogleFonts.jost(
       color: ColorName.black, fontWeight: FontWeight.w600, fontSize: 16);
 
   static const font20Weight500Gray = TextStyle(

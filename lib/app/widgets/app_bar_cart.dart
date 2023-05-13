@@ -29,26 +29,28 @@ class AppBarCart extends StatelessWidget {
         backgroundColor: ColorName.alabaster,
         //centerTitle: true,
         elevation: 0,
-        leading: Visibility(
-          visible: !hideBackButton,
-          child: GestureDetector(
-            onTap: () {
-              onBackPressed();
-            },
-            child: Center(
-              child: Assets.icons.icBack.svgIcon(
-                size: 20,
-                color: ColorName.black,
-              ),
-            ),
-          ),
-        ),
+        leading: !hideBackButton
+            ? Visibility(
+                visible: !hideBackButton,
+                child: GestureDetector(
+                  onTap: () {
+                    onBackPressed();
+                  },
+                  child: Center(
+                    child: Assets.icons.icBack.svgIcon(
+                      size: 20,
+                      color: ColorName.black,
+                    ),
+                  ),
+                ),
+              )
+            : const SizedBox(),
         title: Text(title, style: AppThemeData.sf500Font18Black),
         actions: [
           Visibility(
             visible: !hideSearchButton,
             child: GestureDetector(
-              onTap: (){
+              onTap: () {
                 Get.toNamed(AppRoutes.searchScreen);
               },
               child: Padding(
@@ -63,16 +65,15 @@ class AppBarCart extends StatelessWidget {
           Visibility(
             visible: !hideCartButton,
             child: GestureDetector(
-              onTap: (){
+              onTap: () {
                 Get.toNamed(AppRoutes.cartScreen);
               },
               child: Padding(
-                padding: const EdgeInsets.only(right: 10.0, left: 10.0),
-                child: Assets.icons.icCart.svgIcon(
-                  size: 24,
-                  color: ColorName.black,
-                )
-              ),
+                  padding: const EdgeInsets.only(right: 10.0, left: 10.0),
+                  child: Assets.icons.icCart.svgIcon(
+                    size: 24,
+                    color: ColorName.black,
+                  )),
             ),
           ),
         ],
