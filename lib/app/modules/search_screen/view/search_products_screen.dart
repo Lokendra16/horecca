@@ -13,6 +13,8 @@ import 'package:the_horeca_store/networking/models/search/results.dart';
 import 'package:the_horeca_store/src/gen/assets.gen.dart';
 import 'package:the_horeca_store/src/gen/colors.gen.dart';
 
+import '../../../widgets/search_product_item.dart';
+
 class SearchProductsScreen extends StatelessWidget {
   SearchProductsScreen({Key? key}) : super(key: key);
 
@@ -44,17 +46,59 @@ class SearchProductsScreen extends StatelessWidget {
       ),
       body: Stack(
         children: [
-          SearchBar(
-            onSubmit: (txt) {
-              debugPrint('txt : $txt');
-              controller.searchProductApi(txt);
-            },
-            onChange: (value) {},
-            searchController: controller.searchController,
-            onSearchTap: (searchKey) {
-              debugPrint('search key : $searchKey');
-              controller.searchProductApi(searchKey);
-            },
+          Obx(
+            () => SearchBar(
+              suffixIcon:
+             controller.showSearchIcon.value ==false
+                  ? InkWell(
+                      onTap: () {
+                        controller.searchProductApi(controller.searchController!.text);
+                      },
+                      child: Container(
+                        decoration: BoxDecoration(
+                            border: Border.all(color: ColorName.mercury),
+                            color: ColorName.cello,
+                            borderRadius: const BorderRadius.only(
+                                topRight: Radius.circular(4),
+                                bottomRight: Radius.circular(4))),
+                        height: 40,
+                        width: 40,
+                        child: Center(
+                            child: Image.asset(
+                          Assets.images.searchImage.path,
+                          height: 16,
+                          width: 16,
+                          color: ColorName.white,
+                        )),
+                      ),
+                    )
+                  : InkWell(
+                  onTap: (){
+                    controller.searchController.clear();
+                    //controller.showSearchIcon.value == false;
+                  controller.searchPagingController.itemList?.clear();
+                 
+                  },
+                  child: Icon(Icons.cancel)),
+              onSubmit: (txt) {
+                debugPrint('txt : $txt');
+                controller.searchProductApi(txt);
+              },
+              onChange: (value) {
+
+                if (value.isNotEmpty) {
+                  controller.showSearchIcon.value = true;
+                } else {
+                  controller.showSearchIcon.value = false;
+                }
+                print('search cont value ${value}');
+              },
+              searchController: controller.searchController,
+              onSearchTap: (searchKey) {
+                debugPrint('search key : $searchKey');
+                controller.searchProductApi(searchKey);
+              },
+            ),
           ),
           Obx(() => controller.isLoading.value == false
               ? Padding(
@@ -90,9 +134,10 @@ class SearchProductsScreen extends StatelessWidget {
                     ),
                   ),
                 )
-              : const Center(child: CircularProgressIndicator(
-            color: ColorName.jewel,
-          ))),
+              : const Center(
+                  child: CircularProgressIndicator(
+                  color: ColorName.jewel,
+                ))),
         ],
       ),
     );

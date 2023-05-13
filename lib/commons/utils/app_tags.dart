@@ -12,4 +12,6 @@ class AppTags{
   static const String bedbathlinen = "Bed & Bath Linen";
   static const String guestroom = "GuestRoom";
   static const String banquetConfrence = "Banquet & Confrence";
+  static const String category = "Category";
+  static const String emptycart = "Empty Cart";
 }
