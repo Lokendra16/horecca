@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:share_plus/share_plus.dart';
 import 'package:the_horeca_store/app/widgets/wishlist_widget.dart';
-import 'package:the_horeca_store/commons/utils/app_tags.dart';
 import 'package:the_horeca_store/commons/utils/app_theme_data.dart';
 import 'package:the_horeca_store/l10n/localization.dart';
 import 'package:the_horeca_store/networking/models/product_data/product_data.dart';
@@ -39,7 +38,8 @@ class ProductDetailsWidget extends StatelessWidget {
                     child: Text(
                       product.title ?? 'N/A',
                       textAlign: TextAlign.start,
-                      style: AppThemeData.sf500Font16.copyWith(color: ColorName.black.withOpacity(0.8)),
+                      style: AppThemeData.sf500Font16
+                          .copyWith(color: ColorName.black.withOpacity(0.8)),
                     ),
                   ),
                   Row(
@@ -47,13 +47,14 @@ class ProductDetailsWidget extends StatelessWidget {
                       Padding(
                         padding: EdgeInsets.only(top: 8.0),
                         child: Text(
-                          product.variants?[0].price.toString() ?? '',
+                          "AED ${product.variants?[0].price.toString()}" ?? '',
                           style: AppThemeData.sf500Font16,
                         ),
                       ),
                       const Spacer(),
                       Container(
-                          padding: const EdgeInsets.symmetric(horizontal: 10,vertical: 2),
+                          padding: const EdgeInsets.symmetric(
+                              horizontal: 10, vertical: 2),
                           decoration: BoxDecoration(
                               borderRadius: BorderRadius.circular(6),
                               border: Border.all(color: ColorName.silver)),
@@ -64,7 +65,10 @@ class ProductDetailsWidget extends StatelessWidget {
                               ),
                               Padding(
                                 padding: const EdgeInsets.only(left: 8.0),
-                                child: Text(AppLocalizations.of(context).wishList,style: AppThemeData.sf400Font14Gray,),
+                                child: Text(
+                                  AppLocalizations.of(context).wishList,
+                                  style: AppThemeData.sf400Font14Gray,
+                                ),
                               ),
                             ],
                           )),
@@ -76,16 +80,23 @@ class ProductDetailsWidget extends StatelessWidget {
                           await Share.share(product.id.toString());
                         },
                         child: Container(
-                          padding: const EdgeInsets.symmetric(horizontal: 10,vertical: 2),
+                          padding: const EdgeInsets.symmetric(
+                              horizontal: 10, vertical: 2),
                           decoration: BoxDecoration(
                               borderRadius: BorderRadius.circular(6),
                               border: Border.all(color: ColorName.silver)),
                           child: Row(
                             children: [
-                              const Icon(Icons.share_outlined,color: ColorName.silver,),
+                              const Icon(
+                                Icons.share_outlined,
+                                color: ColorName.silver,
+                              ),
                               Padding(
                                 padding: const EdgeInsets.only(left: 8.0),
-                                child: Text(AppLocalizations.of(context).share,style: AppThemeData.sf400Font14Gray,),
+                                child: Text(
+                                  AppLocalizations.of(context).share,
+                                  style: AppThemeData.sf400Font14Gray,
+                                ),
                               ),
                             ],
                           ),
@@ -96,8 +107,6 @@ class ProductDetailsWidget extends StatelessWidget {
                 ],
               ),
             ),
-
-
           ],
         ),
       ),

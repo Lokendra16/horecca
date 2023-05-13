@@ -1,7 +1,6 @@
-import 'dart:convert';
-
 import 'package:graphql/client.dart';
 import 'package:the_horeca_store/networking/models/customer/customer_data.dart';
+
 import 'graph_api.dart';
 import 'grapql_api_request.dart';
 
@@ -31,7 +30,8 @@ class GraphQLRepo {
       print(e);
     }
     try {
-      var error = value.data!["customerAccessTokenCreate"]!["customerUserErrors"]![0]!["message"];
+      var error = value.data!["customerAccessTokenCreate"]![
+          "customerUserErrors"]![0]!["message"];
       if (error != null && error.isNotEmpty) {
         return Future.error(error);
       }
@@ -39,8 +39,8 @@ class GraphQLRepo {
       print(e);
     }
     try {
-      var accessToken =
-          value.data!["customerAccessTokenCreate"]["customerAccessToken"]["accessToken"];
+      var accessToken = value.data!["customerAccessTokenCreate"]
+          ["customerAccessToken"]["accessToken"];
       if (accessToken != null && accessToken.isNotEmpty) {
         return Future.value(accessToken);
       }
@@ -75,7 +75,8 @@ class GraphQLRepo {
       print(e);
     }
     try {
-      var error = value.data!["customerAccessTokenCreate"]!["customerUserErrors"]![0]!["message"];
+      var error = value.data!["customerAccessTokenCreate"]![
+          "customerUserErrors"]![0]!["message"];
       if (error != null && error.isNotEmpty) {
         return Future.error(error);
       }
@@ -83,8 +84,8 @@ class GraphQLRepo {
       print(e);
     }
     try {
-      var accessToken =
-          value.data!["customerAccessTokenCreate"]["customerAccessToken"]["accessToken"];
+      var accessToken = value.data!["customerAccessTokenCreate"]
+          ["customerAccessToken"]["accessToken"];
       if (accessToken != null && accessToken.isNotEmpty) {
         return Future.value(accessToken);
       }
@@ -95,7 +96,8 @@ class GraphQLRepo {
     return Future.error("Unexpected Error Occurred!");
   }
 
-  Future<String> signUp(email, password, firstName, lastName, acceptsMarketing) async {
+  Future<String> signUp(
+      email, password, firstName, lastName, acceptsMarketing) async {
     final MutationOptions options = MutationOptions(
       document: gql(signUpQuery),
       variables: <String, dynamic>{
@@ -129,7 +131,8 @@ class GraphQLRepo {
       print(e);
     }
     try {
-      var error = value.data!["customerCreate"]!["customerUserErrors"]![0]!["message"];
+      var error =
+          value.data!["customerCreate"]!["customerUserErrors"]![0]!["message"];
       if (error != null && error.isNotEmpty) {
         return Future.error(error);
       }
@@ -169,7 +172,8 @@ class GraphQLRepo {
       print(e);
     }
     try {
-      var error = value.data!["customerCreate"]!["customerUserErrors"]![0]!["message"];
+      var error =
+          value.data!["customerCreate"]!["customerUserErrors"]![0]!["message"];
       if (error != null && error.isNotEmpty) {
         return Future.error(error);
       }
@@ -210,7 +214,8 @@ class GraphQLRepo {
       print(e);
     }
     try {
-      var error = value.data!["customerCreate"]!["customerUserErrors"]![0]!["message"];
+      var error =
+          value.data!["customerCreate"]!["customerUserErrors"]![0]!["message"];
       if (error != null && error.isNotEmpty) {
         return Future.error(error);
       }
@@ -250,7 +255,8 @@ class GraphQLRepo {
       print(e);
     }
     try {
-      var error = value.data!["customerCreate"]!["customerUserErrors"]![0]!["message"];
+      var error =
+          value.data!["customerCreate"]!["customerUserErrors"]![0]!["message"];
       if (error != null && error.isNotEmpty) {
         return Future.error(error);
       }
@@ -261,6 +267,8 @@ class GraphQLRepo {
   }
 
   Future<dynamic> cartListAPI(String cartId) async {
+    print("value: $cartId");
+
     final MutationOptions options = MutationOptions(
       document: gql(cartListQuery),
       variables: <String, dynamic>{
@@ -354,7 +362,10 @@ class GraphQLRepo {
       variables: <String, dynamic>{
         'cartInput': {
           "lines": [
-            {"quantity": quantity, "merchandiseId": "gid://shopify/ProductVariant/$merchandiseId"}
+            {
+              "quantity": quantity,
+              "merchandiseId": "gid://shopify/ProductVariant/$merchandiseId"
+            }
           ]
         }
       },
@@ -377,6 +388,89 @@ class GraphQLRepo {
     }
     try {
       var accessToken = value.data!["cartCreate"]["cart"]["id"];
+      if (accessToken != null && accessToken.isNotEmpty) {
+        return Future.value(accessToken);
+      }
+    } catch (e) {
+      print(e);
+    }
+
+    return Future.error("Unexpected Error Occurred!");
+  }
+
+  Future<String> addToCartLine(
+      int quantity, String merchandiseId, String cartID) async {
+    print("Add To Cart Line : $quantity, $merchandiseId, $cartID");
+    final MutationOptions options = MutationOptions(
+      document: gql(addToCartLineQuery),
+      variables: <String, dynamic>{
+        "cartId": cartID,
+        "lines": [
+          {
+            "quantity": quantity,
+            "merchandiseId": "gid://shopify/ProductVariant/$merchandiseId"
+          }
+        ]
+      },
+    );
+
+    var value = await client.mutate(options);
+
+    if (value.hasException) {
+      Future.error("Error Occurred!");
+    }
+
+    print("value: $value");
+    try {
+      var error = value.exception!.graphqlErrors[0].message;
+      if (error != null && error.isNotEmpty) {
+        return Future.error(error);
+      }
+    } catch (e) {
+      print(e);
+    }
+    try {
+      var accessToken = value.data!["cartLinesAdd"]["cart"]["id"];
+      if (accessToken != null && accessToken.isNotEmpty) {
+        return Future.value(accessToken);
+      }
+    } catch (e) {
+      print(e);
+    }
+
+    return Future.error("Unexpected Error Occurred!");
+  }
+
+  Future<String> updateCartLine(
+      int quantity, String cartID, String lineID) async {
+    print("Add To Cart Line : $quantity, $lineID, $cartID");
+    final MutationOptions options = MutationOptions(
+      document: gql(updateCartLineApi),
+      variables: <String, dynamic>{
+        "cartId": cartID,
+        "lines": [
+          {"quantity": quantity, "id": lineID}
+        ]
+      },
+    );
+
+    var value = await client.mutate(options);
+
+    if (value.hasException) {
+      Future.error("Error Occurred!");
+    }
+
+    print("value: $value");
+    try {
+      var error = value.exception!.graphqlErrors[0].message;
+      if (error != null && error.isNotEmpty) {
+        return Future.error(error);
+      }
+    } catch (e) {
+      print(e);
+    }
+    try {
+      var accessToken = value.data!["cartLinesUpdate"]["cart"]["id"];
       if (accessToken != null && accessToken.isNotEmpty) {
         return Future.value(accessToken);
       }

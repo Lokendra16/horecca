@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:the_horeca_store/app/modules/product_detail/view/product_recommendation.dart';
 import 'package:the_horeca_store/app/modules/product_detail/controller/product_detail_controller.dart';
 import 'package:the_horeca_store/app/modules/product_detail/view/product_details_widget.dart';
+import 'package:the_horeca_store/app/modules/product_detail/view/product_recommendation.dart';
 import 'package:the_horeca_store/app/routes/app_routes.dart';
 import 'package:the_horeca_store/app/widgets/product_detail_pageview/product_detail_pageview.dart';
 import 'package:the_horeca_store/commons/utils/app_theme_data.dart';
@@ -10,8 +10,8 @@ import 'package:the_horeca_store/extensions/assets_ext.dart';
 import 'package:the_horeca_store/l10n/localization.dart';
 import 'package:the_horeca_store/src/gen/assets.gen.dart';
 import 'package:the_horeca_store/src/gen/colors.gen.dart';
+
 import 'product_desc_widget.dart';
-import 'product_review_widget.dart';
 import 'product_variants_widget.dart';
 
 class ProductDetailScreen extends StatelessWidget {
@@ -24,7 +24,7 @@ class ProductDetailScreen extends StatelessWidget {
     Size size = MediaQuery.of(context).size;
     return Scaffold(
       backgroundColor: ColorName.white,
-      appBar:  AppBar(
+      appBar: AppBar(
         backgroundColor: ColorName.white,
         centerTitle: true,
         elevation: 0,
@@ -39,10 +39,13 @@ class ProductDetailScreen extends StatelessWidget {
             ),
           ),
         ),
-        title: Obx(() => Text(productDetailController.title.value ?? '', style: AppThemeData.sf500Font18Black),),
+        title: Obx(
+          () => Text(productDetailController.title.value ?? '',
+              style: AppThemeData.sf500Font18Black),
+        ),
         actions: [
           GestureDetector(
-            onTap: (){
+            onTap: () {
               Get.toNamed(AppRoutes.searchScreen);
             },
             child: Padding(
@@ -54,15 +57,15 @@ class ProductDetailScreen extends StatelessWidget {
             ),
           ),
           GestureDetector(
-            onTap: (){
+            onTap: () {
               Get.toNamed(AppRoutes.cartScreen);
             },
             child: Padding(
-                padding: const EdgeInsets.only(right: 10.0, left: 10.0),
-                child: Assets.icons.icCart.svgIcon(
-                  size: 20,
-                  color: ColorName.black,
-                ),
+              padding: const EdgeInsets.only(right: 10.0, left: 10.0),
+              child: Assets.icons.icCart.svgIcon(
+                size: 20,
+                color: ColorName.black,
+              ),
             ),
           ),
         ],
@@ -89,88 +92,99 @@ class ProductDetailScreen extends StatelessWidget {
                   children: [
                     ProductDetailPageView(),
                     Obx(
-                          () => ProductDetailsWidget(
-                        product:
-                        productDetailController.productDetail.value,
+                      () => ProductDetailsWidget(
+                        product: productDetailController.productDetail.value,
                       ),
                     ),
                     ProductVariantsWidget(),
-                    Container(height: 1,width: size.width,color: ColorName.silver,),
+                    Container(
+                      height: 1,
+                      width: size.width,
+                      color: ColorName.silver,
+                    ),
                     ProductDescWidget(),
-                    Container(height: 1,width: size.width,color: ColorName.silver,),
-                    ProductReviewWidget(),
-                    Container(height: 1,width: size.width,color: ColorName.silver,),
-                    userReviewWidget(size: size),
+                    Container(
+                      height: 1,
+                      width: size.width,
+                      color: ColorName.silver,
+                    ),
+                    // ProductReviewWidget(),
+                    Container(
+                      height: 1,
+                      width: size.width,
+                      color: ColorName.silver,
+                    ),
+                    //userReviewWidget(size: size),
                     productDetailController.isLoadingRecommendation.value
                         ? const SizedBox()
                         : ProductsRecommendationWidget(
-                      data: productDetailController
-                          .productRecommendationList.value,
+                            data: productDetailController
+                                .productRecommendationList.value,
+                          ),
+                    const SizedBox(
+                      height: 60,
                     ),
-                    const SizedBox(height: 60,),
                   ],
                 ),
-                Positioned(
-                    bottom: 0,
-                    child: ProductItemAddWidget()),
+                Positioned(bottom: 0, child: ProductItemAddWidget()),
               ],
             )
-            // return ListView(
-            //   children: [
-            //     Column(
-            //       children: [
-            //         ProductDetailPageView(),
-            //         Padding(
-            //           padding: const EdgeInsets.only(top: 12.0),
-            //           child: Column(
-            //             children: [
-            //               Obx(
-            //                 () => ProductDetailsWidget(
-            //                   product:
-            //                       productDetailController.productDetail.value,
-            //                 ),
-            //               ),
-            //               ProductVariantsWidget(),
-            //               Container(height: 1,width: size.width,color: ColorName.silver,),
-            //               ProductDescWidget(),
-            //               Container(height: 1,width: size.width,color: ColorName.silver,),
-            //               ProductReviewWidget(),
-            //               Container(height: 1,width: size.width,color: ColorName.silver,),
-            //               userReviewWidget(size: size),
-            //               productDetailController.isLoadingRecommendation.value
-            //                   ? const SizedBox()
-            //                   : ProductsRecommendationWidget(
-            //                       data: productDetailController
-            //                           .productRecommendationList.value,
-            //                     ),
-            //               ProductItemAddWidget(),
-            //
-            //
-            //               /*      selectSizeWidget(size: size),
-            //           selectCapecityWidget(size: size),
-            //           selectColorWidget(size: size),
-            //
-            //           additionalInfoWidget(productDetailController: productDetailController),
-            //
-            //           userReviewWidget(size: size),
-            //           Text(
-            //             AppLocalizations.of(context).youMayAlsoLike,
-            //             style: AppThemeData.font16Weight600Playfair,
-            //           ),
-            //           SizedBox(height: size.height * 0.3, child: const HomeCategoryGridView()),
-            //           */
-            //             ],
-            //           ),
-            //         ),
-            //
-            //       ],
-            //     ),
-            //
-            //
-            //   ],
-            // )
+                // return ListView(
+                //   children: [
+                //     Column(
+                //       children: [
+                //         ProductDetailPageView(),
+                //         Padding(
+                //           padding: const EdgeInsets.only(top: 12.0),
+                //           child: Column(
+                //             children: [
+                //               Obx(
+                //                 () => ProductDetailsWidget(
+                //                   product:
+                //                       productDetailController.productDetail.value,
+                //                 ),
+                //               ),
+                //               ProductVariantsWidget(),
+                //               Container(height: 1,width: size.width,color: ColorName.silver,),
+                //               ProductDescWidget(),
+                //               Container(height: 1,width: size.width,color: ColorName.silver,),
+                //               ProductReviewWidget(),
+                //               Container(height: 1,width: size.width,color: ColorName.silver,),
+                //               userReviewWidget(size: size),
+                //               productDetailController.isLoadingRecommendation.value
+                //                   ? const SizedBox()
+                //                   : ProductsRecommendationWidget(
+                //                       data: productDetailController
+                //                           .productRecommendationList.value,
+                //                     ),
+                //               ProductItemAddWidget(),
+                //
+                //
+                //               /*      selectSizeWidget(size: size),
+                //           selectCapecityWidget(size: size),
+                //           selectColorWidget(size: size),
+                //
+                //           additionalInfoWidget(productDetailController: productDetailController),
+                //
+                //           userReviewWidget(size: size),
+                //           Text(
+                //             AppLocalizations.of(context).youMayAlsoLike,
+                //             style: AppThemeData.font16Weight600Playfair,
+                //           ),
+                //           SizedBox(height: size.height * 0.3, child: const HomeCategoryGridView()),
+                //           */
+                //             ],
+                //           ),
+                //         ),
+                //
+                //       ],
+                //     ),
+                //
+                //
+                //   ],
+                // )
 
-            ;
+                ;
           }
         },
       ),
@@ -190,7 +204,7 @@ class ProductItemAddWidget extends StatelessWidget {
     Size size = MediaQuery.of(context).size;
     return Container(
       margin: const EdgeInsets.only(top: 20, bottom: 0),
-      padding: const EdgeInsets.only(bottom: 40,top: 10),
+      padding: const EdgeInsets.only(bottom: 40, top: 10),
       //height: 38,
       width: size.width,
       color: ColorName.white,
@@ -244,8 +258,11 @@ class ProductItemAddWidget extends StatelessWidget {
                 },
                 style:
                     TextButton.styleFrom(backgroundColor: ColorName.cardinal),
-                child: Text(AppLocalizations.of(context).addToCart,
-                    style: AppThemeData.sf500Font16White),
+                child: Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: Text(AppLocalizations.of(context).addToCart,
+                      style: AppThemeData.sf500Font16White),
+                ),
               ),
             )
           ],
@@ -268,86 +285,84 @@ class userReviewWidget extends StatelessWidget {
     return Container(
         margin: const EdgeInsets.only(top: 10, bottom: 10),
         color: ColorName.white,
-        child:
-        Column(
+        child: Column(
           children: [
-            for (int index = 0;
-            index < 3;
-            index++)
-           Column(
-             children: [
-               Padding(
-                 padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 5),
-                 child: Row(
-                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                   children: [
-                     const Text(
-                       "Marvin McKinney",
-                       style: AppThemeData.sf500Font16Black,
-                     ),
-                     Row(
-                       children: [
-                         Image.asset(
-                           Assets.images.reviewStar.path,
-                           height: 12,
-                         ),
-                         Image.asset(
-                           Assets.images.reviewStar.path,
-                           height: 12,
-                         ),
-                         Image.asset(
-                           Assets.images.reviewStar.path,
-                           height: 12,
-                         ),
-                         Image.asset(
-                           Assets.images.reviewStar.path,
-                           height: 12,
-                         ),
-                         Image.asset(
-                           Assets.images.reviewStar.path,
-                           height: 12,
-                         ),
-                       ],
-                     ),
-                   ],
-                 ),
-               ),
-               const SizedBox(
-                 height: 8,
-               ),
-               const Padding(
-                 padding: EdgeInsets.symmetric(horizontal: 16),
-                 child: Text(
-                   "Amet minim mollit non deserunt ullamco est sit aliqua dolor do amet sint.",
-                   style: AppThemeData.sf400Font12,
-                   softWrap: false,
-                   textScaleFactor: 1.2,
-                   maxLines: 2,
-                   overflow: TextOverflow.ellipsis,
-                 ),
-               ),
-               const Divider(
-                 color: ColorName.silver,
-               ),
-               index == 3 - 1 ?
-               Container(
-                 margin: const EdgeInsets.only(bottom: 8),
-                 decoration: BoxDecoration(
-                     borderRadius: BorderRadius.circular(6),
-                     border: Border.all(color: ColorName.silver)),
-                 child: Padding(
-                   padding: const EdgeInsets.all(7.0),
-                   child: Text(
-                     AppLocalizations.of(context).seeAllReview,
-                     style: AppThemeData.font12Weight400,
-                   ),
-                 ),
-               ): const SizedBox(),
-             ],
-           )
+            for (int index = 0; index < 3; index++)
+              Column(
+                children: [
+                  Padding(
+                    padding:
+                        const EdgeInsets.symmetric(horizontal: 16, vertical: 5),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        const Text(
+                          "Marvin McKinney",
+                          style: AppThemeData.sf500Font16Black,
+                        ),
+                        Row(
+                          children: [
+                            Image.asset(
+                              Assets.images.reviewStar.path,
+                              height: 12,
+                            ),
+                            Image.asset(
+                              Assets.images.reviewStar.path,
+                              height: 12,
+                            ),
+                            Image.asset(
+                              Assets.images.reviewStar.path,
+                              height: 12,
+                            ),
+                            Image.asset(
+                              Assets.images.reviewStar.path,
+                              height: 12,
+                            ),
+                            Image.asset(
+                              Assets.images.reviewStar.path,
+                              height: 12,
+                            ),
+                          ],
+                        ),
+                      ],
+                    ),
+                  ),
+                  const SizedBox(
+                    height: 8,
+                  ),
+                  const Padding(
+                    padding: EdgeInsets.symmetric(horizontal: 16),
+                    child: Text(
+                      "Amet minim mollit non deserunt ullamco est sit aliqua dolor do amet sint.",
+                      style: AppThemeData.sf400Font12,
+                      softWrap: false,
+                      textScaleFactor: 1.2,
+                      maxLines: 2,
+                      overflow: TextOverflow.ellipsis,
+                    ),
+                  ),
+                  const Divider(
+                    color: ColorName.silver,
+                  ),
+                  index == 3 - 1
+                      ? Container(
+                          margin: const EdgeInsets.only(bottom: 8),
+                          decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(6),
+                              border: Border.all(color: ColorName.silver)),
+                          child: Padding(
+                            padding: const EdgeInsets.all(7.0),
+                            child: Text(
+                              AppLocalizations.of(context).seeAllReview,
+                              style: AppThemeData.font12Weight400,
+                            ),
+                          ),
+                        )
+                      : const SizedBox(),
+                ],
+              )
           ],
-        )
-    );
+        ));
   }
 }
 

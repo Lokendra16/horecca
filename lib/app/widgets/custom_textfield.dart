@@ -35,9 +35,7 @@ class CustomTextField extends StatelessWidget {
       height: 40,
       width: size.width,
       decoration: BoxDecoration(
-          color: ColorName.white,
-
-          borderRadius: BorderRadius.circular(5)),
+          color: ColorName.white, borderRadius: BorderRadius.circular(5)),
       child: Center(
         child: TextFormField(
           maxLength: textFieldLength,
@@ -48,18 +46,18 @@ class CustomTextField extends StatelessWidget {
           keyboardType: keyboardType,
           decoration: InputDecoration(
             enabledBorder: const UnderlineInputBorder(
-              borderSide: BorderSide(color: ColorName.mercury)
-            ),
+                borderSide: BorderSide(color: ColorName.mercury)),
             focusedBorder: const UnderlineInputBorder(
-              borderSide: BorderSide(color: ColorName.mercury)
-            ),
+                borderSide: BorderSide(color: ColorName.mercury)),
             //contentPadding: const EdgeInsets.all(6),
             contentPadding: padding,
             suffixIcon: suffixImage,
             prefixIcon: prefixImage,
             border: InputBorder.none,
+            counterText: '',
             hintText: hintText,
-            hintStyle: AppThemeData.font14Weight400Gray.copyWith(color: ColorName.gray.withOpacity(0.7)),
+            hintStyle: AppThemeData.font14Weight400Gray
+                .copyWith(color: ColorName.gray.withOpacity(0.7)),
           ),
         ),
       ),

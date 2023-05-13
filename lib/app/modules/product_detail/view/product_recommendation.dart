@@ -19,7 +19,6 @@ class ProductsRecommendationWidget extends StatelessWidget {
     return Container(
       color: ColorName.gray.withOpacity(0.2),
       padding: const EdgeInsets.only(bottom: 50),
-
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
@@ -27,7 +26,7 @@ class ProductsRecommendationWidget extends StatelessWidget {
             padding: const EdgeInsets.only(top: 10.0, left: 12),
             child: Text(
               data.title ?? '',
-              style: AppThemeData.sf600Font16Gray,
+              style: AppThemeData.sf600Font16Black,
             ),
           ),
           const SizedBox(
@@ -89,7 +88,8 @@ class ProductsRecommendationWidget extends StatelessWidget {
                           Padding(
                             padding: const EdgeInsets.only(top: 5, bottom: 8),
                             child: Text(
-                              'AED 134.75', //TODO Make this dynamic
+                              "AED ${data.products?[i].price.toString()}" ??
+                                  '', //TODO Make this dynamic
                               style: AppThemeData.sf500Font16
                                   .copyWith(fontSize: 12),
                             ),

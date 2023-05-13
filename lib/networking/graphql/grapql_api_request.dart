@@ -187,11 +187,41 @@ mutation createCart($cartInput: CartInput) {
 
 ''';
 
+const String addToCartLineQuery = r'''
+mutation cartLinesAdd($cartId: ID!, $lines: [CartLineInput!]!) {
+  cartLinesAdd(cartId: $cartId, lines: $lines) {
+    cart {
+     id
+     checkoutUrl
+    }
+    userErrors {
+      field
+      message
+    }
+  }
+}
+
+''';
+
 const String productRemoveCart = r'''
 mutation cartLinesRemove($cartId: ID!, $lineIds: [ID!]!) {
   cartLinesRemove(cartId: $cartId, lineIds: $lineIds) {
     cart {
       id
+    }
+    userErrors {
+      field
+      message
+    }
+  }
+}
+''';
+
+const String updateCartLineApi = r'''
+mutation cartLinesUpdate($cartId: ID!, $lines: [CartLineUpdateInput!]!) {
+  cartLinesUpdate(cartId: $cartId, lines: $lines) {
+    cart {
+        id
     }
     userErrors {
       field
@@ -227,10 +257,17 @@ query productRecommendations($productId: ID!) {
             url
         }
     }
+    priceRange{
+        maxVariantPrice{
+            amount
+        }
+        minVariantPrice{
+            amount
+        }
+    }
   }
 }
 ''';
-
 
 const String updateCartAddressQuery = r'''
 mutation updateCartBuyerIdentity($buyerIdentity: CartBuyerIdentityInput!, $cartId: ID!) {

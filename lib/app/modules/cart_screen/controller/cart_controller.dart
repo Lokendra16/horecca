@@ -1,4 +1,3 @@
-import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:the_horeca_store/app/modules/cart_screen/model/cart_model.dart';
 import 'package:the_horeca_store/commons/utils/app_preference.dart';
@@ -6,7 +5,6 @@ import 'package:the_horeca_store/commons/utils/my_snackbar.dart';
 import 'package:the_horeca_store/networking/graphql/graphql_repo.dart';
 import 'package:the_horeca_store/networking/models/product_data/product_data.dart';
 import 'package:the_horeca_store/networking/models/product_data/product_image.dart';
-import 'package:the_horeca_store/networking/models/product_data/product_variants.dart';
 
 class CartScreenController extends GetxController {
   var isInitialLoading = true.obs;
@@ -26,18 +24,21 @@ class CartScreenController extends GetxController {
   void getCartAPI() async {
     isInitialLoading.value = true;
     var cartId = await AppPreference().get(AppPreference.KEY_CART_ID) ?? '';
-
-    GraphQLRepo().cartListAPI(cartId).then(
-      (value) {
-        isInitialLoading.value = false;
-        filterCartData(value);
-      },
-    ).onError(
-      (error, stackTrace) {
-        isInitialLoading.value = false;
-        MySnackBar().errorSnackBar(error.toString());
-      },
-    );
+    if (cartId != null && cartId.isNotEmpty) {
+      GraphQLRepo().cartListAPI(cartId).then(
+        (value) {
+          isInitialLoading.value = false;
+          filterCartData(value);
+        },
+      ).onError(
+        (error, stackTrace) {
+          isInitialLoading.value = false;
+          MySnackBar().errorSnackBar(error.toString());
+        },
+      );
+    } else {
+      isInitialLoading.value = false;
+    }
   }
 
   void removeProductFromCart(int index) async {
@@ -80,13 +81,12 @@ class CartScreenController extends GetxController {
 
     response["lines"]["nodes"].forEach((element) {
       var product = ProductData(
-          lineId: element["id"],
-          quantity: element["quantity"],
-          title: element["merchandise"]["product"]["title"],
-          image: ProductImages(
-              src: element["merchandise"]?["image"]?["url"] ?? ''),
+        lineId: element["id"],
+        quantity: element["quantity"],
+        title: element["merchandise"]["product"]["title"],
+        image:
+            ProductImages(src: element["merchandise"]?["image"]?["url"] ?? ''),
         //variants: element["merchandise"]["ProductVariant"]["priceV2"]["amount"] ?? ""
-
       );
       productList.add(product);
     });
@@ -99,9 +99,6 @@ class CartScreenController extends GetxController {
     //
     //
     // });
-
-
-
 
     if (productList != null && productList.isNotEmpty) {
       var cartModel = CartModel(
@@ -120,20 +117,31 @@ class CartScreenController extends GetxController {
     }
   }
 
-  void incrementQuantity(quantity, index) {
-    if (quantity < 10) {
-      quantity++;
-      cartData.value.productList![index].quantity = quantity;
+  void incrementQuantity(quantity, lineId) {
+    quantity++;
+    if (quantity > 1) {
+      updateCart(quantity, lineId);
     }
-    print('increment : ${quantity}');
-    update();
   }
 
-  void decrementQuantity(quantity, index) {
-    if (quantity >= 1) {
-      quantity--;
+  void decrementQuantity(quantity, lineId) {
+    quantity--;
+    if (quantity > 0) {
+      updateCart(quantity, lineId);
     }
 
     print('decrement : ${quantity}');
+  }
+
+  Future<void> updateCart(quantity, lineId) async {
+    var checkCartId =
+        await AppPreference().get(AppPreference.KEY_CART_ID) ?? '';
+    if (checkCartId != null && checkCartId.isNotEmpty) {
+      GraphQLRepo().updateCartLine(quantity, checkCartId, lineId).then((value) {
+        getCartAPI();
+      }).onError((error, stackTrace) {
+        MySnackBar().errorSnackBar(error.toString());
+      });
+    }
   }
 }

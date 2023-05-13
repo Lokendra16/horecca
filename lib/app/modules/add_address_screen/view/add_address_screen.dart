@@ -7,8 +7,6 @@ import 'package:the_horeca_store/commons/utils/app_theme_data.dart';
 import 'package:the_horeca_store/l10n/localization.dart';
 import 'package:the_horeca_store/src/gen/colors.gen.dart';
 
-import '../../thankyou_screen/thankyou_screen.dart';
-
 class AddAddressScreen extends StatelessWidget {
   AddAddressScreen({Key? key}) : super(key: key);
 
@@ -95,12 +93,15 @@ class AddAddressScreen extends StatelessWidget {
                 margin: const EdgeInsets.only(left: 16, right: 16, bottom: 16),
                 height: 40,
                 width: MediaQuery.of(context).size.width,
-                decoration: BoxDecoration(boxShadow: const [
-                  BoxShadow(
-                      color: ColorName.silver, //New
-                      blurRadius: 1.0,
-                      offset: Offset(-1, 1))
-                ], color: ColorName.white, borderRadius: BorderRadius.circular(6)),
+                decoration: BoxDecoration(
+                    boxShadow: const [
+                      BoxShadow(
+                          color: ColorName.silver, //New
+                          blurRadius: 1.0,
+                          offset: Offset(-1, 1))
+                    ],
+                    color: ColorName.white,
+                    borderRadius: BorderRadius.circular(6)),
                 child: Padding(
                   padding: const EdgeInsets.only(left: 10.0),
                   child: Row(
@@ -109,7 +110,8 @@ class AddAddressScreen extends StatelessWidget {
                         alignment: Alignment.centerLeft,
                         child: Obx(
                           () => Text(
-                            controller.selectedCountry.value?.name ?? 'Select Country',
+                            controller.selectedCountry.value?.name ??
+                                'Select Country',
                             style: AppThemeData.font14Weight400Gray,
                           ),
                         ),
@@ -135,12 +137,15 @@ class AddAddressScreen extends StatelessWidget {
                 margin: const EdgeInsets.only(left: 16, right: 16, bottom: 16),
                 height: 40,
                 width: MediaQuery.of(context).size.width,
-                decoration: BoxDecoration(boxShadow: const [
-                  BoxShadow(
-                      color: ColorName.silver, //New
-                      blurRadius: 1.0,
-                      offset: Offset(-1, 1))
-                ], color: ColorName.white, borderRadius: BorderRadius.circular(6)),
+                decoration: BoxDecoration(
+                    boxShadow: const [
+                      BoxShadow(
+                          color: ColorName.silver, //New
+                          blurRadius: 1.0,
+                          offset: Offset(-1, 1))
+                    ],
+                    color: ColorName.white,
+                    borderRadius: BorderRadius.circular(6)),
                 child: Padding(
                   padding: const EdgeInsets.only(left: 10.0),
                   child: Row(
@@ -148,7 +153,8 @@ class AddAddressScreen extends StatelessWidget {
                       Align(
                           alignment: Alignment.centerLeft,
                           child: Obx(() => Text(
-                                controller.selectedProvince.value?.name ?? 'Select Province',
+                                controller.selectedProvince.value?.name ??
+                                    'Select Province',
                                 style: AppThemeData.font14Weight400Gray,
                               ))),
                       const Spacer(),
@@ -190,7 +196,6 @@ class AddAddressScreen extends StatelessWidget {
             PrimaryCheckOutBtn(
               btnText: AppLocalizations.of(context).submit,
               onClick: () {
-
                 controller.addCountryAPI();
               },
             )
@@ -216,11 +221,13 @@ class AddAddressScreen extends StatelessWidget {
                         onTap: () {
                           controller.provincesList.value =
                               controller.countriesList[index].provinces!;
-                          controller.setCountry(controller.countriesList[index]);
+                          controller
+                              .setCountry(controller.countriesList[index]);
                           Get.back();
                         },
                         child: ListTile(
-                          title: Text(controller.countriesList[index].name.toString()),
+                          title: Text(
+                              controller.countriesList[index].name.toString()),
                         ),
                       ));
                 },
@@ -247,11 +254,13 @@ class AddAddressScreen extends StatelessWidget {
                   return Obx(
                     () => InkWell(
                       onTap: () {
-                        controller.setProvinces(controller.provincesList[index]);
+                        controller
+                            .setProvinces(controller.provincesList[index]);
                         Get.back();
                       },
                       child: ListTile(
-                        title: Text(controller.provincesList[index].name.toString()),
+                        title: Text(
+                            controller.provincesList[index].name.toString()),
                       ),
                     ),
                   );

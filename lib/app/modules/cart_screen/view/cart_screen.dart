@@ -46,29 +46,41 @@ class CartScreen extends StatelessWidget {
                 children: [
                   Obx(
                     () => Expanded(
-                      child: controller.cartData.value.productList != null ?
-                      ListView.builder(
-                        itemCount:
-                            controller.cartData.value.productList?.length ?? 0,
-                        itemBuilder: (context, index) {
-                          print(
-                              'list view :${controller.cartData.value.productList?[index].variants}');
-                          var quantity = controller
-                              .cartData.value.productList![index].quantity;
-                          return CartItem(
-                            item: controller.cartData.value.productList![index],
-                            onRemove: () {
-                              controller.removeProductFromCart(index);
-                            },
-                            decrease: () {
-                              controller.decrementQuantity(quantity, index);
-                            },
-                            increase: () {
-                              controller.incrementQuantity(quantity, index);
-                            },
-                          );
-                        },
-                      ) : const Center(child: Text('Cart Not Found')),
+                      child: controller.cartData.value.productList != null
+                          ? ListView.builder(
+                              itemCount: controller
+                                      .cartData.value.productList?.length ??
+                                  0,
+                              itemBuilder: (context, index) {
+                                print(
+                                    'list view :${controller.cartData.value.productList?[index].variants}');
+                                var quantity = controller.cartData.value
+                                    .productList![index].quantity;
+                                return CartItem(
+                                  item: controller
+                                      .cartData.value.productList![index],
+                                  onRemove: () {
+                                    deleteItem(context, index);
+                                  },
+                                  decrease: () {
+                                    controller.decrementQuantity(
+                                        quantity,
+                                        controller.cartData.value
+                                            .productList?[index].lineId);
+                                  },
+                                  increase: () {
+                                    controller.incrementQuantity(
+                                        quantity,
+                                        controller.cartData.value
+                                            .productList?[index].lineId);
+                                  },
+                                );
+                              },
+                            )
+                          : Container(
+                              color: Colors.white,
+                              child:
+                                  const Center(child: Text('Cart Not Found'))),
                     ),
                   ),
                   controller.cartData.value.productList != null
@@ -105,8 +117,8 @@ class CartScreen extends StatelessWidget {
                                       style: AppThemeData.sf400Font15Gray,
                                     ),
                                     Text(
-                                      controller.cartData.value.productList![0]
-                                          .quantity
+                                      controller
+                                          .cartData.value.productList!.length
                                           .toString(),
                                       style: AppThemeData.sf400Font15Gray,
                                     ),
@@ -123,8 +135,9 @@ class CartScreen extends StatelessWidget {
                                       AppLocalizations.of(context).totalAed,
                                       style: AppThemeData.sf400Font15Gray,
                                     ),
-                                    const Text(
-                                      "62.04",
+                                    Text(
+                                      controller.cartData.value.subtotalAmount
+                                          .toString(),
                                       style: AppThemeData.sf400Font15Gray,
                                     ),
                                   ],
@@ -141,35 +154,10 @@ class CartScreen extends StatelessWidget {
                                           .discountOnAed,
                                       style: AppThemeData.sf400Font15Gray,
                                     ),
-                                    const Text(
-                                      "11.02",
-                                      style: AppThemeData.sf400Font15Gray,
-                                    ),
-                                  ],
-                                ),
-                              ),
-                              Padding(
-                                padding: const EdgeInsets.all(8.0),
-                                child: Row(
-                                  children: [
                                     Text(
-                                      AppLocalizations.of(context).other,
+                                      controller.cartData.value.totalTaxAmount
+                                          .toString(),
                                       style: AppThemeData.sf400Font15Gray,
-                                    ),
-                                    Padding(
-                                      padding: const EdgeInsets.symmetric(
-                                          horizontal: 8.0),
-                                      child: Text(
-                                        AppLocalizations.of(context).knowMore,
-                                        style: AppThemeData.sf500Font16,
-                                      ),
-                                    ),
-                                    const Expanded(
-                                      child: Text(
-                                        "04",
-                                        textAlign: TextAlign.end,
-                                        style: AppThemeData.sf400Font15Gray,
-                                      ),
                                     ),
                                   ],
                                 ),
@@ -237,6 +225,46 @@ class CartScreen extends StatelessWidget {
                 ],
               ),
       ),
+    );
+  }
+
+  void deleteItem(BuildContext context, int pos) async {
+    return showDialog<void>(
+      context: context,
+      barrierDismissible: true, // user must tap button!
+      builder: (BuildContext context) {
+        return AlertDialog(
+          title: const Text('Delete Product?'),
+          content: SingleChildScrollView(
+            child: ListBody(
+              children: const <Widget>[
+                Text('Are you sure to delete this product from the cart?'),
+              ],
+            ),
+          ),
+          actions: <Widget>[
+            TextButton(
+              child: const Text(
+                'Cancel',
+                style: TextStyle(color: Colors.black),
+              ),
+              onPressed: () {
+                Navigator.of(context).pop();
+              },
+            ),
+            TextButton(
+              child: const Text(
+                'Yes',
+                style: TextStyle(color: Colors.black),
+              ),
+              onPressed: () {
+                controller.removeProductFromCart(pos);
+                Navigator.of(context).pop();
+              },
+            ),
+          ],
+        );
+      },
     );
   }
 }

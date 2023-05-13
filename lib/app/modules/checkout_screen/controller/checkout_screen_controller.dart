@@ -1,5 +1,6 @@
 import 'package:get/get.dart';
 import 'package:the_horeca_store/app/routes/app_routes.dart';
+import 'package:the_horeca_store/commons/utils/app_preference.dart';
 import 'package:webview_flutter/webview_flutter.dart';
 
 class CheckoutScreenController extends GetxController {
@@ -24,7 +25,8 @@ class CheckoutScreenController extends GetxController {
           },
           onNavigationRequest: (request) {
             print("Request URL : ${request.url}");
-            if(Uri.parse(request.url).pathSegments.last == "thank_you"){
+            if (Uri.parse(request.url).pathSegments.last == "thank_you") {
+              AppPreference().setString(AppPreference.KEY_CART_ID, "");
               Get.offAllNamed(AppRoutes.thankyou);
             }
             return NavigationDecision.navigate;
@@ -35,5 +37,4 @@ class CheckoutScreenController extends GetxController {
         ));
     }
   }
-
 }

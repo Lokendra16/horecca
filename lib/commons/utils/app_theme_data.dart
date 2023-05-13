@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:the_horeca_store/src/gen/colors.gen.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class AppThemeData {
   static const String apiKey = "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";
@@ -61,8 +60,6 @@ class AppThemeData {
       fontSize: 13,
       color: ColorName.black);
 
-
-
   // SF PRO 400 FONT 12 white
   static const sf400Font12White = TextStyle(
       fontWeight: FontWeight.w400,
@@ -96,7 +93,6 @@ class AppThemeData {
       fontSize: 16,
       color: ColorName.cardinal);
 
-
   // SF PRO 500 FONT 16
   static const sf500Font16Gray = TextStyle(
       fontWeight: FontWeight.w500,
@@ -117,14 +113,11 @@ class AppThemeData {
       fontSize: 15,
       color: ColorName.gray);
 
-
   static const sf400Font14Gray = TextStyle(
       fontWeight: FontWeight.w400,
       fontFamily: 'SF Pro Rounded',
       fontSize: 14,
       color: ColorName.gray);
-
-
 
   // SF PRO 500 FONT 16 BLACK
   static const sf500Font16Black = TextStyle(
@@ -132,8 +125,6 @@ class AppThemeData {
       fontFamily: 'SF Pro Rounded',
       fontSize: 16,
       color: ColorName.black);
-
-
 
   static final discountTextStyle = GoogleFonts.roboto(
       color: ColorName.white, fontWeight: FontWeight.w600, fontSize: 10);
@@ -192,14 +183,12 @@ class AppThemeData {
       fontWeight: FontWeight.w400,
       fontFamily: 'SF Pro Rounded');
 
-
   // SF 400 FONT 12
   static final sf400Font16Black = TextStyle(
       color: ColorName.black.withOpacity(0.6),
       fontSize: 15,
       fontWeight: FontWeight.w400,
       fontFamily: 'SF Pro Rounded');
-
 
   // SF 500 FONT 18
   static const sf500Font18Black = TextStyle(
@@ -217,8 +206,6 @@ class AppThemeData {
       fontFamily: 'SF Pro Rounded',
       fontSize: 12,
       color: ColorName.gray);
-
-
 
   static final homeDescPrice = GoogleFonts.roboto(
       decoration: TextDecoration.lineThrough,
@@ -251,7 +238,7 @@ class AppThemeData {
   static final font12Weight400Black = GoogleFonts.roboto(
       color: ColorName.black, fontWeight: FontWeight.w400, fontSize: 12);
   static final font12Weight400green = GoogleFonts.roboto(
-      color:Color(0XFF2D8424), fontWeight: FontWeight.w400, fontSize: 12);
+      color: Color(0XFF2D8424), fontWeight: FontWeight.w400, fontSize: 12);
 
   // FONT 12 GRAY 400
   static const font12Gray400 = TextStyle(
@@ -298,11 +285,15 @@ class AppThemeData {
   static final font16Weight600 = GoogleFonts.roboto(
       color: ColorName.black, fontWeight: FontWeight.w600, fontSize: 16);
 
-
   static const font20Weight500Gray = TextStyle(
       fontSize: 20.0,
       fontFamily: 'SF Pro Rounded',
       color: ColorName.gray,
-      fontWeight: FontWeight.w500
-  );
+      fontWeight: FontWeight.w500);
+
+  static const sf600Font16Black = TextStyle(
+      fontWeight: FontWeight.w600,
+      fontFamily: 'SF Pro Rounded',
+      fontSize: 16,
+      color: ColorName.black);
 }
