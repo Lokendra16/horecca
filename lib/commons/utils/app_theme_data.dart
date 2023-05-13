@@ -113,6 +113,12 @@ class AppThemeData {
       fontSize: 15,
       color: ColorName.gray);
 
+  static const sf400Font18Gray = TextStyle(
+      fontWeight: FontWeight.w400,
+      fontFamily: 'SF Pro Rounded',
+      fontSize: 18,
+      color: ColorName.gray);
+
   static const sf400Font14Gray = TextStyle(
       fontWeight: FontWeight.w400,
       fontFamily: 'SF Pro Rounded',

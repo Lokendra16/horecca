@@ -39,200 +39,203 @@ class CartScreen extends StatelessWidget {
                   color: ColorName.jewel,
                 ),
               )
-            : Column(
-                crossAxisAlignment: CrossAxisAlignment.stretch,
-                children: [
-                  Obx(
-                    () => Expanded(
-                      child: controller.cartData.value.productList != null
-                          ? ListView.builder(
-                              itemCount: controller
-                                      .cartData.value.productList?.length ??
-                                  0,
-                              itemBuilder: (context, index) {
-                                print(
-                                    'list view :${controller.cartData.value.productList?[index].variants}');
-                                var quantity = controller.cartData.value
-                                    .productList![index].quantity;
-                                return CartItem(
-                                  item: controller
-                                      .cartData.value.productList![index],
-                                  onRemove: () {
-                                    deleteItem(context, index);
-                                  },
-                                  decrease: () {
-                                    controller.decrementQuantity(
-                                        quantity,
-                                        controller.cartData.value
-                                            .productList?[index].lineId);
-                                  },
-                                  increase: () {
-                                    controller.incrementQuantity(
-                                        quantity,
-                                        controller.cartData.value
-                                            .productList?[index].lineId);
-                                  },
-                                );
+            : Padding(
+              padding: const EdgeInsets.only(bottom: 20.0),
+              child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.stretch,
+                  children: [
+                    Obx(
+                      () => Expanded(
+                        child: controller.cartData.value.productList != null
+                            ? ListView.builder(
+                                itemCount: controller
+                                        .cartData.value.productList?.length ??
+                                    0,
+                                itemBuilder: (context, index) {
+                                  print(
+                                      'list view :${controller.cartData.value.productList?[index].variants}');
+                                  var quantity = controller.cartData.value
+                                      .productList![index].quantity;
+                                  return CartItem(
+                                    item: controller
+                                        .cartData.value.productList![index],
+                                    onRemove: () {
+                                      deleteItem(context, index);
+                                    },
+                                    decrease: () {
+                                      controller.decrementQuantity(
+                                          quantity,
+                                          controller.cartData.value
+                                              .productList?[index].lineId);
+                                    },
+                                    increase: () {
+                                      controller.incrementQuantity(
+                                          quantity,
+                                          controller.cartData.value
+                                              .productList?[index].lineId);
+                                    },
+                                  );
+                                },
+                              )
+                            : Column(
+                          children: [
+                            Lottie.asset('assets/lottie/cart_empty.json'),
+                            SizedBox(height: 60,),
+                            TextButton(
+                              onPressed: () {
+                                Get.back();
                               },
-                            )
-                          : Column(
-                        children: [
-                          Lottie.asset('assets/lottie/cart_empty.json'),
-                          SizedBox(height: 60,),
-                          TextButton(
-                            onPressed: () {
-                              Get.back();
-                            },
-                            style:
-                            TextButton.styleFrom(backgroundColor: ColorName.cardinal ),
-                            child: Text("Continue Shopping",
-                                style: AppThemeData.sf500Font16White),
-                          ),
-                        ],
-                      )
-                    ),
-                  ),
-                  controller.cartData.value.productList != null
-                      ? Container(
-                          padding: const EdgeInsets.all(8),
-                          decoration: const BoxDecoration(boxShadow: [
-                            BoxShadow(color: ColorName.silver, blurRadius: 2)
-                          ], color: ColorName.white),
-                          child: Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              Padding(
-                                padding: const EdgeInsets.only(
-                                    top: 10.0, bottom: 10.0, left: 10.0),
-                                child: Text(
-                                  AppLocalizations.of(context).priceDetails,
-                                  textAlign: TextAlign.start,
-                                  style: AppThemeData.sf500Font16Black,
-                                ),
-                              ),
-                              Container(
-                                width: double.infinity,
-                                height: 0.5,
-                                color: ColorName.silver,
-                              ),
-                              Padding(
-                                padding: const EdgeInsets.all(8.0),
-                                child: Row(
-                                  mainAxisAlignment:
-                                      MainAxisAlignment.spaceBetween,
-                                  children: [
-                                    Text(
-                                      AppLocalizations.of(context).totalItem,
-                                      style: AppThemeData.sf400Font15Gray,
-                                    ),
-                                    Text(
-                                      controller
-                                          .cartData.value.productList!.length
-                                          .toString(),
-                                      style: AppThemeData.sf400Font15Gray,
-                                    ),
-                                  ],
-                                ),
-                              ),
-                              Padding(
-                                padding: const EdgeInsets.all(8.0),
-                                child: Row(
-                                  mainAxisAlignment:
-                                      MainAxisAlignment.spaceBetween,
-                                  children: [
-                                    Text(
-                                      AppLocalizations.of(context).totalAed,
-                                      style: AppThemeData.sf400Font15Gray,
-                                    ),
-                                    Text(
-                                      controller.cartData.value.subtotalAmount
-                                          .toString(),
-                                      style: AppThemeData.sf400Font15Gray,
-                                    ),
-                                  ],
-                                ),
-                              ),
-                              Padding(
-                                padding: const EdgeInsets.all(8.0),
-                                child: Row(
-                                  mainAxisAlignment:
-                                      MainAxisAlignment.spaceBetween,
-                                  children: [
-                                    Text(
-                                      AppLocalizations.of(context)
-                                          .discountOnAed,
-                                      style: AppThemeData.sf400Font15Gray,
-                                    ),
-                                    Text(
-                                      controller.cartData.value.totalTaxAmount
-                                          .toString(),
-                                      style: AppThemeData.sf400Font15Gray,
-                                    ),
-                                  ],
-                                ),
-                              ),
-                              Container(
-                                width: double.infinity,
-                                height: 0.5,
-                                color: ColorName.silver,
-                              ),
-                              Padding(
-                                padding: const EdgeInsets.all(8.0),
-                                child: Row(
-                                  mainAxisAlignment:
-                                      MainAxisAlignment.spaceBetween,
-                                  children: [
-                                    Text(
-                                      "Total ${controller.cartData.value.totalCC}",
-                                      style: AppThemeData.sf500Font16,
-                                    ),
-                                    Text(
-                                      controller.cartData.value.totalAmount,
-                                      style: AppThemeData.sf500Font16,
-                                    ),
-                                  ],
-                                ),
-                              ),
-                            ],
-                          ),
+                              style:
+                              TextButton.styleFrom(backgroundColor: ColorName.cardinal ),
+                              child: Text("Continue Shopping",
+                                  style: AppThemeData.sf500Font16White),
+                            ),
+                          ],
                         )
-                      : SizedBox(),
-                  controller.cartData.value.productList != null
-                      ? Padding(
-                          padding: const EdgeInsets.all(12.0),
-                          child: TextButton(
-                            onPressed: () {
-                              Get.toNamed(AppRoutes.savedAddressScreen,
-                                  arguments: {
-                                    "checkOutUrl":
-                                        controller.cartData.value.checkoutUrl,
-                                    "showCheckout": true,
-                                  });
-                            },
-                            style: TextButton.styleFrom(
-                                backgroundColor: ColorName.cardinal),
-                            child: Row(
-                              mainAxisAlignment: MainAxisAlignment.center,
+                      ),
+                    ),
+                    controller.cartData.value.productList != null
+                        ? Container(
+                            padding: const EdgeInsets.all(8),
+                            decoration: const BoxDecoration(boxShadow: [
+                              BoxShadow(color: ColorName.silver, blurRadius: 2)
+                            ], color: ColorName.white),
+                            child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
                                 Padding(
-                                  padding: const EdgeInsets.all(6.0),
-                                  child:
-                                      Assets.icons.icCheckout.svgIcon(size: 20),
+                                  padding: const EdgeInsets.only(
+                                      top: 10.0, bottom: 10.0, left: 10.0),
+                                  child: Text(
+                                    AppLocalizations.of(context).priceDetails,
+                                    textAlign: TextAlign.start,
+                                    style: AppThemeData.sf500Font16Black,
+                                  ),
+                                ),
+                                Container(
+                                  width: double.infinity,
+                                  height: 0.5,
+                                  color: ColorName.silver,
                                 ),
                                 Padding(
-                                  padding: const EdgeInsets.all(6.0),
-                                  child: Text(
-                                      AppLocalizations.of(context)
-                                          .proceedToCheckOut,
-                                      style: AppThemeData.sf400Font15White),
+                                  padding: const EdgeInsets.all(8.0),
+                                  child: Row(
+                                    mainAxisAlignment:
+                                        MainAxisAlignment.spaceBetween,
+                                    children: [
+                                      Text(
+                                        AppLocalizations.of(context).totalItem,
+                                        style: AppThemeData.sf400Font15Gray,
+                                      ),
+                                      Text(
+                                        controller
+                                            .cartData.value.productList!.length
+                                            .toString(),
+                                        style: AppThemeData.sf400Font15Gray,
+                                      ),
+                                    ],
+                                  ),
+                                ),
+                                Padding(
+                                  padding: const EdgeInsets.all(8.0),
+                                  child: Row(
+                                    mainAxisAlignment:
+                                        MainAxisAlignment.spaceBetween,
+                                    children: [
+                                      Text(
+                                        AppLocalizations.of(context).totalAed,
+                                        style: AppThemeData.sf400Font15Gray,
+                                      ),
+                                      Text(
+                                        controller.cartData.value.subtotalAmount
+                                            .toString(),
+                                        style: AppThemeData.sf400Font15Gray,
+                                      ),
+                                    ],
+                                  ),
+                                ),
+                                Padding(
+                                  padding: const EdgeInsets.all(8.0),
+                                  child: Row(
+                                    mainAxisAlignment:
+                                        MainAxisAlignment.spaceBetween,
+                                    children: [
+                                      Text(
+                                        AppLocalizations.of(context)
+                                            .discountOnAed,
+                                        style: AppThemeData.sf400Font15Gray,
+                                      ),
+                                      Text(
+                                        controller.cartData.value.totalTaxAmount
+                                            .toString(),
+                                        style: AppThemeData.sf400Font15Gray,
+                                      ),
+                                    ],
+                                  ),
+                                ),
+                                Container(
+                                  width: double.infinity,
+                                  height: 0.5,
+                                  color: ColorName.silver,
+                                ),
+                                Padding(
+                                  padding: const EdgeInsets.all(8.0),
+                                  child: Row(
+                                    mainAxisAlignment:
+                                        MainAxisAlignment.spaceBetween,
+                                    children: [
+                                      Text(
+                                        "Total ${controller.cartData.value.totalCC}",
+                                        style: AppThemeData.sf500Font16,
+                                      ),
+                                      Text(
+                                        controller.cartData.value.totalAmount,
+                                        style: AppThemeData.sf500Font16,
+                                      ),
+                                    ],
+                                  ),
                                 ),
                               ],
                             ),
-                          ),
-                        )
-                      :SizedBox(),
-                ],
-              ),
+                          )
+                        : SizedBox(),
+                    controller.cartData.value.productList != null
+                        ? Padding(
+                            padding: const EdgeInsets.all(12.0),
+                            child: TextButton(
+                              onPressed: () {
+                                Get.toNamed(AppRoutes.savedAddressScreen,
+                                    arguments: {
+                                      "checkOutUrl":
+                                          controller.cartData.value.checkoutUrl,
+                                      "showCheckout": true,
+                                    });
+                              },
+                              style: TextButton.styleFrom(
+                                  backgroundColor: ColorName.cardinal),
+                              child: Row(
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                children: [
+                                  Padding(
+                                    padding: const EdgeInsets.all(6.0),
+                                    child:
+                                        Assets.icons.icCheckout.svgIcon(size: 20),
+                                  ),
+                                  Padding(
+                                    padding: const EdgeInsets.all(6.0),
+                                    child: Text(
+                                        AppLocalizations.of(context)
+                                            .proceedToCheckOut,
+                                        style: AppThemeData.sf400Font15White),
+                                  ),
+                                ],
+                              ),
+                            ),
+                          )
+                        :SizedBox(),
+                  ],
+                ),
+            ),
       ),
     );
   }
