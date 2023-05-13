@@ -8,6 +8,7 @@ import 'package:the_horeca_store/app/modules/category_screen/binding/category_sc
 import 'package:the_horeca_store/app/modules/category_screen/view/category_list_screen.dart';
 import 'package:the_horeca_store/app/modules/checkout_screen/binding/checkout_screen_binding.dart';
 import 'package:the_horeca_store/app/modules/checkout_screen/view/checkout_screen_view.dart';
+import 'package:the_horeca_store/app/modules/contact_us/views/contact_us_screen.dart';
 import 'package:the_horeca_store/app/modules/forgot_password/binding/forgot_password_binding.dart';
 import 'package:the_horeca_store/app/modules/forgot_password/view/forgot_password.dart';
 import 'package:the_horeca_store/app/modules/home_screen/binding/home_screen_binding.dart';
@@ -136,5 +137,6 @@ class AppPages {
         page: () => ReviewScreen(),
         binding: ReviewScreenBinding()),
     GetPage(name: AppRoutes.thankyou, page: () => ThankYouScreen()),
+    GetPage(name: AppRoutes.contactUs, page: () => ContactUsScreen()),
   ];
 }

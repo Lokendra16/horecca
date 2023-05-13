@@ -14,4 +14,5 @@ class AppTags{
   static const String banquetConfrence = "Banquet & Confrence";
   static const String category = "Category";
   static const String emptycart = "Empty Cart";
+  static const String contactUs = "Contact Us";
 }

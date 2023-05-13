@@ -42,7 +42,7 @@ class Utility {
     String chatURL = "https://$email";
     var url = Uri.parse(chatURL);
     if (await canLaunchUrl(url)) {
-    await Platform.isIOS ? launchUrl(params,mode: LaunchMode.inAppWebView) : launchURL(params);
+    await Platform.isIOS ? launchUrl(url,mode: LaunchMode.inAppWebView) : launchURL(params);
     } else {
     throw 'Could not launch $url';
     }

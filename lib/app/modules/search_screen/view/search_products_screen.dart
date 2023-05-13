@@ -109,7 +109,10 @@ class SearchProductsScreen extends StatelessWidget {
                     builderDelegate: PagedChildBuilderDelegate<Results>(
                       firstPageProgressIndicatorBuilder: (context) =>
                           const Center(
-                        child: Text("No Data Found"),
+                        child: Text(
+                          "No Data Found",
+                          style: AppThemeData.sf500Font16Black,
+                        ),
                         // child: CircularProgressIndicator(
                         //   color: ColorName.jewel,
                         // ),
