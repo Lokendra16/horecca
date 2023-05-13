@@ -21,6 +21,7 @@ class ProductListController extends GetxController {
   final PagingController<int, Results> searchPagingController = PagingController(firstPageKey: 0);
   TextEditingController searchController = TextEditingController();
   var isLoading = false.obs;
+  var showSearchIcon = false.obs;
 
 
   static int TYPE_CATEGORY_PRODUCTS = 1;
@@ -59,6 +60,11 @@ class ProductListController extends GetxController {
   void onClick(index) {
     myGridList[index].isActive = !myGridList[index].isActive;
     update();
+  }
+
+  void showSearch(){
+
+    showSearchIcon.value = !showSearchIcon.value;
   }
 
   @override
