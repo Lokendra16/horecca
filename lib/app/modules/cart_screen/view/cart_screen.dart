@@ -9,18 +9,14 @@ import 'package:the_horeca_store/commons/utils/app_theme_data.dart';
 import 'package:the_horeca_store/extensions/assets_ext.dart';
 import 'package:the_horeca_store/l10n/localization.dart';
 import 'package:the_horeca_store/src/gen/assets.gen.dart';
-import 'package:the_horeca_store/src/gen/colors.g({Key? key}) : super(key: key);
+import '../../../../src/gen/colors.gen.dart';
 
-  final CartScreenController controller = Get.put(CartScreenController());
 
+class CartScreen extends StatelessWidget {
+   CartScreen({Key? key}) : super(key: key);
+   final CartScreenController controller = Get.put(CartScreenController());
   @override
   Widget build(BuildContext context) {
-    debugPrint(
-        'cart screen1 : ${controller.cartData.value.productList?.length.toString()}');
-
-    debugPrint(
-        'cart screen : ${controller.cartData.value.productList?[0].quantity}');
-
     return Scaffold(
       backgroundColor: ColorName.mercury,
       appBar: PreferredSize(
@@ -75,10 +71,21 @@ import 'package:the_horeca_store/src/gen/colors.g({Key? key}) : super(key: key);
                                 );
                               },
                             )
-                          : Container(
-                              color: Colors.white,
-                              child:
-                                  const Center(child: Text('Cart Not Found'))),
+                          : Column(
+                        children: [
+                          Lottie.asset('assets/lottie/cart_empty.json'),
+                          SizedBox(height: 60,),
+                          TextButton(
+                            onPressed: () {
+                              Get.back();
+                            },
+                            style:
+                            TextButton.styleFrom(backgroundColor: ColorName.cardinal ),
+                            child: Text("Continue Shopping",
+                                style: AppThemeData.sf500Font16White),
+                          ),
+                        ],
+                      )
                     ),
                   ),
                   controller.cartData.value.productList != null
@@ -219,50 +226,55 @@ import 'package:the_horeca_store/src/gen/colors.g({Key? key}) : super(key: key);
                             ),
                           ),
                         )
-                      : SizedBox(),
+                      :SizedBox(),
                 ],
               ),
       ),
     );
+    }
+
+    void deleteItem(BuildContext context, int pos) async {
+    return showDialog<void>(
+    context: context,
+    barrierDismissible: true, // user must tap button!
+    builder: (BuildContext context) {
+    return AlertDialog(
+    title: const Text('Delete Product?'),
+    content: SingleChildScrollView(
+    child: ListBody(
+    children: const <Widget>[
+    Text('Are you sure to delete this product from the cart?'),
+    ],
+    ),
+    ),
+    actions: <Widget>[
+    TextButton(
+    child: const Text(
+    'Cancel',
+    style: TextStyle(color: Colors.black),
+    ),
+    onPressed: () {
+    Navigator.of(context).pop();
+    },
+    ),
+    TextButton(
+    child: const Text(
+    'Yes',
+    style: TextStyle(color: Colors.black),
+    ),
+    onPressed: () {
+    controller.removeProductFromCart(pos);
+    Navigator.of(context).pop();
+    },
+    ),
+    ],
+    );
+    },
+    );
+    }
+
+
   }
 
-  void deleteItem(BuildContext context, int pos) async {
-    return showDialog<void>(
-      context: context,
-      barrierDismissible: true, // user must tap button!
-      builder: (BuildContext context) {
-        return AlertDialog(
-          title: const Text('Delete Product?'),
-          content: SingleChildScrollView(
-            child: ListBody(
-              children: const <Widget>[
-                Text('Are you sure to delete this product from the cart?'),
-              ],
-            ),
-          ),
-          actions: <Widget>[
-            TextButton(
-              child: const Text(
-                'Cancel',
-                style: TextStyle(color: Colors.black),
-              ),
-              onPressed: () {
-                Navigator.of(context).pop();
-              },
-            ),
-            TextButton(
-              child: const Text(
-                'Yes',
-                style: TextStyle(color: Colors.black),
-              ),
-              onPressed: () {
-                controller.removeProductFromCart(pos);
-                Navigator.of(context).pop();
-              },
-            ),
-          ],
-        );
-      },
-    );
-  }
-}
+
+
