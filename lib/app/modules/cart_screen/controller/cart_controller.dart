@@ -1,3 +1,4 @@
+import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:the_horeca_store/app/modules/cart_screen/model/cart_model.dart';
 import 'package:the_horeca_store/commons/utils/app_preference.dart';
@@ -5,6 +6,7 @@ import 'package:the_horeca_store/commons/utils/my_snackbar.dart';
 import 'package:the_horeca_store/networking/graphql/graphql_repo.dart';
 import 'package:the_horeca_store/networking/models/product_data/product_data.dart';
 import 'package:the_horeca_store/networking/models/product_data/product_image.dart';
+import 'package:the_horeca_store/networking/models/product_data/product_variants.dart';
 
 class CartScreenController extends GetxController {
   var isInitialLoading = true.obs;
@@ -82,9 +84,24 @@ class CartScreenController extends GetxController {
           quantity: element["quantity"],
           title: element["merchandise"]["product"]["title"],
           image: ProductImages(
-              src: element["merchandise"]?["image"]?["url"] ?? ''));
+              src: element["merchandise"]?["image"]?["url"] ?? ''),
+        //variants: element["merchandise"]["ProductVariant"]["priceV2"]["amount"] ?? ""
+
+      );
       productList.add(product);
     });
+    // response["lines"]["nodes"].forEach((element){
+    //   var productPrice = ProductVariants(
+    //     price: element["merchandise"]["ProductVariant"]["priceV2"]["amount"]
+    //
+    //   );
+    //   print("product price : ${productPrice.price?[0]}");
+    //
+    //
+    // });
+
+
+
 
     if (productList != null && productList.isNotEmpty) {
       var cartModel = CartModel(

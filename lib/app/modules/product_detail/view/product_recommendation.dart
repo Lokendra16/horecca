@@ -18,7 +18,8 @@ class ProductsRecommendationWidget extends StatelessWidget {
     Size size = MediaQuery.of(context).size;
     return Container(
       color: ColorName.gray.withOpacity(0.2),
-      padding: const EdgeInsets.only(bottom: 10),
+      padding: const EdgeInsets.only(bottom: 50),
+
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [

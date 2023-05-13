@@ -33,10 +33,15 @@ class WishlistController extends GetxController {
 
 
   getWishListId() async {
+    debugPrint('call get wish list');
     await AppPreference().getWishlistIds().then((value) {
       if (value != null) {
+        debugPrint('call get wish list if');
+
         getProductList(0, value);
       } else {
+        debugPrint('call get wish list else');
+
         isEmpty.value = true;
         isLoading.value = false;
       }
@@ -44,6 +49,8 @@ class WishlistController extends GetxController {
   }
 
   Future<void> getProductList(int pageKey, String? productIds) async {
+     debugPrint('call get product list');
+
     final client = RestClient();
     var newItems = await client.getProductList(
         "", pageKey, _pageSize,"", productIds);

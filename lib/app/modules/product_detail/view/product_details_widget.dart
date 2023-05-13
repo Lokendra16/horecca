@@ -44,10 +44,10 @@ class ProductDetailsWidget extends StatelessWidget {
                   ),
                   Row(
                     children: [
-                      const Padding(
+                      Padding(
                         padding: EdgeInsets.only(top: 8.0),
                         child: Text(
-                          "AED 17.60",
+                          product.variants?[0].price.toString() ?? '',
                           style: AppThemeData.sf500Font16,
                         ),
                       ),

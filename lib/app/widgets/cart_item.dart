@@ -134,8 +134,8 @@ class CartItem extends StatelessWidget {
                           ],
                         ),
                       ),
-                      const Text(
-                        "AED 17.60" ?? '',
+                       Text(
+                        item.variants?[0].price.toString() ?? '',
                         style: AppThemeData.sf500Font16,
                       ),
                     ],

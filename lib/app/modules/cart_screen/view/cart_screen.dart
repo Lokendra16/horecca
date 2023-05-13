@@ -46,12 +46,13 @@ class CartScreen extends StatelessWidget {
                 children: [
                   Obx(
                     () => Expanded(
-                      child: ListView.builder(
+                      child: controller.cartData.value.productList != null ?
+                      ListView.builder(
                         itemCount:
                             controller.cartData.value.productList?.length ?? 0,
                         itemBuilder: (context, index) {
                           print(
-                              'list view :${controller.cartData.value.productList![index].quantity}');
+                              'list view :${controller.cartData.value.productList?[index].variants}');
                           var quantity = controller
                               .cartData.value.productList![index].quantity;
                           return CartItem(
@@ -67,7 +68,7 @@ class CartScreen extends StatelessWidget {
                             },
                           );
                         },
-                      ),
+                      ) : const Center(child: Text('Cart Not Found')),
                     ),
                   ),
                   controller.cartData.value.productList != null

@@ -21,7 +21,7 @@ class DashboardScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
         bottomNavigationBar: Container(
-          margin: const EdgeInsets.all(8),
+          margin: const EdgeInsets.only(bottom: 30),
           height: 56,
           decoration: const BoxDecoration(
               color: ColorName.bonJour,
