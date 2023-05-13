@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:url_launcher/url_launcher.dart';
 
 class Utility {
@@ -32,9 +34,18 @@ class Utility {
     );
   }
 
-  static launchMail(email) {
-    print("calling url launcher :- $email");
-    launch('$email?subject=This is Subject Title&body=This is Body of Email');
+  static launchMail(email) async {
+    final Uri params = Uri(
+      scheme: 'mailto',
+      path: 'my.mail@example.com',
+    );
+    String chatURL = "https://$email";
+    var url = Uri.parse(chatURL);
+    if (await canLaunchUrl(url)) {
+    await Platform.isIOS ? launchUrl(params,mode: LaunchMode.inAppWebView) : launchURL(params);
+    } else {
+    throw 'Could not launch $url';
+    }
   }
 
 

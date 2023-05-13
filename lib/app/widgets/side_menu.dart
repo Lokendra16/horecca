@@ -134,7 +134,7 @@ class SideMenu extends StatelessWidget {
             child: const Text('SHOP ALL CATEGORIES',
                 style: AppThemeData.sf400Font12Black),
           ),
-          for (var value in homeList.value.custom_collections!)
+          for (var value in homeList.value.custom_collections ?? [])
             Obx(
               () => homeList.value.custom_collections != null
                   ? InkWell(

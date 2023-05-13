@@ -126,6 +126,12 @@ class AppThemeData {
       fontSize: 16,
       color: ColorName.black);
 
+  static const sf500Font14Black = TextStyle(
+      fontWeight: FontWeight.w500,
+      fontFamily: 'SF Pro Rounded',
+      fontSize: 14,
+      color: ColorName.black);
+
   static final discountTextStyle = GoogleFonts.roboto(
       color: ColorName.white, fontWeight: FontWeight.w600, fontSize: 10);
 

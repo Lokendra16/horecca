@@ -23,10 +23,21 @@ class OrderSummary extends StatelessWidget {
         child: ListView(
 
         children: [
-        Image.asset(
-        Assets.images.icAppicon.path,
-          height: 60,
-        ),
+          Row(
+            children: [
+              InkWell(
+                onTap: (){
+                  Get.back();
+                },
+                  child: Icon(Icons.arrow_back_ios)),
+              SizedBox(width: 70,),
+              Image.asset(
+                Assets.images.icAppicon.path,
+                height: 60,
+              ),
+            ],
+          ),
+         SizedBox(height: 10,),
           Padding(
             padding: const EdgeInsets.only(top: 8.0),
             child: Row(
@@ -34,12 +45,12 @@ class OrderSummary extends StatelessWidget {
               children: [
                 Text(
                   "${AppLocalizations.of(context).order} :",
-                  style: AppThemeData.font16Weight600PlayfairBlack,
+                  style: AppThemeData.sf500Font16Black,
                 ),
                 SizedBox(width: 10,),
                 Text(
                   item?.name ?? 'N/A',
-                  style: AppThemeData.font16Weight600PlayfairBlack,
+                  style: AppThemeData.sf500Font16Black,
                 )
               ],
             ),
@@ -51,12 +62,12 @@ class OrderSummary extends StatelessWidget {
               children: [
                 Text(
                   "${AppLocalizations.of(context).date} :",
-                  style: AppThemeData.font16Weight600PlayfairBlack,
+                  style: AppThemeData.sf500Font16Black,
                 ),
                 SizedBox(width: 10,),
                 Text(
                   item?.processedAt.parseDate()?? 'N/A',
-                  style: AppThemeData.font16Weight600PlayfairBlack,
+                  style: AppThemeData.sf500Font16Black,
                 )
               ],
             ),
@@ -68,12 +79,12 @@ class OrderSummary extends StatelessWidget {
               children: [
                 Text(
                   "${AppLocalizations.of(context).paymentStatus} :",
-                  style: AppThemeData.font16Weight600PlayfairBlack,
+                  style: AppThemeData.sf500Font16Black,
                 ),
                 SizedBox(width: 10,),
                 Text(
                   item?.financialStatus ??'N?A',
-                  style: AppThemeData.font16Weight600PlayfairBlack,
+                  style: AppThemeData.sf500Font16Black,
                 )
               ],
             ),
@@ -87,19 +98,19 @@ class OrderSummary extends StatelessWidget {
                     children: [
                       Padding(
                         padding: const EdgeInsets.all(8.0),
-                        child:  Text("Product "),
+                        child:  Text("Product ",style: AppThemeData.sf500Font14Black,),
                       ),
                       Padding(
                         padding: const EdgeInsets.all(8.0),
-                        child: Text("Price "),
+                        child: Text("Price ",style: AppThemeData.sf500Font14Black,),
                       ),
                       Padding(
                         padding: const EdgeInsets.all(8.0),
-                        child: Text("Quantity "),
+                        child: Text("Quantity",style: AppThemeData.sf500Font14Black,),
                       ),
                       Padding(
                         padding: const EdgeInsets.all(8.0),
-                        child: Text("Total "),
+                        child: Text("Total",style: AppThemeData.sf500Font14Black,),
                       ),
                     ]
                 ),
@@ -107,19 +118,19 @@ class OrderSummary extends StatelessWidget {
                     children: [
                       Padding(
                         padding: const EdgeInsets.all(8.0),
-                        child:  Text("xyz product "),
+                        child:  Text("xyz product",style: AppThemeData.sf500Font14Black,),
                       ),
                       Padding(
                         padding: const EdgeInsets.all(8.0),
-                        child: Text("AED:40 "),
+                        child: Text("AED:40 ",style: AppThemeData.sf500Font14Black,),
                       ),
                       Padding(
                         padding: const EdgeInsets.all(8.0),
-                        child: Text("4 "),
+                        child: Text("4",style: AppThemeData.sf500Font14Black,),
                       ),
                       Padding(
                         padding: const EdgeInsets.all(8.0),
-                        child:  Text("${item.totalAmount} ${item.totalCC}"),
+                        child:  Text("${item.totalAmount} ${item.totalCC}",style: AppThemeData.sf500Font14Black,),
                       ),
                     ]
                 )
@@ -134,12 +145,12 @@ class OrderSummary extends StatelessWidget {
                   children: [
                     Padding(
                       padding: const EdgeInsets.all(8.0),
-                      child:  Text("SubTotal "),
+                      child:  Text("SubTotal",style: AppThemeData.sf500Font14Black,),
                     ),
 
                     Padding(
                       padding: const EdgeInsets.all(8.0),
-                      child:  Text("AED :160 "),
+                      child:  Text("AED :160 ",style: AppThemeData.sf500Font14Black,),
                     ),
                   ]
 
@@ -148,12 +159,12 @@ class OrderSummary extends StatelessWidget {
                   children: [
                     Padding(
                       padding: const EdgeInsets.all(8.0),
-                      child:  Text("Shipping Charges "),
+                      child:  Text("Shipping Charges",style: AppThemeData.sf500Font14Black,),
                     ),
 
                     Padding(
                       padding: const EdgeInsets.all(8.0),
-                      child:  Text("AED :25 "),
+                      child:  Text("AED :25",style: AppThemeData.sf500Font14Black,),
                     ),
                   ]
 
@@ -163,26 +174,12 @@ class OrderSummary extends StatelessWidget {
                   children: [
                     Padding(
                       padding: const EdgeInsets.all(8.0),
-                      child:  Text("Tax (VAT 5.0%"),
+                      child:  Text("Tax (VAT 5.0%",style: AppThemeData.sf500Font14Black,),
                     ),
 
                     Padding(
                       padding: const EdgeInsets.all(8.0),
-                      child:  Text("AED :21 "),
-                    ),
-                  ]
-              ),
-              TableRow(
-
-                  children: [
-                    Padding(
-                      padding: const EdgeInsets.all(8.0),
-                      child:  Text("Total :"),
-                    ),
-
-                    Padding(
-                      padding: const EdgeInsets.all(8.0),
-                      child: Text("${item?.totalAmount} ${item?.totalCC}"),
+                      child:  Text("AED :21",style: AppThemeData.sf500Font14Black,),
                     ),
                   ]
               ),
@@ -191,12 +188,26 @@ class OrderSummary extends StatelessWidget {
                   children: [
                     Padding(
                       padding: const EdgeInsets.all(8.0),
-                      child:  Text("Payment Status"),
+                      child:  Text("Total :",style: AppThemeData.sf500Font14Black,),
                     ),
 
                     Padding(
                       padding: const EdgeInsets.all(8.0),
-                      child:   Text(item?.financialStatus ?? 'N/A'),
+                      child: Text("${item?.totalAmount} ${item?.totalCC}",style: AppThemeData.sf500Font14Black,),
+                    ),
+                  ]
+              ),
+              TableRow(
+
+                  children: [
+                    Padding(
+                      padding: const EdgeInsets.all(8.0),
+                      child:  Text("Payment Status",style: AppThemeData.sf500Font14Black,),
+                    ),
+
+                    Padding(
+                      padding: const EdgeInsets.all(8.0),
+                      child:   Text(item?.financialStatus ?? 'N/A',style: AppThemeData.sf500Font14Black,),
                     ),
                   ]
               ),

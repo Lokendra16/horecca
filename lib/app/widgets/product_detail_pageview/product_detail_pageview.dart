@@ -1,4 +1,5 @@
 import 'package:cached_network_image/cached_network_image.dart';
+import 'package:fancy_shimmer_image/defaults.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:the_horeca_store/app/modules/product_detail/controller/product_detail_controller.dart';
