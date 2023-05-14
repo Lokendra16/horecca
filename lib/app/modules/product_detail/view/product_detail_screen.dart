@@ -148,7 +148,7 @@ class ProductItemAddWidget extends StatelessWidget {
     Size size = MediaQuery.of(context).size;
     return Container(
       margin: const EdgeInsets.only(top: 20, bottom: 0),
-      padding: const EdgeInsets.only(bottom: 40, top: 10),
+      padding: const EdgeInsets.only(bottom: 30, top: 10),
       //height: 38,
       width: size.width,
       color: ColorName.white,
@@ -156,45 +156,6 @@ class ProductItemAddWidget extends StatelessWidget {
         padding: const EdgeInsets.only(left: 16, right: 16),
         child: Row(
           children: [
-            // Container(
-            //   height: 40,
-            //   width: 112,
-            //   decoration: BoxDecoration(
-            //       borderRadius: BorderRadius.circular(6),
-            //       border: Border.all(color: ColorName.silver)),
-            //   child: Row(
-            //     mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-            //     children: [
-            //       InkWell(
-            //         onTap: () => controller.decrementQuantity(),
-            //         child: const Icon(
-            //           Icons.remove,
-            //         ),
-            //       ),
-            //       Container(
-            //         height: 30,
-            //         width: 32,
-            //         decoration: BoxDecoration(
-            //             color: ColorName.jewel,
-            //             borderRadius: BorderRadius.circular(6)),
-            //         child: Center(
-            //           child: Obx(
-            //             () => Text(
-            //               "${controller.quantity.value}",
-            //               style: AppThemeData.font14Weight700,
-            //             ),
-            //           ),
-            //         ),
-            //       ),
-            //       InkWell(
-            //         onTap: () => controller.incrementQuantity(),
-            //         child: const Icon(
-            //           Icons.add,
-            //         ),
-            //       )
-            //     ],
-            //   ),
-            // ),
             Expanded(
               child: TextButton(
                 onPressed: () {
@@ -203,7 +164,7 @@ class ProductItemAddWidget extends StatelessWidget {
                 style:
                     TextButton.styleFrom(backgroundColor: ColorName.cardinal),
                 child: Padding(
-                  padding: const EdgeInsets.all(8.0),
+                  padding: const EdgeInsets.all(5.0),
                   child: Text(AppLocalizations.of(context).addToCart,
                       style: AppThemeData.sf500Font16White),
                 ),
