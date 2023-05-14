@@ -17,6 +17,13 @@ class ProductVariants {
   String? option1;
   String? option2;
   String? option3;
+  String? option4 = "";
+  String? option5 = "";
+  String? option6 = "";
+  String? option7 = "";
+  String? option8 = "";
+  String? option9 = "";
+  String? option10 = "";
   String? createdAt;
   String? updatedAt;
   bool? taxable;
@@ -44,6 +51,13 @@ class ProductVariants {
       this.option1,
       this.option2,
       this.option3,
+      this.option4,
+      this.option5,
+      this.option6,
+      this.option7,
+      this.option8,
+      this.option9,
+      this.option10,
       this.createdAt,
       this.updatedAt,
       this.taxable,
@@ -58,7 +72,8 @@ class ProductVariants {
       this.requiresShipping,
       this.adminGraphqlApiId});
 
-  factory ProductVariants.fromJson(Map<String, dynamic> json) => _$ProductVariantsFromJson(json);
+  factory ProductVariants.fromJson(Map<String, dynamic> json) =>
+      _$ProductVariantsFromJson(json);
 
   Map<String, dynamic> toJson() => _$ProductVariantsToJson(this);
 }

@@ -111,27 +111,65 @@ class ProductDetailController extends GetxController {
     }
   }
 
-  String getVariantIdNew() {
+  String getVariantId_() {
     if (productDetail.value.variants == null ||
         productDetail.value.variants!.isEmpty) return "";
-    for (var element in productDetail.value.variants!) {
+
+    int i = 0;
+    String variantID = "";
+
+    for (var variationList in productDetail.value.variants!) {
       if (productDetail.value.options != null) {
-        int i = 0;
-        for (var element2 in productDetail.value.options!) {
-          for (var element3 in element2.values!) {
-            if (element == element2) {
-              //element.selectedOptionIndex = i;
-              update();
-              print("shubham--" + i.toString());
+        int optionLength = productDetail.value.options!.length;
+        for (var options in productDetail.value.options!) {
+          print("shubham--matched--" + options.selectedOptionIndex.toString());
+
+          int k = 0;
+          for (var optionsValue in options.values!) {
+            if (k == optionLength) {
+              print("shubham--matched break");
               break;
+            } else {
+              if (k == 0) {
+                if (variationList.option1 == optionsValue) {
+                  variantID = variationList.id.toString();
+                  print("shubham--matched option1--" +
+                      variationList.id.toString());
+                } else {
+                  break;
+                }
+              }
             }
+
+            /*if (k==1 && variationList.option2 == optionsValue) {
+              print("shubham--matched option2");
+            }
+            if (k==2 && variationList.option3 == optionsValue) {
+              print("shubham--matched option3");
+            }
+            if (k==3 && variationList.option4 == optionsValue) {
+              print("shubham--matched option4");
+            }
+            if (k==4 && variationList.option5 == optionsValue) {
+              print("shubham--matched option5");
+            }
+            if (k==5 && variationList.option6 == optionsValue) {
+              print("shubham--matched option6");
+            }
+            if (k==6 && variationList.option7 == optionsValue) {
+              print("shubham--matched option7");
+            }
+            if (k==7 && variationList.option8 == optionsValue) {
+              print("shubham--matched option8");
+            }*/
+
+            k++;
           }
-          i = i + 1;
         }
       }
-      return "";
+      return variantID;
     }
-    return "";
+    return variantID;
   }
 
   String getVariantId() {
