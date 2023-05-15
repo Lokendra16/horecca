@@ -3,12 +3,12 @@
 ///  FlutterGen
 /// *****************************************************
 
-import 'package:flutter/material.dart';
 // coverage:ignore-file
 // ignore_for_file: type=lint
 // ignore_for_file: directives_ordering,unnecessary_import,implicit_dynamic_list_literal,deprecated_member_use
 
 import 'package:flutter/painting.dart';
+import 'package:flutter/material.dart';
 
 class ColorName {
   ColorName._();
@@ -21,7 +21,6 @@ class ColorName {
 
   /// Color: #1F1F1F
   static const Color black = Color(0xFF1F1F1F);
-  static const Color redcolor = Color(0xFFA11014);
 
   /// Color: #FECE9EC
   static const Color bonJour = Color(0xFECE9EC);
@@ -68,12 +67,17 @@ class ColorName {
     },
   );
 
+  /// Color: #194F00
+  static const Color crusoe = Color(0xFF194F00);
+
+  /// Color: #696969
+  static const Color doveGray = Color(0xFF696969);
+
   /// Color: #505050
   static const Color emperor = Color(0xFF505050);
 
   /// Color: #428445
   static const Color goblin = Color(0xFF428445);
-  static const Color goblingreen = Color(0xFF0F6333);
 
   /// Color: #828282
   static const Color gray = Color(0xFF828282);
@@ -83,6 +87,9 @@ class ColorName {
 
   /// Color: #EEEEEE
   static const Color gray70 = Color(0xFFEEEEEE);
+
+  /// Color: #CF3700
+  static const Color grenadier = Color(0xFFCF3700);
 
   /// Color: #116436
   static const Color jewel = Color(0xFF116436);
@@ -95,6 +102,9 @@ class ColorName {
 
   /// Color: #B9B9B9
   static const Color silver = Color(0xFFB9B9B9);
+
+  /// Color: #A10F14
+  static const Color tamarillo = Color(0xFFA10F14);
 
   /// Color: #F464444
   static const Color tundora = Color(0xF464444);

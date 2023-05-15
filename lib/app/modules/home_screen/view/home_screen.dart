@@ -52,9 +52,10 @@ class HomeScreen extends StatelessWidget {
                             const EdgeInsets.only(top: 5, left: 16, right: 16),
                         height: 50,
                         decoration: BoxDecoration(
-                            color: ColorName.silver.withOpacity(0.3),
-                            border: Border.all(color: ColorName.mercury),
-                            borderRadius: BorderRadius.circular(5)),
+                            //color: ColorName.silver.withOpacity(0.3),
+                            border: Border.all(
+                                color: ColorName.doveGray.withOpacity(0.3)),
+                            borderRadius: BorderRadius.circular(35)),
                         child: InkWell(
                           onTap: () {
                             Get.toNamed(
@@ -67,8 +68,8 @@ class HomeScreen extends StatelessWidget {
                               Padding(
                                 padding: const EdgeInsets.only(left: 12.0),
                                 child: Text(
-                                  AppLocalizations.of(context).searchBarText,
-                                  style: AppThemeData.font14Weight400Gray,
+                                  "Search for products", //AppLocalizations.of(context).searchBarText,
+                                  style: AppThemeData.jostBlack14,
                                 ),
                               ),
                               const Spacer(),
@@ -76,19 +77,16 @@ class HomeScreen extends StatelessWidget {
                                 decoration: BoxDecoration(
                                     border:
                                         Border.all(color: ColorName.mercury),
-                                    color: ColorName.goblingreen,
-                                    borderRadius: const BorderRadius.only(
-                                        topRight: Radius.circular(4),
-                                        bottomRight: Radius.circular(4))),
-                                height: 40,
-                                width: 40,
-                                child: Center(
-                                    child: Image.asset(
-                                  Assets.images.searchImage.path,
-                                  height: 16,
-                                  width: 16,
-                                  color: ColorName.white,
-                                )),
+                                    color: ColorName.black,
+                                    borderRadius: BorderRadius.circular(40)),
+                                height: 44,
+                                width: 90,
+                                child: const Center(
+                                  child: Text(
+                                    'Search',
+                                    style: AppThemeData.sf600Font14White,
+                                  ),
+                                ),
                               ),
                             ],
                           ),

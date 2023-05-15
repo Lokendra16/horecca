@@ -10,6 +10,9 @@
 class FontFamily {
   FontFamily._();
 
+  /// Font family: Jost
+  static const String jost = 'Jost';
+
   /// Font family: SF Pro Rounded
   static const String sFProRounded = 'SF Pro Rounded';
 }

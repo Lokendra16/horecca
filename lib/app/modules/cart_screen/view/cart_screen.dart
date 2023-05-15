@@ -190,7 +190,8 @@ class CartScreen extends StatelessWidget {
                                     children: [
                                       Text(
                                         "Total ${controller.cartData.value.totalCC}",
-                                        style: AppThemeData.sf500Font16,
+                                        style:
+                                            AppThemeData.poppins500Font18Black,
                                       ),
                                       Text(
                                         controller.cartData.value.totalAmount,
@@ -202,7 +203,7 @@ class CartScreen extends StatelessWidget {
                               ],
                             ),
                           )
-                        : SizedBox(),
+                        : const SizedBox(),
                     controller.cartData.value.productList != null
                         ? Padding(
                             padding: const EdgeInsets.all(12.0),
@@ -216,7 +217,7 @@ class CartScreen extends StatelessWidget {
                                     });
                               },
                               style: TextButton.styleFrom(
-                                  backgroundColor: ColorName.cardinal),
+                                  backgroundColor: ColorName.black),
                               child: Row(
                                 mainAxisAlignment: MainAxisAlignment.center,
                                 children: [
@@ -230,7 +231,7 @@ class CartScreen extends StatelessWidget {
                                     child: Text(
                                         AppLocalizations.of(context)
                                             .proceedToCheckOut,
-                                        style: AppThemeData.sf400Font15White),
+                                        style: AppThemeData.poppins400Font14),
                                   ),
                                 ],
                               ),

@@ -29,15 +29,8 @@ class HomeProductsWidget extends StatelessWidget {
               item.products!.isNotEmpty
                   ? Padding(
                       padding: EdgeInsets.only(top: index == 0 ? 0 : 10.0),
-                      child: Text(
-                        item.title ?? '',
-                        style: AppThemeData.font16Weight600PlayfairBlack
-                            .copyWith(
-                                fontSize: 24.0,
-                                fontFamily: 'SF Pro Rounded',
-                                color: ColorName.black,
-                                fontWeight: FontWeight.w500),
-                      ),
+                      child: Text(item.title ?? '',
+                          style: AppThemeData.jost26UnderLine),
                     )
                   : const SizedBox.shrink(),
               const SizedBox(
@@ -104,7 +97,7 @@ class HomeProductsWidget extends StatelessWidget {
                                   item.products?[i].title ?? '',
                                   maxLines: 2,
                                   textAlign: TextAlign.center,
-                                  style: AppThemeData.sf400Font16Black,
+                                  style: AppThemeData.jost13Weight500,
                                 ),
                               ),
                               Padding(
@@ -112,7 +105,7 @@ class HomeProductsWidget extends StatelessWidget {
                                 child: Text(
                                   "AED ${item.products?[i].price}" ??
                                       '', //TODO Make this dynamic
-                                  style: AppThemeData.sf500Font12,
+                                  style: AppThemeData.jost17Weight600,
                                 ),
                               ),
                               const SizedBox(

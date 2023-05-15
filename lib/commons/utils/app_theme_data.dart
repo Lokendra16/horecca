@@ -53,12 +53,26 @@ class AppThemeData {
       fontSize: 13,
       color: ColorName.black);
 
+  // Jost 400 FONT 16
+  static const jost400Font16 = TextStyle(
+      fontWeight: FontWeight.w400,
+      fontFamily: 'Jost',
+      fontSize: 16,
+      color: ColorName.black);
+
   // SF PRO 500 FONT 12
   static const sf500Font12 = TextStyle(
       fontWeight: FontWeight.w800,
       fontFamily: 'SF Pro Rounded',
       fontSize: 15,
-      color: ColorName.redcolor);
+      color: ColorName.cardinal);
+
+  // SF PRO 500 FONT 12
+  static const jost17Weight600 = TextStyle(
+      fontWeight: FontWeight.w600,
+      fontFamily: 'Jost',
+      fontSize: 17,
+      color: ColorName.grenadier);
 
   // SF PRO 400 FONT 12 white
   static const sf400Font12White = TextStyle(
@@ -72,6 +86,15 @@ class AppThemeData {
       fontSize: 15,
       fontFamily: 'SF Pro Rounded',
       color: ColorName.white);
+
+  static final poppins400Font12 = GoogleFonts.poppins(
+      color: ColorName.black, fontWeight: FontWeight.w400, fontSize: 12);
+
+  static final poppins400Font14 = GoogleFonts.poppins(
+      color: ColorName.white, fontWeight: FontWeight.w400, fontSize: 14);
+
+  static final poppins700Font14 = GoogleFonts.poppins(
+      color: ColorName.white, fontWeight: FontWeight.w700, fontSize: 14);
 
   static const sf500Font16White = TextStyle(
       fontWeight: FontWeight.w500,
@@ -93,6 +116,12 @@ class AppThemeData {
       fontSize: 16,
       color: ColorName.cardinal);
 
+  static final poppins500Font18Black = GoogleFonts.poppins(
+      color: ColorName.black, fontWeight: FontWeight.w500, fontSize: 18);
+
+  static final poppins500Font18 = GoogleFonts.poppins(
+      color: ColorName., fontWeight: FontWeight.w500, fontSize: 18);
+
   // SF PRO 500 FONT 16
   static const sf500Font16Gray = TextStyle(
       fontWeight: FontWeight.w500,
@@ -112,6 +141,12 @@ class AppThemeData {
       fontFamily: 'SF Pro Rounded',
       fontSize: 15,
       color: ColorName.gray);
+
+  static const sf600Font14White = TextStyle(
+      fontWeight: FontWeight.w600,
+      fontFamily: 'SF Pro Rounded',
+      fontSize: 14,
+      color: ColorName.white);
 
   static const sf400Font18Gray = TextStyle(
       fontWeight: FontWeight.w400,
@@ -202,6 +237,13 @@ class AppThemeData {
       fontWeight: FontWeight.w400,
       fontFamily: 'SF Pro Rounded');
 
+  // SF 400 FONT 12
+  static const jost13Weight500 = TextStyle(
+      color: ColorName.crusoe,
+      fontSize: 13,
+      fontWeight: FontWeight.w500,
+      fontFamily: 'Jost');
+
   // SF 500 FONT 18
   static const sf500Font18Black = TextStyle(
       color: ColorName.black,
@@ -224,6 +266,9 @@ class AppThemeData {
       color: ColorName.gray,
       fontWeight: FontWeight.w700,
       fontSize: 12);
+
+  static final jostBlack14 = GoogleFonts.jost(
+      color: ColorName.black, fontWeight: FontWeight.w500, fontSize: 14);
 
   static final loginButton = GoogleFonts.jost(
       color: ColorName.white, fontWeight: FontWeight.w600, fontSize: 14);
@@ -283,6 +328,30 @@ class AppThemeData {
   static final font16Weight600PlayfairBlack = GoogleFonts.jost(
       color: ColorName.black, fontWeight: FontWeight.w600, fontSize: 16);
 
+  static final jost26UnderLine = GoogleFonts.jost(
+      color: ColorName.black,
+      fontWeight: FontWeight.w600,
+      fontSize: 26,
+      decoration: TextDecoration.underline);
+
+  static final jost18Black = GoogleFonts.jost(
+    color: ColorName.black,
+    fontWeight: FontWeight.w600,
+    fontSize: 18,
+  );
+
+  static final jost16Weight500Black = GoogleFonts.jost(
+    color: ColorName.black,
+    fontWeight: FontWeight.w500,
+    fontSize: 16,
+  );
+
+  static final poppins26 = GoogleFonts.poppins(
+    color: ColorName.tamarillo,
+    fontWeight: FontWeight.w700,
+    fontSize: 26,
+  );
+
   static final font10Weight400Black = GoogleFonts.jost(
       color: ColorName.black, fontWeight: FontWeight.w400, fontSize: 10);
   static final font10Weight600Black = GoogleFonts.jost(
@@ -308,4 +377,20 @@ class AppThemeData {
       fontFamily: 'SF Pro Rounded',
       fontSize: 16,
       color: ColorName.black);
+
+  static final jost18Weight700Black = GoogleFonts.jost(
+    color: ColorName.black,
+    fontWeight: FontWeight.w700,
+    fontSize: 18,
+  );
+  static final jost12Weight500Black = GoogleFonts.jost(
+    color: ColorName.black,
+    fontWeight: FontWeight.w500,
+    fontSize: 12,
+  );
+  static final jost14Weight500Black = GoogleFonts.jost(
+    color: ColorName.black,
+    fontWeight: FontWeight.w500,
+    fontSize: 14,
+  );
 }

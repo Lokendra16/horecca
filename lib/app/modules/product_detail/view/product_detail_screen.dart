@@ -161,12 +161,11 @@ class ProductItemAddWidget extends StatelessWidget {
                 onPressed: () {
                   controller.addToCart();
                 },
-                style:
-                    TextButton.styleFrom(backgroundColor: ColorName.cardinal),
+                style: TextButton.styleFrom(backgroundColor: ColorName.jewel),
                 child: Padding(
                   padding: const EdgeInsets.all(5.0),
                   child: Text(AppLocalizations.of(context).addToCart,
-                      style: AppThemeData.sf500Font16White),
+                      style: AppThemeData.poppins700Font14),
                 ),
               ),
             )

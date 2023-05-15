@@ -10,6 +10,7 @@
 import 'package:flutter/widgets.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:flutter/services.dart';
+import 'package:lottie/lottie.dart';
 
 class $AssetsColorGen {
   const $AssetsColorGen();
@@ -23,6 +24,24 @@ class $AssetsColorGen {
 
 class $AssetsFontsGen {
   const $AssetsFontsGen();
+
+  /// File path: assets/fonts/Jost-Bold.ttf
+  String get jostBold => 'assets/fonts/Jost-Bold.ttf';
+
+  /// File path: assets/fonts/Jost-ExtraBold.ttf
+  String get jostExtraBold => 'assets/fonts/Jost-ExtraBold.ttf';
+
+  /// File path: assets/fonts/Jost-Light.ttf
+  String get jostLight => 'assets/fonts/Jost-Light.ttf';
+
+  /// File path: assets/fonts/Jost-Medium.ttf
+  String get jostMedium => 'assets/fonts/Jost-Medium.ttf';
+
+  /// File path: assets/fonts/Jost-Regular.ttf
+  String get jostRegular => 'assets/fonts/Jost-Regular.ttf';
+
+  /// File path: assets/fonts/Jost-SemiBold.ttf
+  String get jostSemiBold => 'assets/fonts/Jost-SemiBold.ttf';
 
   /// File path: assets/fonts/SF-Pro-Rounded-Bold.ttf
   String get sFProRoundedBold => 'assets/fonts/SF-Pro-Rounded-Bold.ttf';
@@ -41,6 +60,12 @@ class $AssetsFontsGen {
 
   /// List of all assets
   List<String> get values => [
+        jostBold,
+        jostExtraBold,
+        jostLight,
+        jostMedium,
+        jostRegular,
+        jostSemiBold,
         sFProRoundedBold,
         sFProRoundedHeavy,
         sFProRoundedLight,
@@ -352,6 +377,16 @@ class $AssetsLogoGen {
   List<AssetGenImage> get values => [logo];
 }
 
+class $AssetsLottieGen {
+  const $AssetsLottieGen();
+
+  /// File path: assets/lottie/cart_empty.json
+  LottieGenImage get cartEmpty => const LottieGenImage('assets/lottie/cart_empty.json');
+
+  /// List of all assets
+  List<LottieGenImage> get values => [cartEmpty];
+}
+
 class Assets {
   Assets._();
 
@@ -360,6 +395,7 @@ class Assets {
   static const $AssetsIconsGen icons = $AssetsIconsGen();
   static const $AssetsImagesGen images = $AssetsImagesGen();
   static const $AssetsLogoGen logo = $AssetsLogoGen();
+  static const $AssetsLottieGen lottie = $AssetsLottieGen();
 }
 
 class AssetGenImage {
@@ -481,6 +517,65 @@ class SvgGenImage {
       colorBlendMode: colorBlendMode,
       clipBehavior: clipBehavior,
       cacheColorFilter: cacheColorFilter,
+    );
+  }
+
+  String get path => _assetName;
+
+  String get keyName => 'packages/the_horeca_store/$_assetName';
+}
+
+class LottieGenImage {
+  const LottieGenImage(this._assetName);
+
+  final String _assetName;
+
+  LottieBuilder lottie({
+    Animation<double>? controller,
+    bool? animate,
+    FrameRate? frameRate,
+    bool? repeat,
+    bool? reverse,
+    LottieDelegates? delegates,
+    LottieOptions? options,
+    void Function(LottieComposition)? onLoaded,
+    LottieImageProviderFactory? imageProviderFactory,
+    Key? key,
+    AssetBundle? bundle,
+    Widget Function(BuildContext, Widget, LottieComposition?)? frameBuilder,
+    ImageErrorWidgetBuilder? errorBuilder,
+    double? width,
+    double? height,
+    BoxFit? fit,
+    AlignmentGeometry? alignment,
+    String? package = 'the_horeca_store',
+    bool? addRepaintBoundary,
+    FilterQuality? filterQuality,
+    void Function(String)? onWarning,
+  }) {
+    return Lottie.asset(
+      _assetName,
+      controller: controller,
+      animate: animate,
+      frameRate: frameRate,
+      repeat: repeat,
+      reverse: reverse,
+      delegates: delegates,
+      options: options,
+      onLoaded: onLoaded,
+      imageProviderFactory: imageProviderFactory,
+      key: key,
+      bundle: bundle,
+      frameBuilder: frameBuilder,
+      errorBuilder: errorBuilder,
+      width: width,
+      height: height,
+      fit: fit,
+      alignment: alignment,
+      package: package,
+      addRepaintBoundary: addRepaintBoundary,
+      filterQuality: filterQuality,
+      onWarning: onWarning,
     );
   }
 

@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_html/flutter_html.dart';
 import 'package:get/get.dart';
 import 'package:the_horeca_store/app/modules/product_detail/controller/product_detail_controller.dart';
 import 'package:the_horeca_store/commons/utils/app_theme_data.dart';
@@ -29,11 +28,15 @@ class ProductDescWidget extends StatelessWidget {
             children: [
               Text(
                 AppLocalizations.of(context).productDescription,
-                style: AppThemeData.sf500Font16Black,
+                style: AppThemeData.jost16Weight500Black,
               ),
               Padding(
-                padding: const EdgeInsets.only(left: 8.0,top: 8),
-                child: Text(controller.parseHtmlString(controller.productDetail.value.body_html!),style: AppThemeData.sf400Font12,textScaleFactor: 1.2),
+                padding: const EdgeInsets.only(left: 8.0, top: 8),
+                child: Text(
+                    controller.parseHtmlString(
+                        controller.productDetail.value.body_html!),
+                    style: AppThemeData.sf400Font12,
+                    textScaleFactor: 1.2),
               ),
               // Padding(
               //   padding: const EdgeInsets.only(top:8.0),

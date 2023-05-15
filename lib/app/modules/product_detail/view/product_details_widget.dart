@@ -38,8 +38,7 @@ class ProductDetailsWidget extends StatelessWidget {
                     child: Text(
                       product.title ?? 'N/A',
                       textAlign: TextAlign.start,
-                      style: AppThemeData.sf500Font16
-                          .copyWith(color: ColorName.black.withOpacity(0.8)),
+                      style: AppThemeData.jost18Black,
                     ),
                   ),
                   Row(
@@ -48,7 +47,7 @@ class ProductDetailsWidget extends StatelessWidget {
                         padding: EdgeInsets.only(top: 8.0),
                         child: Text(
                           "AED ${product.variants?[0].price.toString()}" ?? '',
-                          style: AppThemeData.sf500Font12,
+                          style: AppThemeData.poppins26,
                         ),
                       ),
                       const Spacer(),

@@ -82,7 +82,7 @@ class HomeShopByCategoryWidget extends StatelessWidget {
                                       const EdgeInsets.only(left: 0, top: 8.0),
                                   child: Text(
                                     value.title ?? '',
-                                    style: AppThemeData.sf400Font12,
+                                    style: AppThemeData.jost400Font16,
                                     textAlign: TextAlign.center,
                                     softWrap: false,
                                     maxLines: 2,

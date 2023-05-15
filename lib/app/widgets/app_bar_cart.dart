@@ -45,7 +45,8 @@ class AppBarCart extends StatelessWidget {
                 ),
               )
             : const SizedBox(),
-        title: Text(title, style: AppThemeData.sf500Font18Black),
+        title: Text(title,
+            style: AppThemeData.jost26UnderLine.copyWith(fontSize: 19)),
         actions: [
           Visibility(
             visible: !hideSearchButton,

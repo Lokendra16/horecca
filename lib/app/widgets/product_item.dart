@@ -92,8 +92,7 @@ class ProductItem extends StatelessWidget {
                         maxLines: 2,
                         textAlign: TextAlign.center,
                         overflow: TextOverflow.ellipsis,
-                        style: AppThemeData.sf500Font12Black
-                            .copyWith(color: ColorName.black.withOpacity(0.7)),
+                        style: AppThemeData.jost13Weight500,
                       ),
                     ),
                   ),
@@ -102,7 +101,7 @@ class ProductItem extends StatelessWidget {
                     padding: const EdgeInsets.only(top: 8.0),
                     child: Text(
                       "AED ${item.variants?[0].price}" ?? '',
-                      style: AppThemeData.sf500Font12,
+                      style: AppThemeData.jost17Weight600,
                     ),
                   ),
                   // TextButton(

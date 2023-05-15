@@ -53,7 +53,7 @@ class SearchProductsScreen extends StatelessWidget {
                       child: Container(
                         decoration: BoxDecoration(
                             border: Border.all(color: ColorName.mercury),
-                            color: ColorName.goblingreen,
+                            color: ColorName.goblin,
                             borderRadius: const BorderRadius.only(
                                 topRight: Radius.circular(4),
                                 bottomRight: Radius.circular(4))),

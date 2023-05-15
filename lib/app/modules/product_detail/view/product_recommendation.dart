@@ -27,7 +27,7 @@ class ProductsRecommendationWidget extends StatelessWidget {
             padding: const EdgeInsets.only(top: 10.0, left: 12),
             child: Text(
               data.title ?? '',
-              style: AppThemeData.sf600Font16Black,
+              style: AppThemeData.jost18Weight700Black,
             ),
           ),
           const SizedBox(
@@ -89,8 +89,7 @@ class ProductsRecommendationWidget extends StatelessWidget {
                               data.products?[i].title ?? '',
                               maxLines: 1,
                               textAlign: TextAlign.center,
-                              style: AppThemeData.sf400Font12
-                                  .copyWith(fontWeight: FontWeight.w300),
+                              style: AppThemeData.jost12Weight500Black,
                             ),
                           ),
                           Padding(
@@ -98,8 +97,7 @@ class ProductsRecommendationWidget extends StatelessWidget {
                             child: Text(
                               "AED ${data.products?[i].price.toString()}" ??
                                   '', //TODO Make this dynamic
-                              style: AppThemeData.sf500Font12
-                                  .copyWith(fontSize: 12),
+                              style: AppThemeData.jost14Weight500Black,
                             ),
                           ),
                         ],
