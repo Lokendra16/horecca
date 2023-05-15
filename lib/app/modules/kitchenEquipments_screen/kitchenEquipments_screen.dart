@@ -4,6 +4,7 @@ import 'package:get/get_core/src/get_main.dart';
 import 'package:the_horeca_store/extensions/assets_ext.dart';
 import 'package:the_horeca_store/networking/models/kitchenEquipments_model/kitchenEquipment.dart';
 
+import '../../../commons/utils/app_theme_data.dart';
 import '../../../src/gen/assets.gen.dart';
 import '../../../src/gen/colors.gen.dart';
 import '../product_list/controller/product_listview_controller.dart';
@@ -91,7 +92,7 @@ class KitchenEquipmentsScreen extends StatelessWidget {
                               height: 40,
                               child: Row(mainAxisAlignment: MainAxisAlignment.spaceBetween,
                                 children: [
-                                  Text(kitchen![i].title),
+                                  Text(kitchen![i].title,style: AppThemeData.sf400Font14black,),
                                   Assets.icons.icArrowForward.svgIcon(
                                       color: ColorName.black,size: 14),
                                 ],

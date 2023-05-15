@@ -3,6 +3,7 @@ import 'package:get/get.dart';
 import 'package:get/get_core/src/get_main.dart';
 import 'package:the_horeca_store/extensions/assets_ext.dart';
 
+import '../../../commons/utils/app_theme_data.dart';
 import '../../../networking/models/banqut&Confrence/banquet&Confrnece.dart';
 import '../../../src/gen/assets.gen.dart';
 import '../../../src/gen/colors.gen.dart';
@@ -92,7 +93,7 @@ class BanquetConfrenceScreen extends StatelessWidget {
                               height: 40,
                               child: Row(mainAxisAlignment: MainAxisAlignment.spaceBetween,
                                 children: [
-                                  Text(banquetChair![i].title),
+                                  Text(banquetChair![i].title,style: AppThemeData.sf400Font14black,),
                                   Assets.icons.icArrowForward.svgIcon(
                                       color: ColorName.black,size: 14),
                                 ],
@@ -125,7 +126,7 @@ class BanquetConfrenceScreen extends StatelessWidget {
                               height: 40,
                               child: Row(mainAxisAlignment: MainAxisAlignment.spaceBetween,
                                 children: [
-                                  Text(confrneceTable![i].title),
+                                  Text(confrneceTable![i].title,style: AppThemeData.sf400Font14black,),
                                   Assets.icons.icArrowForward.svgIcon(
                                       color: ColorName.black,size: 14),
                                 ],
@@ -158,7 +159,7 @@ class BanquetConfrenceScreen extends StatelessWidget {
                               height: 40,
                               child: Row(mainAxisAlignment: MainAxisAlignment.spaceBetween,
                                 children: [
-                                  Text(banquetstable![i].title),
+                                  Text(banquetstable![i].title,style: AppThemeData.sf400Font14black,),
                                   Assets.icons.icArrowForward.svgIcon(
                                       color: ColorName.black,size: 14),
                                 ],
@@ -190,7 +191,7 @@ class BanquetConfrenceScreen extends StatelessWidget {
                               height: 40,
                               child: Row(mainAxisAlignment: MainAxisAlignment.spaceBetween,
                                 children: [
-                                  Text(cockTailTable![i].title),
+                                  Text(cockTailTable![i].title,style: AppThemeData.sf400Font14black,),
                                   Assets.icons.icArrowForward.svgIcon(
                                       color: ColorName.black,size: 14),
                                 ],
@@ -222,7 +223,7 @@ class BanquetConfrenceScreen extends StatelessWidget {
                               height: 40,
                               child: Row(mainAxisAlignment: MainAxisAlignment.spaceBetween,
                                 children: [
-                                  Text(tableTrolly![i].title),
+                                  Text(tableTrolly![i].title,style: AppThemeData.sf400Font14black,),
                                   Assets.icons.icArrowForward.svgIcon(
                                       color: ColorName.black,size: 14),
                                 ],
@@ -254,7 +255,7 @@ class BanquetConfrenceScreen extends StatelessWidget {
                               height: 40,
                               child: Row(mainAxisAlignment: MainAxisAlignment.spaceBetween,
                                 children: [
-                                  Text(stageLecterns![i].title),
+                                  Text(stageLecterns![i].title,style: AppThemeData.sf400Font14black,),
                                   Assets.icons.icArrowForward.svgIcon(
                                       color: ColorName.black,size: 14),
                                 ],
@@ -286,7 +287,7 @@ class BanquetConfrenceScreen extends StatelessWidget {
                               height: 40,
                               child: Row(mainAxisAlignment: MainAxisAlignment.spaceBetween,
                                 children: [
-                                  Text(danceFloorSeprator![i].title),
+                                  Text(danceFloorSeprator![i].title,style: AppThemeData.sf400Font14black,),
                                   Assets.icons.icArrowForward.svgIcon(
                                       color: ColorName.black,size: 14),
                                 ],

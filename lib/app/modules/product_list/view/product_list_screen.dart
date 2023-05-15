@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:infinite_scroll_pagination/infinite_scroll_pagination.dart';
+import 'package:the_horeca_store/app/modules/product_list/view/product_list_view.dart';
 import 'package:the_horeca_store/app/widgets/app_bar_cart.dart';
 import 'package:the_horeca_store/app/widgets/product_item.dart';
 import 'package:the_horeca_store/l10n/localization.dart';
@@ -115,7 +116,7 @@ class ProductListScreen extends StatelessWidget {
             () => Padding(
                 padding: EdgeInsets.only(
                     top: showSorting == true ? 60.0 : 20, bottom: 4.0),
-                child: controller.isGridView.value == true
+                child: controller.isGridView.value == false
                     ? PagedGridView<int, ProductData>(
                         gridDelegate:
                             const SliverGridDelegateWithFixedCrossAxisCount(
@@ -161,7 +162,7 @@ class ProductListScreen extends StatelessWidget {
                             ),
                           ),
                           itemBuilder: (context, item, index) {
-                            return ProductItem(
+                            return ProductListView(
                               item: item,
                               isFromWishList: false,
                             );

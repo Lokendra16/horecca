@@ -3,6 +3,7 @@ import 'package:get/get.dart';
 import 'package:get/get_core/src/get_main.dart';
 import 'package:the_horeca_store/extensions/assets_ext.dart';
 
+import '../../../commons/utils/app_theme_data.dart';
 import '../../../networking/models/bed&bathLinen_model/bedBath.dart';
 import '../../../src/gen/assets.gen.dart';
 import '../../../src/gen/colors.gen.dart';
@@ -91,7 +92,7 @@ class BedBathScreen extends StatelessWidget {
                               height: 40,
                               child: Row(mainAxisAlignment: MainAxisAlignment.spaceBetween,
                                 children: [
-                                  Text(bed![i].title),
+                                  Text(bed![i].title,style: AppThemeData.sf400Font14black,),
                                   Assets.icons.icArrowForward.svgIcon(
                                       color: ColorName.black,size: 14),
                                 ],
@@ -124,7 +125,7 @@ class BedBathScreen extends StatelessWidget {
                               height: 40,
                               child: Row(mainAxisAlignment: MainAxisAlignment.spaceBetween,
                                 children: [
-                                  Text(bath![i].title),
+                                  Text(bath![i].title,style: AppThemeData.sf400Font14black,),
                                   Assets.icons.icArrowForward.svgIcon(
                                       color: ColorName.black,size: 14),
                                 ],

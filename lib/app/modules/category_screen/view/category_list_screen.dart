@@ -215,6 +215,7 @@ class CategoryListScreen extends StatelessWidget {
                 child: InkWell(
                   onTap: () {
                     Get.to(LiveCookingModular());
+
                   },
                   child: Card(
                     elevation: 3,

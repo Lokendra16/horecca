@@ -3,6 +3,7 @@ import 'package:get/get.dart';
 import 'package:get/get_core/src/get_main.dart';
 import 'package:the_horeca_store/extensions/assets_ext.dart';
 
+import '../../../commons/utils/app_theme_data.dart';
 import '../../../networking/models/guestRoom_model/guestRoom.dart';
 import '../../../src/gen/assets.gen.dart';
 import '../../../src/gen/colors.gen.dart';
@@ -92,7 +93,7 @@ class GuestroomScreen extends StatelessWidget {
                               height: 40,
                               child: Row(mainAxisAlignment: MainAxisAlignment.spaceBetween,
                                 children: [
-                                  Text(guestRoomSupplies![i].title),
+                                  Text(guestRoomSupplies![i].title,style: AppThemeData.sf400Font14black,),
                                   Assets.icons.icArrowForward.svgIcon(
                                       color: ColorName.black,size: 14),
                                 ],
@@ -125,7 +126,7 @@ class GuestroomScreen extends StatelessWidget {
                               height: 40,
                               child: Row(mainAxisAlignment: MainAxisAlignment.spaceBetween,
                                 children: [
-                                  Text(electronics![i].title),
+                                  Text(electronics![i].title,style: AppThemeData.sf400Font14black,),
                                   Assets.icons.icArrowForward.svgIcon(
                                       color: ColorName.black,size: 14),
                                 ],
@@ -142,7 +143,7 @@ class GuestroomScreen extends StatelessWidget {
                             height: 40,
                             child: Row(mainAxisAlignment: MainAxisAlignment.spaceBetween,
                               children: [
-                                Text(bathroom![i].title),
+                                Text(bathroom![i].title,style: AppThemeData.sf400Font14black,),
                                 Assets.icons.icArrowForward.svgIcon(
                                     color: ColorName.black,size: 14),
                               ],
@@ -173,7 +174,7 @@ class GuestroomScreen extends StatelessWidget {
                               height: 40,
                               child: Row(mainAxisAlignment: MainAxisAlignment.spaceBetween,
                                 children: [
-                                  Text(childFriendly![i].title),
+                                  Text(childFriendly![i].title,style: AppThemeData.sf400Font14black,),
                                   Assets.icons.icArrowForward.svgIcon(
                                       color: ColorName.black,size: 14),
                                 ],

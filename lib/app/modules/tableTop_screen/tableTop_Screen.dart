@@ -2,6 +2,7 @@ import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:get/get_core/src/get_main.dart';
+import 'package:the_horeca_store/commons/utils/app_theme_data.dart';
 import 'package:the_horeca_store/extensions/assets_ext.dart';
 import 'package:the_horeca_store/networking/models/tabletop_model/tabletop.dart';
 
@@ -97,7 +98,7 @@ class TableTopScreen extends StatelessWidget {
                       height: 40,
                       child: Row(mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
-                          Text(glassware[i].title),
+                          Text(glassware[i].title,style: AppThemeData.sf400Font14black,),
                           Assets.icons.icArrowForward.svgIcon(
                               color: ColorName.black,size: 14),
                         ],
@@ -130,7 +131,7 @@ class TableTopScreen extends StatelessWidget {
                      height: 40,
                      child: Row(mainAxisAlignment: MainAxisAlignment.spaceBetween,
                      children: [
-                       Text(cutlery[i].title),
+                       Text(cutlery[i].title,style: AppThemeData.sf400Font14black,),
                        Assets.icons.icArrowForward.svgIcon(
                            color: ColorName.black,size: 14),
                      ],
@@ -163,7 +164,7 @@ class TableTopScreen extends StatelessWidget {
                            height: 40,
                            child: Row(mainAxisAlignment: MainAxisAlignment.spaceBetween,
                              children: [
-                               Text(chinaware[i].title),
+                               Text(chinaware[i].title,style: AppThemeData.sf400Font14black,),
                                Assets.icons.icArrowForward.svgIcon(
                                    color: ColorName.black,size: 14),
                              ],
