@@ -33,17 +33,17 @@ class ProductItem extends StatelessWidget {
         //height: size.width * 0.40,
         color: ColorName.white,
         margin: const EdgeInsets.only(top: 2),
-     //   padding: const EdgeInsets.all(8),
+        //   padding: const EdgeInsets.all(8),
 
         child: Stack(
           children: [
             // PRODUCT IMAGE
             Padding(
-              padding: const EdgeInsets.only(left: 8,right: 8),
+              padding: const EdgeInsets.only(left: 8, right: 8),
               child: FancyShimmerImage(
                 imageUrl: item.image?.src ?? '',
                 width: size.width * 0.36,
-                height: size.width / 3.6,
+                height: size.width / 3.4,
                 errorWidget: Image.asset('assets/images/ic_appicon.png'),
               ) /*CachedNetworkImage(
                 imageUrl: item.image?.src ?? '',

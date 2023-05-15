@@ -229,7 +229,6 @@ class GraphQLRepo {
     final MutationOptions options = MutationOptions(
       document: gql(productListQuery),
     );
-
     var value = await client.mutate(options); /*.then((value) {
 
     });*/

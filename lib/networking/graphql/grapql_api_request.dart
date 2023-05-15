@@ -81,6 +81,8 @@ query {
                 nodes{
                     title
                     id
+                    vendor
+                    
                     priceRange{
                         maxVariantPrice{
                             amount

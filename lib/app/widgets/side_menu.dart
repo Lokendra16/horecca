@@ -8,7 +8,6 @@ import 'package:the_horeca_store/app/modules/home_screen/view/home_category_widg
 import 'package:the_horeca_store/app/modules/product_list/controller/product_listview_controller.dart';
 import 'package:the_horeca_store/app/modules/product_list/view/product_list_screen.dart';
 import 'package:the_horeca_store/app/routes/app_routes.dart';
-import 'package:the_horeca_store/app/widgets/app_bar_cart.dart';
 import 'package:the_horeca_store/commons/utils/app_theme_data.dart';
 import 'package:the_horeca_store/commons/utils/utility.dart';
 import 'package:the_horeca_store/l10n/localization.dart';
@@ -119,7 +118,6 @@ class SideMenu extends StatelessWidget {
             width: double.infinity,
             color: ColorName.mercury,
           ),
-
           Container(
             height: 1,
             width: double.infinity,
@@ -238,7 +236,7 @@ class SideMenu extends StatelessWidget {
             leading: const Icon(Icons.email_outlined),
             title: Text(AppLocalizations.of(context).contactUs),
             onTap: () {
-              Utility.launchMail('mailto:example@gmail.com');
+              Utility.launchMail('mailto:hello@thehorecastore.com');
             },
           ),
           Container(

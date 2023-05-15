@@ -50,7 +50,7 @@ class HomeProductsWidget extends StatelessWidget {
                         },
                         child: Container(
                           width: size.width * 0.40,
-                          height: size.width * 0.50,
+                          height: size.width * 0.54,
                           margin: const EdgeInsets.only(left: 16),
                           decoration: const BoxDecoration(
                             color: ColorName
@@ -76,16 +76,13 @@ class HomeProductsWidget extends StatelessWidget {
                                       )*/
                                       ,
                                     ),
-                                    Align(
-                                      alignment: Alignment.topRight,
-                                      child: Padding(
-                                        padding: const EdgeInsets.all(4.0),
-                                        child: WishlistWidget(
-                                            id: Uri.parse(item.products![i].id
-                                                    .toString())
-                                                .pathSegments
-                                                .last),
-                                      ),
+                                    Positioned(
+                                      right: 0,
+                                      child: WishlistWidget(
+                                          id: Uri.parse(item.products![i].id
+                                                  .toString())
+                                              .pathSegments
+                                              .last),
                                     ),
                                   ],
                                 ),
@@ -98,6 +95,14 @@ class HomeProductsWidget extends StatelessWidget {
                                   maxLines: 2,
                                   textAlign: TextAlign.center,
                                   style: AppThemeData.jost13Weight500,
+                                ),
+                              ),
+                              Padding(
+                                padding:
+                                    const EdgeInsets.only(top: 5, bottom: 5),
+                                child: Text(
+                                  "${item.products?[i].vendor}" ?? '',
+                                  style: AppThemeData.poppins500Font10,
                                 ),
                               ),
                               Padding(

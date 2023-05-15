@@ -19,11 +19,12 @@ class CommonPageView extends StatelessWidget {
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
     return Obx(() => SizedBox(
-          height: size.height * 0.20,
-          width: size.width,
+          //height: size.height * 0.20,
+          // width: size.width,
           child: Stack(children: [
             SizedBox(
-              width: double.infinity,
+              width: size.width,
+              height: size.width / 2.99,
               child: PageView.builder(
                 controller: pageViewController.pageController,
                 itemCount: homepageContents.length,
@@ -33,7 +34,8 @@ class CommonPageView extends StatelessWidget {
                     imageUrl: homepageContents[i].pgImage.toString(),
                     boxFit: BoxFit.fill,
                     errorWidget: Image.asset('assets/images/ic_appicon.png'),
-                  ) /*Image.network(
+                  )
+                      /*Image.network(
                     homepageContents[i].pgImage.toString(),
                     fit: BoxFit.fill,
                     loadingBuilder: (BuildContext context, Widget child,

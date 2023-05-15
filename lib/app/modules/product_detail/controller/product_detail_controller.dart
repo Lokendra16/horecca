@@ -114,10 +114,8 @@ class ProductDetailController extends GetxController {
   String getVariantId_() {
     if (productDetail.value.variants == null ||
         productDetail.value.variants!.isEmpty) return "";
-
     int i = 0;
     String variantID = "";
-
     for (var variationList in productDetail.value.variants!) {
       if (productDetail.value.options != null) {
         int optionLength = productDetail.value.options!.length;

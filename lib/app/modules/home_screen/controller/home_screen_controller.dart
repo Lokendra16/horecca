@@ -5,10 +5,8 @@ import 'package:the_horeca_store/commons/utils/app_preference.dart';
 import 'package:the_horeca_store/commons/utils/my_snackbar.dart';
 import 'package:the_horeca_store/networking/api_client/api_client.dart';
 import 'package:the_horeca_store/networking/graphql/graphql_repo.dart';
-import 'package:the_horeca_store/networking/models/category_data/category_data.dart';
 import 'package:the_horeca_store/networking/models/category_data/category_model.dart';
 import 'package:the_horeca_store/networking/models/home/home_collections.dart';
-import 'package:the_horeca_store/networking/models/table_accessories/table_accesories_module.dart';
 
 class HomeScreenController extends GetxController {
   RxList<HomeCollections> productsByCollectionList = <HomeCollections>[].obs;
@@ -77,17 +75,16 @@ class HomeScreenController extends GetxController {
     });
   }
 
-  void filterCategoryData(response){
+  void filterCategoryData(response) {
     debugPrint('response : $response');
     List<HomeCollections> col = [];
-    response["nodes"].forEach((parent){
+    response["nodes"].forEach((parent) {
       var img = "";
       if (parent["image"] != null) {
         img = parent["image"]?["url"] ?? '';
       }
-      var collection =
-          HomeCollections(id: parent["id"],
-              title: parent["title"], products: [], image: img);
+      var collection = HomeCollections(
+          id: parent["id"], title: parent["title"], products: [], image: img);
       debugPrint('collection : ${collection.id}');
       col.add(collection);
     });
@@ -98,25 +95,27 @@ class HomeScreenController extends GetxController {
 
   void filterProductData(response) {
     List<HomeCollections> col = [];
-    response["nodes"].forEach((parent){
+    response["nodes"].forEach((parent) {
       List<HomeProducts> product = [];
       parent["products"]["nodes"].forEach((child1) {
         var p = HomeProducts(id: child1["id"], title: child1["title"]);
+
         child1["images"]["nodes"].forEach((child2) {
           p.image = child2["url"];
         });
+        p.vendor = child1['vendor'];
+        p.price = child1["priceRange"]["maxVariantPrice"]['amount'];
 
-        p.price =  child1["priceRange"]["maxVariantPrice"]['amount'];
-          debugPrint('amount : ${p.price}');
-
+        debugPrint('amount : ${p.price}');
+        debugPrint('vendor  : ${p.vendor}');
 
         // p.price?.amount = child1['priceRange'];
         // debugPrint('price : ${p.price?.amount}');
         product.add(p);
       });
-      var collection = HomeCollections(id: parent["id"], title: parent["title"], products: product);
+      var collection = HomeCollections(
+          id: parent["id"], title: parent["title"], products: product);
       col.add(collection);
-
     });
 
     productsByCollectionList.value = col;
@@ -132,9 +131,12 @@ class HomeScreenController extends GetxController {
     }
     var firstName = await AppPreference().get(AppPreference.KEY_FIRST_NAME);
     var lastName = await AppPreference().get(AppPreference.KEY_LAST_NAME);
-    if(firstName != null && lastName != null && firstName.isNotEmpty && lastName.isNotEmpty){
+    if (firstName != null &&
+        lastName != null &&
+        firstName.isNotEmpty &&
+        lastName.isNotEmpty) {
       userName.value = "$firstName $lastName";
-    }else{
+    } else {
       userName.value = "Guest";
     }
   }
@@ -180,10 +182,20 @@ class HomeScreenController extends GetxController {
     );
   }
 
-
   // API FOR HOME CATEGORY LIST
   Future<void> getHomeCategoryList() async {
-    List collectionIds = ['435395363127', '435395395895','435395494199','433094590775','433094787383','440481677623','442082001207','433094918455','435397919031','435398508855','433095180599,'
+    List collectionIds = [
+      '435395363127',
+      '435395395895',
+      '435395494199',
+      '433094590775',
+      '433094787383',
+      '440481677623',
+      '442082001207',
+      '433094918455',
+      '435397919031',
+      '435398508855',
+      '433095180599,'
     ];
     String id = collectionIds.join(',');
     try {
@@ -191,14 +203,10 @@ class HomeScreenController extends GetxController {
       var newItems = await client.getHomeCategoryList(id);
       homeList.value = newItems;
       // final newItems = await RemoteApi.getCharacterList(pageKey, _pageSize);
-        final nextPageKey = newItems.custom_collections!.last.id;
+      final nextPageKey = newItems.custom_collections!.last.id;
     } catch (error) {
       debugPrint('Error : $error');
     }
-update();
-
+    update();
   }
-
-
-
 }

@@ -5,7 +5,8 @@ import 'package:url_launcher/url_launcher.dart';
 class Utility {
   static String rateUsURLAndroid =
       "https://play.google.com/store/apps/details?id=com.example.the_horeca_store"; //TODO Update Package here
-  static String rateUsURLIOS = "https://apps.apple.com/in/app/"; //TODO Update ID here
+  static String rateUsURLIOS =
+      "https://apps.apple.com/in/app/"; //TODO Update ID here
   static String privacyPolicyURL =
       "https://thehorecastore.com/pages/privacy-policy"; //TODO Update ID here
 
@@ -37,16 +38,16 @@ class Utility {
   static launchMail(email) async {
     final Uri params = Uri(
       scheme: 'mailto',
-      path: 'my.mail@example.com',
+      path: 'hello@thehorecastore.com',
     );
     String chatURL = "https://$email";
     var url = Uri.parse(chatURL);
     if (await canLaunchUrl(url)) {
-    await Platform.isIOS ? launchUrl(url,mode: LaunchMode.inAppWebView) : launchURL(params);
+      await Platform.isIOS
+          ? launchUrl(url, mode: LaunchMode.inAppWebView)
+          : launchURL(params);
     } else {
-    throw 'Could not launch $url';
+      throw 'Could not launch $url';
     }
   }
-
-
 }
