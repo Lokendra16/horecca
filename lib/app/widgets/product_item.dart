@@ -82,7 +82,7 @@ class ProductItem extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
                 Padding(
-                  padding: const EdgeInsets.only(top: 105.0),
+                  padding: const EdgeInsets.only(top: 105.0,left: 20),
                   child: SizedBox(
                     width: size.width * 0.40,
                     child: Text(
@@ -90,14 +90,18 @@ class ProductItem extends StatelessWidget {
                       maxLines: 2,
                       textAlign: TextAlign.center,
                       overflow: TextOverflow.ellipsis,
-                      style: AppThemeData.poppins500Font13,
+                       style: AppThemeData.jost13Weight500,
                     ),
                   ),
                 ),
 
-                Text(
-                  "AED ${item.variants?[0].price}" ?? '',
-                  style: AppThemeData.jost17Weight600,
+                Padding(
+                  padding: const EdgeInsets.only(left: 20,top: 5),
+                  child: Text(
+                    "AED ${item.variants?[0].price}" ?? '',
+                    style: AppThemeData.jost17Weight600,
+
+                  ),
                 ),
                 // TextButton(
                 //     style: TextButton.styleFrom(
