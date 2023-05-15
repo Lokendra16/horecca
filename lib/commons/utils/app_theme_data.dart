@@ -105,6 +105,9 @@ class AppThemeData {
   static final poppins500Font10 = GoogleFonts.poppins(
       color: ColorName.crusoe, fontWeight: FontWeight.w500, fontSize: 11);
 
+  static final poppins500Font13 = GoogleFonts.poppins(
+      color: ColorName.crusoe, fontWeight: FontWeight.w500, fontSize: 13);
+
   static const sf500Font16White = TextStyle(
       fontWeight: FontWeight.w500,
       fontSize: 16,
@@ -249,7 +252,7 @@ class AppThemeData {
   // SF 400 FONT 12
   static const jost13Weight500 = TextStyle(
       color: ColorName.crusoe,
-      fontSize: 11,
+      fontSize: 13,
       fontWeight: FontWeight.w500,
       fontFamily: 'Jost');
 
@@ -346,7 +349,7 @@ class AppThemeData {
   static final jost18Black = GoogleFonts.jost(
     color: ColorName.black,
     fontWeight: FontWeight.w600,
-    fontSize: 18,
+    fontSize: 17,
   );
 
   static final jost16Weight500Black = GoogleFonts.jost(
