@@ -195,7 +195,8 @@ class CartScreen extends StatelessWidget {
                                       ),
                                       Text(
                                         controller.cartData.value.totalAmount,
-                                        style: AppThemeData.sf500Font16,
+                                        style:
+                                            AppThemeData.poppins500Font18Gray,
                                       ),
                                     ],
                                   ),

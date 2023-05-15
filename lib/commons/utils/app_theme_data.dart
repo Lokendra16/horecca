@@ -119,8 +119,8 @@ class AppThemeData {
   static final poppins500Font18Black = GoogleFonts.poppins(
       color: ColorName.black, fontWeight: FontWeight.w500, fontSize: 18);
 
-  static final poppins500Font18 = GoogleFonts.poppins(
-      color: ColorName., fontWeight: FontWeight.w500, fontSize: 18);
+  static final poppins500Font18Gray = GoogleFonts.poppins(
+      color: ColorName.doveGray, fontWeight: FontWeight.w500, fontSize: 18);
 
   // SF PRO 500 FONT 16
   static const sf500Font16Gray = TextStyle(

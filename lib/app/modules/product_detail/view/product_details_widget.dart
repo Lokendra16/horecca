@@ -76,6 +76,7 @@ class ProductDetailsWidget extends StatelessWidget {
                       ),
                       InkWell(
                         onTap: () async {
+                          debugPrint("product id : ${product.id}");
                           await Share.share(product.id.toString());
                         },
                         child: Container(

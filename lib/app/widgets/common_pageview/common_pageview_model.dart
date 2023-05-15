@@ -1,4 +1,3 @@
-
 class HomepageContent {
   String pgImage;
   HomepageContent({
@@ -8,16 +7,21 @@ class HomepageContent {
 
 List<HomepageContent> homepageContents = [
   HomepageContent(
-    pgImage: 'https://thehorecastore.myshopify.com/cdn/shop/files/Slider1_1.jpg',
+    pgImage:
+        'https://thehorecastore.myshopify.com/cdn/shop/files/Slider1_1.jpg',
     //'assets/images/banner.png',
   ),
   HomepageContent(
-    pgImage: 'https://thehorecastore.myshopify.com/cdn/shop/files/Slider2_1.jpg',
+    pgImage:
+        'https://thehorecastore.myshopify.com/cdn/shop/files/Slider2_1.jpg',
     //'assets/images/banner.png',
   ),
   HomepageContent(
-    pgImage: 'https://thehorecastore.myshopify.com/cdn/shop/files/slider3_6ecaf3d3-55eb-471c-95e7-1e779df1922b.jpg',
+    pgImage:
+        'https://thehorecastore.myshopify.com/cdn/shop/files/slider3_6ecaf3d3-55eb-471c-95e7-1e779df1922b.jpg',
     //'assets/images/banner.png',
   ),
-  HomepageContent(pgImage: 'https://thehorecastore.myshopify.com/cdn/shop/files/slider4.jpg')
+  HomepageContent(
+      pgImage:
+          'https://thehorecastore.myshopify.com/cdn/shop/files/slider4.jpg')
 ];
