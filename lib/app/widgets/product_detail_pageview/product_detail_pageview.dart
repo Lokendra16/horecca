@@ -6,13 +6,16 @@ import 'package:the_horeca_store/app/modules/product_detail/controller/product_d
 import 'package:the_horeca_store/src/gen/assets.gen.dart';
 import 'package:the_horeca_store/src/gen/colors.gen.dart';
 
+import '../../../networking/models/product_data/product_data.dart';
+import '../../modules/product_list/view/product_image.dart';
+
 class ProductDetailPageView extends StatelessWidget {
   ProductDetailPageView({
     Key? key,
   }) : super(key: key);
 
   ProductDetailController controller = Get.find();
-
+ 
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
@@ -36,14 +39,21 @@ class ProductDetailPageView extends StatelessWidget {
                       itemBuilder: (_, i) {
                         var item = controller.productDetail.value.images![i];
                         return Center(
-                          child: item.src !=null && item.src!.isNotEmpty ? CachedNetworkImage(
-                            imageUrl: item.src ?? '',
-                            placeholder: (context, url) =>
-                                Center(child: Image.asset("assets/images/ic_appicon.png")),
-                            errorWidget: (context, url, error) =>
-                                Center(child: Image.asset("assets/images/ic_appicon.png")),
-                            fit: BoxFit.cover,
-                          ) : Center(child: Image.asset("assets/images/ic_appicon.png")),
+                          child: InkWell(
+                            onTap: (){
+                              Get.to(
+                                  ProductImage(item:ProductData(image: item)),
+                              );
+                            },
+                            child: item.src !=null && item.src!.isNotEmpty ? CachedNetworkImage(
+                              imageUrl: item.src ?? '',
+                              placeholder: (context, url) =>
+                                  Center(child: Image.asset("assets/images/ic_appicon.png")),
+                              errorWidget: (context, url, error) =>
+                                  Center(child: Image.asset("assets/images/ic_appicon.png")),
+                              fit: BoxFit.cover,
+                            ) : Center(child: Image.asset("assets/images/ic_appicon.png")),
+                          ),
                         );
                       },
                     ),
