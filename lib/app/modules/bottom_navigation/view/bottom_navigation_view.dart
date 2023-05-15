@@ -77,7 +77,7 @@ class DashboardScreen extends StatelessWidget {
   final List<Widget> _pages = [
     HomeScreen(),
     CategoryListScreen(),
-    ProductListScreen(),
+    ProductListScreen(showSorting : false),
     WishListScreen(),
     MyAccountScreen(),
   ];

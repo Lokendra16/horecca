@@ -26,6 +26,7 @@ class ProductListController extends GetxController {
   static int TYPE_SEARCH = 2;
   static int TYPE_WISHLIST = 3;
   var screenType = 0.obs;
+  var isGridView = false.obs;
 
   List<SortProductModel> filterItem = [
     SortProductModel(
@@ -127,6 +128,10 @@ class ProductListController extends GetxController {
             child: child,
           );
         });
+  }
+
+  void onClickView() {
+    isGridView.value = !isGridView.value;
   }
 
   Future<void> searchProductApi(String searchText) async {
