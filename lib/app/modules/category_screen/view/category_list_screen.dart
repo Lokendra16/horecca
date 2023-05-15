@@ -84,7 +84,7 @@ class CategoryListScreen extends StatelessWidget {
                                 padding: EdgeInsets.symmetric(horizontal: 8.0),
                                 child: Text(
                                   AppTags.tabletop,
-                                  style: AppThemeData.sf600Font16Gray,
+                                  style:AppThemeData.font18Weight500Gray,
                                   maxLines: 1,
                                   softWrap: false,
                                   overflow: TextOverflow.ellipsis,
@@ -141,7 +141,7 @@ class CategoryListScreen extends StatelessWidget {
                                     const EdgeInsets.symmetric(horizontal: 8.0),
                                 child: Text(
                                   AppTags.tableAccessories,
-                                  style: AppThemeData.sf600Font16Gray,
+                                  style: AppThemeData.font18Weight500Gray,
                                   maxLines: 1,
                                   softWrap: false,
                                   overflow: TextOverflow.ellipsis,
@@ -194,7 +194,7 @@ class CategoryListScreen extends StatelessWidget {
                                     const EdgeInsets.symmetric(horizontal: 8),
                                 child: Text(
                                   AppTags.buffetware,
-                                  style: AppThemeData.sf600Font16Gray,
+                                  style: AppThemeData.font18Weight500Gray,
                                   maxLines: 1,
                                   softWrap: false,
                                   overflow: TextOverflow.ellipsis,
@@ -248,7 +248,7 @@ class CategoryListScreen extends StatelessWidget {
                                     const EdgeInsets.symmetric(horizontal: 8.0),
                                 child: Text(
                                   AppTags.liveCookingmoduler,
-                                  style: AppThemeData.sf600Font16Gray,
+                                  style: AppThemeData.font18Weight500Gray,
                                   maxLines: 1,
                                   softWrap: false,
                                   overflow: TextOverflow.ellipsis,
@@ -301,7 +301,7 @@ class CategoryListScreen extends StatelessWidget {
                                     const EdgeInsets.symmetric(horizontal: 8.0),
                                 child: Text(
                                   AppTags.kitchen,
-                                  style: AppThemeData.sf600Font16Gray,
+                                  style: AppThemeData.font18Weight500Gray,
                                   maxLines: 1,
                                   softWrap: false,
                                   overflow: TextOverflow.ellipsis,
@@ -357,7 +357,7 @@ class CategoryListScreen extends StatelessWidget {
                                     const EdgeInsets.symmetric(horizontal: 8.0),
                                 child: Text(
                                   AppTags.kitchenequipments,
-                                  style: AppThemeData.sf600Font16Gray,
+                                  style: AppThemeData.font18Weight500Gray,
                                   maxLines: 1,
                                   softWrap: false,
                                   overflow: TextOverflow.ellipsis,
@@ -413,7 +413,7 @@ class CategoryListScreen extends StatelessWidget {
                                     const EdgeInsets.symmetric(horizontal: 8.0),
                                 child: Text(
                                   AppTags.bedbathlinen,
-                                  style: AppThemeData.sf600Font16Gray,
+                                  style: AppThemeData.font18Weight500Gray,
                                   maxLines: 1,
                                   softWrap: false,
                                   overflow: TextOverflow.ellipsis,
@@ -469,7 +469,7 @@ class CategoryListScreen extends StatelessWidget {
                                     const EdgeInsets.symmetric(horizontal: 8.0),
                                 child: Text(
                                   AppTags.guestroom,
-                                  style: AppThemeData.sf600Font16Gray,
+                                  style: AppThemeData.font18Weight500Gray,
                                   maxLines: 1,
                                   softWrap: false,
                                   overflow: TextOverflow.ellipsis,
@@ -524,7 +524,7 @@ class CategoryListScreen extends StatelessWidget {
                                 padding: EdgeInsets.symmetric(horizontal: 8.0),
                                 child: Text(
                                   AppTags.banquetConfrence,
-                                  style: AppThemeData.sf600Font16Gray,
+                                  style: AppThemeData.font18Weight500Gray,
                                   maxLines: 1,
                                   softWrap: false,
                                   overflow: TextOverflow.ellipsis,
