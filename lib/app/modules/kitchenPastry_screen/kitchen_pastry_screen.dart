@@ -3,6 +3,7 @@ import 'package:get/get.dart';
 import 'package:get/get_core/src/get_main.dart';
 import 'package:the_horeca_store/extensions/assets_ext.dart';
 
+import '../../../commons/utils/app_theme_data.dart';
 import '../../../networking/models/kitchen&pastry/Kitchen&Pastry_model.dart';
 import '../../../src/gen/assets.gen.dart';
 import '../../../src/gen/colors.gen.dart';
@@ -90,7 +91,7 @@ class KitchenPastryScreen extends StatelessWidget {
                               height: 40,
                               child: Row(mainAxisAlignment: MainAxisAlignment.spaceBetween,
                                 children: [
-                                  Text(gastronorm![i].title),
+                                  Text(gastronorm![i].title,style: AppThemeData.sf400Font14black,),
                                   Assets.icons.icArrowForward.svgIcon(
                                       color: ColorName.black,size: 14),
                                 ],
@@ -123,7 +124,7 @@ class KitchenPastryScreen extends StatelessWidget {
                               height: 40,
                               child: Row(mainAxisAlignment: MainAxisAlignment.spaceBetween,
                                 children: [
-                                  Text(knives![i].title),
+                                  Text(knives![i].title,style: AppThemeData.sf400Font14black,),
                                   Assets.icons.icArrowForward.svgIcon(
                                       color: ColorName.black,size: 14),
                                 ],
@@ -155,7 +156,7 @@ class KitchenPastryScreen extends StatelessWidget {
                               height: 40,
                               child: Row(mainAxisAlignment: MainAxisAlignment.spaceBetween,
                                 children: [
-                                  Text(breadpizza![i].title),
+                                  Text(breadpizza![i].title,style: AppThemeData.sf400Font14black,),
                                   Assets.icons.icArrowForward.svgIcon(
                                       color: ColorName.black,size: 14),
                                 ],
@@ -187,7 +188,7 @@ class KitchenPastryScreen extends StatelessWidget {
                               height: 40,
                               child: Row(mainAxisAlignment: MainAxisAlignment.spaceBetween,
                                 children: [
-                                  Text(strorageTranspor![i].title),
+                                  Text(strorageTranspor![i].title,style: AppThemeData.sf400Font14black,),
                                   Assets.icons.icArrowForward.svgIcon(
                                       color: ColorName.black,size: 14),
                                 ],
@@ -219,7 +220,7 @@ class KitchenPastryScreen extends StatelessWidget {
                               height: 40,
                               child: Row(mainAxisAlignment: MainAxisAlignment.spaceBetween,
                                 children: [
-                                  Text(hygien![i].title),
+                                  Text(hygien![i].title,style: AppThemeData.sf400Font14black,),
                                   Assets.icons.icArrowForward.svgIcon(
                                       color: ColorName.black,size: 14),
                                 ],

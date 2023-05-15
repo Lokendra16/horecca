@@ -26,27 +26,24 @@ class WishListScreen extends StatelessWidget {
           onBackPressed: () => Get.back(),
         ),
       ),
-      body: Padding(
-        padding: const EdgeInsets.only(bottom: 4.0),
-        child: Obx(() => controller.isLoading.value
-            ? const Center(child: CircularProgressIndicator())
-            : controller.isEmpty.value
-                ? const Center(child: Text("No Products Found in Wishlist"))
-                : GridView.builder(
-                    gridDelegate:
-                        const SliverGridDelegateWithFixedCrossAxisCount(
-                            crossAxisCount: 2),
-                    itemBuilder: (context, index) {
-                      return ProductItem(
-                        isFromWishList: true,
-                        item: controller.productList[index],
-                        onWishListItemRemove: () {
-                          controller.removeItem(index);
-                        },
-                      );
-                    },
-                    itemCount: controller.productList.length)),
-      ),
+      body: Obx(() => controller.isLoading.value
+          ? const Center(child: CircularProgressIndicator())
+          : controller.isEmpty.value
+              ? const Center(child: Text("No Products Found in Wishlist"))
+              : GridView.builder(
+                  gridDelegate:
+                      const SliverGridDelegateWithFixedCrossAxisCount(
+                          crossAxisCount: 2, crossAxisSpacing: 8,mainAxisSpacing: 4),
+                  itemBuilder: (context, index) {
+                    return ProductItem(
+                      isFromWishList: true,
+                      item: controller.productList[index],
+                      onWishListItemRemove: () {
+                        controller.removeItem(index);
+                      },
+                    );
+                  },
+                  itemCount: controller.productList.length)),
     );
   }
 }

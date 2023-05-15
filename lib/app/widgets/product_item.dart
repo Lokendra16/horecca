@@ -32,19 +32,18 @@ class ProductItem extends StatelessWidget {
       child: Container(
         //height: size.width * 0.40,
         color: ColorName.white,
-        margin: const EdgeInsets.only(top: 8),
-        padding: const EdgeInsets.all(8),
+        margin: const EdgeInsets.only(top: 2),
+     //   padding: const EdgeInsets.all(8),
 
         child: Stack(
           children: [
             // PRODUCT IMAGE
             Padding(
-              padding: const EdgeInsets.all(8.0),
+              padding: const EdgeInsets.only(left: 8,right: 8),
               child: FancyShimmerImage(
                 imageUrl: item.image?.src ?? '',
-                boxFit: BoxFit.cover,
                 width: size.width * 0.36,
-                height: size.width / 3.5,
+                height: size.width / 3.6,
                 errorWidget: Image.asset('assets/images/ic_appicon.png'),
               ) /*CachedNetworkImage(
                 imageUrl: item.image?.src ?? '',
@@ -78,41 +77,37 @@ class ProductItem extends StatelessWidget {
                       id: Uri.parse(item.id.toString()).pathSegments.last,
                     ),
                   ),
-            Positioned(
-              bottom: 0,
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.center,
-                children: [
-                  Padding(
-                    padding: const EdgeInsets.only(top: 18.0),
-                    child: SizedBox(
-                      width: size.width * 0.45,
-                      child: Text(
-                        item.title ?? '',
-                        maxLines: 2,
-                        textAlign: TextAlign.center,
-                        overflow: TextOverflow.ellipsis,
-                        style: AppThemeData.jost13Weight500,
-                      ),
-                    ),
-                  ),
 
-                  Padding(
-                    padding: const EdgeInsets.only(top: 8.0),
+            Column(
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: [
+                Padding(
+                  padding: const EdgeInsets.only(top: 105.0),
+                  child: SizedBox(
+                    width: size.width * 0.40,
                     child: Text(
-                      "AED ${item.variants?[0].price}" ?? '',
-                      style: AppThemeData.jost17Weight600,
+                      item.title ?? '',
+                      maxLines: 2,
+                      textAlign: TextAlign.center,
+                      overflow: TextOverflow.ellipsis,
+                      style: AppThemeData.sf500Font12Black
+                          .copyWith(color: ColorName.black.withOpacity(0.7)),
                     ),
                   ),
-                  // TextButton(
-                  //     style: TextButton.styleFrom(
-                  //       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(6)),
-                  //       backgroundColor: ColorName.cardinal,
-                  //     ),
-                  //     onPressed: () {},
-                  //     child: const Text("Add to cart", style: AppThemeData.sf400Font12White))
-                ],
-              ),
+                ),
+
+                Text(
+                  "AED ${item.variants?[0].price}" ?? '',
+                  style: AppThemeData.sf500Font12,
+                ),
+                // TextButton(
+                //     style: TextButton.styleFrom(
+                //       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(6)),
+                //       backgroundColor: ColorName.cardinal,
+                //     ),
+                //     onPressed: () {},
+                //     child: const Text("Add to cart", style: AppThemeData.sf400Font12White))
+              ],
             ),
           ],
         ),

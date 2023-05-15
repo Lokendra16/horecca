@@ -4,6 +4,7 @@ import 'package:get/get.dart';
 import 'package:get/get_core/src/get_main.dart';
 import 'package:the_horeca_store/extensions/assets_ext.dart';
 
+import '../../../commons/utils/app_theme_data.dart';
 import '../../../networking/models/category_data/category_model.dart';
 import '../../../networking/models/table_accessories/table_accesories_module.dart';
 import '../../../src/gen/assets.gen.dart';
@@ -101,7 +102,7 @@ class TabAccessories extends StatelessWidget {
                                       mainAxisAlignment:
                                           MainAxisAlignment.spaceBetween,
                                       children: [
-                                        Text(servingsolution[i].title),
+                                        Text(servingsolution[i].title,style: AppThemeData.sf400Font14black,),
                                        // Text(value.title.toString()),
                                         Assets.icons.icArrowForward.svgIcon(
                                             color: ColorName.black, size: 14),
@@ -135,7 +136,7 @@ class TabAccessories extends StatelessWidget {
                             child: Row(
                               mainAxisAlignment: MainAxisAlignment.spaceBetween,
                               children: [
-                                Text(tableTopSolution[i].title),
+                                Text(tableTopSolution[i].title,style: AppThemeData.sf400Font14black,),
                                 Assets.icons.icArrowForward
                                     .svgIcon(color: ColorName.black, size: 14),
                               ],
@@ -169,7 +170,7 @@ class TabAccessories extends StatelessWidget {
                             child: Row(
                               mainAxisAlignment: MainAxisAlignment.spaceBetween,
                               children: [
-                                Text(tablePresntation[i].title),
+                                Text(tablePresntation[i].title,style: AppThemeData.sf400Font14black,),
                                 Assets.icons.icArrowForward
                                     .svgIcon(color: ColorName.black, size: 14),
                               ],
@@ -204,7 +205,7 @@ class TabAccessories extends StatelessWidget {
                             child: Row(
                               mainAxisAlignment: MainAxisAlignment.spaceBetween,
                               children: [
-                                Text(counterSolution[i].title),
+                                Text(counterSolution[i].title,style: AppThemeData.sf400Font14black,),
                                 Assets.icons.icArrowForward
                                     .svgIcon(color: ColorName.black, size: 14),
                               ],
@@ -238,7 +239,7 @@ class TabAccessories extends StatelessWidget {
                             child: Row(
                               mainAxisAlignment: MainAxisAlignment.spaceBetween,
                               children: [
-                                Text(barSolution[i].title),
+                                Text(barSolution[i].title,style: AppThemeData.sf400Font14black,),
                                 Assets.icons.icArrowForward
                                     .svgIcon(color: ColorName.black, size: 14),
                               ],
@@ -278,7 +279,7 @@ class TabAccessories extends StatelessWidget {
                                   mainAxisAlignment:
                                       MainAxisAlignment.spaceBetween,
                                   children: [
-                                    Text(menuSignage[i].title),
+                                    Text(menuSignage[i].title,style: AppThemeData.sf400Font14black,),
                                     Assets.icons.icArrowForward.svgIcon(
                                         color: ColorName.black, size: 14),
                                   ],

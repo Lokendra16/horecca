@@ -4,6 +4,7 @@ import 'package:get/get_core/src/get_main.dart';
 import 'package:the_horeca_store/app/modules/home_screen/controller/home_screen_controller.dart';
 import 'package:the_horeca_store/extensions/assets_ext.dart';
 
+import '../../../commons/utils/app_theme_data.dart';
 import '../../../networking/models/buffetware/buffetware_model.dart';
 import '../../../networking/models/category_data/category_model.dart';
 import '../../../src/gen/assets.gen.dart';
@@ -96,7 +97,7 @@ class Buffet extends StatelessWidget {
                               height: 40,
                               child: Row(mainAxisAlignment: MainAxisAlignment.spaceBetween,
                                 children: [
-                                  Text(buffetwareStand![i].title),
+                                  Text(buffetwareStand![i].title,style: AppThemeData.sf400Font14black,),
                                   Assets.icons.icArrowForward.svgIcon(
                                       color: ColorName.black,size: 14),
                                 ],
