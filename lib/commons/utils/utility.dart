@@ -1,5 +1,8 @@
 import 'dart:io';
 
+import 'package:flutter/material.dart';
+import 'package:share_plus/share_plus.dart';
+import 'package:the_horeca_store/commons/utils/app_tags.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 class Utility {
@@ -49,5 +52,11 @@ class Utility {
     } else {
       throw 'Could not launch $url';
     }
+  }
+
+  static shareUrl(String slug) async {
+    var newUrl = 'https://thehorecastore.myshopify.com/products/$slug';
+    await Share.shareWithResult('$newUrl \nShop from : ${AppTags.shareTxt}');
+    debugPrint(" new url : $newUrl");
   }
 }

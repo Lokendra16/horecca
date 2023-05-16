@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:share_plus/share_plus.dart';
 import 'package:the_horeca_store/app/widgets/wishlist_widget.dart';
 import 'package:the_horeca_store/commons/utils/app_theme_data.dart';
+import 'package:the_horeca_store/commons/utils/utility.dart';
 import 'package:the_horeca_store/l10n/localization.dart';
 import 'package:the_horeca_store/networking/models/product_data/product_data.dart';
 import 'package:the_horeca_store/src/gen/colors.gen.dart';
@@ -76,8 +76,7 @@ class ProductDetailsWidget extends StatelessWidget {
                       ),
                       InkWell(
                         onTap: () async {
-                          debugPrint("product id : ${product.id}");
-                          await Share.share(product.id.toString());
+                          Utility.shareUrl(product.handle.toString());
                         },
                         child: Container(
                           padding: const EdgeInsets.symmetric(

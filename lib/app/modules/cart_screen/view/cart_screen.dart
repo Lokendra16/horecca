@@ -76,7 +76,7 @@ class CartScreen extends StatelessWidget {
                                     );
                                   },
                                 )
-                              : Column(
+                              : ListView(
                                   children: [
                                     Padding(
                                       padding: const EdgeInsets.all(45.0),
@@ -86,14 +86,20 @@ class CartScreen extends StatelessWidget {
                                     SizedBox(
                                       height: 60,
                                     ),
-                                    TextButton(
-                                      onPressed: () {
-                                        Get.offAllNamed(AppRoutes.homeScreen);
-                                      },
-                                      style: TextButton.styleFrom(
-                                          backgroundColor: ColorName.cardinal),
-                                      child: Text("Continue Shopping",
-                                          style: AppThemeData.sf500Font16White),
+                                    Padding(
+                                      padding: const EdgeInsets.symmetric(
+                                          horizontal: 40.0),
+                                      child: TextButton(
+                                        onPressed: () {
+                                          Get.offAllNamed(AppRoutes.homeScreen);
+                                        },
+                                        style: TextButton.styleFrom(
+                                            backgroundColor:
+                                                ColorName.cardinal),
+                                        child: Text("Continue Shopping",
+                                            style:
+                                                AppThemeData.sf500Font16White),
+                                      ),
                                     ),
                                   ],
                                 )),

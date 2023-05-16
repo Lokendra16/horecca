@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:the_horeca_store/app/routes/app_routes.dart';
 import 'package:the_horeca_store/commons/utils/app_theme_data.dart';
+import 'package:the_horeca_store/commons/utils/user_repo.dart';
 import 'package:the_horeca_store/networking/models/product_data/product_data.dart';
 import 'package:the_horeca_store/src/gen/colors.gen.dart';
 
@@ -132,7 +133,9 @@ class ProductItem extends StatelessWidget {
                           borderRadius: BorderRadius.circular(6)),
                       backgroundColor: ColorName.cardinal,
                     ),
-                    onPressed: () {},
+                    onPressed: () {
+                      UserRepo().addToCart(1, "${item.variants?[0].id}");
+                    },
                     child: Text("Add to cart",
                         style: AppThemeData.poppins400Font14)),
               ),

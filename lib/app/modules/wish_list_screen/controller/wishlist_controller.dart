@@ -47,10 +47,16 @@ class WishlistController extends GetxController {
     debugPrint('product id : ${productIds}');
 
     final client = RestClient();
-    var newItems =
-        await client.getProductList("", pageKey, _pageSize, "", productIds);
+    if (productIds!.isNotEmpty && productIds != '') {
+      var newItems =
+          await client.getProductList("", pageKey, _pageSize, "", productIds);
+      isLoading.value = false;
+      isEmpty.value = false;
+
+      productList.value = newItems.products!;
+    }
     isLoading.value = false;
-    productList.value = newItems.products!;
+
     print('prdouct list : ${productList.length}');
   }
 

@@ -1,8 +1,6 @@
 import 'dart:core';
 
-
-class AppTags{
-
+class AppTags {
   static const String tabletop = "Table Top";
   static const String tableAccessories = "Table Accessories";
   static const String buffetware = "Buffetware";
@@ -15,4 +13,6 @@ class AppTags{
   static const String category = "Category";
   static const String emptycart = "Empty Cart";
   static const String contactUs = "Contact Us";
+  static const String shareTxt =
+      "Thehorecastore is the biggest eStore of hotel and restaurant supplies, serving both businesses and Individuals.Get Everything in one place with thousands of easily accessible products available online, we are proud to have all the resources your business needs to operate at its peak.We have a legacy of in-time order fulfillment and having delighted clientele.";
 }
