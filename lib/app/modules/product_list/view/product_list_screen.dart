@@ -118,12 +118,11 @@ class ProductListScreen extends StatelessWidget {
                     top: showSorting == true ? 60.0 : 20, bottom: 4.0),
                 child: controller.isGridView.value == false
                     ? PagedGridView<int, ProductData>(
-                        gridDelegate:
-                            const SliverGridDelegateWithFixedCrossAxisCount(
-                                crossAxisCount: 2,
-                                childAspectRatio: 2 / 2.6,
-                                mainAxisSpacing: 10,
-                                crossAxisSpacing: 10),
+                        gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                            crossAxisCount: 2,
+                            childAspectRatio: size.width / size.height * 1.35,
+                            mainAxisSpacing: 10,
+                            crossAxisSpacing: 10),
                         pagingController: controller.pagingController,
                         builderDelegate: PagedChildBuilderDelegate<ProductData>(
                           firstPageProgressIndicatorBuilder: (context) =>

@@ -31,8 +31,8 @@ class WishListScreen extends StatelessWidget {
           : controller.isEmpty.value
               ? const Center(child: Text("No Products Found in Wishlist"))
               : GridView.builder(
-                  gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-                      childAspectRatio: 2 / 2.6,
+                  gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                      childAspectRatio: size.width / size.height * 1.35,
                       crossAxisCount: 2,
                       crossAxisSpacing: 8,
                       mainAxisSpacing: 4),

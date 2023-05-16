@@ -83,7 +83,7 @@ class CartScreen extends StatelessWidget {
                                       child: Lottie.asset(
                                           'assets/lottie/cart_empty.json'),
                                     ),
-                                    SizedBox(
+                                    const SizedBox(
                                       height: 60,
                                     ),
                                     Padding(

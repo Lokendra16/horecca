@@ -37,7 +37,8 @@ class ProductListView extends StatelessWidget {
                   Row(
                     children: [
                       Container(
-                        height: 80,
+                        height: size.height * 0.15,
+                        width: size.width * 0.3,
                         child: InkWell(
                           onTap: () {
                             Get.to(ProductImage(
@@ -53,7 +54,7 @@ class ProductListView extends StatelessWidget {
                         ),
                       ),
                       Padding(
-                        padding: const EdgeInsets.symmetric(vertical: 8.0),
+                        padding: const EdgeInsets.fromLTRB(16, 8, 0, 8),
                         child: Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
@@ -146,25 +147,6 @@ class ProductListView extends StatelessWidget {
                   //     ),
                   //   ),
                   // )
-
-                  isFromWishList
-                      ? Positioned(
-                          top: 10,
-                          right: 20,
-                          child: GestureDetector(
-                              onTap: () {
-                                onWishListItemRemove!();
-                              },
-                              child: const Icon(Icons.close,
-                                  color: ColorName.black, size: 26)),
-                        )
-                      : Positioned(
-                          top: 10,
-                          right: 20,
-                          child: WishlistWidget(
-                            id: Uri.parse(item.id.toString()).pathSegments.last,
-                          ),
-                        ),
                 ]))));
   }
 }
