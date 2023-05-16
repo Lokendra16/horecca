@@ -24,7 +24,7 @@ class CommonPageView extends StatelessWidget {
           child: Stack(children: [
             SizedBox(
               width: size.width,
-              height: size.width / 2.99,
+              height: size.width / 1.5,
               child: PageView.builder(
                 controller: pageViewController.pageController,
                 itemCount: homepageContents.length,

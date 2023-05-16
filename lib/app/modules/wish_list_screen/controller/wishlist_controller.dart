@@ -1,11 +1,8 @@
 import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart';
-import 'package:infinite_scroll_pagination/infinite_scroll_pagination.dart';
 import 'package:the_horeca_store/app/widgets/product_gridview/product_gridview_model.dart';
 import 'package:the_horeca_store/commons/utils/app_preference.dart';
-import 'package:the_horeca_store/l10n/localization.dart';
 import 'package:the_horeca_store/networking/api_client/api_client.dart';
-import 'package:the_horeca_store/networking/models/product_data/product_data.dart';
 
 class WishlistController extends GetxController {
   RxList productList = [].obs;
@@ -30,14 +27,11 @@ class WishlistController extends GetxController {
     getWishListId();
   }
 
-
-
   getWishListId() async {
     debugPrint('call get wish list');
     await AppPreference().getWishlistIds().then((value) {
       if (value != null) {
         debugPrint('call get wish list if');
-
         getProductList(0, value);
       } else {
         debugPrint('call get wish list else');
@@ -49,13 +43,15 @@ class WishlistController extends GetxController {
   }
 
   Future<void> getProductList(int pageKey, String? productIds) async {
-     debugPrint('call get product list');
+    debugPrint('call get product list');
+    debugPrint('product id : ${productIds}');
 
     final client = RestClient();
-    var newItems = await client.getProductList(
-        "", pageKey, _pageSize,"", productIds);
+    var newItems =
+        await client.getProductList("", pageKey, _pageSize, "", productIds);
     isLoading.value = false;
     productList.value = newItems.products!;
+    print('prdouct list : ${productList.length}');
   }
 
   void removeItem(int index) {

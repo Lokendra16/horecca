@@ -82,6 +82,11 @@ class SearchProductsScreen extends StatelessWidget {
               },
               onChange: (value) {
                 if (value.isNotEmpty) {
+                  if (controller.searchController.text.length >= 3) {
+                    print(
+                        "length : ${controller.searchController.text.length}");
+                    controller.searchProductApi(value);
+                  }
                   controller.showSearchIcon.value = true;
                 } else {
                   controller.showSearchIcon.value = false;
