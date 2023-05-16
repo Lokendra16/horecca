@@ -1,7 +1,6 @@
 import 'package:fancy_shimmer_image/fancy_shimmer_image.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:the_horeca_store/app/modules/product_detail/controller/product_detail_controller.dart';
 import 'package:the_horeca_store/app/routes/app_routes.dart';
 import 'package:the_horeca_store/commons/utils/app_theme_data.dart';
 import 'package:the_horeca_store/networking/models/product_data/product_data.dart';
@@ -20,8 +19,6 @@ class ProductItem extends StatelessWidget {
   final ProductData item;
   final isFromWishList;
   final Function? onWishListItemRemove;
-
-  final productDetailController = Get.put(ProductDetailController());
 
   @override
   Widget build(BuildContext context) {
@@ -135,9 +132,7 @@ class ProductItem extends StatelessWidget {
                           borderRadius: BorderRadius.circular(6)),
                       backgroundColor: ColorName.cardinal,
                     ),
-                    onPressed: () {
-                      productDetailController.addToCart();
-                    },
+                    onPressed: () {},
                     child: Text("Add to cart",
                         style: AppThemeData.poppins400Font14)),
               ),
