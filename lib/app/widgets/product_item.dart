@@ -1,6 +1,7 @@
 import 'package:fancy_shimmer_image/fancy_shimmer_image.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:the_horeca_store/app/modules/product_detail/controller/product_detail_controller.dart';
 import 'package:the_horeca_store/app/routes/app_routes.dart';
 import 'package:the_horeca_store/commons/utils/app_theme_data.dart';
 import 'package:the_horeca_store/networking/models/product_data/product_data.dart';
@@ -9,7 +10,7 @@ import 'package:the_horeca_store/src/gen/colors.gen.dart';
 import 'wishlist_widget.dart';
 
 class ProductItem extends StatelessWidget {
-  const ProductItem({
+  ProductItem({
     super.key,
     required this.item,
     this.isFromWishList = false,
@@ -19,6 +20,8 @@ class ProductItem extends StatelessWidget {
   final ProductData item;
   final isFromWishList;
   final Function? onWishListItemRemove;
+
+  final productDetailController = Get.put(ProductDetailController());
 
   @override
   Widget build(BuildContext context) {
@@ -38,30 +41,33 @@ class ProductItem extends StatelessWidget {
         child: Stack(
           children: [
             // PRODUCT IMAGE
-            Padding(
-              padding: const EdgeInsets.only(left: 8, right: 8),
-              child: FancyShimmerImage(
-                imageUrl: item.image?.src ?? '',
-                width: size.width * 0.36,
-                height: size.width / 3.4,
-                errorWidget: Image.asset('assets/images/ic_appicon.png'),
-              ) /*CachedNetworkImage(
-                imageUrl: item.image?.src ?? '',
-                width: size.width * 0.36,
-                errorWidget: (context, url, error) =>
-                    Image.asset("assets/images/ic_appicon.png"),
-                placeholder: (context, url) =>
-                    Image.asset("assets/images/ic_appicon.png"),
-                fadeOutDuration: const Duration(milliseconds: 100),
-                height: size.width / 3.5,
-                fit: BoxFit.cover,
-              )*/
-              ,
+            Align(
+              alignment: Alignment.topCenter,
+              child: Padding(
+                padding: const EdgeInsets.only(),
+                child: FancyShimmerImage(
+                  imageUrl: item.image?.src ?? '',
+                  width: size.width * 0.36,
+                  height: size.width / 3.4,
+                  errorWidget: Image.asset('assets/images/ic_appicon.png'),
+                ) /*CachedNetworkImage(
+                  imageUrl: item.image?.src ?? '',
+                  width: size.width * 0.36,
+                  errorWidget: (context, url, error) =>
+                      Image.asset("assets/images/ic_appicon.png"),
+                  placeholder: (context, url) =>
+                      Image.asset("assets/images/ic_appicon.png"),
+                  fadeOutDuration: const Duration(milliseconds: 100),
+                  height: size.width / 3.5,
+                  fit: BoxFit.cover,
+                )*/
+                ,
+              ),
             ),
             // WISH LIST ICON
             isFromWishList
                 ? Positioned(
-                    top: 10,
+                    top: 0,
                     right: 20,
                     child: GestureDetector(
                         onTap: () {
@@ -71,47 +77,71 @@ class ProductItem extends StatelessWidget {
                             color: ColorName.black, size: 26)),
                   )
                 : Positioned(
-                    top: 10,
+                    top: 0,
                     right: 20,
                     child: WishlistWidget(
                       id: Uri.parse(item.id.toString()).pathSegments.last,
                     ),
                   ),
 
-            Column(
-              crossAxisAlignment: CrossAxisAlignment.center,
-              children: [
-                Padding(
-                  padding: const EdgeInsets.only(top: 105.0,left: 20),
-                  child: SizedBox(
-                    width: size.width * 0.40,
+            Positioned(
+              bottom: 50,
+              left: 0,
+              right: 0,
+              child: Column(
+                //crossAxisAlignment: CrossAxisAlignment.center,
+                children: [
+                  SizedBox(
                     child: Text(
                       item.title ?? '',
                       maxLines: 2,
                       textAlign: TextAlign.center,
                       overflow: TextOverflow.ellipsis,
-                       style: AppThemeData.jost13Weight500,
+                      style: AppThemeData.jost13Weight500,
                     ),
                   ),
-                ),
-
-                Padding(
-                  padding: const EdgeInsets.only(left: 20,top: 5),
-                  child: Text(
+                  Padding(
+                    padding: const EdgeInsets.symmetric(vertical: 3.0),
+                    child: Text(
+                      item.vendor ?? '',
+                      textAlign: TextAlign.center,
+                      overflow: TextOverflow.ellipsis,
+                      style: AppThemeData.poppins500Font10,
+                    ),
+                  ),
+                  Text(
                     "AED ${item.variants?[0].price}" ?? '',
                     style: AppThemeData.jost17Weight600,
-
                   ),
-                ),
-                // TextButton(
-                //     style: TextButton.styleFrom(
-                //       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(6)),
-                //       backgroundColor: ColorName.cardinal,
-                //     ),
-                //     onPressed: () {},
-                //     child: const Text("Add to cart", style: AppThemeData.sf400Font12White))
-              ],
+                  // TextButton(
+                  //     style: TextButton.styleFrom(
+                  //       shape: RoundedRectangleBorder(
+                  //           borderRadius: BorderRadius.circular(6)),
+                  //       backgroundColor: ColorName.cardinal,
+                  //     ),
+                  //     onPressed: () {},
+                  //     child: const Text("Add to cart",
+                  //         style: AppThemeData.sf400Font12White))
+                ],
+              ),
             ),
+            Align(
+              alignment: Alignment.bottomCenter,
+              child: SizedBox(
+                width: double.infinity,
+                child: TextButton(
+                    style: TextButton.styleFrom(
+                      shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(6)),
+                      backgroundColor: ColorName.cardinal,
+                    ),
+                    onPressed: () {
+                      productDetailController.addToCart();
+                    },
+                    child: Text("Add to cart",
+                        style: AppThemeData.poppins400Font14)),
+              ),
+            )
           ],
         ),
         // child: Row(

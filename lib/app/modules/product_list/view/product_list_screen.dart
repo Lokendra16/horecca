@@ -121,7 +121,7 @@ class ProductListScreen extends StatelessWidget {
                         gridDelegate:
                             const SliverGridDelegateWithFixedCrossAxisCount(
                                 crossAxisCount: 2,
-                                childAspectRatio: 2 / 2.3,
+                                childAspectRatio: 2 / 2.6,
                                 mainAxisSpacing: 10,
                                 crossAxisSpacing: 10),
                         pagingController: controller.pagingController,

@@ -42,6 +42,7 @@ class ProductDetailController extends GetxController {
   @override
   void onInit() {
     super.onInit();
+    debugPrint('get arguments : $arguments');
     pageController = PageController(initialPage: 0);
     _getProductDetail();
   }
@@ -65,6 +66,9 @@ class ProductDetailController extends GetxController {
     String variantId = getVariantId();
     var checkCartId =
         await AppPreference().get(AppPreference.KEY_CART_ID) ?? '';
+    print('variant id : $variantId');
+    print('check cart id : $checkCartId');
+    print('quantity : ${quantity.value}');
     if (checkCartId != null && checkCartId.isNotEmpty) {
       GraphQLRepo()
           .addToCartLine(quantity.value, variantId, checkCartId)
