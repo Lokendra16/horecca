@@ -25,7 +25,7 @@ class HomeShopByCategoryWidget extends StatelessWidget {
                     children: [
                       for (var value in list.value.custom_collections!)
                         SizedBox(
-                          width: size.width * 0.28,
+                          width: size.width * 0.24,
                           child: Column(
                             mainAxisAlignment: MainAxisAlignment.start,
                             children: [
@@ -54,8 +54,8 @@ class HomeShopByCategoryWidget extends StatelessWidget {
                                           child: FancyShimmerImage(
                                             imageUrl: value.image?.src ?? '',
                                             boxFit: BoxFit.cover,
-                                            width: 60,
-                                            height: 60,
+                                            // width: 60,
+                                            // height: 60,
                                             errorWidget: Image.asset(
                                                 'assets/images/ic_appicon.png'),
                                           ) /*CachedNetworkImage(
