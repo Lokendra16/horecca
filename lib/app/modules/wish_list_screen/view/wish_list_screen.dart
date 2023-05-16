@@ -33,6 +33,7 @@ class WishListScreen extends StatelessWidget {
               : GridView.builder(
                   gridDelegate:
                       const SliverGridDelegateWithFixedCrossAxisCount(
+                        childAspectRatio: 4/5,
                           crossAxisCount: 2, crossAxisSpacing: 8,mainAxisSpacing: 4),
                   itemBuilder: (context, index) {
                     return ProductItem(
