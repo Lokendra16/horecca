@@ -1,8 +1,5 @@
 import 'package:fancy_shimmer_image/fancy_shimmer_image.dart';
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
-import 'package:the_horeca_store/app/modules/product_list/view/product_image.dart';
-import 'package:the_horeca_store/app/routes/app_routes.dart';
 
 import '../../../../commons/utils/app_theme_data.dart';
 import '../../../../networking/models/product_data/product_data.dart';
@@ -125,8 +122,49 @@ class ProductListView extends StatelessWidget {
                     ),
                   ),
           ]),
+
+                      // Padding(
+                      //   padding: const EdgeInsets.only(bottom: 4),
+                      //   child: Container(
+                      //     height: 40,
+                      //     width: 200,
+                      //     child: TextButton(
+                      //       onPressed: () {
+                      //           controller.addToCart();
+                      //       },
+                      //       style: TextButton.styleFrom(backgroundColor: ColorName.cardinal),
+                      //       child: Text(AppLocalizations.of(context).addToCart,
+                      //           style: AppThemeData.poppins700Font14),
+                      //     ),
+                      //   ),
+                      // )
+                    ],
+                  )
+                ],
+              ),
+              isFromWishList
+                  ? Positioned(
+                top: 10,
+                right: 20,
+                child: GestureDetector(
+                    onTap: () {
+                      onWishListItemRemove!();
+                    },
+                    child: const Icon(Icons.close,
+                        color: ColorName.black, size: 26)),
+              )
+                  : Positioned(
+                top: 10,
+                right: 20,
+                child: WishlistWidget(
+                  id: Uri.parse(item.id.toString()).pathSegments.last,
+                ),
+              ),
+
+            ]
+          ),
         ),
-      ),
+      ) ,
     );
   }
 }
