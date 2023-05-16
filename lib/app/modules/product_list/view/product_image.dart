@@ -15,7 +15,8 @@ class ProductImage extends StatelessWidget {
     return Scaffold(
       body: Center(
         child: InteractiveViewer(
-         //panEnabled: false,
+          clipBehavior:Clip.none,
+         panEnabled: false,
           minScale: 0.5,
           maxScale: 4,
             child: Image.network(item.image?.src ?? ''),

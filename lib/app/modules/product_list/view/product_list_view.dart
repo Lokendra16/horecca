@@ -1,10 +1,16 @@
 import 'package:fancy_shimmer_image/fancy_shimmer_image.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:get/get_core/src/get_main.dart';
+import 'package:the_horeca_store/app/modules/product_list/view/product_image.dart';
 
 import '../../../../commons/utils/app_theme_data.dart';
+import '../../../../l10n/localization.dart';
 import '../../../../networking/models/product_data/product_data.dart';
 import '../../../../src/gen/colors.gen.dart';
+import '../../../routes/app_routes.dart';
 import '../../../widgets/wishlist_widget.dart';
+import '../../product_detail/controller/product_detail_controller.dart';
 
 class ProductListView extends StatelessWidget {
  ProductListView({Key? key, required this.item,
@@ -12,6 +18,7 @@ class ProductListView extends StatelessWidget {
   final ProductData item;
   final isFromWishList;
   final Function? onWishListItemRemove;
+ ProductDetailController controller = Get.find();
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
@@ -71,17 +78,22 @@ class ProductListView extends StatelessWidget {
                           style: AppThemeData.jost17Weight600,
                         ),
                       ),
-                      TextButton(
-                        onPressed: () {
-                          controller.addToCart();
-                        },
-                        style: TextButton.styleFrom(backgroundColor: ColorName.cardinal),
-                        child: Padding(
-                          padding: const EdgeInsets.all(5.0),
-                          child: Text(AppLocalizations.of(context).addToCart,
-                              style: AppThemeData.poppins700Font14),
-                        ),
-                      ),
+
+                      // Padding(
+                      //   padding: const EdgeInsets.only(bottom: 4),
+                      //   child: Container(
+                      //     height: 40,
+                      //     width: 200,
+                      //     child: TextButton(
+                      //       onPressed: () {
+                      //           controller.addToCart();
+                      //       },
+                      //       style: TextButton.styleFrom(backgroundColor: ColorName.cardinal),
+                      //       child: Text(AppLocalizations.of(context).addToCart,
+                      //           style: AppThemeData.poppins700Font14),
+                      //     ),
+                      //   ),
+                      // )
                     ],
                   )
                 ],
