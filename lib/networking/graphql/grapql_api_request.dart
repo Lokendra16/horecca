@@ -77,7 +77,7 @@ query {
         nodes{
             id
             title
-            products(first:10){
+            products(first:10,sortKey : BEST_SELLING){
                 nodes{
                     title
                     id

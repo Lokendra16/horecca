@@ -1,9 +1,10 @@
+import 'package:auto_size_text/auto_size_text.dart';
 import 'package:fancy_shimmer_image/fancy_shimmer_image.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:the_horeca_store/app/modules/product_list/controller/product_listview_controller.dart';
 import 'package:the_horeca_store/app/modules/product_list/view/product_image.dart';
 import 'package:the_horeca_store/app/routes/app_routes.dart';
-import 'package:the_horeca_store/commons/utils/user_repo.dart';
 
 import '../../../../commons/utils/app_theme_data.dart';
 import '../../../../networking/models/product_data/product_data.dart';
@@ -15,11 +16,14 @@ class ProductListView extends StatelessWidget {
       {Key? key,
       required this.item,
       this.isFromWishList,
-      this.onWishListItemRemove})
+      this.onWishListItemRemove,
+      this.productListController})
       : super(key: key);
   final ProductData item;
   final isFromWishList;
   final Function? onWishListItemRemove;
+  final ProductListController? productListController;
+
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
@@ -60,7 +64,7 @@ class ProductListView extends StatelessWidget {
                           children: [
                             SizedBox(
                               width: size.width * 0.5,
-                              child: Text(
+                              child: AutoSizeText(
                                 item.title ?? '',
                                 maxLines: 2,
                                 //  textAlign: TextAlign.center,
@@ -90,7 +94,7 @@ class ProductListView extends StatelessWidget {
                                     backgroundColor: ColorName.cardinal,
                                   ),
                                   onPressed: () {
-                                    UserRepo().addToCart(
+                                    productListController!.addToCart(
                                         1, "${item.variants?[0].id}");
                                   },
                                   child: Text("Add to cart",

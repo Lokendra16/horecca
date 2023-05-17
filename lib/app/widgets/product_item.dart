@@ -1,9 +1,9 @@
 import 'package:fancy_shimmer_image/fancy_shimmer_image.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:the_horeca_store/app/modules/product_list/controller/product_listview_controller.dart';
 import 'package:the_horeca_store/app/routes/app_routes.dart';
 import 'package:the_horeca_store/commons/utils/app_theme_data.dart';
-import 'package:the_horeca_store/commons/utils/user_repo.dart';
 import 'package:the_horeca_store/networking/models/product_data/product_data.dart';
 import 'package:the_horeca_store/src/gen/colors.gen.dart';
 
@@ -15,11 +15,13 @@ class ProductItem extends StatelessWidget {
     required this.item,
     this.isFromWishList = false,
     this.onWishListItemRemove,
+    this.productListController,
   });
 
   final ProductData item;
   final isFromWishList;
   final Function? onWishListItemRemove;
+  final ProductListController? productListController;
 
   @override
   Widget build(BuildContext context) {
@@ -123,21 +125,26 @@ class ProductItem extends StatelessWidget {
                 ],
               ),
             ),
-            Align(
-              alignment: Alignment.bottomCenter,
-              child: SizedBox(
-                width: double.infinity,
-                child: TextButton(
-                    style: TextButton.styleFrom(
-                      shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(6)),
-                      backgroundColor: ColorName.cardinal,
-                    ),
-                    onPressed: () {
-                      UserRepo().addToCart(1, "${item.variants?[0].id}");
-                    },
-                    child: Text("Add to cart",
-                        style: AppThemeData.poppins400Font14)),
+            Obx(
+              () => Align(
+                alignment: Alignment.bottomCenter,
+                child: SizedBox(
+                  width: double.infinity,
+                  child: TextButton(
+                      style: TextButton.styleFrom(
+                        shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(6)),
+                        backgroundColor: ColorName.cardinal,
+                      ),
+                      onPressed: () {
+                        var id = item.variants?[0].id;
+                        productListController!.addToCart(1, "$id");
+                      },
+                      child: productListController?.isLoading.value == true
+                          ? const CircularProgressIndicator()
+                          : Text("Add to cart",
+                              style: AppThemeData.poppins400Font14)),
+                ),
               ),
             )
           ],

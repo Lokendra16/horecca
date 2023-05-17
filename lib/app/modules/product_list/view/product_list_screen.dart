@@ -140,6 +140,7 @@ class ProductListScreen extends StatelessWidget {
                           itemBuilder: (context, item, index) {
                             return ProductItem(
                               item: item,
+                              productListController: controller,
                               isFromWishList: false,
                             );
                           },
@@ -163,6 +164,7 @@ class ProductListScreen extends StatelessWidget {
                           itemBuilder: (context, item, index) {
                             return ProductListView(
                               item: item,
+                              productListController: controller,
                               isFromWishList: false,
                             );
                           },

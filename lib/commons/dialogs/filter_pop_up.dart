@@ -8,8 +8,12 @@ import 'package:the_horeca_store/src/gen/colors.gen.dart';
 class SortPopup extends StatelessWidget {
   SortPopup({
     Key? key,
+    required this.onReset,
+    required this.onDone,
   }) : super(key: key);
   final ProductListController controller = Get.put(ProductListController());
+  final Function onReset;
+  final Function onDone;
 
   @override
   Widget build(BuildContext context) {
@@ -114,7 +118,7 @@ class SortPopup extends StatelessWidget {
                                   ),
                                 ),
                                 onPressed: () {
-                                  Get.back();
+                                  onReset();
                                 },
                                 child: Text(
                                   AppLocalizations.of(context).reset,
@@ -136,7 +140,7 @@ class SortPopup extends StatelessWidget {
                                   ),
                                 ),
                                 onPressed: () {
-                                  Get.back();
+                                  onDone();
                                 },
                                 child: Text(
                                   AppLocalizations.of(context).done,

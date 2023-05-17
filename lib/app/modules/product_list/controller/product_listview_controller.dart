@@ -4,8 +4,11 @@ import 'package:infinite_scroll_pagination/infinite_scroll_pagination.dart';
 import 'package:the_horeca_store/app/modules/product_list/model/sort_product_model.dart';
 import 'package:the_horeca_store/app/widgets/product_gridview/product_gridview_model.dart';
 import 'package:the_horeca_store/commons/dialogs/filter_pop_up.dart';
+import 'package:the_horeca_store/commons/utils/app_preference.dart';
+import 'package:the_horeca_store/commons/utils/my_snackbar.dart';
 import 'package:the_horeca_store/networking/api_client/api_client.dart';
 import 'package:the_horeca_store/networking/do_finder/do_finder_client.dart';
+import 'package:the_horeca_store/networking/graphql/graphql_repo.dart';
 import 'package:the_horeca_store/networking/models/product_data/product_data.dart';
 import 'package:the_horeca_store/networking/models/search/results.dart';
 import 'package:the_horeca_store/src/gen/colors.gen.dart';
@@ -119,7 +122,14 @@ class ProductListController extends GetxController {
         transitionDuration: const Duration(milliseconds: 200),
         context: context,
         pageBuilder: (context, _, __) {
-          return SortPopup();
+          return SortPopup(
+            onDone: () {
+              Get.back();
+            },
+            onReset: () {
+              Get.back();
+            },
+          );
         },
         transitionBuilder: (_, animation1, __, child) {
           return SlideTransition(
@@ -160,5 +170,39 @@ class ProductListController extends GetxController {
           snackPosition: SnackPosition.TOP);
     }
     isLoading.value = false;
+  }
+
+  Future<void> addToCart(int quantity, String variantId) async {
+    isLoading.value = true;
+    var checkCartId =
+        await AppPreference().get(AppPreference.KEY_CART_ID) ?? '';
+    if (checkCartId != null && checkCartId.isNotEmpty) {
+      isLoading.value = false;
+      GraphQLRepo()
+          .addToCartLine(quantity, variantId, checkCartId)
+          .then((value) {
+        //Get.toNamed(AppRoutes.cartScreen);
+      }).onError((error, stackTrace) {
+        MySnackBar().errorSnackBar(error.toString());
+      });
+    } else {
+      isLoading.value = false;
+      GraphQLRepo().addToCart(quantity, variantId).then((value) {
+        /*
+      AppPreference().get(AppPreference.KEY_CART_ID).then((cartId) {
+        if(cartId == null || cartId.isEmpty || cartId == "0"){
+          AppPreference().setString(AppPreference.KEY_CART_ID, value);
+          Get.toNamed(AppRoutes.cartScreen);
+        }
+      });*/
+
+        print("shubham--" + value);
+
+        AppPreference().setString(AppPreference.KEY_CART_ID, value);
+        //Get.toNamed(AppRoutes.cartScreen);
+      }).onError((error, stackTrace) {
+        MySnackBar().errorSnackBar(error.toString());
+      });
+    }
   }
 }
