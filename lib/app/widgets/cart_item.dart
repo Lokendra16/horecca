@@ -1,9 +1,13 @@
 import 'package:fancy_shimmer_image/fancy_shimmer_image.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:get/get_core/src/get_main.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:the_horeca_store/commons/utils/app_theme_data.dart';
 import 'package:the_horeca_store/networking/models/product_data/product_data.dart';
 import 'package:the_horeca_store/src/gen/colors.gen.dart';
+
+import '../modules/home_screen/controller/home_screen_controller.dart';
 
 class CartItem extends StatelessWidget {
   CartItem({
@@ -52,7 +56,7 @@ class CartItem extends StatelessWidget {
           ,
           Expanded(
             child: Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 0.0),
+              padding: const EdgeInsets.only(top: 8),
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 crossAxisAlignment: CrossAxisAlignment.stretch,
@@ -69,13 +73,7 @@ class CartItem extends StatelessWidget {
                           style: AppThemeData.sf400Font12,
                         ),
                       ),
-                      Padding(
-                        padding: const EdgeInsets.symmetric(horizontal: 8.0),
-                        child: GestureDetector(
-                            onTap: onRemove,
-                            child: const Icon(Icons.close,
-                                color: ColorName.black, size: 24)),
-                      )
+
                     ],
                   ),
                   Padding(
@@ -144,6 +142,18 @@ class CartItem extends StatelessWidget {
               ),
             ),
           ),
+          Padding(
+            padding: const EdgeInsets.only(right: 4,),
+            child: GestureDetector(
+                onTap: onRemove,
+                child: Card(
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(15.0),
+                  ),
+                  child: const Icon(Icons.close,
+                      color: ColorName.black, size: 24),
+                )),
+          )
         ],
       ),
     );
