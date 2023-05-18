@@ -22,7 +22,10 @@ abstract class RestClient {
     dio.options.headers['X-Shopify-Access-Token'] = AppThemeData.apiKey;
 
     dio.interceptors.add(PrettyDioLogger(
-        requestBody: true, requestHeader: true, responseBody: true, responseHeader: true));
+        requestBody: true,
+        requestHeader: true,
+        responseBody: true,
+        responseHeader: true));
     dio.interceptors.addAll({
       AppInterceptors(dio),
     });
@@ -34,32 +37,33 @@ abstract class RestClient {
       @Query("since_id") int pageKey, @Query("limit") int pageSize);
 
   @GET("/custom_collections.json")
-  Future<CategoryResponse> getHomeCategoryList(
-      @Query("ids") String ids);
+  Future<CategoryResponse> getHomeCategoryList(@Query("ids") String ids);
 
   @GET("/products.json")
   Future<ProductResponse> getProductList(
       @Query('published_status') String published,
-      @Query("since_id") int pageKey,
       @Query("limit") int pageSize,
       @Query("collection_id") String collectionId,
-      @Query("ids") String? ids
-      );
+      @Query("ids") String? ids,
+      @Query('order') String? sortOrder);
 
   @GET("/products/{product_id}.json")
-  Future<ProductDetailResponse> getProductDetail(@Path("product_id") String product_id);
+  Future<ProductDetailResponse> getProductDetail(
+      @Path("product_id") String product_id);
 
   @GET("/customers/{customer_id}/addresses.json")
-  Future<AddressListModel> getAddressList(@Path("customer_id") String customerId);
+  Future<AddressListModel> getAddressList(
+      @Path("customer_id") String customerId);
 
   @DELETE("/customers/{customer_id}/addresses/{address_id}.json")
-  Future<BaseResponse> deleteAddress(
-      @Path("customer_id") String customerId, @Path("address_id") String addressId);
+  Future<BaseResponse> deleteAddress(@Path("customer_id") String customerId,
+      @Path("address_id") String addressId);
 
   @GET("/countries.json")
   Future<CountryListResponse> getCountriesList();
 
   @POST("customers/{customer_id}/addresses.json")
   Future<CountryListResponse> addCountryApi(
-      @Path("customer_id") String customerId, @Body() Map<String, dynamic> body);
+      @Path("customer_id") String customerId,
+      @Body() Map<String, dynamic> body);
 }

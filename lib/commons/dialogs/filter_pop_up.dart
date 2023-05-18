@@ -140,7 +140,7 @@ class SortPopup extends StatelessWidget {
                                   ),
                                 ),
                                 onPressed: () {
-                                  onDone();
+                                  onDone(controller.currentIndex.value);
                                 },
                                 child: Text(
                                   AppLocalizations.of(context).done,

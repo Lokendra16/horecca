@@ -137,6 +137,7 @@ const String cartListQuery = r'''
                   url
               }
               product{
+                  id
                   title
               }
               priceV2{

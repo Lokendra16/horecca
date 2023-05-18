@@ -13,9 +13,11 @@ import '../controller/product_listview_controller.dart';
 
 class ProductListScreen extends StatelessWidget {
   bool showSorting = true;
+
   ProductListScreen({Key? key, this.showSorting = true}) : super(key: key);
 
   final ProductListController controller = Get.put(ProductListController());
+
   @override
   Widget build(BuildContext context) {
     debugPrint("show sorting : $showSorting");

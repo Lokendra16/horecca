@@ -14,12 +14,14 @@ import 'package:the_horeca_store/src/gen/colors.gen.dart';
 class CartScreen extends StatelessWidget {
   CartScreen({Key? key}) : super(key: key);
   final CartScreenController controller = Get.put(CartScreenController());
+
   @override
   Widget build(BuildContext context) {
     debugPrint(
         'cart screen1 : ${controller.cartData.value.productList?.length.toString()}');
     debugPrint(
         'cart screen : ${controller.cartData.value.productList?[0].quantity}');
+    controller.getCartAPI();
     return Scaffold(
       backgroundColor: ColorName.white,
       appBar: PreferredSize(
@@ -51,8 +53,6 @@ class CartScreen extends StatelessWidget {
                                           .cartData.value.productList?.length ??
                                       0,
                                   itemBuilder: (context, index) {
-                                    print(
-                                        'list view :${controller.cartData.value.productList?[index].variants}');
                                     var quantity = controller.cartData.value
                                         .productList![index].quantity;
                                     return CartItem(
@@ -96,7 +96,7 @@ class CartScreen extends StatelessWidget {
                                         style: TextButton.styleFrom(
                                             backgroundColor:
                                                 ColorName.cardinal),
-                                        child: Text("Continue Shopping",
+                                        child: const Text("Continue Shopping",
                                             style:
                                                 AppThemeData.sf500Font16White),
                                       ),

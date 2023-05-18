@@ -27,7 +27,7 @@ class ProductData {
   List<ProductImages>? images;
   List<ProductVariants>? variants;
   List<ProductOptions>? options;
-  int? quantity;
+  int quantity;
 
   ProductData({
     this.id,
@@ -49,10 +49,11 @@ class ProductData {
     this.images,
     this.variants,
     this.options,
-    this.quantity,
+    this.quantity = 0,
   });
 
-  factory ProductData.fromJson(Map<String, dynamic> json) => _$ProductDataFromJson(json);
+  factory ProductData.fromJson(Map<String, dynamic> json) =>
+      _$ProductDataFromJson(json);
 
   Map<String, dynamic> toJson() => _$ProductDataToJson(this);
 }

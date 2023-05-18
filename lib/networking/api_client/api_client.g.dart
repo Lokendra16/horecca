@@ -75,18 +75,18 @@ class _RestClient implements RestClient {
   @override
   Future<ProductResponse> getProductList(
     String published,
-    int pageKey,
     int pageSize,
     String collectionId,
     String? ids,
+    String? sortOrder,
   ) async {
     const _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{
       r'published_status': published,
-      r'since_id': pageKey,
       r'limit': pageSize,
       r'collection_id': collectionId,
       r'ids': ids,
+      r'order': sortOrder,
     };
     queryParameters.removeWhere((k, v) => v == null);
     final _headers = <String, dynamic>{};

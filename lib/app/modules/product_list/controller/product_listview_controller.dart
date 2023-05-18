@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:infinite_scroll_pagination/infinite_scroll_pagination.dart';
 import 'package:the_horeca_store/app/modules/product_list/model/sort_product_model.dart';
+import 'package:the_horeca_store/app/routes/app_routes.dart';
 import 'package:the_horeca_store/app/widgets/product_gridview/product_gridview_model.dart';
 import 'package:the_horeca_store/commons/dialogs/filter_pop_up.dart';
 import 'package:the_horeca_store/commons/utils/app_preference.dart';
@@ -38,11 +39,11 @@ class ProductListController extends GetxController {
     ),
     SortProductModel(
       leadingIcon: Icons.monetization_on_outlined,
-      sortItem: 'Price: Low to High',
+      sortItem: 'Date: Old to New', //'Price: Low to High',
     ),
     SortProductModel(
       leadingIcon: Icons.attach_money_outlined,
-      sortItem: 'Price: High to Low',
+      sortItem: 'Date: New to Old', //'Price: High to Low',
     ),
     SortProductModel(
       leadingIcon: Icons.star_border_outlined,
@@ -54,6 +55,7 @@ class ProductListController extends GetxController {
     ),
   ].obs;
   var currentIndex = 0.obs;
+  var newArg = Get.arguments;
 
   void changeIndex(int index) {
     currentIndex.value = index;
@@ -72,23 +74,24 @@ class ProductListController extends GetxController {
   void onInit() {
     super.onInit();
     //searchProductApi();
+    debugPrint("argument : ${Get.arguments}");
 
     if (Get.arguments == null) {
       pagingController.addPageRequestListener((pageKey) {
         // TODO SENDING THE COLLECTION ID HARD CODED '445427745079' FOR PRODUCT LIST SCREEN
-        _getProductList(pageKey, "445427745079");
+        _getProductList("445427745079", '');
       });
     } else if (Get.arguments[0] == TYPE_CATEGORY_PRODUCTS) {
       screenType.value = 1;
       pagingController.addPageRequestListener((pageKey) {
         debugPrint("get args category product : ${Get.arguments[1]}");
-        _getProductList(pageKey, Get.arguments[1].toString());
+        _getProductList(Get.arguments[1].toString(), '');
       });
       title.value = Get.arguments[2].toString();
     } else if (Get.arguments[0] == TYPE_SEARCH) {
       screenType.value = 1;
       pagingController.addPageRequestListener((pageKey) {
-        _getProductList(pageKey, Get.arguments[1].toString());
+        _getProductList(Get.arguments[1].toString(), '');
       });
       if (Get.arguments != null) {
         title.value = Get.arguments[2].toString();
@@ -96,14 +99,16 @@ class ProductListController extends GetxController {
     } else {}
   }
 
-  Future<void> _getProductList(int pageKey, String collectionId) async {
+  Future<void> _getProductList(String collectionId, String? sortOrder) async {
     try {
+      pagingController.itemList?.clear();
       final client = RestClient();
       // TODO SENDING THE COLLECTION ID HARD CODED '445427745079'
 
       var newItems = await client.getProductList(
-          'published', pageKey, _pageSize, collectionId, "");
+          'published', _pageSize, collectionId, "", "$sortOrder");
       final isLastPage = newItems.products!.length < _pageSize;
+
       if (isLastPage) {
         pagingController.appendLastPage(newItems.products!);
       } else {
@@ -123,7 +128,10 @@ class ProductListController extends GetxController {
         context: context,
         pageBuilder: (context, _, __) {
           return SortPopup(
-            onDone: () {
+            onDone: (value) {
+              debugPrint("value sort : $value");
+              callingSortApi(value);
+
               Get.back();
             },
             onReset: () {
@@ -138,6 +146,24 @@ class ProductListController extends GetxController {
             child: child,
           );
         });
+  }
+
+  callingSortApi(value) {
+    if (value == 0) {
+      _getProductList("${newArg[1]}", 'title desc');
+    }
+    if (value == 1) {
+      _getProductList("${newArg[1]}", 'created_at desc');
+    }
+    if (value == 2) {
+      _getProductList("${newArg[1]}", 'created_at asc');
+    }
+    if (value == 3) {
+      _getProductList("${newArg[1]}", 'title asc');
+    }
+    if (value == 4) {
+      _getProductList("${newArg[1]}", 'title desc');
+    }
   }
 
   void onClickView() {
@@ -181,7 +207,7 @@ class ProductListController extends GetxController {
       GraphQLRepo()
           .addToCartLine(quantity, variantId, checkCartId)
           .then((value) {
-        //Get.toNamed(AppRoutes.cartScreen);
+        Get.toNamed(AppRoutes.cartScreen);
       }).onError((error, stackTrace) {
         MySnackBar().errorSnackBar(error.toString());
       });
@@ -199,7 +225,7 @@ class ProductListController extends GetxController {
         print("shubham--" + value);
 
         AppPreference().setString(AppPreference.KEY_CART_ID, value);
-        //Get.toNamed(AppRoutes.cartScreen);
+        Get.toNamed(AppRoutes.cartScreen);
       }).onError((error, stackTrace) {
         MySnackBar().errorSnackBar(error.toString());
       });

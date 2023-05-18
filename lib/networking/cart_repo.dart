@@ -1,63 +1,71 @@
-import 'package:get/get.dart';
 import 'package:the_horeca_store/app/modules/cart_screen/model/cart_model.dart';
 import 'package:the_horeca_store/commons/utils/app_preference.dart';
 import 'package:the_horeca_store/commons/utils/my_snackbar.dart';
+import 'package:the_horeca_store/l10n/localization.dart';
 import 'package:the_horeca_store/networking/graphql/graphql_repo.dart';
 import 'package:the_horeca_store/networking/models/product_data/product_data.dart';
 import 'package:the_horeca_store/networking/models/product_data/product_image.dart';
 
-class CartScreenController extends GetxController {
-  var isInitialLoading = true.obs;
-  var cartData = CartModel().obs;
+class CartRepo {
+  Future<String?> addToCart(
+      int quantity, String variantId, String productId) async {
+    var checkCartId =
+        await AppPreference().get(AppPreference.KEY_CART_ID) ?? '';
+    try {
+      if (checkCartId.isNotEmpty) {
+        await GraphQLRepo().addToCartLine(quantity, variantId, checkCartId);
+      } else {
+        checkCartId = await GraphQLRepo().addToCart(quantity, variantId);
+        AppPreference().setString(AppPreference.KEY_CART_ID, checkCartId);
+      }
+      var list = await GraphQLRepo().cartListAPI(checkCartId);
+      var cartData = filterCartData(list);
 
-  @override
-  void onInit() {
-    super.onInit();
-    getCartAPI();
-  }
-
-  @override
-  void dispose() {
-    super.dispose();
-  }
-
-  void getCartAPI() async {
-    isInitialLoading.value = true;
-    var cartId = await AppPreference().get(AppPreference.KEY_CART_ID) ?? '';
-    if (cartId != null && cartId.isNotEmpty) {
-      GraphQLRepo().cartListAPI(cartId).then(
-        (value) {
-          isInitialLoading.value = false;
-          filterCartData(value);
-        },
-      ).onError(
-        (error, stackTrace) {
-          isInitialLoading.value = false;
-          MySnackBar().errorSnackBar(error.toString());
-        },
-      );
-    } else {
-      isInitialLoading.value = false;
+      var lineId = null;
+      for (int i = 0; i < cartData!.productList!.length; i++) {
+        if (productId == cartData.productList![i].id.toString()) {
+          lineId = cartData.productList![i].lineId;
+          break;
+        }
+      }
+      return Future.value(lineId);
+    } catch (e) {
+      MySnackBar().errorSnackBar(e.toString());
+      return Future.error(e.toString());
     }
   }
 
-  void removeProductFromCart(int index) async {
-    var cartId = await AppPreference().get(AppPreference.KEY_CART_ID) ?? '';
-    var lineId = cartData.value.productList![index].lineId ?? '';
-    GraphQLRepo().removeProductFromCart(cartId, lineId).then(
-      (value) {
-        cartData.value = CartModel();
-        getCartAPI();
-      },
-    ).onError(
-      (error, stackTrace) {
-        isInitialLoading.value = false;
+  Future<void> updateCart(quantity, lineId) async {
+    var checkCartId =
+        await AppPreference().get(AppPreference.KEY_CART_ID) ?? '';
+    if (checkCartId.isNotEmpty) {
+      return GraphQLRepo()
+          .updateCartLine(quantity, checkCartId, lineId)
+          .then((value) {
+        return Future.value();
+      }).onError((error, stackTrace) {
         MySnackBar().errorSnackBar(error.toString());
-      },
-    );
+        return Future.error(error.toString());
+      });
+    }
   }
 
-  void filterCartData(response) {
+  Future<void> removeProductFromCart(lineId) async {
+    var checkCartId =
+        await AppPreference().get(AppPreference.KEY_CART_ID) ?? '';
+    if (checkCartId.isNotEmpty) {
+      return GraphQLRepo()
+          .removeProductFromCart(checkCartId, lineId)
+          .then((value) {
+        return Future.value();
+      }).onError((error, stackTrace) {
+        MySnackBar().errorSnackBar(error.toString());
+        return Future.error(error.toString());
+      });
+    }
+  }
+
+  CartModel? filterCartData(response) {
     String? checkoutUrl = response["checkoutUrl"];
     String totalAmount =
         response["estimatedCost"]?["totalAmount"]?["amount"] ?? '0.0';
@@ -80,7 +88,10 @@ class CartScreenController extends GetxController {
     List<ProductData> productList = [];
 
     response["lines"]["nodes"].forEach((element) {
+      var id = int.parse(
+          element["merchandise"]["product"]["id"].toString().getLastSegment());
       var product = ProductData(
+        id: id,
         lineId: element["id"],
         quantity: element["quantity"],
         title: element["merchandise"]["product"]["title"],
@@ -113,35 +124,7 @@ class CartScreenController extends GetxController {
           totalTaxCC: totalTaxCC,
           productList: productList);
 
-      cartData.value = cartModel;
-    }
-  }
-
-  void incrementQuantity(quantity, lineId) {
-    quantity++;
-    if (quantity > 1) {
-      updateCart(quantity, lineId);
-    }
-  }
-
-  void decrementQuantity(quantity, lineId) {
-    quantity--;
-    if (quantity > 0) {
-      updateCart(quantity, lineId);
-    }
-
-    print('decrement : ${quantity}');
-  }
-
-  Future<void> updateCart(quantity, lineId) async {
-    var checkCartId =
-        await AppPreference().get(AppPreference.KEY_CART_ID) ?? '';
-    if (checkCartId.isNotEmpty) {
-      GraphQLRepo().updateCartLine(quantity, checkCartId, lineId).then((value) {
-        getCartAPI();
-      }).onError((error, stackTrace) {
-        MySnackBar().errorSnackBar(error.toString());
-      });
+      return cartModel;
     }
   }
 }

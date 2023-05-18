@@ -34,7 +34,7 @@ ProductData _$ProductDataFromJson(Map<String, dynamic> json) => ProductData(
       options: (json['options'] as List<dynamic>?)
           ?.map((e) => ProductOptions.fromJson(e as Map<String, dynamic>))
           .toList(),
-      quantity: json['quantity'] as int?,
+      quantity: json['quantity'] as int? ?? 0,
     );
 
 Map<String, dynamic> _$ProductDataToJson(ProductData instance) =>

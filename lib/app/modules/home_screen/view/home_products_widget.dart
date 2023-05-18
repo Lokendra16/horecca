@@ -50,7 +50,7 @@ class HomeProductsWidget extends StatelessWidget {
                         },
                         child: Container(
                           width: size.width * 0.40,
-                          height: size.width * 0.54,
+                          height: size.width * 0.65,
                           margin: const EdgeInsets.only(left: 16),
                           decoration: const BoxDecoration(
                             color: ColorName
@@ -67,14 +67,7 @@ class HomeProductsWidget extends StatelessWidget {
                                         boxFit: BoxFit.cover,
                                         errorWidget: Image.asset(
                                             'assets/images/ic_appicon.png'),
-                                      ) /*Image.network(
-                                        item.products?[i].image ?? '',
-                                        fit: BoxFit.cover,
-                                        errorBuilder: (context, url, error) =>
-                                            Image.asset(
-                                                'assets/images/ic_appicon.png'),
-                                      )*/
-                                      ,
+                                      ),
                                     ),
                                     Positioned(
                                       right: 0,
