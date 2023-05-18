@@ -47,10 +47,12 @@ class _ProductItemButtonState extends State<ProductItemButton> {
                 });
               },
               child: isAdding == true
-                  ? SizedBox(
-                      height: 50,
-                      width: 50,
-                      child: const CircularProgressIndicator())
+                  ? const SizedBox(
+                      height: 20,
+                      width: 20,
+                      child: CircularProgressIndicator(
+                        color: ColorName.white,
+                      ))
                   : Text("Add to cart", style: AppThemeData.poppins400Font14)),
         ),
       );
